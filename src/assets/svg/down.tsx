@@ -1,5 +1,5 @@
 
-export function DownIcon({ className }: { className: string }) {
+export function DownIcon({ className }: Readonly<{ className: string }>) {
 
     return (
 
