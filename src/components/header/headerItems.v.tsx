@@ -25,7 +25,7 @@ export default function HeaderItems() {
                                 </svg>
                                 <span className="sr-only">Search icon</span>
                             </div>
-                            <input type="text" id="search-navbar" className="block w-96 p-[4px] ps-10 text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500 dark:bg-cyan-1000 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="Search..." />
+                            <input type="text" id="search-navbar" className="block w-96 p-[4px] ps-10 text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500 dark:bg-cyan-1000 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="Find invoices" />
                         </div>
                         <div className="flex ml-2 text-left">
                             <div className="flex items-center justify-center cursor-pointer">
