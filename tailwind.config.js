@@ -20,10 +20,19 @@ export default {
         },
         'green': {
           550: '#87b87f'
+        },
+        'grey': {
+          450: '#c6c6c6'
+        },
+        'blue': {
+          550: '#458fbc',
         }
 
       },
     },
+    fontFamily: {
+      'titles': ['ProximaNovaRegular', 'Helvetica', 'Arial'],
+    }
   },
   plugins: [],
 }

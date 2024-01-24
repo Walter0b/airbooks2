@@ -44,7 +44,7 @@ export default function SideBareItems({
                                 className={`
                                 ${item.current ? "bg-cyan-550 text-white" : "text-zinc-550 hover:bg-white "}
                                 ${hoveredItems[item.name] && item.name !== "Dashboard" ? "!bg-white !text-cyan-650" : ""}
-                                group flex gap-x-2 p-2 text-[13px] w-full leading-6 font-semibold
+                                group flex gap-x-2 p-2 text-[13px] w-full leading-6 font-medium
                             `}
                                 onMouseEnter={() =>
                                     setHoveredItems((prevState) => ({
