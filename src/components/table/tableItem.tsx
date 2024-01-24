@@ -6,34 +6,27 @@ import { DataTableProps, Column } from '@utils/models/struc';
 export function TableItem<T>({ data, columns}: DataTableProps<T>) {
 
   const [isCheckedAll, setCheckedAll] = useState(false);
-  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+  const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
   const [checkedItemIds, setCheckedItemIds] = useState<number[] | undefined>();
 
   const handleCheckboxAllChange = () => {
     const allChecked = !isCheckedAll;
     setCheckedAll(allChecked);
-
-    // Update the state of individual checkboxes based on the state of checkbox-all
-    const updatedCheckedItems: Record<string, boolean> = {};
-    data.forEach((_, index) => {
-      updatedCheckedItems[index.toString()] = allChecked;
-    });
-    
-    //data.reduce((updatedCheckedItems,_,index)=>({...updatedCheckedItems,[index]:allChecked}),{})
+    const updatedCheckedItems: Record<string, boolean> = data.reduce((updatedCheckedItems,_,index)=>({...updatedCheckedItems,[index]:allChecked}),{})
+  
     setCheckedItems(updatedCheckedItems);
-
 
   };
 
 
   const handleCheckboxChange = (index: number) => {
 
-    const updatedCheckedItems = { ...checkedItems, [index.toString()]: !checkedItems[index.toString()] };
+    const updatedCheckedItems = { ...checkedItems, [index.toString()]: !checkedItems[index] };
     setCheckedItems(updatedCheckedItems);
     console.log(updatedCheckedItems)
 
     const allChecked = Object.values(updatedCheckedItems).every((isChecked) => isChecked);
-    //(Object.values(updatedCheckedItems).length === data.length) &&
+    (Object.values(updatedCheckedItems).length === data.length) &&
      setCheckedAll(allChecked);
 
     const checkedIds = Object.entries(updatedCheckedItems)
@@ -43,9 +36,6 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
     setCheckedItemIds(checkedIds);
     console.log(checkedItemIds)
   };
-
-
-
 
 
 
@@ -80,7 +70,7 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
             </thead>
             {/* Table body */}
             <tbody>
-              {data.map((item: T, index: number) => (
+              {data.slice(0, 10).map((item: T, index: number) => (
 
                 <tr
                   key={index}
@@ -92,7 +82,7 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
                       <input
                         id={`checkbox-${index}`}
                         type="checkbox"
-                        checked={checkedItems[index.toString()] || false}
+                        checked={checkedItems[index] || false}
                         onChange={() => handleCheckboxChange(index)}
                       />
                       <label className="sr-only">checkbox</label>
@@ -110,7 +100,7 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
           </table>
         </div>
       </div>
-      <div className='flex w-full flex-row-reverse mb-6 items-end'>
+      <div className='flex w-full flex-row-reverse !mb-10 items-end'>
         <Pagination currentPage={0} totalPages={0} onPageChange={function (): void {
           throw new Error('Function not implemented.');
         }}>
