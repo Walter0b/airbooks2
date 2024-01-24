@@ -4,6 +4,7 @@ import { LightBulbIcon } from "@assets/svg/lightbulb";
 import Table from "./table/table";
 import { Data, columns } from "@utils/test/table";
 import { RotateIcon } from "@assets/svg/rotate";
+import { Hamburger } from "@assets/svg/hamburger";
 
 export default function Pages() {
     return (
@@ -30,10 +31,8 @@ export default function Pages() {
                     </button>
 
                     <button className="p-2 border-[0.8px] border-grey-450 rounded-r-md bg-gray-100 flex justify-center items-center">
-                        <CrossIcon
-                            className="w-3 fill-gray-700  rotate-45"
-                            className1=" h-10"
-                            className2="w-10"
+                        <Hamburger
+                            className="w-3 fill-gray-700 "
                         />
                     </button>
                     <div className="h-5 border-l-2 p-2 ml-2 mt-2"></div>

@@ -1,4 +1,4 @@
-import SideBare from "./sidebar/sidebar";
+import SideBar from "./sidebar/sidebar";
 import Header from "./header/header";
 import { Outlet } from "react-router-dom";
 import './layout.css'
@@ -18,7 +18,7 @@ function Layout() {
                 </div>
                 <Header />
                 <div className="flex h-full">
-                    <SideBare />
+                    <SideBar />
                     <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-14">
                         <Outlet />
                         <Pages />

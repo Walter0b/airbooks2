@@ -1,5 +1,5 @@
 import { TachometerIcon } from '@assets/svg/tachometer'
-import SideBareItems from './sidebaritem'
+import SideBarItems from './sidebaritem'
 import { CaseIcon } from '@assets/svg/case'
 import { UserIcon } from '@assets/svg/user'
 import { UsersIcon } from '@assets/svg/users'
@@ -15,7 +15,7 @@ const navigation = [
     { name: 'Customer', href: '/customer', current: false, group: 2, icon: UsersIcon },
     { name: 'Estimates', href: '/estimates', current: false, group: 2, icon: ShoppingCartIcon },
     { name: 'Invoice', href: '/invoice', current: false, group: 2, icon: ShoppingCartIcon },
-    { name: 'Credit Notes', href: '/creditnotes', current: false, group: 2, icon: ShoppingCartIcon,className: '-scale-x-100', },
+    { name: 'Credit Notes', href: '/creditnotes', current: false, group: 2, icon: ShoppingCartIcon, className: '-scale-x-100', },
     { name: 'Payments', href: '/payments', current: false, group: 3, icon: CreditCardIcon },
     { name: 'Bill', href: '/bill', current: false, group: 4, icon: FileIcon },
     { name: 'Expenses', href: '/expenses', current: false, group: 4, icon: MoneyIcon },
@@ -24,8 +24,8 @@ const navigation = [
 ]
 
 
-export default function SideBare() {
+export default function SideBar() {
     return (
-        <SideBareItems navigation={navigation} />
+        <SideBarItems navigation={navigation} />
     )
 }
