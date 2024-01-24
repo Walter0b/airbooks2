@@ -2,7 +2,7 @@ import { CrossIcon } from "@assets/svg/cross";
 import { DownIcon } from "@assets/svg/down";
 import { LightBulbIcon } from "@assets/svg/lightbulb";
 import Table from "./table/table";
-import { Data, columns } from "@utils/test/table";
+import { Data, columns } from "@utils/test/data/table";
 import { RotateIcon } from "@assets/svg/rotate";
 import { Hamburger } from "@assets/svg/hamburger";
 
