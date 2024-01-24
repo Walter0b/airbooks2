@@ -39,7 +39,6 @@ export const Data = [
         Events: true,
         Income: "270,695.36"
     },
-    // Additional data
     {
         TravelerName: "JONES / EMMA",
         MobilePhone: "+44 20 1234 5678",
