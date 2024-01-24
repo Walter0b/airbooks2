@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Pagination from './pagination';
-import React from 'react';
 import { DataTableProps, Column } from '@utils/models/struc';
 
 
