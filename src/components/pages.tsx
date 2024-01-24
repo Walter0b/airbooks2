@@ -3,11 +3,12 @@ import { DownIcon } from "@assets/svg/down";
 import { LightBulbIcon } from "@assets/svg/lightbulb";
 import Table from "./table/table";
 import { Data, columns } from "@utils/test/table";
+import { RotateIcon } from "@assets/svg/rotate";
 
 export default function Pages() {
     return (
         <div className="flex-row h-full ">
-            <div className="max h-16 hidden border md:flex rounded-sm justify-between items-center space-x-4  w-full">
+            <div className="max h-16  border flex rounded-sm justify-between items-center space-x-4  w-full">
                 <div id="table-left-menu-option" aria-label="table left menu option" className="font-titles text-gray-500 text-lg m-5 flex">
                     menu
                     <DownIcon className="w-2 ml-1 fill-gray-500 mb-1" />
@@ -21,19 +22,13 @@ export default function Pages() {
                         />
                     </button>
                     <button className="p-2 border-[0.8px] border-grey-450 ml-4 rounded-l-md bg-gray-100 flex justify-center items-center">
-                        <CrossIcon
-                            className="w-3 fill-gray-700 rotate-45"
-                            className1=" h-10"
-                            className2="w-10"
-                        />
+                        <RotateIcon className="w-3 !fill-gray-700" />
                     </button>
-                    <button className="p-2 border-[0.8px] border-grey-450  bg-gray-100 flex justify-center items-center">
-                        <CrossIcon
-                            className="w-3 fill-gray-700  rotate-45"
-                            className1=" h-10"
-                            className2="w-10"
-                        />
+                    <button className="px-2 border-[0.8px] flex-col border-grey-450  bg-gray-100 flex justify-center items-center">
+                        <DownIcon className="w-2 rotate-180" />
+                        <DownIcon className="w-2 mt-[-7px]" />
                     </button>
+
                     <button className="p-2 border-[0.8px] border-grey-450 rounded-r-md bg-gray-100 flex justify-center items-center">
                         <CrossIcon
                             className="w-3 fill-gray-700  rotate-45"

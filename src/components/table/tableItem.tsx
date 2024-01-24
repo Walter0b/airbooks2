@@ -18,7 +18,11 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
     data.forEach((_, index) => {
       updatedCheckedItems[index.toString()] = allChecked;
     });
+    
+    //data.reduce((updatedCheckedItems,_,index)=>({...updatedCheckedItems,[index]:allChecked}),{})
     setCheckedItems(updatedCheckedItems);
+
+
   };
 
 
@@ -29,7 +33,8 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
     console.log(updatedCheckedItems)
 
     const allChecked = Object.values(updatedCheckedItems).every((isChecked) => isChecked);
-    (Object.values(updatedCheckedItems).length === data.length) && setCheckedAll(allChecked);
+    //(Object.values(updatedCheckedItems).length === data.length) &&
+     setCheckedAll(allChecked);
 
     const checkedIds = Object.entries(updatedCheckedItems)
       .filter(([, isChecked]) => isChecked)
@@ -105,7 +110,7 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
           </table>
         </div>
       </div>
-      <div className='flex w-full flex-row-reverse items-end'>
+      <div className='flex w-full flex-row-reverse mb-6 items-end'>
         <Pagination currentPage={0} totalPages={0} onPageChange={function (): void {
           throw new Error('Function not implemented.');
         }}>
