@@ -48,7 +48,7 @@ import { NavLink } from "react-router-dom";
             className={`
           ${currentbg}
           ${hoverColor}
-          group flex gap-x-2 p-2 text-[13px] w-full leading-6 font-medium
+          group flex gap-x-2 p-2 text-[13px] w-full h-10 leading-6 font-medium
         `}
             onMouseEnter={() =>
                 setHoveredItems((prevState) => ({
