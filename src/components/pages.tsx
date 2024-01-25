@@ -2,17 +2,20 @@ import { CrossIcon } from "@assets/svg/cross";
 import { DownIcon } from "@assets/svg/down";
 import { LightBulbIcon } from "@assets/svg/lightbulb";
 import Table from "./table/table";
-import { Data, columns } from "@utils/test/data/table";
 import { RotateIcon } from "@assets/svg/rotate";
 import { Hamburger } from "@assets/svg/hamburger";
+import { DataTableProps } from "@utils/models/struc";
+import Dropdown from "./dropdown/dropdown";
+import { DropdownOptions } from "@utils/models/interface/table";
 
-export default function Pages() {
+
+export default function Pages<T>({ data, columns, dropdownOptions }: Readonly<DataTableProps<T> & { dropdownOptions: DropdownOptions[] }>) {
+
     return (
         <div className="flex-row h-full ">
             <div className="max h-16  border flex rounded-sm justify-between items-center space-x-4  w-full">
-                <div id="table-left-menu-option" aria-label="table left menu option" className="font-titles text-gray-500 text-lg m-5 flex">
-                    menu
-                    <DownIcon className="w-2 ml-1 fill-gray-500 mb-1" />
+                <div id="table-left-menu-option" aria-label="table left menu option" className="ml-4">
+                    <Dropdown options={dropdownOptions} />
                 </div>
                 <div id="table-right-menu-option" aria-label="table right menu option" className=" text-gray-500 flex">
                     <button className="p-2 border rounded-md bg-red-700 flex justify-center items-center">
@@ -41,7 +44,7 @@ export default function Pages() {
                         <div className="flex items-center text-blue-500 cursor-pointer mr-4 font-bold">Tips</div></div>
                 </div>
             </div>
-            <Table data={Data} columns={columns} />
+            <Table data={data} columns={columns} />
         </div>
     )
 }
