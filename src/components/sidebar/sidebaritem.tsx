@@ -9,7 +9,6 @@ import { NavigationItem } from "@utils/models/interface/table";
 export default function SideBarItems({
     navigation,
 }: Readonly<{ navigation: NavigationItem[] }>) {
-    console.log(navigation);
     const [hoveredItems, setHoveredItems] = useState<{ [key: string]: boolean }>(
         {}
     );
