@@ -32,9 +32,6 @@ export const navigation = [
 export interface DataTableProps<T> {
     data: T[];
     columns: Column[];
-    onEdit?: (item: T) => void;
-    onDelete?: (item: T) => void;
-
 }
 export interface Column {
     key: string;

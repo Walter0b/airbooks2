@@ -1,4 +1,4 @@
-export const Data = [
+export const travelersData = [
     {
         TravelerName: "ACHAMYELEH / DEBELA MR",
         MobilePhone: "+27 351 191753",
@@ -97,7 +97,7 @@ export const Data = [
     }
 ];
 
-export const columns = [
+export const travelersColumns = [
     { key: 'TravelerName', label: 'Traveler Name' },
     { key: 'MobilePhone', label: 'Mobile Phone' },
     { key: 'Nationality', label: 'Nationality' },
@@ -105,4 +105,5 @@ export const columns = [
     { key: 'Events', label: 'Events' },
     { key: 'Income', label: 'Income' }
   ];
+  
   

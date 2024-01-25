@@ -2,7 +2,6 @@ import SideBar from "./sidebar/sidebar";
 import Header from "./header/header";
 import { Outlet } from "react-router-dom";
 import './layout.css'
-import Pages from "./pages";
 
 function Layout() {
     return (
@@ -21,7 +20,6 @@ function Layout() {
                     <SideBar />
                     <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-14">
                         <Outlet />
-                        <Pages />
                     </main>
                 </div>
             </div>

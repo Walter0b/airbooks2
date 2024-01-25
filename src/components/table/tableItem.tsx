@@ -3,7 +3,7 @@ import Pagination from './pagination';
 import { DataTableProps, Column } from '@utils/models/struc';
 
 
-export function TableItem<T>({ data, columns}: DataTableProps<T>) {
+export function TableItem<T>({ data, columns }: DataTableProps<T>) {
 
   const [isCheckedAll, setCheckedAll] = useState(false);
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
@@ -12,22 +12,19 @@ export function TableItem<T>({ data, columns}: DataTableProps<T>) {
   const handleCheckboxAllChange = () => {
     const allChecked = !isCheckedAll;
     setCheckedAll(allChecked);
-    const updatedCheckedItems: Record<string, boolean> = data.reduce((updatedCheckedItems,_,index)=>({...updatedCheckedItems,[index]:allChecked}),{})
-  
+    const updatedCheckedItems: Record<string, boolean> = data.reduce((updatedCheckedItems, _, index) => ({ ...updatedCheckedItems, [index]: allChecked }), {})
     setCheckedItems(updatedCheckedItems);
-
   };
 
 
   const handleCheckboxChange = (index: number) => {
-
     const updatedCheckedItems = { ...checkedItems, [index.toString()]: !checkedItems[index] };
     setCheckedItems(updatedCheckedItems);
     console.log(updatedCheckedItems)
 
     const allChecked = Object.values(updatedCheckedItems).every((isChecked) => isChecked);
     (Object.values(updatedCheckedItems).length === data.length) &&
-     setCheckedAll(allChecked);
+      setCheckedAll(allChecked);
 
     const checkedIds = Object.entries(updatedCheckedItems)
       .filter(([, isChecked]) => isChecked)

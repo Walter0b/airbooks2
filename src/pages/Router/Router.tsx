@@ -1,16 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-// import App from "../../App";
-// import MyComponent from "@components/test";
 import Layout from "@components/layout";
+import Travelers from "@pages/travelers";
+import { TravelItem } from "@pages/travelerItems";
+import Customer from "@pages/customers";
 
 export const appRouters = createBrowserRouter([
     {
         path: '/',
         element: <Layout />,
-        // children: [
-        //     { path: "", element: <Login />, },
-        //     { path: "customers", element: <Customers /> },
-        //     { path: "test", element: <MyComponent /> },
-        // ]
+        children: [
+            { path: "/travelers", element: <Travelers />, },
+            { path: "travelitem", element: <TravelItem /> },
+            { path: "customers", element: <Customer /> },
+        ]
     }
 ]);
