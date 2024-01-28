@@ -1,10 +1,12 @@
+import { ClockIcon } from "@assets/svg/clock";
+
 export const travelersData = [
     {
         TravelerName: "ACHAMYELEH / DEBELA MR",
         MobilePhone: "+27 351 191753",
         Nationality: "ETHIOPIA",
         TravelStatus: "On Trip",
-        Events: true,
+        Events: <ClockIcon className="w-3 fill-gray-500"/>,
         Income: "270,695.36"
     },
     {
@@ -12,7 +14,7 @@ export const travelersData = [
         MobilePhone: "+1 123 456789",
         Nationality: "UNITED STATES",
         TravelStatus: "Planning",
-        Events: false,
+        Events: "",
         Income: "120,000.00"
     },
     {
@@ -20,7 +22,7 @@ export const travelersData = [
         MobilePhone: "+91 9876543210",
         Nationality: "INDIA",
         TravelStatus: "On Trip",
-        Events: true,
+        Events: <ClockIcon className="w-3 fill-gray-500"/>,
         Income: "150,000.50"
     },
     {
@@ -28,7 +30,7 @@ export const travelersData = [
         MobilePhone: "+34 123456789",
         Nationality: "SPAIN",
         TravelStatus: "Completed",
-        Events: false,
+        Events: "",
         Income: "80,500.75"
     },
     {
@@ -36,7 +38,7 @@ export const travelersData = [
         MobilePhone: "+27 351 191753",
         Nationality: "ETHIOPIA",
         TravelStatus: "On Trip",
-        Events: true,
+        Events: <ClockIcon className="w-3 fill-gray-500"/>,
         Income: "270,695.36"
     },
     {
@@ -44,7 +46,7 @@ export const travelersData = [
         MobilePhone: "+44 20 1234 5678",
         Nationality: "UNITED KINGDOM",
         TravelStatus: "Planning",
-        Events: true,
+        Events: <ClockIcon className="w-3 fill-gray-500"/>,
         Income: "180,000.00"
     },
     {
@@ -52,7 +54,7 @@ export const travelersData = [
         MobilePhone: "+86 10 1234 5678",
         Nationality: "CHINA",
         TravelStatus: "On Trip",
-        Events: false,
+        Events: "",
         Income: "200,500.25"
     },
     {
@@ -60,7 +62,7 @@ export const travelersData = [
         MobilePhone: "+49 30 1234 5678",
         Nationality: "GERMANY",
         TravelStatus: "Completed",
-        Events: true,
+        Events: <ClockIcon className="w-3 fill-gray-500"/>,
         Income: "120,300.75"
     },
     {
@@ -68,7 +70,7 @@ export const travelersData = [
         MobilePhone: "+81 3 1234 5678",
         Nationality: "JAPAN",
         TravelStatus: "Planning",
-        Events: false,
+        Events: "",
         Income: "150,200.50"
     },
     {
@@ -76,7 +78,7 @@ export const travelersData = [
         MobilePhone: "+34 987654321",
         Nationality: "SPAIN",
         TravelStatus: "On Trip",
-        Events: true,
+        Events: <ClockIcon className="w-3 fill-gray-500"/>,
         Income: "90,600.20"
     },
     {
@@ -84,7 +86,7 @@ export const travelersData = [
         MobilePhone: "+48 123 456 789",
         Nationality: "POLAND",
         TravelStatus: "Planning",
-        Events: false,
+        Events: "",
         Income: "130,400.60"
     },
     {
@@ -92,7 +94,7 @@ export const travelersData = [
         MobilePhone: "+86 20 1234 5678",
         Nationality: "CHINA",
         TravelStatus: "On Trip",
-        Events: true,
+        Events: <ClockIcon className="w-3 fill-gray-500"/>,
         Income: "250,800.90"
     }
 ];

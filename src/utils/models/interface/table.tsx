@@ -6,12 +6,13 @@ export interface NavigationItem {
     current: boolean;
     icon?: React.FC<{ className: string }>;
     className?: string;
-    button : boolean;
+    button: boolean;
 }
 
-export interface DropdownOptions{
+export interface DropdownOptions {
     name: string;
-    url: string;
+    url?: string;
+    optionOnClick?: () => void;
 }
 export interface NavComponentProps {
     item: NavigationItem;

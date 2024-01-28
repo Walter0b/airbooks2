@@ -32,6 +32,7 @@ export const navigation = [
 export interface DataTableProps<T> {
     data: T[];
     columns: Column[];
+    children?: ReactNode;
 }
 export interface Column {
     key: string;
