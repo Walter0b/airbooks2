@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface NavigationItem {
     name: string;
     href: string;
@@ -9,10 +11,41 @@ export interface NavigationItem {
     button: boolean;
 }
 
+export interface Column {
+    key: string;
+    label: string;
+}
+
+export interface CheckboxProps {
+    isCheckedAll?: boolean;
+    setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void;
+    onCheckboxChange?: (index: number) => void;
+}
+
+export interface DataTableProps<T> {
+    data: T[];
+    columns: Column[];
+    children?: ReactNode;
+}
+
+export interface TableHeaderProps extends CheckboxProps {
+    columns: Column[];
+}
+
+export interface TableBodyProps<T> extends CheckboxProps {
+    data: T[];
+    columns: Column[];
+    checkedItems?: Record<number, boolean>;
+}
+
 export interface DropdownOptions {
-    name: string;
+    label: string;
+    value?: string;
     url?: string;
-    optionOnClick?: () => void;
+    onclick?: () => void;
+    group?: number;
+    hasMergeTitle?: boolean;
+
 }
 export interface NavComponentProps {
     item: NavigationItem;

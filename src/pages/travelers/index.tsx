@@ -2,8 +2,8 @@ import Pages from "@components/pages";
 import { TableBody } from "@components/table/body";
 import { TableHeader } from "@components/table/header";
 import { TableItem } from "@components/table/tableItem";
-import { dropdownDate } from "@utils/test/data/page/dropdown";
-import { travelersColumns, travelersData } from "@utils/test/data/travelers/table";
+import { dropdownDate } from "@utils/mock/data/page/dropdown";
+import { travelersColumns, travelersData } from "@utils/mock/data/travelers/table";
 
 export default function Travelers() {
     return (

@@ -1,7 +1,8 @@
-import Pages from "@components/pages";
 
 export function TravelItem() {
     return (
-        <Pages data={[]} columns={[]} dropdownOptions={[]} />
+        // <Pages data={[]} columns={[]} dropdownOptions={[]} />
+        <h1>hi</h1>
+
     )
 }

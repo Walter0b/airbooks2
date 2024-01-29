@@ -38,7 +38,6 @@ export function TableItem({ children, onCheckboxChange }: TableItemProps) {
       </div>
       <div className='flex w-full flex-row-reverse !mb-10 items-end'>
         <Pagination currentPage={0} totalPages={0} onPageChange={() => { }} />
-        {/* <button onClick={handleAction}>Perform Action</button> */}
       </div>
     </div>
   );

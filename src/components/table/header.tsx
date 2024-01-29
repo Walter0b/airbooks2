@@ -1,5 +1,5 @@
+import { TableHeaderProps, Column } from '@utils/models/interface/table';
 import React from 'react';
-import { Column, TableHeaderProps } from '@utils/models/structure';
 
 
 export const TableHeader: React.FC<TableHeaderProps> = ({ columns, setCheckedAll, isCheckedAll, onCheckboxChange }) => {
