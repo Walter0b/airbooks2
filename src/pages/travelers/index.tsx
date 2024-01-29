@@ -8,7 +8,7 @@ import { travelersColumns, travelersData } from "@utils/test/data/travelers/tabl
 export default function Travelers() {
     return (
         <Pages dropdownOptions={dropdownDate} >
-            <TableItem  onCheckboxChange={function (value: string): void {
+            <TableItem  onCheckboxChange={function (): void {
                 throw new Error("Function not implemented.");
             }}>
                 <TableHeader data-slot="TableHeader"  columns={travelersColumns}  />

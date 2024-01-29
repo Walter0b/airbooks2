@@ -12,13 +12,13 @@ export function getCmpByAttr({ children, attr, value, props }: GetCmpByAttrProps
     const cmp = cmps.find((cmp) => cmp.props[attr] === value);
   
     if (cmp) {
-      console.log(`Found component with attr ${attr} and value ${value}`);
+    //   console.log(`Found component with attr ${attr} and value ${value}`);
       const clonedCmp = React.cloneElement(cmp, props);
-      console.log('Cloned component:', clonedCmp);
+    //   console.log('Cloned component:', clonedCmp);
       return clonedCmp;
     }
   
-    console.warn(`No component found with attr ${attr} and value ${value}`);
+    // console.warn(`No component found with attr ${attr} and value ${value}`);
     return null;
   }
   

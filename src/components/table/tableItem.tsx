@@ -4,25 +4,26 @@ import { getCmpByAttr } from '@utils/functions/action';
 
 interface TableItemProps {
   children: ReactNode;
-  onCheckboxChange: (value: string) => void;
+  onCheckboxChange?: (value: string) => void;
 }
 
 export function TableItem({ children, onCheckboxChange }: TableItemProps) {
   // const { isCheckedAll, checkedItems, handleCheckboxAllChange, handleCheckboxChange, handleAction, columns } = useTableCheckbox(data, columns);
-  const [isCheckedAll, onCheckboxAllChange] = useState<boolean>(false)
+  const [isCheckedAll, setCheckedAll] = useState<boolean>(false);
+
 
   const tableHeader = getCmpByAttr({
     children,
     attr: 'data-slot',
     value: 'TableHeader',
-    props: { onCheckboxAllChange },
+    props: { isCheckedAll, setCheckedAll,onCheckboxChange },
   });
 
   const tableBody = getCmpByAttr({
     children,
     attr: 'data-slot',
     value: 'TableBody',
-    props: { isCheckedAll, onCheckboxChange },
+    props: { isCheckedAll,setCheckedAll, onCheckboxChange },
   });
 
   return (
