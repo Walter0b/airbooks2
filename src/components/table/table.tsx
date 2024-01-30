@@ -8,9 +8,10 @@ import { TableItemProps } from '@utils/models/interface/table';
 
 export function Table({ children, data, columns, hasCheckbox }: TableItemProps) {
 
-  const [isCheckedAll, setCheckedAll] = useState<boolean>(false);
+
+  const [isCheckedAll, setCheckedAll] = useState<boolean>(false );
+
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
-  const [checkedItemIds, setCheckedItemIds] = useState<number[] | undefined>();
   // onCheckboxChange?.(checkedItemId)
   const handleCheckboxAllChange = () => {
     const allChecked = !isCheckedAll;
@@ -32,12 +33,6 @@ export function Table({ children, data, columns, hasCheckbox }: TableItemProps) 
     (Object.values(updatedCheckedItems).length === data.length) &&
       setCheckedAll(allChecked);
 
-    const checkedIds = Object.entries(updatedCheckedItems)
-      .filter(([, isChecked]) => isChecked)
-      .map(([index]) => data[parseInt(index, 10)]) as number[];
-
-    setCheckedItemIds(checkedIds);
-    console.log(checkedItemIds)
   };
 
 

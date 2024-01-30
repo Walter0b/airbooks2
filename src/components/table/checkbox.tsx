@@ -1,7 +1,7 @@
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Checkboxes({ checkboxState, onChange }:{checkboxState : any, onChange : any}) {
+export default function Checkboxes({ checkboxState, onChange }: { checkboxState: any, onChange: any }) {
 
 
 
@@ -12,7 +12,7 @@ export default function Checkboxes({ checkboxState, onChange }:{checkboxState : 
                     id="checkbox-all"
                     type="checkbox"
                     className='bg-white'
-                    checked={checkboxState}
+                    checked={!checkboxState ? false : checkboxState}
                     onChange={onChange}
                 />
                 <label className="sr-only">checkbox</label>
