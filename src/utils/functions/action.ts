@@ -2,12 +2,12 @@
 import React, { ReactNode } from "react";
 interface GetCmpByAttrProps {
   children: ReactNode;
-  attr: string;
+  attr?: string;
   value: any;
   props?: Record<string, any>;
 }
 
-export function getCmpByAttr({ children, attr, value, props }: GetCmpByAttrProps): ReactNode {
+export function getCmpByAttr({ children, attr = 'data-slot', value, props }: GetCmpByAttrProps): ReactNode {
   const cmps = React.Children.toArray(children) as any;
   const cmp = cmps.find((cmp: { props: { [x: string]: any; }; }) => cmp?.props[attr] === value);
 

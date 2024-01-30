@@ -1,20 +1,17 @@
 import Pages from "@components/pages";
 import { TableBody } from "@components/table/body";
 import { TableHeader } from "@components/table/header";
-import { TableItem } from "@components/table/tableItem";
+import { Table } from "@components/table/table";
 import { dropdownDate } from "@utils/mock/data/page/dropdown";
 import { travelersColumns, travelersData } from "@utils/mock/data/travelers/table";
 
 export default function Travelers() {
     return (
         <Pages dropdownOptions={dropdownDate} >
-            <TableItem  onCheckboxChange={function (): void {
-                throw new Error("Function not implemented.");
-            }}>
-                <TableHeader data-slot="TableHeader"  columns={travelersColumns}  />
-                <TableBody data-slot="TableBody"  data={travelersData} columns={travelersColumns} />
-            </TableItem>
-
+            <Table data={travelersData} columns={travelersColumns} hasCheckbox={true} >
+                <TableHeader data-slot="TableHeader"  />
+                <TableBody data-slot="TableBody"  />
+            </Table>
             <h1>hi</h1>
         </Pages>
     )
