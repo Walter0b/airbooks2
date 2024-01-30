@@ -22,7 +22,7 @@ export default function SideBarItems({
                     <BarChartIcon className="fill-red-550 w-4" />
                 </div>
             </div>
-
+ 
             <ul className="">
                 {navigation.map((item: NavigationItem, index: number) => (
                     <React.Fragment key={item.name}>
