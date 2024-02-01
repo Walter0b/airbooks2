@@ -1,10 +1,10 @@
-import { DownIcon } from '@assets/svg/down';
-import React from 'react';
+import { ArrowIcon } from '@assets/svg/arrow'
+import React from 'react'
 import './table.css'
 interface PaginationProps {
-    currentPage: number;
-    totalPages: number;
-    onPageChange: (page: number) => void;
+    currentPage: number
+    totalPages: number
+    onPageChange: (page: number) => void
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -14,18 +14,21 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
     const gotoPage = (page: number) => {
         if (page >= 1 && page <= totalPages) {
-            onPageChange(page);
+            onPageChange(page)
         }
-    };
+    }
 
-    const canPreviousPage = currentPage > 1;
+    const canPreviousPage = currentPage > 1
 
     return (
         <div>
-            <div className="flex items-center -space-x-px mt-3 flex-wrap text-black">
-                
-                <div className=' mr-3 '>
-                    <select className='p-2  text-red-800 border neuton hover:border-blue-300 rounded-sm bg-white' name="pagination" id="cars">
+            <div className="mt-3 flex flex-wrap items-center -space-x-px text-black">
+                <div className=" mr-3 ">
+                    <select
+                        className="neuton  rounded-sm border bg-white  p-2 text-red-800 hover:border-blue-300"
+                        name="pagination"
+                        id="cars"
+                    >
                         <option value="10">10 per pages</option>
                         <option value="saab">15 per pages</option>
                         <option value="opel">20 per pages</option>
@@ -40,10 +43,10 @@ const Pagination: React.FC<PaginationProps> = ({
                         disabled={!canPreviousPage}
                     >
                         <span className="sr-only">Previous</span>
-                        <DownIcon className='w-3 scale-x-100 rotate-90 fill-gray-300' />
+                        <ArrowIcon className="w-3 rotate-90 scale-x-100 fill-gray-300" />
                     </button>
                 </div>
-                <div className='px-3'> {"1-10"}</div>
+                <div className="px-3"> {'1-10'}</div>
 
                 <div>
                     <button
@@ -51,12 +54,12 @@ const Pagination: React.FC<PaginationProps> = ({
                         disabled={!canPreviousPage}
                     >
                         <span className="sr-only">Previous</span>
-                        <DownIcon className='w-3 scale-x-100 -rotate-90 mr-3 fill-gray-300' />
+                        <ArrowIcon className="mr-3 w-3 -rotate-90 scale-x-100 fill-gray-300" />
                     </button>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Pagination;
+export default Pagination

@@ -1,63 +1,133 @@
-import { CrossIcon } from "@assets/svg/cross";
-import { ButtonsProps, NavLinksProps, NavComponentProps } from "@utils/models/interface/table";
-import { NavLink } from "react-router-dom";
+import { ArrowIcon } from '@assets/svg/arrow'
+import { CircleIcon } from '@assets/svg/circle'
+import { CrossIcon } from '@assets/svg/cross'
+import { EmptyArrowIcon } from '@assets/svg/emptyarrow'
+import {
+    ButtonsProps,
+    NavLinksProps,
+    NavComponentProps,
+} from '@utils/models/interface/table'
+import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
+function Buttons({ item }: Readonly<ButtonsProps>) {
+    const handleClick = (event: { preventDefault: () => void }) => {
+        event.preventDefault()
 
-function Buttons({ item, hoveredItems, setHoveredItems }: Readonly<ButtonsProps>) {
-    const bgColor = item.current ? "bg-cyan-550" : " hover:bg-cyan-550 ";
-    const hover = hoveredItems[item.name] && !item.current ? "bg-gray-200" : "";
-
-    return (
-        <button
-            className={`${bgColor} ${hover} group sm:flex gap-x-3 hidden  text-white h-10 p-2 pl-2 text-center  ml-[0.6px] text-[13px] leading-6 font-semibold`}
-            onMouseEnter={() => setHoveredItems(prevState => ({ ...prevState, [item.name]: true }))}
-            onMouseLeave={() => setHoveredItems(prevState => ({ ...prevState, [item.name]: false }))}
-        >
-            <CrossIcon className="w-4 mr-px fill-white rotate-45" className1=" h-10" className2="w-10" />
-        </button>
-    );
-}
-
-function NavLinks({ item, hoveredItems, setHoveredItems }: Readonly<NavLinksProps>) {
-    const currentbg = item.current ? "bg-cyan-550 text-white !fill-white" : "text-zinc-550 hover:bg-white ";
-    const hoverColor = hoveredItems[item.name] && !item.current ? "!fill-cyan-550 !bg-white !text-cyan-650" : "";
-
+        console.log('NavLink clicked, but prevented navigation')
+    }
     return (
         <NavLink
-            to={item.href}
-            className={`${currentbg} ${hoverColor} group flex gap-x-2 p-2 text-[13px] w-full h-10 leading-6 font-medium`}
-            onMouseEnter={() => setHoveredItems(prevState => ({ ...prevState, [item.name]: true }))}
-            onMouseLeave={() => setHoveredItems(prevState => ({ ...prevState, [item.name]: false }))}
-            onClick={() => setHoveredItems(prevState => ({ ...prevState, [item.name]: true, isClicked: true }))}
+            to={item.href ?? ''}
+            end
+            onClick={handleClick}
+            className={({ isActive }) =>
+                `$ ${isActive ? 'bg-cyan-550 ' : 'hover:bg-cyan-550 group-hover:bg-gray-200 '}  ml-[0.6px] hidden h-10 gap-x-3 p-2 pl-2 text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex`
+            }
         >
-            {item.icon && (
-                <div className={`${currentbg} ${hoverColor} ${item?.className} w-3 self-center items-center m-1 leading-6 font-semibold fill-zinc-550`}>
-                    {item.icon && <item.icon className="w-full h-full" />}
-                </div>
-            )}
-
-            <span className="hidden sm:inline">{item.name}</span>
-
-            {item.count && (
-                <span className="ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-gray-900 px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-white ring-1 ring-inset ring-gray-700" aria-hidden="true">
-                    {item.count}
-                </span>
-            )}
+            <CrossIcon
+                className="mr-px w-4 rotate-45 fill-white"
+                className1="h-10"
+                className2="w-10"
+            />
         </NavLink>
-    );
+    )
 }
 
-
-
-export function Nav({ item, hoveredItems, setHoveredItems }: Readonly<NavComponentProps>) {
-    const currentPage = window.location.pathname.replace('/', '');
-    const isDashboard = item.name === "Dashboard";
-    const isCurrentPage = !currentPage && isDashboard || item.name.toLowerCase().split(" ").join("") === currentPage;
-    item.current = isCurrentPage;
+function NavLinks({ item }: NavLinksProps) {
     return (
-        <div className="flex w-full">
-            <NavLinks item={item} hoveredItems={hoveredItems} setHoveredItems={setHoveredItems} />
-            {item.button && <Buttons item={item} hoveredItems={hoveredItems} setHoveredItems={setHoveredItems} />}
+        <NavLink
+            to={item.href ?? ''}
+            className={({ isActive }) =>
+                `$ ${isActive ? 'bg-cyan-550 !fill-white text-white' : 'text-zinc-550 hover:bg-white group-hover:text-cyan-650'}  w-full p-2`
+            }
+        >
+            {({ isActive }) => {
+                if (isActive) {
+                    item.current = true
+                }
+                return (
+                    <div className=" flex w-full gap-x-2  text-[13px] font-medium leading-6">
+                        {item.icon ? (
+                            <div
+                                className={` group-hover:fill-cyan-550 ${isActive && '!fill-white'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-white`}
+                            >
+                                <item.icon className="h-full w-full" />
+                            </div>
+                        ) : (
+                            <CircleIcon className="ml-2 mr-2 w-3 fill-white" />
+                        )}
+                        <span className="hidden sm:inline">{item.name}</span>
+
+                        {item.count && (
+                            <span
+                                className="ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-gray-900 px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-white ring-1 ring-inset ring-gray-700"
+                                aria-hidden="true"
+                            >
+                                {item.count}
+                            </span>
+                        )}
+                    </div>
+                )
+            }}
+        </NavLink>
+    )
+}
+
+function Accordion({ item }: Readonly<NavLinksProps>) {
+    const [openIndex, setOpenIndex] = useState<number | null | undefined>()
+
+    const handleClick = () => {
+        setOpenIndex((prevIndex) => (prevIndex === 1 ? null : 1))
+    }
+
+    return (
+        <div className="w-full ">
+            <div className="flex w-full flex-row">
+                <CircleIcon className="ml-4 mr-2 w-4 fill-white " />
+                <button
+                    className={`${''} group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium leading-6 text-zinc-550 hover:text-cyan-550`}
+                    onClick={handleClick}
+                >
+                    {item.name}
+                    <EmptyArrowIcon
+                        className={`duration-400 w-3  fill-zinc-550 transition-transform ease-in-out group-hover:fill-cyan-550 ${
+                            openIndex === 1 ? 'rotate-180' : ''
+                        }`}
+                    />
+                </button>
+            </div>
+            <div
+                className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${
+                    openIndex === 1 ? 'max-h-[500px]' : 'max-h-0'
+                }`}
+            >
+                {item?.options?.map((subItem, subIndex) => (
+                    <div
+                        key={subIndex}
+                        className=" group/option relative border-b border-dotted border-gray-300 p-2 pl-8 before:relative before:flex before:items-center before:pl-4 last:border-none hover:text-cyan-550"
+                    >
+                        <span className="before:content-'' z-50 before:absolute before:left-0 before:-mt-2 before:ml-4 before:block before:h-full before:w-px before:border-r before:border-dotted before:border-cyan-550"></span>
+                        <div className="flex gap-5">
+                            <ArrowIcon className=" invisible -ml-[1.1rem] w-[0.4rem] -rotate-90 fill-cyan-550 group-hover/option:visible" />
+                            <Link to={subItem.href}>{subItem.option}</Link>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-    );
+    )
+}
+
+export function NavigationItem({ item }: Readonly<NavComponentProps>) {
+    return (
+        <div className="group flex w-full">
+            {item.options?.length ? (
+                <Accordion item={item} />
+            ) : (
+                <NavLinks item={item} />
+            )}
+            {item.button && <Buttons item={item} />}
+        </div>
+    )
 }

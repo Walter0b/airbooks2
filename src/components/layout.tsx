@@ -1,31 +1,31 @@
-import SideBar from "./sidebar/sidebar";
-import Header from "./header/header";
-import { Outlet } from "react-router-dom";
+import SideBar from './sidebar/sidebar'
+import Header from './header/header'
+import { Outlet } from 'react-router-dom'
 import './layout.css'
+import { Navigation } from '@utils/models/interface/table'
 
-function Layout() {
+function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {
     return (
         <div className="flex h-svh w-svw  bg-white" id="layout">
-            <div className="flex-1 flex w-full h-full flex-col overflow-hidden">
-                <div className="flex item-center justify-center">
-                    <div className="p-1 text-lg text-center text-black">
+            <div className="flex h-full w-full flex-1 flex-col overflow-hidden">
+                <div className="item-center flex justify-center">
+                    <div className="p-1 text-center text-lg text-black">
                         AirBooks is ready. Are you?
                     </div>
-                    <button className="rounded-sm my-auto p-1 w-fit h-fit ml-1 font-medium bg-cyan-550 text-white !uppercase text-xs">
+                    <button className="my-auto ml-1 h-fit w-fit rounded-sm bg-cyan-550 p-1 text-xs font-medium !uppercase text-white">
                         sign up now
                     </button>
                 </div>
                 <Header />
                 <div className="flex h-full">
-                    <SideBar />
-                    <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-14">
+                    <SideBar navigation={sidebar} />
+                    <main className="mb-14 flex w-full flex-col overflow-y-auto overflow-x-hidden bg-white">
                         <Outlet />
                     </main>
                 </div>
             </div>
-        </div >
-
-    );
+        </div>
+    )
 }
 
-export default Layout;
+export default Layout

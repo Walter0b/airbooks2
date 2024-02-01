@@ -1,73 +1,79 @@
-import { ReactNode } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactNode } from 'react'
+export interface Navigation {
+    name: string
+    href?: string
+    count?: string
+    default?: boolean
+    group?: number
+    current?: boolean
+    options?: SubItem[]
+    icon?: React.FC<{ className: string }>
+    className?: string
+    button?: boolean
+}
 
-export interface NavigationItem {
-    name: string;
-    href: string;
-    count?: string;
-    group: number;
-    current: boolean;
-    icon?: React.FC<{ className: string }>;
-    className?: string;
-    button: boolean;
+interface SubItem {
+    option: string
+    href: string
+    current?: boolean
 }
 
 export interface Column {
-    key: string;
-    label: string;
+    key: string
+    label: string
 }
 
 export interface CheckboxProps {
-    hasCheckbox?: boolean;
-    isCheckedAll?: boolean;
-    setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void;
+    hasCheckbox?: boolean
+    isCheckedAll?: boolean
+    setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void
 }
 
 export interface DataTableProps<T> {
-    data: T[];
-    columns: Column[];
-    children?: ReactNode;
+    data: T[]
+    columns: Column[]
+    children?: ReactNode
 }
 // export const TableHeader: React.FC<TableHeaderProps> = ({ columns, isCheckedAll, handleCheckboxAllChange, hasCheckbox }: { Checkboxes?: ReactNode }) => {
 
-
 export interface TableHeaderProps extends CheckboxProps {
-    columns?: Column[];
-    handleCheckboxAllChange?: () => void;
+    columns?: Column[]
+    handleCheckboxAllChange?: () => void
 }
 
 export interface TableBodyProps<T> extends CheckboxProps {
-    data?: T[];
-    columns?: Column[];
-    className?: string;
-    checkedItems?: Record<number, boolean>;
-    handleCheckboxChange?: (idex: number) => void;
+    data?: T[]
+    columns?: Column[]
+    className?: string
+    checkedItems?: Record<number, boolean>
+    handleCheckboxChange?: (idex: number) => void
 }
 
+export interface DropdownItems {
+    label: string
+    value?: string
+    url?: string
+    onclick?: () => void
+    group?: number
+    hasMergeTitle?: boolean
+}
 export interface DropdownOptions {
-    label: string;
-    value?: string;
-    url?: string;
-    onclick?: () => void;
-    group?: number;
-    hasMergeTitle?: boolean;
-
+    title: string
+    items: DropdownItems[]
 }
-
 export interface TableItemProps extends CheckboxProps {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: any[];
-    columns: Column[];
-    children: ReactNode;
-    onCheckboxChange?: (value: string) => void;
+    data: any[]
+    columns: Column[]
+    children: ReactNode
+    onCheckboxChange?: (value: string) => void
 }
 export interface NavComponentProps {
-    item: NavigationItem;
-    hoveredItems: { [key: string]: boolean };
-    setHoveredItems: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>;
+    item: Navigation
 }
 
 // Props for NavLinks component
-export interface NavLinksProps extends NavComponentProps { }
+export interface NavLinksProps extends NavComponentProps {}
 
 // Props for Buttons component
-export interface ButtonsProps extends NavComponentProps { }
+export interface ButtonsProps extends NavComponentProps {}
