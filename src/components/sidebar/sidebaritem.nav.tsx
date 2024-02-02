@@ -121,7 +121,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
 
 export function NavigationItem({ item }: Readonly<NavComponentProps>) {
     return (
-        <div className="group flex w-full">
+        <div className="group flex h-10 w-full">
             {item.options?.length ? (
                 <Accordion item={item} />
             ) : (
