@@ -39,7 +39,7 @@ function NavLinks({ item }: NavLinksProps) {
         <NavLink
             to={item.href ?? ''}
             className={({ isActive }) =>
-                `$ ${isActive ? 'bg-cyan-550 h-10 !fill-white text-white' : 'text-zinc-550 hover:bg-white group-hover:text-cyan-650'}  w-full p-2`
+                `$ ${isActive ? 'bg-cyan-550  !fill-white text-white' : 'text-zinc-550 hover:bg-white group-hover:text-cyan-650'} h-10 w-full p-2`
             }
         >
             {({ isActive }) => {
