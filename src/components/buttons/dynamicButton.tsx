@@ -60,7 +60,7 @@ export default function Buttons({
         >
             <div>
                 <button
-                className='flex w-full group/button hover:text-cyan-550 justify-center gap-x-1.5 '
+                className='flex w-full group/button hover:text-cyan-550 items-start gap-x-1.5 '
                     onClick={
                         dropdown ? handleToggleDropdown : () => onClick?.()
                     }
@@ -68,7 +68,7 @@ export default function Buttons({
                     {title}
                     {dropdown && hasArrowIcon && (
                         <ArrowIcon
-                            className={`ml-1 w-2 mt-1 fill-gray-500 ${isOpen ? 'rotate-180 transform' : ''} group-hover/button:fill-cyan-550 `}
+                            className={`ml-1 w-2 mt-[7px] fill-gray-500 ${isOpen ? 'rotate-180 transform' : ''} group-hover/button:fill-cyan-550 `}
                         />
                     )}
                 </button>
