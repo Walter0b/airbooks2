@@ -1,5 +1,5 @@
 export const dropdownDate = {
-    title: 'Travel',
+    title: 'Travelers',
     items: [
         {
             label: 'All',

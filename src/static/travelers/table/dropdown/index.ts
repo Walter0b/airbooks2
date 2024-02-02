@@ -1,5 +1,5 @@
 export const TableActionDropdown = {
-    title: 'Traveler',
+    title: 'Travelers',
     item: [
         {
             label: 'Mark as Active',
