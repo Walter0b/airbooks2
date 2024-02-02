@@ -1,4 +1,8 @@
-export function CrossIcon({ className, className1, className2 }: Readonly<{ className: string, className1: string, className2: string }>) {
+export function CrossIcon({
+    className,
+    className1,
+    className2,
+}: Readonly<{ className: string; className1: string; className2: string }>) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,5 +58,5 @@ export function CrossIcon({ className, className1, className2 }: Readonly<{ clas
                 from the Noun Project
             </text>
         </svg>
-    );
+    )
 }

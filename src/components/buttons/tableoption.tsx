@@ -1,47 +1,57 @@
-import { CrossIcon } from "@assets/svg/cross";
-import Buttons from "./dynamicButton";
-import { RotateIcon } from "@assets/svg/rotate";
-import { DownIcon } from "@assets/svg/down";
-import { Hamburger } from "@assets/svg/hamburger";
-import { LightBulbIcon } from "@assets/svg/lightbulb";
+import { CrossIcon } from '@assets/svg/cross'
+import Buttons from './dynamicButton'
+import { RotateIcon } from '@assets/svg/rotate'
+import { ArrowIcon } from '@assets/svg/arrow'
+import { Hamburger } from '@assets/svg/hamburger'
+import { LightBulbIcon } from '@assets/svg/lightbulb'
 
 export default function TableOptions() {
     return (
-        <div id="table-right-menu-option" aria-label="table right menu option" className=" text-gray-500 flex">
+        <div
+            id="table-right-menu-option"
+            aria-label="table right menu option"
+            className=" flex text-gray-500"
+        >
             <div className="flex">
-               <Buttons className="p-2 h-full rounded bg-red-700  flex justify-center items-center">
-                      <CrossIcon  data-slot='title'
-                        className="w-3 fill-white rotate-45"
+                <Buttons className="flex h-full items-center justify-center  rounded bg-red-700 p-2">
+                    <CrossIcon
+                        data-slot="title"
+                        className="w-3 rotate-45 fill-white"
                         className1=" h-10"
                         className2="w-10"
                     />
                 </Buttons>
 
-                <Buttons className="p-2 h-full border-[0.8px] border-grey-450 ml-4 rounded-l bg-gray-100 flex justify-center items-center">
-                    <RotateIcon data-slot='title' className="w-3 fill-gray-700" />
+                <Buttons className="ml-4 flex h-full items-center justify-center rounded-l border-[0.8px] border-grey-450 bg-gray-100 p-2">
+                    <RotateIcon
+                        data-slot="title"
+                        className="w-3 fill-gray-700"
+                    />
                 </Buttons>
 
-                <Buttons className="px-2 h-full border-[0.8px] flex-col border-grey-450 bg-gray-100 flex justify-center items-center gap-[1px]">
-                    <div data-slot='title' >
-                        <DownIcon  className="w-2 rotate-180" />
-                        <DownIcon className="w-2 mt-[-7px]" />
+                <Buttons className="flex h-full flex-col items-center justify-center gap-[1px] border-[0.8px] border-grey-450 bg-gray-100 px-2">
+                    <div data-slot="title">
+                        <ArrowIcon className="w-2 rotate-180" />
+                        <ArrowIcon className="mt-[-7px] w-2" />
                     </div>
                 </Buttons>
 
-                <Buttons className="p-2 h-full border-[0.8px] border-grey-450 rounded-r bg-gray-100 flex justify-center items-center">
-                    <Hamburger data-slot='title'  className="w-3 fill-gray-700" />
+                <Buttons className="flex h-full items-center justify-center rounded-r border-[0.8px] border-grey-450 bg-gray-100 p-2">
+                    <Hamburger
+                        data-slot="title"
+                        className="w-3 fill-gray-700"
+                    />
                 </Buttons>
             </div>
 
             <div className=" flex">
-                <div className="h-5 border-l-2 p-2 ml-4 mt-2"></div>
+                <div className="ml-4 mt-2 h-5 border-l-2 p-2"></div>
 
-                <LightBulbIcon  className="fill-blue-500 w-2 m-1" />
-                <div className="flex items-center text-blue-500 cursor-pointer mr-4 font-bold">Tips</div>
+                <LightBulbIcon className="m-1 w-2 fill-blue-500" />
+                <div className="mr-4 flex cursor-pointer items-center font-bold text-blue-500">
+                    Tips
+                </div>
             </div>
-
-
         </div>
-
     )
 }

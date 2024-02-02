@@ -1,25 +1,31 @@
-import { useState } from "react";
-import Buttons from "./dynamicButton";
-import { DropdownOptions } from "@utils/models/interface/table";
-import { Dropdown } from "./dropdown";
+import { useState } from 'react'
+import Buttons from './dynamicButton'
+import { Dropdown } from './dropdown'
+import { DropdownOptions } from '@utils/models/interface/table'
 
 interface ShowButtonProps {
-    dropdownOptions: DropdownOptions[];
+    dropdownOptions: DropdownOptions
 }
 
-export default function ShowButton({ dropdownOptions }: Readonly<ShowButtonProps>) {
-    const [selectedOption, setSelectedOption] = useState<string>("");
-    const currentPage = window.location.pathname.replace('/', '');
-    const capitalizedPage = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
-    const Title = <div data-slot="title" > {selectedOption} {capitalizedPage}</div>;
-
+export default function ShowButton({
+    dropdownOptions,
+}: Readonly<ShowButtonProps>) {
+    const [selectedOption, setSelectedOption] = useState<string>('')
+    const Title = (
+        <div data-slot="title">
+            {' '}
+            {selectedOption} {dropdownOptions.title}
+        </div>
+    )
 
     return (
-        <Buttons  hasDownIcon={true}>
+        <Buttons hasArrowIcon={true}>
             {Title}
-            <Dropdown data-slot="dropdown" dropdownOptions={dropdownOptions} setSelectedOption={setSelectedOption}  >
-            </Dropdown>
+            <Dropdown
+                data-slot="dropdown"
+                dropdownOptions={dropdownOptions}
+                setSelectedOption={setSelectedOption}
+            ></Dropdown>
         </Buttons>
-    );
+    )
 }
-
