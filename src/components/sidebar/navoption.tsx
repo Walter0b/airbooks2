@@ -9,7 +9,7 @@ export default function NavOption() {
         'border-[1px] h-full w-full flex justify-center items-center '
     console.log(basePath)
     return (
-        <div className=" flex min-h-10 items-center justify-between p-0.5">
+        <div className=" flex min-h-10 items-center bg-white justify-between p-0.5">
             <NavLink
                 to="/core/dashboard"
                 id="core"
