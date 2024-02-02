@@ -18,8 +18,6 @@ export default function Buttons({
     className = 'inline-flex w-full hover:text-cyan-550 justify-center gap-x-1.5  bg-white px-3 py-2 font-semibold text-gray-500 text-lg',
 }: Readonly<ButtonInterface>) {
     const [isOpen, setIsOpen] = useState(false)
-    const [isHovered, setIsHovered] = useState<boolean>(false)
-    const hover = isHovered && 'fill-cyan-550'
     const dropdownRef = useRef<HTMLDivElement | null>(null)
 
     const handleToggleDropdown = () => {
@@ -62,9 +60,7 @@ export default function Buttons({
         >
             <div>
                 <button
-                className='inline-flex w-full hover:text-cyan-550 justify-center gap-x-1.5 '
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                className='flex w-full group/button hover:text-cyan-550 justify-center gap-x-1.5 '
                     onClick={
                         dropdown ? handleToggleDropdown : () => onClick?.()
                     }
@@ -72,7 +68,7 @@ export default function Buttons({
                     {title}
                     {dropdown && hasArrowIcon && (
                         <ArrowIcon
-                            className={`ml-1 w-2 fill-gray-500 ${isOpen ? 'rotate-180 transform' : ''} ${hover}`}
+                            className={`ml-1 w-2 mt-1 fill-gray-500 ${isOpen ? 'rotate-180 transform' : ''} group-hover/button:fill-cyan-550 `}
                         />
                     )}
                 </button>
