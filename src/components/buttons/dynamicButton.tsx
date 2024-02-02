@@ -5,6 +5,7 @@ import { getCmpByAttr } from '@utils/functions/action'
 
 interface ButtonInterface {
     children: ReactNode
+    buttonClassName?: string
     hasArrowIcon?: boolean
     onClick?: (item?: DropdownOptions) => void
     className?: string
@@ -55,15 +56,18 @@ export default function Buttons({
     })
 
     return (
-        <div className="relative mt-1 inline-block text-left" ref={dropdownRef}>
+        <div
+            className={`${className} li relative mt-1 flex-row items-center  text-left`}
+            ref={dropdownRef}
+        >
             <div>
                 <button
+                className='inline-flex w-full hover:text-cyan-550 justify-center gap-x-1.5 '
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     onClick={
                         dropdown ? handleToggleDropdown : () => onClick?.()
                     }
-                    className={className}
                 >
                     {title}
                     {dropdown && hasArrowIcon && (
