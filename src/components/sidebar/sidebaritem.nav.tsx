@@ -26,7 +26,7 @@ function Buttons({ item }: Readonly<ButtonsProps>) {
             }
         >
             <CrossIcon
-                className="mr-px w-4 rotate-45 fill-white"
+                className="mr-px w-4 rotate-45 fill-gray-100"
                 className1="h-10"
                 className2="w-10"
             />
@@ -39,7 +39,7 @@ function NavLinks({ item }: NavLinksProps) {
         <NavLink
             to={item.href ?? ''}
             className={({ isActive }) =>
-                `$ ${isActive ? 'bg-cyan-550  !fill-white text-white' : 'text-zinc-550 hover:bg-white group-hover:text-cyan-650'} h-10 w-full p-2`
+                `$ ${isActive ? 'bg-cyan-550  !fill-gray-100 text-white' : 'text-zinc-550 hover:bg-white group-hover:text-cyan-650'} h-10 w-full p-2`
             }
         >
             {({ isActive }) => {
@@ -50,12 +50,12 @@ function NavLinks({ item }: NavLinksProps) {
                     <div className=" flex w-full gap-x-2  text-[13px] font-medium leading-6">
                         {item.icon ? (
                             <div
-                                className={` group-hover:fill-cyan-550 ${isActive && '!fill-white'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-white`}
+                                className={` group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
                             >
                                 <item.icon className="h-full w-full" />
                             </div>
                         ) : (
-                            <CircleIcon className="ml-2 mr-2 w-3 fill-white" />
+                            <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
                         )}
                         <span className="hidden sm:inline">{item.name}</span>
 
@@ -84,7 +84,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
     return (
         <div className="w-full ">
             <div className="flex w-full flex-row">
-                <CircleIcon className="ml-4 mr-2 w-4 fill-white " />
+                <CircleIcon className="ml-4 mr-2 w-4 fill-gray-100 " />
                 <button
                     className={`${''} group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium leading-6 text-zinc-550 hover:text-cyan-550`}
                     onClick={handleClick}
@@ -121,7 +121,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
 
 export function NavigationItem({ item }: Readonly<NavComponentProps>) {
     return (
-        <div className="group flex  w-full">
+        <div className="group flex   w-full">
             {item.options?.length ? (
                 <Accordion item={item} />
             ) : (
