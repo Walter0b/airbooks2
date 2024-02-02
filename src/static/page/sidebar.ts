@@ -1,5 +1,4 @@
 import { CaseIcon } from '@assets/svg/case'
-// import { CircleIcon } from "@assets/svg/circle";
 import { CreditCardIcon } from '@assets/svg/creditCard'
 import { FileIcon } from '@assets/svg/file'
 import { ManualIcon } from '@assets/svg/manual'
