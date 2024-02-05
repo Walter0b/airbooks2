@@ -8,7 +8,7 @@ export default function NavOption() {
     return (
         <div className=" flex min-h-10 items-center bg-white justify-between p-0.5">
             <NavLink
-                to="/core/dashboard"
+                to="/core"
                 id="core"
                 className={({ isActive }) =>
                     `${baseClassName} ${isActive ? 'border-emerald-500' : ''} hover:border-emerald-500`
