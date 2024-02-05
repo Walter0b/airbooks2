@@ -3,7 +3,7 @@ import { NotificationsIcon } from '@assets/svg/notificaitons'
 import { HelpIcon } from '@assets/svg/help'
 import { SettingsIcon } from '@assets/svg/settings'
 import { UserIcon } from '@assets/svg/user'
-import { ArrowIcon } from '@assets/svg/arrow'
+import LanguageOption from './languageOption'
 export default function HeaderItems() {
     return (
         <nav className="flex w-full p-1">
@@ -71,15 +71,10 @@ export default function HeaderItems() {
                         </div>
                     </div>
                     <div className="flex">
-                        <div className="mr-3 flex items-center  justify-between">
-                            <p className="mr-2 text-xs font-semibold ">
-                                {' '}
-                                ENDA TRAVEL - English
-                            </p>
-                            <ArrowIcon className="w-2 fill-white" />
-                        </div>
+                        <LanguageOption className='mr-10 mt-3' />
+                           
                         {/* Navigation Options */}
-                        <div className="flex">
+                        <div className="flex ">
                             <button className="flex border-2 border-white p-5 ">
                                 <NotificationsIcon className="w-4 fill-white" />
                             </button>
