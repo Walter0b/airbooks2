@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import Buttons from './dynamicButton'
+import Buttons from './buttons'
 import { Dropdown } from './dropdown'
-import { DropdownOptions } from '@utils/models/interface/table'
+import { DropdownItems, ShowTableOptions } from '@utils/models/interface/table'
 
 interface ShowButtonProps {
-    dropdownOptions: DropdownOptions
+    dropdownOptions: ShowTableOptions
 }
 
 export default function ShowButton({
@@ -22,8 +22,9 @@ export default function ShowButton({
         <Buttons hasArrowIcon={true}>
             {Title}
             <Dropdown
+                size={36}
                 data-slot="dropdown"
-                dropdownOptions={dropdownOptions}
+                dropdownOptions={dropdownOptions.items as DropdownItems[]}
                 setSelectedOption={setSelectedOption}
             ></Dropdown>
         </Buttons>

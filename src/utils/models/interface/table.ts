@@ -50,6 +50,8 @@ export interface TableBodyProps<T> extends CheckboxProps {
     handleCheckboxChange?: (idex: number) => void
 }
 
+
+
 export interface DropdownItems {
     label: string
     value?: string
@@ -58,10 +60,17 @@ export interface DropdownItems {
     group?: number
     hasMergeTitle?: boolean
 }
-export interface DropdownOptions {
+export interface ShowTableOptions {
     title: string
     items: DropdownItems[]
 }
+export interface TableOptionsInterface {
+    action: DropdownItems[],
+    sort: DropdownItems[],
+    show: ShowTableOptions,
+}
+
+
 export interface TableItemProps extends CheckboxProps {
     data: any[]
     columns: Column[]
@@ -73,7 +82,7 @@ export interface NavComponentProps {
 }
 
 // Props for NavLinks component
-export interface NavLinksProps extends NavComponentProps {}
+export interface NavLinksProps extends NavComponentProps { }
 
 // Props for Buttons component
-export interface ButtonsProps extends NavComponentProps {}
+export interface ButtonsProps extends NavComponentProps { }

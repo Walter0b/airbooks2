@@ -26,7 +26,7 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
                     {columns?.map((column) => (
                         <td
                             key={column.key}
-                            className="px-6 py-4 font-medium text-black"
+                            className="px-6 py-2 font-normal text-black"
                         >
                             {item[column.key]}
                         </td>

@@ -107,15 +107,19 @@ export const reportNavigation = [
         options: [
             {
                 option: 'Profit & Loss',
-                href: '/',
+                current: false,
+                href: 'profit_and_loss',
+
             },
             {
                 option: 'Balance Sheet',
-                href: '/',
+                href: 'profit_and_loss',
+                current: false,
             },
             {
                 option: 'Cashflow',
-                href: '/',
+                href: 'profit_and_loss',
+                current: false,
             },
         ],
     },
@@ -125,26 +129,32 @@ export const reportNavigation = [
             {
                 option: 'Consultant',
                 href: '',
+                current: false,
             },
             {
                 option: 'Customer',
                 href: '',
+                current: false,
             },
             {
                 option: 'Product',
                 href: '',
+                current: false,
             },
             {
                 option: 'Supplier',
                 href: '',
+                current: false,
             },
             {
                 option: 'Airline',
                 href: '',
+                current: false,
             },
             {
                 option: 'Sales Analysis',
                 href: '',
+                current: false,
             },
         ],
     },
