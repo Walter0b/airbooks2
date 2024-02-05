@@ -47,7 +47,7 @@ function NavLinks({ item }: NavLinksProps) {
                 item.current = isActive
 
                 return (
-                    <div className=" flex w-full gap-x-2  text-[13px] font-medium leading-6">
+                    <div className={`  flex w-full gap-x-2  text-[13px] font-medium leading-6`}>
                         {item.icon ? (
                             <div
                                 className={` group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
@@ -75,46 +75,48 @@ function NavLinks({ item }: NavLinksProps) {
 }
 
 function Accordion({ item }: Readonly<NavLinksProps>) {
-    const [openIndex, setOpenIndex] = useState<number | null | undefined>()
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleClick = () => {
-        setOpenIndex((prevIndex) => (prevIndex === 1 ? null : 1))
-    }
+        setIsOpen(!isOpen);
+    };
 
     return (
-        <div className="w-full ">
-            <div className="flex w-full flex-row">
-                <CircleIcon className="ml-4 mr-2 w-4 fill-gray-100 " />
+        <div className="w-full">
+            <div className={` transition-all duration-500 ease-in-out  ${isOpen ? 'border-b-gray-200 border-b ' : ''} flex w-full flex-row `}>
+
+                <CircleIcon className="ml-4 mr-2 w-4 fill-gray-100" />
                 <button
                     className={`${''} group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium leading-6 text-zinc-550 hover:text-cyan-550`}
                     onClick={handleClick}
                 >
                     {item.name}
                     <EmptyArrowIcon
-                        className={`duration-400 w-3  fill-zinc-550 transition-transform ease-in-out group-hover:fill-cyan-550 ${openIndex === 1 ? 'rotate-180' : ''
-                            }`}
+                        className={`duration-400 w-3  fill-zinc-550 transition-transform ease-in-out group-hover:fill-cyan-550 ${isOpen ? 'rotate-180' : ''}`}
                     />
                 </button>
             </div>
-            <div className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${openIndex === 1 ? 'max-h-[500px]' : 'max-h-0'}`}  >
+            <div
+                className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'
+                    }`}
+            >
                 {item?.options?.map((subItem, subIndex) => (
                     <div
-                        onClick={() => item.current = true}
+                        onClick={() => (item.current = true)}
                         key={subIndex}
                         className=" group/option relative border-b border-dotted border-gray-300 p-2 pl-8 before:relative before:flex before:items-center before:pl-4 last:border-none hover:text-cyan-550"
                     >
                         <span className="before:content-'' z-50 before:absolute before:left-0 before:-mt-2 before:ml-4 before:block before:h-full before:w-px before:border-r before:border-dotted before:border-cyan-550"></span>
                         <div className="flex gap-5">
-                            <ArrowIcon className=" invisible -ml-[1.1rem] w-[0.4rem] -rotate-90 fill-cyan-550 group-hover/option:visible" />
+                            <ArrowIcon className={`invisible -ml-[1.1rem] w-[0.4rem] ${isOpen ? '-rotate-90 fill-cyan-550' : ''} group-hover/option:visible`} />
                             <Link to={subItem.href}>{subItem.option}</Link>
                         </div>
                     </div>
                 ))}
             </div>
         </div>
-    )
+    );
 }
-
 export function NavigationItem({ item }: Readonly<NavComponentProps>) {
     return (
         <div className="group flex   w-full">
