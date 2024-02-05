@@ -14,11 +14,7 @@ export default function SideBarItems({
             <ul className="">
                 {navigation.map((item: Navigation, index: number) => (
                     <React.Fragment key={item.name}>
-                        {index > 0 &&
-                            navigation[index - 1].group !== item.group && (
-                                <hr className=" border-gray-300" />
-                            )}
-
+                        {index > 0 && navigation[index - 1].group !== item.group && (<hr className=" border-gray-300" />)}
                         <li className="flex items-center justify-between">
                             <NavigationItem item={item} />
                         </li>

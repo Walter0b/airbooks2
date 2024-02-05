@@ -43,9 +43,9 @@ function NavLinks({ item }: NavLinksProps) {
             }
         >
             {({ isActive }) => {
-                if (isActive) {
-                    item.current = true
-                }
+
+                item.current = isActive
+
                 return (
                     <div className=" flex w-full gap-x-2  text-[13px] font-medium leading-6">
                         {item.icon ? (
@@ -91,19 +91,15 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
                 >
                     {item.name}
                     <EmptyArrowIcon
-                        className={`duration-400 w-3  fill-zinc-550 transition-transform ease-in-out group-hover:fill-cyan-550 ${
-                            openIndex === 1 ? 'rotate-180' : ''
-                        }`}
+                        className={`duration-400 w-3  fill-zinc-550 transition-transform ease-in-out group-hover:fill-cyan-550 ${openIndex === 1 ? 'rotate-180' : ''
+                            }`}
                     />
                 </button>
             </div>
-            <div
-                className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${
-                    openIndex === 1 ? 'max-h-[500px]' : 'max-h-0'
-                }`}
-            >
+            <div className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${openIndex === 1 ? 'max-h-[500px]' : 'max-h-0'}`}  >
                 {item?.options?.map((subItem, subIndex) => (
                     <div
+                        onClick={() => item.current = true}
                         key={subIndex}
                         className=" group/option relative border-b border-dotted border-gray-300 p-2 pl-8 before:relative before:flex before:items-center before:pl-4 last:border-none hover:text-cyan-550"
                     >
@@ -122,11 +118,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
 export function NavigationItem({ item }: Readonly<NavComponentProps>) {
     return (
         <div className="group flex   w-full">
-            {item.options?.length ? (
-                <Accordion item={item} />
-            ) : (
-                <NavLinks item={item} />
-            )}
+            {item.options?.length ? (<Accordion item={item} />) : (<NavLinks item={item} />)}
             {item.button && <Buttons item={item} />}
         </div>
     )

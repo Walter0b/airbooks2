@@ -1,13 +1,10 @@
 import { BarChartIcon } from '@assets/svg/bar'
 import { HomeIcon } from '@assets/svg/home'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default function NavOption() {
-    const location = useLocation()
-    const basePath = location.pathname.split('/')[1]
     const baseClassName =
         'border-[1px] h-full w-full flex justify-center items-center '
-    console.log(basePath)
     return (
         <div className=" flex min-h-10 items-center bg-white justify-between p-0.5">
             <NavLink
