@@ -1,11 +1,17 @@
 import { CrossIcon } from '@assets/svg/cross'
-import Buttons from './dynamicButton'
+import Buttons from './buttons'
 import { RotateIcon } from '@assets/svg/rotate'
 import { ArrowIcon } from '@assets/svg/arrow'
 import { Hamburger } from '@assets/svg/hamburger'
 import { LightBulbIcon } from '@assets/svg/lightbulb'
+import { Dropdown } from './dropdown'
+import { TableOptionsInterface } from '@utils/models/interface/table'
 
-export default function TableOptions() {
+export default function TableOptions({
+    showTableOptions,
+}: Readonly<{
+    showTableOptions: TableOptionsInterface
+}>) {
     return (
         <div
             id="table-right-menu-option"
@@ -34,6 +40,14 @@ export default function TableOptions() {
                         <ArrowIcon className="w-2 rotate-180" />
                         <ArrowIcon className="mt-[-7px] w-2" />
                     </div>
+                    <Dropdown
+                        size={56}
+                        className="right-0 mt-3 w-48 "
+                        titles=" text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize "
+                        text=" font-medium"
+                        data-slot="dropdown"
+                        dropdownOptions={showTableOptions?.sort}
+                    ></Dropdown>
                 </Buttons>
 
                 <Buttons className="flex h-full items-center justify-center rounded-r border-[0.8px] border-grey-450 bg-gray-100 p-2">
@@ -41,6 +55,14 @@ export default function TableOptions() {
                         data-slot="title"
                         className="w-3 fill-gray-700"
                     />
+                    <Dropdown
+                        size={56}
+                        className="right-0 mt-5 w-48 "
+                        titles=" text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize "
+                        text=" font-medium"
+                        data-slot="dropdown"
+                        dropdownOptions={showTableOptions?.action}
+                    ></Dropdown>
                 </Buttons>
             </div>
 

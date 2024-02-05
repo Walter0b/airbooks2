@@ -11,7 +11,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
     return (
         <thead
             data-slot="TableHeader"
-            className="sticky top-0 bg-gray-50 text-xs uppercase"
+            className="sticky top-0 bg-gray-50 text-xs capitalize"
         >
             <tr>
                 {hasCheckbox && (
@@ -24,7 +24,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
                     <th
                         key={column.key}
                         scope="col"
-                        className="px-6 py-3 font-semibold text-blue-550 active:text-red-500"
+                        className="px-6 font-semibold text-blue-550 active:text-red-500"
                     >
                         {column.label}
                     </th>
