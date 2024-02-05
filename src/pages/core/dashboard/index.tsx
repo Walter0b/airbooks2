@@ -1,6 +1,7 @@
-import Pages from "@components/pages";
-import { dropdownDate } from "@utils/mock/data/page/dropdown";
+import Pages from '@components/pages'
 
 export default function Dashboard() {
-    return <Pages dropdownOptions={dropdownDate}></Pages>
+    return <Pages>
+        <div data-slote='bod'>hi</div>
+    </Pages>
 }
