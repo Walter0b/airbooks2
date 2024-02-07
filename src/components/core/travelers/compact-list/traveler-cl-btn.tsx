@@ -24,8 +24,8 @@ export default function TravelerCompactListHeader({ dropdownOptions, CloseCompac
                     </div>
                     <Dropdown
                         size={44}
-                        text='!text-center'
-                        className="right-0 mt-6  font-medium py-3 "
+                        text='!text-center py-2'
+                        className="right-0 my-6  font-medium  "
                         data-slot="dropdown"
                         dropdownOptions={dropdownOptions.more}
                     ></Dropdown>
