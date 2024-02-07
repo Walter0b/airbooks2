@@ -12,7 +12,7 @@ export default function LanguageOption({ className }: { className?: string }) {
         <div className="ml-auto flex items-center">
             <Buttons
                 className={`${className} items-end hover:text-white`}
-                hasArrowIcon={true}
+                hasDropdownIcon={true}
                 arrowClassName="fill-white mt-1 hover:!fill-white "
             >
                 <div data-slot="title" className="mb-2 hover:text-white">

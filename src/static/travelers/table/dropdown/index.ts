@@ -59,34 +59,47 @@ const action = [
 ]
 const sort = [
     {
-        label: 'Mark as Active',
-        group: 1,
+        label: 'SORT BY'
+    },
+    {
+        label: 'Traveler Name',
         url: '#',
     },
     {
-        label: 'Delete',
-        group: 1,
+        label: 'Nationality',
         url: '#',
     },
     {
-        label: 'Download Sample Import File',
-        group: 2,
-        url: '#',
-    },
-    {
-        label: 'Export Travelers',
-        group: 2,
-        url: '#',
-    },
-    {
-        label: 'Import Travelers',
-        group: 2,
+        label: 'Income',
         url: '#',
     },
 ]
+const more = [
 
+    {
+        label: 'Email Traveler',
+        url: '#',
+        group: 1,
+    },
+    {
+        label: 'Duplicate Profile',
+        url: '#',
+        group: 2,
+    },
+    {
+        label: 'Mark as Inactive',
+        url: '#',
+        group: 3,
+    },
+    {
+        label: 'Delete',
+        url: '#',
+        group: 3,
+    },
+]
 export const tableOptions: TableOptionsInterface = {
     action,
     sort,
     show,
+    more
 }

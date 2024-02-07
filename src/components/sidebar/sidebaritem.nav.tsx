@@ -102,7 +102,6 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
             >
                 {item?.options?.map((subItem, subIndex) => (
                     <div
-                        onClick={() => (item.current = true)}
                         key={subIndex}
                         className=" group/option relative border-b border-dotted border-gray-300 p-2 pl-8 before:relative before:flex before:items-center before:pl-4 last:border-none hover:text-cyan-550"
                     >

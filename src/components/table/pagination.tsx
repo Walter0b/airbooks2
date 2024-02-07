@@ -1,15 +1,13 @@
 import { ArrowIcon } from '@assets/svg/arrow'
+import { PaginationProps } from '@utils/models/interface/table'
 import React from 'react'
-import './table.css'
-interface PaginationProps {
-    currentPage: number
-    totalPages: number
-    onPageChange: (page: number) => void
-}
+
+
 
 const Pagination: React.FC<PaginationProps> = ({
     currentPage,
     totalPages,
+    className,
     onPageChange,
 }) => {
     const gotoPage = (page: number) => {
@@ -21,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({
     const canPreviousPage = currentPage > 1
 
     return (
-        <div>
+        <div id='Pagination' className={className}>
             <div className="mt-3 flex flex-wrap items-center -space-x-px text-black">
                 <div className=" mr-3 ">
                     <select

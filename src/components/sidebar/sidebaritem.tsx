@@ -7,7 +7,7 @@ import './index.css'
 export default function SideBarItems({
     navigation,
 }: Readonly<{ navigation: Navigation[] }>) {
-    console.log(navigation)
+    // console.log(navigation)
     return (
         <div className="bg-gray-100 flex h-screen grow flex-col overflow-y-auto border-r border-r-gray-300 sm:min-w-48">
             <NavOption />

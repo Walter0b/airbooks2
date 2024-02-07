@@ -1,7 +1,6 @@
 import SideBar from './sidebar/sidebar'
 import Header from './header/header'
 import { Outlet } from 'react-router-dom'
-import './layout.css'
 import { Navigation } from '@utils/models/interface/table'
 
 function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {

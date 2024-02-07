@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Buttons from './buttons'
-import { Dropdown } from './dropdown'
+import Buttons from '../../../buttons/buttons'
+import { Dropdown } from '../../../buttons/dropdown'
 import { DropdownItems, ShowTableOptions } from '@utils/models/interface/table'
 
 interface ShowButtonProps {
@@ -19,7 +19,7 @@ export default function ShowButton({
     )
 
     return (
-        <Buttons hasArrowIcon={true}>
+        <Buttons hasDropdownIcon={true}>
             {Title}
             <Dropdown
                 size={36}

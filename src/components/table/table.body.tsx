@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Checkboxes from './checkbox'
-import { TableBodyProps } from '@utils/models/interface/table'
+import React from 'react';
+import Checkboxes from './table.checkbox';
+import { TableBodyProps } from '@utils/models/interface/table';
 
 export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
     data,
@@ -8,14 +9,22 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
     checkedItems,
     hasCheckbox,
     handleCheckboxChange,
+    onClickHandler,
     className,
 }: TableBodyProps<Record<string, unknown>>) => {
+
+    const handleRowClick = (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,) => {
+        if (!(event.target instanceof HTMLInputElement)) {
+            onClickHandler && onClickHandler();
+        }
+    };
     return (
-        <tbody>
+        <tbody >
             {data?.map((item: Record<string, any>, index: number) => (
                 <tr
                     key={index}
-                    className={`${className} hover:bg-Neutral-50 border-b odd:bg-white even:bg-slate-50`}
+                    onClick={(event) => handleRowClick(event)}
+                    className={`${className} hover:bg-neutral-100 border-b odd:bg-white even:bg-slate-50`}
                 >
                     {hasCheckbox && (
                         <Checkboxes
@@ -26,7 +35,7 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
                     {columns?.map((column) => (
                         <td
                             key={column.key}
-                            className="px-6 py-2 font-normal text-black"
+                            className='px-6 py-2 font-normal text-black cursor-pointer'
                         >
                             {item[column.key]}
                         </td>
@@ -34,5 +43,5 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
                 </tr>
             ))}
         </tbody>
-    )
-}
+    );
+};

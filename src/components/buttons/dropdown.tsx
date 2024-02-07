@@ -16,7 +16,7 @@ export function Dropdown({
     size?: number
     setSelectedOption?: (title: string) => void
 }>) {
-    const dropdownClassName = `${text} block px-4 py-1 w-full text-start text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`
+    const dropdownClassName = `${text} block px-4 py-1 w-ful text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`
 
     const handleItemClick = (item: DropdownItems) => {
         if (item?.url) {

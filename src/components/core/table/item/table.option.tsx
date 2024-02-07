@@ -1,10 +1,10 @@
 import { CrossIcon } from '@assets/svg/cross'
-import Buttons from './buttons'
+import Buttons from '../../../buttons/buttons'
 import { RotateIcon } from '@assets/svg/rotate'
 import { ArrowIcon } from '@assets/svg/arrow'
 import { Hamburger } from '@assets/svg/hamburger'
 import { LightBulbIcon } from '@assets/svg/lightbulb'
-import { Dropdown } from './dropdown'
+import { Dropdown } from '../../../buttons/dropdown'
 import { TableOptionsInterface } from '@utils/models/interface/table'
 
 export default function TableOptions({
@@ -19,7 +19,7 @@ export default function TableOptions({
             className=" flex text-gray-500"
         >
             <div className="flex">
-                <Buttons className="flex h-full items-center justify-center  rounded bg-red-700 p-2">
+                <Buttons className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
                     <CrossIcon
                         data-slot="title"
                         className="w-3 rotate-45 fill-white"
@@ -42,8 +42,8 @@ export default function TableOptions({
                     </div>
                     <Dropdown
                         size={56}
-                        className="right-0 mt-3 w-48 "
-                        titles=" text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize "
+                        className="right-0 mt-3 w-44 "
+                        titles=" text-gray-400 font-medium text-xs first:mt-2 first:ml-2 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize "
                         text=" font-medium"
                         data-slot="dropdown"
                         dropdownOptions={showTableOptions?.sort}
