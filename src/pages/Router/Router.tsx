@@ -39,7 +39,7 @@ export const appRouters = createBrowserRouter([
     {
         path: 'report',
         element: <Layout sidebar={reportNavigation} />,
-        children: [{ path: 'profit_and_loss', element: <ProfitAndLoss /> }],
+        children: [{ path: 'business_overview/profit_and_loss', element: <ProfitAndLoss /> },{ path: 'balance_sheet', element: <ProfitAndLoss /> }],
     },
     {
         path: 'settings',
