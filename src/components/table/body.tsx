@@ -9,10 +9,13 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
     hasCheckbox,
     handleCheckboxChange,
     className,
+    children,
 }: TableBodyProps<Record<string, unknown>>) => {
     return (
         <tbody>
-            {data?.map((item: Record<string, any>, index: number) => (
+            {
+                children ||
+            data?.map((item: Record<string, any>, index: number) => (
                 <tr
                     key={index}
                     className={`${className} hover:bg-Neutral-50 border-b odd:bg-white even:bg-slate-50`}

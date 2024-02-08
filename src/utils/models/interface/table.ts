@@ -22,6 +22,8 @@ interface SubItem {
 export interface Column {
     key: string
     label: string
+    sortable?: boolean
+    className?: string
 }
 
 export interface CheckboxProps {
@@ -40,6 +42,7 @@ export interface DataTableProps<T> {
 export interface TableHeaderProps extends CheckboxProps {
     columns?: Column[]
     handleCheckboxAllChange?: () => void
+    handleSort?: (data: any)=> void
 }
 
 export interface TableBodyProps<T> extends CheckboxProps {
@@ -48,6 +51,7 @@ export interface TableBodyProps<T> extends CheckboxProps {
     className?: string
     checkedItems?: Record<number, boolean>
     handleCheckboxChange?: (idex: number) => void
+    children?: ReactNode,
 }
 
 

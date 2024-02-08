@@ -15,6 +15,7 @@ export function Table({
     const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>(
         {}
     )
+
     // onCheckboxChange?.(checkedItemId)
     const handleCheckboxAllChange = () => {
         const allChecked = !isCheckedAll
@@ -45,10 +46,15 @@ export function Table({
             setCheckedAll(allChecked)
     }
 
+    const handleSort = (data: unknown)=>{
+        console.log(data);
+        
+    }
+
     const tableHeader = getCmpByAttr({
         children,
         value: 'TableHeader',
-        props: { isCheckedAll, columns, handleCheckboxAllChange, hasCheckbox },
+        props: { isCheckedAll, columns, handleCheckboxAllChange, hasCheckbox, handleSort },
     })
 
     const tableBody = getCmpByAttr({

@@ -14,11 +14,12 @@ export default {
                 },
                 red: {
                     550: '#d15b47',
+                    650: '#d64830'
                 },
                 green: {
                     550: '#87b87f',
                 },
-                grey: {
+                gray: {
                     450: '#c6c6c6',
                 },
                 blue: {
