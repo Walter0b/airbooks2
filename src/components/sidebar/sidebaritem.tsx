@@ -9,9 +9,9 @@ export default function SideBarItems({
 }: Readonly<{ navigation: Navigation[] }>) {
     // console.log(navigation)
     return (
-        <div className="flex h-screen grow flex-col overflow-y-auto border-r border-r-gray-300 bg-gray-100 sm:min-w-48">
+        <div className="flex !overflow-hidden h-screen grow flex-col overflow-y-auto border-r border-r-gray-300 bg-gray-100 sm:min-w-48">
             <NavOption />
-            <ul className="">
+            <ul className=" overflow-y-auto scroll-smooth focus:scroll-auto">
                 {navigation.map((item: Navigation, index: number) => (
                     <React.Fragment key={item.name}>
                         {index > 0 &&
