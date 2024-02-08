@@ -2,10 +2,10 @@
 export default function Checkboxes({
     checkboxState,
     onChange,
-}: {
+}: Readonly<{
     checkboxState: any
     onChange: any
-}) {
+}>) {
     return (
         <th scope="col w-1/3" className="p-4">
             <div className="flex items-center !text-purple-300">

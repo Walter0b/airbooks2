@@ -109,7 +109,6 @@ export const reportNavigation = [
                 option: 'Profit & Loss',
                 current: false,
                 href: 'profit_and_loss',
-
             },
             {
                 option: 'Balance Sheet',
@@ -220,7 +219,6 @@ export const reportNavigation = [
                 option: 'Journey Report',
                 href: '',
             },
-
         ],
     },
     {

@@ -19,7 +19,7 @@ export function getCmpByAttr({
     )
 
     if (cmp) {
-        console.log(`Found component with attr ${attr} and value ${value}`);
+        // console.log(`Found component with attr ${attr} and value ${value}`);
         const clonedCmp = React.cloneElement(cmp, props)
         // console.log('Cloned component:', clonedCmp);
         return clonedCmp

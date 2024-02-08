@@ -29,13 +29,16 @@ export interface CheckboxProps {
     isCheckedAll?: boolean
     setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void
 }
+export interface ItemDetailsProps {
+    children: ReactNode
+    setOpenCompactList?: (value: boolean) => void
+}
 
 export interface DataTableProps<T> {
     data: T[]
     columns: Column[]
     children?: ReactNode
 }
-// export const TableHeader: React.FC<TableHeaderProps> = ({ columns, isCheckedAll, handleCheckboxAllChange, hasCheckbox }: { Checkboxes?: ReactNode }) => {
 
 export interface TableHeaderProps extends CheckboxProps {
     columns?: Column[]
@@ -48,9 +51,8 @@ export interface TableBodyProps<T> extends CheckboxProps {
     className?: string
     checkedItems?: Record<number, boolean>
     handleCheckboxChange?: (idex: number) => void
+    onClickHandler?: () => void
 }
-
-
 
 export interface DropdownItems {
     label: string
@@ -65,24 +67,29 @@ export interface ShowTableOptions {
     items: DropdownItems[]
 }
 export interface TableOptionsInterface {
-    action: DropdownItems[],
-    sort: DropdownItems[],
-    show: ShowTableOptions,
+    action: DropdownItems[]
+    more: DropdownItems[]
+    sort: DropdownItems[]
+    show: ShowTableOptions
 }
-
 
 export interface TableItemProps extends CheckboxProps {
     data: any[]
     columns: Column[]
     children: ReactNode
+    onClickHandler?: (value: string) => void
     onCheckboxChange?: (value: string) => void
 }
 export interface NavComponentProps {
     item: Navigation
 }
+export interface PaginationProps {
+    currentPage: number
+    totalPages: number
+    className?: string
+    onPageChange: (page: number) => void
+}
 
-// Props for NavLinks component
-export interface NavLinksProps extends NavComponentProps { }
+export interface NavLinksProps extends NavComponentProps {}
 
-// Props for Buttons component
-export interface ButtonsProps extends NavComponentProps { }
+export interface ButtonsProps extends NavComponentProps {}

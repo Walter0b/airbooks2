@@ -8,17 +8,17 @@ export function Table({
     children,
     data,
     columns,
+    onClickHandler,
     hasCheckbox,
-}: TableItemProps) {
-    const [isCheckedAll, setCheckedAll] = useState<boolean>(false)
+}: Readonly<TableItemProps>) {
+    const [isCheckedAll, setIsCheckedAll] = useState<boolean>(false)
 
     const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>(
         {}
     )
-    // onCheckboxChange?.(checkedItemId)
     const handleCheckboxAllChange = () => {
         const allChecked = !isCheckedAll
-        setCheckedAll(allChecked)
+        setIsCheckedAll(allChecked)
         const updatedCheckedItems: Record<string, boolean> = data.reduce(
             (updatedCheckedItems: any, _: any, index: any) => ({
                 ...updatedCheckedItems,
@@ -36,13 +36,12 @@ export function Table({
             [index.toString()]: !checkedItems[index],
         }
         setCheckedItems(updatedCheckedItems)
-        console.log(updatedCheckedItems)
 
         const allChecked = Object.values(updatedCheckedItems).every(
             (isChecked) => isChecked
         )
         Object.values(updatedCheckedItems).length === data.length &&
-            setCheckedAll(allChecked)
+            setIsCheckedAll(allChecked)
     }
 
     const tableHeader = getCmpByAttr({
@@ -60,6 +59,7 @@ export function Table({
             data,
             columns,
             hasCheckbox,
+            onClickHandler,
         },
     })
 
@@ -67,7 +67,7 @@ export function Table({
         <div className="flex h-fit w-full flex-col items-center overscroll-none">
             <div className="relative w-full overscroll-none pb-3 ">
                 <div className="table-container h-full overflow-x-auto overscroll-auto">
-                    <table className="table w-full text-left text-[13px] text-gray-500 ">
+                    <table className="w-full table-auto text-left text-[13px] text-gray-500 ">
                         {tableHeader}
                         {tableBody}
                     </table>

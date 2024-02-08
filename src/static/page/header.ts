@@ -1,7 +1,6 @@
 export const LanguageOptions = [
     {
         label: 'MY AGENCIES',
-
     },
     {
         label: 'ENDA TRAVEL - English',
@@ -20,6 +19,5 @@ export const LanguageOptions = [
     },
     {
         label: 'Manages Agencies',
-
     },
 ]

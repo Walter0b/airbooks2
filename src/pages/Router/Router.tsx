@@ -12,6 +12,7 @@ import Invoice from '@pages/core/invoice'
 import ManualJournal from '@pages/core/manualjournal'
 import Payments from '@pages/core/payments'
 import Estimates from '@pages/core/estimates'
+import ProfitAndLoss from '@pages/report/profit_and_loss'
 
 export const appRouters = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ export const appRouters = createBrowserRouter([
     {
         path: 'report',
         element: <Layout sidebar={reportNavigation} />,
-        children: [{ path: 'customers', element: <Customer /> }],
+        children: [{ path: 'profit_and_loss', element: <ProfitAndLoss /> }],
     },
     {
         path: 'settings',

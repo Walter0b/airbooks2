@@ -4,7 +4,7 @@ import React from 'react'
 export function Dropdown({
     dropdownOptions,
     className,
-    text = '',
+    text,
     titles = 'text-gray-300 text-sm ml-1 pt-1 ',
     size,
     setSelectedOption,
@@ -16,7 +16,7 @@ export function Dropdown({
     size?: number
     setSelectedOption?: (title: string) => void
 }>) {
-    const dropdownClassName = `${text} block px-4 py-1 w-full text-start text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`
+    const dropdownClassName = `${text}  block px-4 py-1 w-full text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`
 
     const handleItemClick = (item: DropdownItems) => {
         if (item?.url) {
@@ -34,9 +34,10 @@ export function Dropdown({
         >
             {dropdownOptions.map((item: DropdownItems, index: number) => (
                 <React.Fragment key={item.label}>
-                    {index > 0 && dropdownOptions[index - 1].group !== item.group && (
-                        <hr className=" border-gray-300" />
-                    )}
+                    {index > 0 &&
+                        dropdownOptions[index - 1].group !== item.group && (
+                            <hr className=" border-gray-300" />
+                        )}
                     {!item.url && !item.onclick ? (
                         <div
                             className={`${titles} pointer-events-none select-none uppercase`}

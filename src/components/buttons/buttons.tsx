@@ -7,7 +7,7 @@ interface ButtonInterface {
     children: ReactNode
     buttonClassName?: string
     arrowClassName?: string
-    hasArrowIcon?: boolean
+    hasDropdownIcon?: boolean
     onClick?: (item?: ShowTableOptions) => void
     className?: string
 }
@@ -15,7 +15,7 @@ interface ButtonInterface {
 export default function Buttons({
     children,
     arrowClassName = 'group-hover/button:!fill-cyan-550 fill-gray-500 ml-1 mt-[7px]',
-    hasArrowIcon = false,
+    hasDropdownIcon = false,
     onClick,
     className = ' w-full mt-1 hover:text-cyan-550 justify-center gap-x-1.5  bg-white px-3 py-2 font-semibold text-gray-500 text-lg',
 }: Readonly<ButtonInterface>) {
@@ -57,7 +57,7 @@ export default function Buttons({
             className={`${className} relative  flex-row text-left`}
             ref={dropdownRef}
         >
-            <div>
+            <div className="h-fit w-fit">
                 <button
                     className="group/button flex w-full items-start gap-x-1.5 "
                     onClick={
@@ -65,7 +65,7 @@ export default function Buttons({
                     }
                 >
                     {title}
-                    {dropdown && hasArrowIcon && (
+                    {dropdown && hasDropdownIcon && (
                         <ArrowIcon
                             className={`${arrowClassName}  w-2 ${isOpen ? 'rotate-180 transform' : ''}`}
                         />
