@@ -57,7 +57,7 @@ export default function Buttons({
             className={`${className} relative  flex-row text-left`}
             ref={dropdownRef}
         >
-            <div className='w-fit h-fit'>
+            <div className="h-fit w-fit">
                 <button
                     className="group/button flex w-full items-start gap-x-1.5 "
                     onClick={

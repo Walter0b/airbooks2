@@ -1,22 +1,28 @@
-import { CrossIcon } from "@assets/svg/cross";
-import { PenIcon } from "@assets/svg/pen";
-import Buttons from "@components/buttons/buttons";
-import { Dropdown } from "@components/buttons/dropdown";
-import { TableOptionsInterface } from "@utils/models/interface/table";
+import { CrossIcon } from '@assets/svg/cross'
+import { PenIcon } from '@assets/svg/pen'
+import Buttons from '@components/buttons/buttons'
+import { Dropdown } from '@components/buttons/dropdown'
+import { TableOptionsInterface } from '@utils/models/interface/table'
 
-export default function TravelerCompactListHeader({ dropdownOptions, CloseCompactList }: Readonly<{ dropdownOptions: TableOptionsInterface, CloseCompactList?: () => void }>) {
+export default function TravelerCompactListHeader({
+    dropdownOptions,
+    CloseCompactList,
+}: Readonly<{
+    dropdownOptions: TableOptionsInterface
+    CloseCompactList?: () => void
+}>) {
     return (
         <div className="flex w-full items-end">
-            <div className="flex justify-end pr-5 h-8 w-full">
-                <button className="border border-stone-300 bg-neutral-100 hover:shadow-md rounded px-3 h-full mr-2 ">
+            <div className="flex h-8 w-full justify-end pr-5">
+                <button className="mr-2 h-full rounded border border-stone-300 bg-neutral-100 px-3 hover:shadow-md ">
                     <PenIcon className="w-3" />
                 </button>
-                <button className="border border-orange-800 rounded px-3 h-full mr-2 bg-red-650 text-white hover:shadow-md">
+                <button className="mr-2 h-full rounded border border-orange-800 bg-red-650 px-3 text-white hover:shadow-md">
                     New travel Item
                 </button>
                 <Buttons
                     hasDropdownIcon={true}
-                    className="flex items-center rounded bg-neutral-100 mr-12 hover:shadow-md border-[0.8px] px-3 h-full "
+                    className="mr-12 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md "
                     arrowClassName="mt-1"
                 >
                     <div data-slot="title" className="text-sm text-black ">
@@ -24,7 +30,7 @@ export default function TravelerCompactListHeader({ dropdownOptions, CloseCompac
                     </div>
                     <Dropdown
                         size={44}
-                        text='!text-center py-2'
+                        text="!text-center py-2"
                         className="right-0 my-6  font-medium  "
                         data-slot="dropdown"
                         dropdownOptions={dropdownOptions.more}
@@ -41,6 +47,5 @@ export default function TravelerCompactListHeader({ dropdownOptions, CloseCompac
                 </button>
             </div>
         </div>
-
     )
 }

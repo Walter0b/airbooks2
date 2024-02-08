@@ -67,7 +67,7 @@ export function Table({
         <div className="flex h-fit w-full flex-col items-center overscroll-none">
             <div className="relative w-full overscroll-none pb-3 ">
                 <div className="table-container h-full overflow-x-auto overscroll-auto">
-                    <table className="table-auto w-full text-left text-[13px] text-gray-500 ">
+                    <table className="w-full table-auto text-left text-[13px] text-gray-500 ">
                         {tableHeader}
                         {tableBody}
                     </table>
@@ -77,7 +77,7 @@ export function Table({
                 <Pagination
                     currentPage={0}
                     totalPages={0}
-                    onPageChange={() => { }}
+                    onPageChange={() => {}}
                 />
             </div>
         </div>

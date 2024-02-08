@@ -34,9 +34,10 @@ export function Dropdown({
         >
             {dropdownOptions.map((item: DropdownItems, index: number) => (
                 <React.Fragment key={item.label}>
-                    {index > 0 && dropdownOptions[index - 1].group !== item.group && (
-                        <hr className=" border-gray-300" />
-                    )}
+                    {index > 0 &&
+                        dropdownOptions[index - 1].group !== item.group && (
+                            <hr className=" border-gray-300" />
+                        )}
                     {!item.url && !item.onclick ? (
                         <div
                             className={`${titles} pointer-events-none select-none uppercase`}

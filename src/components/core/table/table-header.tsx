@@ -1,11 +1,11 @@
-import ShowButton from '@components/core/table/item/show-button';
-import TableOptions from '@components/core/table/item/table.option';
-import { TableOptionsInterface } from '@utils/models/interface/table';
+import ShowButton from '@components/core/table/item/show-button'
+import TableOptions from '@components/core/table/item/table.option'
+import { TableOptionsInterface } from '@utils/models/interface/table'
 
 export default function Tableheader({
     dropdownOptions,
 }: Readonly<{
-    dropdownOptions: TableOptionsInterface;
+    dropdownOptions: TableOptionsInterface
 }>) {
     return (
         <>
@@ -18,5 +18,5 @@ export default function Tableheader({
             </div>
             <TableOptions showTableOptions={dropdownOptions} />
         </>
-    );
+    )
 }

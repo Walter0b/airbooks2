@@ -110,147 +110,147 @@ export const travelersColumns = [
 
 export const travelerCompactList = [
     {
-        name: "John Doe",
-        planeInfo: "Flight XYZ123",
+        name: 'John Doe',
+        planeInfo: 'Flight XYZ123',
         planeArrivalInfo: {
-            ticketNumber: "TK123456",
-            date: "2024-02-06"
+            ticketNumber: 'TK123456',
+            date: '2024-02-06',
         },
         money: {
-            currency: "USD",
-            amount: 1000
+            currency: 'USD',
+            amount: 1000,
         },
-        planeState: "On Time",
-        arrivalStatus: "Boarding"
+        planeState: 'On Time',
+        arrivalStatus: 'Boarding',
     },
     {
-        name: "Jane Smith",
-        planeInfo: "Flight ABC789",
+        name: 'Jane Smith',
+        planeInfo: 'Flight ABC789',
         planeArrivalInfo: {
-            ticketNumber: "BA987654",
-            date: "2024-02-07"
+            ticketNumber: 'BA987654',
+            date: '2024-02-07',
         },
         money: {
-            currency: "EUR",
-            amount: 800
+            currency: 'EUR',
+            amount: 800,
         },
-        planeState: "Delayed",
-        arrivalStatus: "Arrived"
+        planeState: 'Delayed',
+        arrivalStatus: 'Arrived',
     },
     {
-        name: "Alice Johnson",
-        planeInfo: "Flight DEF456",
+        name: 'Alice Johnson',
+        planeInfo: 'Flight DEF456',
         planeArrivalInfo: {
-            ticketNumber: "AA123456",
-            date: "2024-02-08"
+            ticketNumber: 'AA123456',
+            date: '2024-02-08',
         },
         money: {
-            currency: "GBP",
-            amount: 1200
+            currency: 'GBP',
+            amount: 1200,
         },
-        planeState: "On Time",
-        arrivalStatus: "Boarding"
+        planeState: 'On Time',
+        arrivalStatus: 'Boarding',
     },
     {
-        name: "Bob Brown",
-        planeInfo: "Flight GHI789",
+        name: 'Bob Brown',
+        planeInfo: 'Flight GHI789',
         planeArrivalInfo: {
-            ticketNumber: "BB987654",
-            date: "2024-02-09"
+            ticketNumber: 'BB987654',
+            date: '2024-02-09',
         },
         money: {
-            currency: "CAD",
-            amount: 900
+            currency: 'CAD',
+            amount: 900,
         },
-        planeState: "Delayed",
-        arrivalStatus: "Arrived"
+        planeState: 'Delayed',
+        arrivalStatus: 'Arrived',
     },
     {
-        name: "Eva Williams",
-        planeInfo: "Flight JKL012",
+        name: 'Eva Williams',
+        planeInfo: 'Flight JKL012',
         planeArrivalInfo: {
-            ticketNumber: "CC123456",
-            date: "2024-02-10"
+            ticketNumber: 'CC123456',
+            date: '2024-02-10',
         },
         money: {
-            currency: "AUD",
-            amount: 1100
+            currency: 'AUD',
+            amount: 1100,
         },
-        planeState: "On Time",
-        arrivalStatus: "Boarding"
+        planeState: 'On Time',
+        arrivalStatus: 'Boarding',
     },
     {
-        name: "Michael Jones",
-        planeInfo: "Flight MNO345",
+        name: 'Michael Jones',
+        planeInfo: 'Flight MNO345',
         planeArrivalInfo: {
-            ticketNumber: "DD987654",
-            date: "2024-02-11"
+            ticketNumber: 'DD987654',
+            date: '2024-02-11',
         },
         money: {
-            currency: "JPY",
-            amount: 950
+            currency: 'JPY',
+            amount: 950,
         },
-        planeState: "Delayed",
-        arrivalStatus: "Arrived"
+        planeState: 'Delayed',
+        arrivalStatus: 'Arrived',
     },
     {
-        name: "Sophia Davis",
-        planeInfo: "Flight PQR678",
+        name: 'Sophia Davis',
+        planeInfo: 'Flight PQR678',
         planeArrivalInfo: {
-            ticketNumber: "EE123456",
-            date: "2024-02-12"
+            ticketNumber: 'EE123456',
+            date: '2024-02-12',
         },
         money: {
-            currency: "CHF",
-            amount: 1300
+            currency: 'CHF',
+            amount: 1300,
         },
-        planeState: "On Time",
-        arrivalStatus: "Boarding"
+        planeState: 'On Time',
+        arrivalStatus: 'Boarding',
     },
     {
-        name: "Daniel Martinez",
-        planeInfo: "Flight STU901",
+        name: 'Daniel Martinez',
+        planeInfo: 'Flight STU901',
         planeArrivalInfo: {
-            ticketNumber: "FF987654",
-            date: "2024-02-13"
+            ticketNumber: 'FF987654',
+            date: '2024-02-13',
         },
         money: {
-            currency: "SGD",
-            amount: 850
+            currency: 'SGD',
+            amount: 850,
         },
-        planeState: "Delayed",
-        arrivalStatus: "Arrived"
+        planeState: 'Delayed',
+        arrivalStatus: 'Arrived',
     },
     {
-        name: "Olivia Garcia",
-        planeInfo: "Flight VWX234",
+        name: 'Olivia Garcia',
+        planeInfo: 'Flight VWX234',
         planeArrivalInfo: {
-            ticketNumber: "GG123456",
-            date: "2024-02-14"
+            ticketNumber: 'GG123456',
+            date: '2024-02-14',
         },
         money: {
-            currency: "CNY",
-            amount: 1400
+            currency: 'CNY',
+            amount: 1400,
         },
-        planeState: "On Time",
-        arrivalStatus: "Boarding"
-    }
+        planeState: 'On Time',
+        arrivalStatus: 'Boarding',
+    },
 ]
 interface FlightInfo {
-    ticketNumber: string;
-    date: string;
+    ticketNumber: string
+    date: string
 }
 
 interface MoneyInfo {
-    currency: string;
-    amount: number;
+    currency: string
+    amount: number
 }
 
 export interface TravelerCompactListInterface {
-    name: string;
-    planeInfo: string;
-    planeArrivalInfo: FlightInfo;
-    money: MoneyInfo;
-    planeState: string;
-    arrivalStatus: string;
+    name: string
+    planeInfo: string
+    planeArrivalInfo: FlightInfo
+    money: MoneyInfo
+    planeState: string
+    arrivalStatus: string
 }

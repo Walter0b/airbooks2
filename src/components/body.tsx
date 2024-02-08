@@ -1,7 +1,11 @@
 import { getCmpByAttr } from '@utils/functions/action'
 import { BodyProps } from '@utils/models/interface/page'
 
-export default function Body({ children, openCompactList, setOpenCompactList }: Readonly<BodyProps>) {
+export default function Body({
+    children,
+    openCompactList,
+    setOpenCompactList,
+}: Readonly<BodyProps>) {
     function onClickHandler() {
         setOpenCompactList?.(!openCompactList)
     }
@@ -9,8 +13,7 @@ export default function Body({ children, openCompactList, setOpenCompactList }: 
     const Table = getCmpByAttr({
         children,
         value: 'table',
-        props: { onClickHandler }
-
+        props: { onClickHandler },
     })
 
     const CompactList = getCmpByAttr({
@@ -19,7 +22,7 @@ export default function Body({ children, openCompactList, setOpenCompactList }: 
     })
 
     return (
-        <div className="h-full flex ">
+        <div className="flex h-full ">
             {openCompactList ? CompactList : Table}
         </div>
     )

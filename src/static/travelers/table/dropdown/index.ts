@@ -1,4 +1,4 @@
-import { TableOptionsInterface } from "@utils/models/interface/table";
+import { TableOptionsInterface } from '@utils/models/interface/table'
 
 const show = {
     title: 'Travelers',
@@ -28,7 +28,7 @@ const show = {
             hasMergeTitle: true,
         },
     ],
-};
+}
 
 const action = [
     {
@@ -59,7 +59,7 @@ const action = [
 ]
 const sort = [
     {
-        label: 'SORT BY'
+        label: 'SORT BY',
     },
     {
         label: 'Traveler Name',
@@ -75,7 +75,6 @@ const sort = [
     },
 ]
 const more = [
-
     {
         label: 'Email Traveler',
         url: '#',
@@ -101,5 +100,5 @@ export const tableOptions: TableOptionsInterface = {
     action,
     sort,
     show,
-    more
+    more,
 }

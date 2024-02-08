@@ -20,7 +20,7 @@ export default function LanguageOption({ className }: { className?: string }) {
                 </div>
                 <Dropdown
                     size={56}
-                    className='  w- right-0'
+                    className="  w- right-0"
                     titles=" text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize "
                     text="!text-xs font-normal"
                     data-slot="dropdown"

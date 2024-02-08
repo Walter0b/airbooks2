@@ -13,7 +13,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
             data-slot="TableHeader"
             className="sticky top-0  bg-gray-50 text-xs capitalize"
         >
-            <tr className='border-b-gray-200 border-b-2 '>
+            <tr className="border-b-2 border-b-gray-200 ">
                 {hasCheckbox && (
                     <Checkboxes
                         checkboxState={isCheckedAll}

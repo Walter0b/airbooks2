@@ -30,10 +30,9 @@ export interface CheckboxProps {
     setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void
 }
 export interface ItemDetailsProps {
-    children: ReactNode,
+    children: ReactNode
     setOpenCompactList?: (value: boolean) => void
 }
-
 
 export interface DataTableProps<T> {
     data: T[]
@@ -55,8 +54,6 @@ export interface TableBodyProps<T> extends CheckboxProps {
     onClickHandler?: () => void
 }
 
-
-
 export interface DropdownItems {
     label: string
     value?: string
@@ -70,12 +67,11 @@ export interface ShowTableOptions {
     items: DropdownItems[]
 }
 export interface TableOptionsInterface {
-    action: DropdownItems[],
-    more: DropdownItems[],
-    sort: DropdownItems[],
-    show: ShowTableOptions,
+    action: DropdownItems[]
+    more: DropdownItems[]
+    sort: DropdownItems[]
+    show: ShowTableOptions
 }
-
 
 export interface TableItemProps extends CheckboxProps {
     data: any[]
@@ -94,6 +90,6 @@ export interface PaginationProps {
     onPageChange: (page: number) => void
 }
 
-export interface NavLinksProps extends NavComponentProps { }
+export interface NavLinksProps extends NavComponentProps {}
 
-export interface ButtonsProps extends NavComponentProps { }
+export interface ButtonsProps extends NavComponentProps {}

@@ -13,7 +13,7 @@ import {
 import Body from '@components/body'
 import TravelerCompactListHeader from '@components/core/travelers/compact-list/traveler-cl-btn'
 import TravelerCompactList from '@components/core/travelers/compact-list'
-
+import { NavLink } from 'react-router-dom'
 
 export default function Travelers() {
     return (
@@ -28,14 +28,23 @@ export default function Travelers() {
                 >
                     <TableHeader data-slot="TableHeader" />
                     <TableBody data-slot="TableBody" />
-
                 </Table>
-                <TravelerCompactList data-slot="compactList" data={travelerCompactList} />
+                <TravelerCompactList
+                    data-slot="compactList"
+                    data={travelerCompactList}
+                />
             </Body>
-            <ItemDetails data-slot='itemDetails'>
-                <TravelerCompactListHeader data-slot='compactListHeader' dropdownOptions={tableOptions} />
+            <ItemDetails data-slot="itemDetails">
+                <TravelerCompactListHeader
+                    data-slot="compactListHeader"
+                    dropdownOptions={tableOptions}
+                />
+                <div data-slot='compactListBody' className='w-full mt-12'>
+                    <NavLink to='snapshot' className='text-black hover:border-b-4 border-cyan-550 px-10 py-1' >Snapshot</NavLink>
+                    <NavLink to='snapshot' className='text-black hover:border-b-4 border-cyan-550 px-10 py-1' >Snapshot</NavLink>
+                    <hr className='mt-[0.4rem]'></hr>
+                </div>
             </ItemDetails>
-
         </Pages>
     )
 }

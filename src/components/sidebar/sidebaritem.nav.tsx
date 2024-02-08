@@ -43,11 +43,12 @@ function NavLinks({ item }: NavLinksProps) {
             }
         >
             {({ isActive }) => {
-
                 item.current = isActive
 
                 return (
-                    <div className={`  flex w-full gap-x-2  text-[13px] font-medium leading-6`}>
+                    <div
+                        className={`  flex w-full gap-x-2  text-[13px] font-medium leading-6`}
+                    >
                         {item.icon ? (
                             <div
                                 className={` group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
@@ -75,16 +76,17 @@ function NavLinks({ item }: NavLinksProps) {
 }
 
 function Accordion({ item }: Readonly<NavLinksProps>) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     const handleClick = () => {
-        setIsOpen(!isOpen);
-    };
+        setIsOpen(!isOpen)
+    }
 
     return (
         <div className="w-full">
-            <div className={` transition-all duration-500 ease-in-out  ${isOpen ? 'border-b-gray-200 border-b ' : ''} flex w-full flex-row `}>
-
+            <div
+                className={` transition-all duration-500 ease-in-out  ${isOpen ? 'border-b border-b-gray-200 ' : ''} flex w-full flex-row `}
+            >
                 <CircleIcon className="ml-4 mr-2 w-4 fill-gray-100" />
                 <button
                     className={`${''} group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium leading-6 text-zinc-550 hover:text-cyan-550`}
@@ -97,8 +99,9 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
                 </button>
             </div>
             <div
-                className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'
-                    }`}
+                className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${
+                    isOpen ? 'max-h-[500px]' : 'max-h-0'
+                }`}
             >
                 {item?.options?.map((subItem, subIndex) => (
                     <div
@@ -107,19 +110,25 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
                     >
                         <span className="before:content-'' z-50 before:absolute before:left-0 before:-mt-2 before:ml-4 before:block before:h-full before:w-px before:border-r before:border-dotted before:border-cyan-550"></span>
                         <div className="flex gap-5">
-                            <ArrowIcon className={`invisible -ml-[1.1rem] w-[0.4rem] ${isOpen ? '-rotate-90 fill-cyan-550' : ''} group-hover/option:visible`} />
+                            <ArrowIcon
+                                className={`invisible -ml-[1.1rem] w-[0.4rem] ${isOpen ? '-rotate-90 fill-cyan-550' : ''} group-hover/option:visible`}
+                            />
                             <Link to={subItem.href}>{subItem.option}</Link>
                         </div>
                     </div>
                 ))}
             </div>
         </div>
-    );
+    )
 }
 export function NavigationItem({ item }: Readonly<NavComponentProps>) {
     return (
         <div className="group flex   w-full">
-            {item.options?.length ? (<Accordion item={item} />) : (<NavLinks item={item} />)}
+            {item.options?.length ? (
+                <Accordion item={item} />
+            ) : (
+                <NavLinks item={item} />
+            )}
             {item.button && <Buttons item={item} />}
         </div>
     )

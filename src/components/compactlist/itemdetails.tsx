@@ -1,15 +1,17 @@
-import { getCmpByAttr } from "@utils/functions/action";
-import { ItemDetailsProps } from "@utils/models/interface/table";
+import { getCmpByAttr } from '@utils/functions/action'
+import { ItemDetailsProps } from '@utils/models/interface/table'
 
-
-export default function ItemDetails({ children, setOpenCompactList }: Readonly<ItemDetailsProps>) {
+export default function ItemDetails({
+    children,
+    setOpenCompactList,
+}: Readonly<ItemDetailsProps>) {
     function CloseCompactList() {
         setOpenCompactList?.(false)
     }
     const CompactListHeader = getCmpByAttr({
         children,
         value: 'compactListHeader',
-        props: { CloseCompactList }
+        props: { CloseCompactList },
     })
     const CompactListBody = getCmpByAttr({
         children,
@@ -17,8 +19,8 @@ export default function ItemDetails({ children, setOpenCompactList }: Readonly<I
     })
 
     return (
-        <div className=" h-full w-full sm:w-4/6 ">
-            <div className="max flex h-16 w-full items-center justify-between space-x-4 rounded-sm border ">
+        <div className=" h-full w-full sm:w-4/6">
+            <div className="max flex h-16 w-full items-center justify-between space-x-4 rounded-sm mb-10">
                 {CompactListHeader}
             </div>
             {CompactListBody}

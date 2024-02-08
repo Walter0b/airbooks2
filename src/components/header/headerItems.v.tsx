@@ -71,8 +71,8 @@ export default function HeaderItems() {
                         </div>
                     </div>
                     <div className="flex">
-                        <LanguageOption className='mr-10 mt-3' />
-                           
+                        <LanguageOption className="mr-10 mt-3" />
+
                         {/* Navigation Options */}
                         <div className="flex ">
                             <button className="flex border-2 border-white p-5 ">
