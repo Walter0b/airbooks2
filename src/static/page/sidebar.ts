@@ -108,16 +108,16 @@ export const reportNavigation = [
             {
                 option: 'Profit & Loss',
                 current: false,
-                href: 'profit_and_loss',
+                href: 'business_overview/profit_and_loss',
             },
             {
                 option: 'Balance Sheet',
-                href: 'profit_and_loss',
+                href: 'business_overview/balance_sheet',
                 current: false,
             },
             {
                 option: 'Cashflow',
-                href: 'profit_and_loss',
+                href: 'business_overview/cashflow',
                 current: false,
             },
         ],
@@ -127,32 +127,32 @@ export const reportNavigation = [
         options: [
             {
                 option: 'Consultant',
-                href: '',
+                href: 'sales/consultant',
                 current: false,
             },
             {
                 option: 'Customer',
-                href: '',
+                href: 'sales/customer',
                 current: false,
             },
             {
                 option: 'Product',
-                href: '',
+                href: 'sales/product',
                 current: false,
             },
             {
                 option: 'Supplier',
-                href: '',
+                href: 'sales/supplier',
                 current: false,
             },
             {
                 option: 'Airline',
-                href: '',
+                href: 'sales/airline',
                 current: false,
             },
             {
                 option: 'Sales Analysis',
-                href: '',
+                href: 'sales/sales_analysis',
                 current: false,
             },
         ],
@@ -163,11 +163,13 @@ export const reportNavigation = [
         options: [
             {
                 option: 'Customer Balance',
-                href: '',
+                current: false,
+                href: 'customers/customer_balance',
             },
             {
                 option: 'Invoice Aging',
-                href: '',
+                href: 'customers/invoice_aging',
+                current: false,
             },
         ],
     },
@@ -176,11 +178,13 @@ export const reportNavigation = [
         options: [
             {
                 option: 'Supplier Balances',
-                href: '',
+                href: 'supplier/supplier_balances',
+                current: false,
             },
             {
                 option: 'Bill Aging',
-                href: '',
+                href: 'supplier/bill_aging',
+                current: false,
             },
         ],
     },
@@ -209,15 +213,18 @@ export const reportNavigation = [
         options: [
             {
                 option: 'General Ledger',
-                href: '',
+                href: 'accountants/general_ledger',
+                current: false,
             },
             {
                 option: 'Trial Balance',
-                href: '',
+                href: 'accountants/trial_balance',
+                current: false,
             },
             {
                 option: 'Journey Report',
-                href: '',
+                href: 'accountants/journey_report',
+                current: false,
             },
         ],
     },
@@ -226,15 +233,18 @@ export const reportNavigation = [
         options: [
             {
                 option: 'Travel Events',
-                href: '',
+                href: 'events/travel_events',
+                current: false,
             },
             {
                 option: 'Birthdays',
-                href: '',
+                href: 'events/birthdays',
+                current: false,
             },
             {
                 option: 'Passport Expires',
-                href: '',
+                href: 'events/passport_expires',
+                current: false,
             },
         ],
     },
@@ -243,15 +253,18 @@ export const reportNavigation = [
         options: [
             {
                 option: 'Active Log',
-                href: '',
+                href: 'active/active_log',
+                current: false,
             },
             {
                 option: 'Authorization log',
-                href: '',
+                href: 'active/authorization_log',
+                current: false,
             },
             {
                 option: 'Business Emails',
-                href: '',
+                href: 'active/business_emails',
+                current: false,
             },
         ],
     },
