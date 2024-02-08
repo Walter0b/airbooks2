@@ -41,7 +41,7 @@ export default function Travelers() {
                 />
                 <div data-slot='compactListBody' className='w-full mt-12'>
                     <NavLink to='snapshot' className='text-black hover:border-b-4 border-cyan-550 px-10 py-1' >Snapshot</NavLink>
-                    <NavLink to='snapshot' className='text-black hover:border-b-4 border-cyan-550 px-10 py-1' >Snapshot</NavLink>
+                    <NavLink to='snapshot' className='text-black hover:border-b-4 border-cyan-550  px-10 py-1' >Bookings</NavLink>
                     <hr className='mt-[0.4rem]'></hr>
                 </div>
             </ItemDetails>
