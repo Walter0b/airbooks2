@@ -5,11 +5,11 @@ import Checkboxes from '@components/table/checkbox'
 import { TableHeader } from '@components/table/header'
 import { Table } from '@components/table/table'
 import { tableOptions } from '@static/travelers/table/dropdown'
-import { stylize } from '@utils/functions/stylize'
 import {
     travelerItemsColumns,
     travelerItemsData,
 } from '@utils/mock/data/travelers/table'
+import { StylizeFullTableTravelerItems } from './utils/stylize'
 
 export default function TravelItems() {
     return (
@@ -38,9 +38,9 @@ export default function TravelItems() {
                             {travelerItemsColumns?.map((column) => (
                                 <td
                                     key={column.key}
-                                    className={ stylize({key: column.key, value: item[column.key]})+' px-6 py-2 font-normal'}
+                                    className={ StylizeFullTableTravelerItems({key: column.key, item: item})+' px-6 py-2 font-normal'}
                                 >
-                                    {item[column.key]}
+                                    {item[column.key+'_formated']||item[column.key]}
                                 </td>
                             ))}
                         </tr>
