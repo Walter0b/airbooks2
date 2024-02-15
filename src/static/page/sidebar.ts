@@ -7,8 +7,9 @@ import { ShoppingCartIcon } from '@assets/svg/shoppingCart'
 import { TachometerIcon } from '@assets/svg/tachometer'
 import { UserIcon } from '@assets/svg/user'
 import { UsersIcon } from '@assets/svg/users'
+import { Navigation } from '@utils/models/interface/table'
 
-export const coreNavigation = [
+export const coreNavigation : Navigation[] = [
     {
         name: 'Dashboard',
         href: 'dashboard',
@@ -17,7 +18,6 @@ export const coreNavigation = [
         icon: TachometerIcon,
         button: false,
     },
-
     {
         name: 'Travelers',
         href: 'travelers',
@@ -101,7 +101,7 @@ export const coreNavigation = [
     },
 ]
 
-export const reportNavigation = [
+export const reportNavigation: Navigation[] = [
     {
         name: 'Business Overview',
         options: [

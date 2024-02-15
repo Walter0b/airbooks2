@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavigationItem } from './sidebaritem.nav'
 import { Navigation } from '@utils/models/interface/table'
 import NavOption from './navoption'
 import './index.css'
+import VerticalArrowIcon from './siderbar.reduce'
 
 export default function SideBarItems({
     navigation,
 }: Readonly<{ navigation: Navigation[] }>) {
-    // console.log(navigation)
+
+    const [isCompact, setIsCompact] = useState<boolean>(false)
     return (
-        <div className="flex !overflow-hidden h-screen grow flex-col overflow-y-auto border-r border-r-gray-300 bg-gray-100 sm:min-w-48">
+        <div className="flex h-screen grow flex-col !overflow-hidden overflow-y-auto border-r border-r-gray-300 bg-gray-100 sm:min-w-48">
             <NavOption />
             <ul className=" overflow-y-auto scroll-smooth focus:scroll-auto">
                 {navigation.map((item: Navigation, index: number) => (
@@ -23,7 +25,9 @@ export default function SideBarItems({
                         </li>
                     </React.Fragment>
                 ))}
+
             </ul>
+            <VerticalArrowIcon isOpen={isCompact} setIsOpen={setIsCompact} />
         </div>
     )
 }
