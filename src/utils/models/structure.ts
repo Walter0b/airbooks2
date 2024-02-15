@@ -1,17 +1,26 @@
 import { ReactNode } from 'react'
+import { DropdownItems } from './interface/table'
 
 export interface LayoutProps {
     children: ReactNode
 }
 
-export interface FormField {
+export interface Column {
     id: string
-    label: string
+    label?: string
     type: string
-    span: number
-    options?: string[]
-    autoComplete: string
+    span: string
+    className?: string
+    options?: DropdownItems[]
+    autoComplete?: string
     placeHolder?: string
+}
+
+export interface DynamicFormProps {
+    column?: string
+    color?: string
+    files: Column[]
+    cSpan?: string
 }
 
 export interface FetchData {

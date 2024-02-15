@@ -31,7 +31,6 @@ export interface CheckboxProps {
 }
 export interface ItemDetailsProps {
     children: ReactNode
-    setOpenCompactList?: (value: boolean) => void
 }
 
 export interface DataTableProps<T> {
