@@ -1,10 +1,8 @@
 import {
     Navigate,
     Route,
-    Routes,
     createBrowserRouter,
     createRoutesFromElements,
-    redirect,
 } from 'react-router-dom'
 import Layout from '@components/layout'
 import Customer from '@pages/core/customers'
