@@ -3,7 +3,7 @@ import Pages from '@components/pages'
 export default function Dashboard() {
     return (
         <Pages>
-            <div data-slote="bod">hi</div>
+            <div data-slot="body" className='w-full'>Dashboard</div>
         </Pages>
     )
 }
