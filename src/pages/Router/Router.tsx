@@ -1,8 +1,10 @@
 import {
     Navigate,
     Route,
+    Routes,
     createBrowserRouter,
     createRoutesFromElements,
+    redirect,
 } from 'react-router-dom'
 import Layout from '@components/layout'
 import Customer from '@pages/core/customers'
@@ -25,7 +27,8 @@ import Modal from '@components/modal'
 
 const appRouters = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" action={() => <Navigate to="/core/dashboard" />}>
+        <Route>
+            <Route path="/" element={<Navigate to="/core" replace={true} />} />
             <Route path="core" element={<Layout sidebar={coreNavigation} />}>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="travelers" element={<Travelers />}>
