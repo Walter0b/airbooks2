@@ -3,7 +3,10 @@ import Header from './header/header'
 import { Outlet } from 'react-router-dom'
 import { Navigation } from '@utils/models/interface/table'
 
+
 function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {
+
+
     return (
         <div className="flex h-svh w-svw  bg-white" id="layout">
             <div className="flex h-full w-full flex-1 flex-col overflow-hidden">
@@ -23,6 +26,7 @@ function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {
                     </main>
                 </div>
             </div>
+    
         </div>
     )
 }

@@ -6,12 +6,14 @@ import { Hamburger } from '@assets/svg/hamburger'
 import { LightBulbIcon } from '@assets/svg/lightbulb'
 import { Dropdown } from '../../../buttons/dropdown'
 import { TableOptionsInterface } from '@utils/models/interface/table'
+import {  useNavigate } from 'react-router-dom'
 
 export default function TableOptions({
     showTableOptions,
 }: Readonly<{
     showTableOptions: TableOptionsInterface
 }>) {
+    const navigate = useNavigate()
     return (
         <div
             id="table-right-menu-option"
@@ -19,7 +21,7 @@ export default function TableOptions({
             className=" flex text-gray-500"
         >
             <div className="flex">
-                <Buttons className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
+                <Buttons onClick={()=> navigate('new')} className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
                     <CrossIcon
                         data-slot="title"
                         className="w-3 rotate-45 fill-white"
@@ -35,7 +37,7 @@ export default function TableOptions({
                     />
                 </Buttons>
 
-                <Buttons className="flex h-full flex-col items-center justify-center gap-[1px] border-[0.8px] border-grey-450 bg-gray-100 px-2">
+                <Buttons className="flex h-full  items-center justify-center gap-[1px] border-[0.8px] border-grey-450 bg-gray-100 px-2">
                     <div data-slot="title">
                         <ArrowIcon className="w-2 rotate-180" />
                         <ArrowIcon className="mt-[-7px] w-2" />
@@ -57,7 +59,6 @@ export default function TableOptions({
                     />
                     <Dropdown
                         className="right-0 mt-5 w-fit"
-                        titles=" text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize "
                         text="text-start whitespace-nowrap font-medium"
                         data-slot="dropdown"
                         dropdownOptions={showTableOptions?.action}

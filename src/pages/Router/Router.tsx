@@ -1,4 +1,9 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom'
+import {
+    Navigate,
+    Route,
+    createBrowserRouter,
+    createRoutesFromElements,
+} from 'react-router-dom'
 import Layout from '@components/layout'
 import Customer from '@pages/core/customers'
 import Travelers from '@pages/core/travelers'
@@ -12,38 +17,52 @@ import Invoice from '@pages/core/invoice'
 import ManualJournal from '@pages/core/manualjournal'
 import Payments from '@pages/core/payments'
 import Estimates from '@pages/core/estimates'
-import ProfitAndLoss from '@pages/report/profit_and_loss'
+import ProfitAndLoss from '@pages/report/business_overview/profit_and_loss'
+import BalanceSheet from '@pages/report/business_overview/balance_sheet'
+import Consultant from '@pages/report/sales/consultant'
+import ItemDetails from '@components/compactlist'
+import Modal from '@components/modal'
 
-export const appRouters = createBrowserRouter([
-    {
-        path: '/',
-        element: <Navigate to="/core/dashboard" />,
-    },
-    {
-        path: 'core',
-        element: <Layout sidebar={coreNavigation} />,
-        children: [
-            { path: 'dashboard', element: <Dashboard /> },
-            { path: 'travelers', element: <Travelers /> },
-            { path: 'travel-items', element: <TravelItems /> },
-            { path: 'customer', element: <Customer /> },
-            { path: 'estimates', element: <Estimates /> },
-            { path: 'invoice', element: <Invoice /> },
-            { path: 'credit_notes', element: <CreditNotes /> },
-            { path: 'payments', element: <Payments /> },
-            { path: 'bill', element: <Bill /> },
-            { path: 'expenses', element: <Expenses /> },
-            { path: 'manual_journal', element: <ManualJournal /> },
-        ],
-    },
-    {
-        path: 'report',
-        element: <Layout sidebar={reportNavigation} />,
-        children: [{ path: 'business_overview/profit_and_loss', element: <ProfitAndLoss /> },{ path: 'balance_sheet', element: <ProfitAndLoss /> }],
-    },
-    {
-        path: 'settings',
-        element: <Layout sidebar={reportNavigation} />,
-        children: [{ path: 'customers', element: <Customer /> }],
-    },
-])
+const appRouters = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" action={() => <Navigate to="/core/dashboard" />}>
+            <Route path="core" element={<Layout sidebar={coreNavigation} />}>
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="travelers" element={<Travelers />}>
+                    <Route path=":id" element={<ItemDetails />} />
+                    <Route path="new" element={<Modal hasOptions={true} title={''} />} />
+                </Route>
+                <Route path="travel-items" element={<TravelItems />}>
+                    <Route path=":id" element={<Customer />} />
+                </Route>
+                <Route path="customer" element={<Customer />} />
+                <Route path="estimates" element={<Estimates />} />
+                <Route path="invoice" element={<Invoice />} />
+                <Route path="credit_notes" element={<CreditNotes />} />
+                <Route path="payments" element={<Payments />} />
+                <Route path="bill" element={<Bill />} />
+                <Route path="expenses" element={<Expenses />} />
+                <Route path="manual_journal" element={<ManualJournal />} />
+            </Route>
+            <Route
+                path="report"
+                element={<Layout sidebar={reportNavigation} />}
+            >
+                <Route
+                    path="business_overview/profit_and_loss"
+                    element={<ProfitAndLoss />}
+                />
+                <Route path="balance_sheet" element={<BalanceSheet />} />
+                <Route path="sales/consultant" element={<Consultant />} />
+            </Route>
+            <Route
+                path="settings"
+                element={<Layout sidebar={reportNavigation} />}
+            >
+                <Route path="customers" element={<Customer />} />
+            </Route>
+        </Route>
+    )
+)
+
+export default appRouters
