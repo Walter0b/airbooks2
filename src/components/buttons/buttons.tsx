@@ -17,7 +17,7 @@ export default function Buttons({
     arrowClassName = 'group-hover/button:!fill-cyan-550 fill-gray-500 ml-1 mt-[7px]',
     hasDropdownIcon = false,
     onClick,
-    className = ' w-full mt-1 hover:text-cyan-550 justify-center gap-x-1.5  bg-white px-3 py-2 font-semibold text-gray-500 text-lg',
+    className = ' w-full mt-1 items-start justify-between hover:text-cyan-550 gap-x-1.5  bg-white px-3 py-2 font-semibold text-gray-500 text-lg',
 }: Readonly<ButtonInterface>) {
     const [isOpen, setIsOpen] = useState(false)
     const dropdownRef = useRef<HTMLDivElement | null>(null)
@@ -54,12 +54,12 @@ export default function Buttons({
 
     return (
         <div
-            className={`${className} relative  flex-row text-left`}
+            className={` relative  flex-row text-left`}
             ref={dropdownRef}
         >
-            <div className="h-fit w-fit">
+            <div className="h-full flex items-center w-full">
                 <button
-                    className="group/button flex w-full items-start gap-x-1.5 "
+                    className={`${className} group/button flex w-full  `}
                     onClick={
                         dropdown ? handleToggleDropdown : () => onClick?.()
                     }

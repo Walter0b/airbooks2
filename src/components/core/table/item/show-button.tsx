@@ -19,7 +19,7 @@ export default function ShowButton({
     )
 
     return (
-        <Buttons hasDropdownIcon={true}>
+        <Buttons hasDropdownIcon={true} >
             {Title}
             <Dropdown
                 size={36}
