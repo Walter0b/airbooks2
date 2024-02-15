@@ -17,7 +17,7 @@ export default function NavOption() {
                 <HomeIcon className="w-4 fill-green-550" />
             </NavLink>
             <NavLink
-                to="/report/business_overview/profit_and_loss"
+                to="/report"
                 id="report"
                 className={({ isActive }) =>
                     `${baseClassName} ${isActive ? 'border-red-900' : ''} hover:border-red-900`
