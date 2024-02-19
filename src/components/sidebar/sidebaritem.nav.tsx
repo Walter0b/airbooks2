@@ -37,9 +37,9 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
         <NavLink
             to={item.href ?? ''}
             className={({ isActive }) =>
-                `${isActive ? 'bg-cyan-550 !fill-gray-100 text-white peer' :
-                    `text-zinc-550 hover:bg-white group-hover:text-cyan-650 ${isOpen ? '' : 'h-10'}`
-                } w-full p-2`
+                `${isActive ? 'bg-cyan-550 !fill-gray-100 text-white peer ' :
+                    `text-zinc-550 hover:bg-white group-hover:text-cyan-650 `
+                } ${isOpen ? 'h-11' : 'h-10'} w-full p-2 `
             }
         >
             {({ isActive }) => {
@@ -51,9 +51,9 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
                     >
                         {item.icon ? (
                             <div
-                                className={`group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
+                                className={`group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'}   m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
                             >
-                                <item.icon className={` ${isOpen ? 'mt-[0.3rem] w-4' : 'w-full'} h-full `} />
+                                <item.icon className={` ${isOpen ? ' w-4' : 'w-full'} h-full `} />
                             </div>
                         ) : (
                             <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
@@ -72,7 +72,7 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
                     </div>
                 )
             }}
-        </NavLink>
+        </NavLink >
     )
 }
 
