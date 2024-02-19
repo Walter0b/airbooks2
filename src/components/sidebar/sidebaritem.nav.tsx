@@ -32,13 +32,12 @@ function Buttons() {
 
 function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
 
-    
+
     return (
         <NavLink
             to={item.href ?? ''}
             className={({ isActive }) =>
-                `${
-                    isActive ? 'bg-cyan-550 !fill-gray-100 text-white peer' : 
+                `${isActive ? 'bg-cyan-550 !fill-gray-100 text-white peer' :
                     `text-zinc-550 hover:bg-white group-hover:text-cyan-650 ${isOpen ? '' : 'h-10'}`
                 } w-full p-2`
             }
@@ -54,12 +53,12 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
                             <div
                                 className={`group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
                             >
-                                <item.icon className={` ${isOpen && 'mt-[0.3rem] w-4'} h-full `} />
+                                <item.icon className={` ${isOpen ? 'mt-[0.3rem] w-4' : 'w-full'} h-full `} />
                             </div>
                         ) : (
                             <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
                         )}
-                       <span className={`${isOpen ? 'hidden' : 'sm:inline'}`}>{item.name}</span>
+                        <span className={`${isOpen ? 'hidden' : 'sm:inline'}`}>{item.name}</span>
 
 
                         {item.count && (
@@ -142,9 +141,9 @@ export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
             {item.options?.length ? (
                 <Accordion item={item} isOpen={isOpen} />
             ) : (
-                <NavLinks item={item}  isOpen={isOpen} />
+                <NavLinks item={item} isOpen={isOpen} />
             )}
-            {item.button && <Buttons/>}
+            {item.button && <Buttons />}
         </div>
     )
 }
