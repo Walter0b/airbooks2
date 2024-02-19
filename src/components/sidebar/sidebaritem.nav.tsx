@@ -10,53 +10,58 @@ import { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 
-function Buttons ()  {
+function Buttons({ isOpen }: { isOpen: boolean | undefined }) {
     const navigate = useNavigate();
     const handleClick = () => {
 
         navigate('travelers/new')
     }
     return (
-        <div
-            // to={item.href}
+        <button
             onClick={() => handleClick()}
-            className={` 'hover:bg-cyan-550 group-hover:bg-gray-200 '}  ml-[0.6px] hidden h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550  text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex`
-            }
+            className="hover:bg-cyan-550 group-hover:bg-gray-200  ml-[0.6px] group-[.peer\/compact]/compact:!hidden  h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550  text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
         >
             <CrossIcon
                 className="mr-px w-4 rotate-45 fill-gray-100"
                 className1="h-10"
                 className2="w-10"
             />
-        </div>
+        </button>
     )
 }
 
-function NavLinks({ item }: Readonly<NavLinksProps>) {
+function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
+
+    console.log(isOpen);
+    
     return (
         <NavLink
             to={item.href ?? ''}
             className={({ isActive }) =>
-                `$ ${isActive ? 'bg-cyan-550  !fill-gray-100 text-white peer' : 'text-zinc-550 hover:bg-white group-hover:text-cyan-650'} h-10 w-full p-2`
+                `${
+                    isActive ? 'bg-cyan-550 !fill-gray-100 text-white peer' : 
+                    `text-zinc-550 hover:bg-white group-hover:text-cyan-650 ${isOpen ? '' : 'h-10'}`
+                } w-full p-2`
             }
         >
             {({ isActive }) => {
-                item.current = isActive
+                item.current = isActive;
 
                 return (
                     <div
-                        className={`  flex w-full gap-x-2  text-[13px] font-medium leading-6`}
+                        className={`flex w-full gap-x-2 text-[13px] font-medium leading-6`}
                     >
                         {item.icon ? (
                             <div
-                                className={` group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
+                                className={`group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
                             >
-                                <item.icon className="h-full w-full" />
+                                <item.icon className={` ${isOpen && 'mt-[0.3rem]'} h-full w-full`} />
                             </div>
                         ) : (
                             <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
                         )}
-                        <span className={`hidden sm:inline`}>{item.name}</span>
+                       <span className={`${isOpen ? 'hidden' : 'sm:inline'}`}>{item.name}</span>
+
 
                         {item.count && (
                             <span
@@ -73,6 +78,7 @@ function NavLinks({ item }: Readonly<NavLinksProps>) {
     )
 }
 
+
 function Accordion({ item }: Readonly<NavLinksProps>) {
     const [isOpen, setIsOpen] = useState(false)
     const [isAnySubItemCurrent, SetIsAnySubItemCurrent] = useState(false)
@@ -86,9 +92,6 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
     const handleClick = () => {
         setIsOpen(!isOpen)
     }
-    console.log(isAnySubItemCurrent)
-
-    console.log(item.current)
     return (
         <div className="w-full">
             <div
@@ -134,15 +137,15 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
         </div>
     )
 }
-export function NavigationItem({ item }: Readonly<NavComponentProps>) {
+export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
     return (
         <div className="group flex   w-full">
             {item.options?.length ? (
-                <Accordion item={item} />
+                <Accordion item={item} isOpen={isOpen} />
             ) : (
-                <NavLinks item={item} />
+                <NavLinks item={item}  isOpen={isOpen} />
             )}
-            {item.button && <Buttons />}
+            {item.button && <Buttons isOpen={isOpen} />}
         </div>
     )
 }

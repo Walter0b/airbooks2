@@ -81,6 +81,7 @@ export interface TableItemProps extends CheckboxProps {
 }
 export interface NavComponentProps {
     item: Navigation
+    isOpen?: boolean,
 }
 export interface PaginationProps {
     currentPage: number
@@ -89,6 +90,6 @@ export interface PaginationProps {
     onPageChange: (page: number) => void
 }
 
-export interface NavLinksProps extends NavComponentProps {}
+export interface NavLinksProps extends NavComponentProps { }
 
-export interface ButtonsProps extends NavComponentProps {}
+export interface ButtonsProps extends NavComponentProps { }
