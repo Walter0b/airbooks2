@@ -29,13 +29,13 @@ const Modal = ({ children, hasOptions, title }: Readonly<{ children?: ReactNode;
                             <div className="mt-3 flex w-full">
                                 <button
                                     onClick={() => handleOnClick('Main', TravelersMainFields)}
-                                    className={`borderButtonStyles ${currentPage === 'Main' && 'active'}`}
+                                    className={`borderButtonStyles ${currentPage === 'Main' && 'actives'}`}
                                 >
                                     Main
                                 </button>
                                 <button
                                     onClick={() => handleOnClick('Bookings', TravelersBookingFields)}
-                                    className={`borderButtonStyles ${currentPage === 'Bookings' && 'active'}`}
+                                    className={`borderButtonStyles ${currentPage === 'Bookings' && 'actives'}`}
                                 >
                                     Bookings
                                 </button>

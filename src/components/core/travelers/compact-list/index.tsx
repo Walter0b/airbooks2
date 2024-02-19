@@ -1,6 +1,6 @@
 import Pagination from '@components/table/pagination'
 import { TravelerCompactListInterface } from '@utils/mock/data/travelers/table'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 export default function TravelerCompactList({
     data,
@@ -9,9 +9,10 @@ export default function TravelerCompactList({
     return (
         <ul className="w-full border-r">
             {data?.map((item) => (
-                <li
+                <NavLink
+                    to={item.id.toString()}
                     key={item.id}
-                    className={`w flex border-b p-2 hover:bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
+                    className={`w flex border-b p-2 hover:!bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
                 >
                     <div className="px-2 py-1">
                         <input type="checkbox" name="" id="" />
@@ -53,7 +54,7 @@ export default function TravelerCompactList({
 
                         </div>
                     </div>
-                </li>
+                </NavLink>
             ))}
             <Pagination
                 className="flex justify-end"

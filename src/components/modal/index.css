@@ -2,7 +2,7 @@
     @apply hover:border-cyan-550 px-10 py-1 text-cyan-700 border-b-4 cursor-pointer border-transparent
 }
 
-.active {
+.actives {
     @apply border-cyan-550 text-black
 }
 .buttonStyles{
