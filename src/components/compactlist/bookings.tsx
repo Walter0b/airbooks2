@@ -6,7 +6,7 @@ export default function Bookings() {
     const user = travelersData.find(user => user?.id === currentID);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className=" mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
             {user && (
                 <>
                     <div className="max-w-sm rounded-lg overflow-hidden shadow-md bg-blue-100">

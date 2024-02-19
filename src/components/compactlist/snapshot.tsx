@@ -6,7 +6,7 @@ export default function Snapshot() {
     const user = travelersData.find(user => user?.id === currentID);
 
     return (
-        <div className="flex justify-center items-center h-fit bg-gray-100">
+        <div className="flex justify-center h-full w-full items-center  bg-gray-100">
             {user && (
                 <div className="rounded-lg overflow-hidden shadow-md bg-white p-8">
                     <div className="text-center ">
