@@ -34,7 +34,7 @@ const appRouters = createBrowserRouter(
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="travelers" element={<Travelers />}>
                     <Route path=":id" element={<ItemDetails />} >
-                        <Route index element={<Snapshot />} />
+                    <Route index element={<Navigate to="snapshot" replace={true} />} />
                         <Route path="snapshot" element={<Snapshot />} />
                         <Route path="bookings" element={<Bookings />} />
                     </Route>
