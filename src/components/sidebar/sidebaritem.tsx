@@ -11,9 +11,9 @@ export default function SideBarItems({
 
     const [isCompact, setIsCompact] = useState<boolean>(false)
     return (
-        <div className="flex h-screen grow flex-col !overflow-hidden overflow-y-auto border-r border-r-gray-300 bg-gray-100 sm:min-w-48">
-            <NavOption />
-            <ul className=" overflow-y-auto scroll-smooth focus:scroll-auto">
+        <div className={` ${isCompact ? 'sm:min-w-8' : 'sm:min-w-48'} flex h-screen grow flex-col !overflow-hidden overflow-y-auto border-r border-r-gray-300 bg-gray-100 `}>
+            {!isCompact && <NavOption  /> }
+            <ul className={`  ${isCompact && 'sm:min-w-8 peer/compact group/compact'} overflow-y-auto scroll-smooth focus:scroll-auto`}>
                 {navigation.map((item: Navigation, index: number) => (
                     <React.Fragment key={item.name}>
                         {index > 0 &&
@@ -21,7 +21,7 @@ export default function SideBarItems({
                                 <hr className=" border-gray-300" />
                             )}
                         <li className="flex items-center justify-between">
-                            <NavigationItem item={item} />
+                            <NavigationItem item={item} isOpen={isCompact} />
                         </li>
                     </React.Fragment>
                 ))}
