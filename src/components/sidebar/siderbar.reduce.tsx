@@ -7,7 +7,6 @@ interface DropdownArrowProps {
 }
 
 const VerticalArrowIcon: React.FC<DropdownArrowProps> = ({ isOpen, setIsOpen }) => {
-    console.log(isOpen)
     return (
         <div className={` peer-[]/compact:w-10  flex justify-center items-center px-5 mt-10`}>
             <hr className=" border-gray-300  w-full" />
