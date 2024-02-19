@@ -5,7 +5,6 @@ import { TableHeader } from '@components/table/table.header'
 import { Table } from '@components/table/table'
 import { tableOptions } from '@static/travelers/table/dropdown'
 import {
-    travelerCompactList,
     travelersColumns,
     travelersData,
 } from '@utils/mock/data/travelers/table'
@@ -29,7 +28,7 @@ export default function Travelers() {
                 </Table>
                 <TravelerCompactList
                     data-slot="compactList"
-                    data={travelerCompactList}
+                    data={travelersData}
                 />
             </Body>
            

@@ -1,11 +1,8 @@
 import { getCmpByAttr } from '@utils/functions/action'
 import { PageProps } from '@utils/models/interface/page'
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export default function Pages({ children }: Readonly<PageProps>) {
-    const { id } = useParams();
-    console.log(id)
-
 
     const Header = getCmpByAttr({
         children,

@@ -66,11 +66,11 @@ const sort = [
         url: '#',
     },
     {
-        label: 'Nationality',
+        label: 'nationality',
         url: '#',
     },
     {
-        label: 'Income',
+        label: 'income',
         url: '#',
     },
 ]

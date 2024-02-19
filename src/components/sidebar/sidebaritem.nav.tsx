@@ -32,7 +32,6 @@ function Buttons() {
 
 function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
 
-    console.log(isOpen);
     
     return (
         <NavLink
@@ -55,7 +54,7 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
                             <div
                                 className={`group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'} m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
                             >
-                                <item.icon className={` ${isOpen && 'mt-[0.3rem]'} h-full w-full`} />
+                                <item.icon className={` ${isOpen && 'mt-[0.3rem] w-4'} h-full `} />
                             </div>
                         ) : (
                             <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />

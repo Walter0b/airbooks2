@@ -18,7 +18,7 @@ export default function Body({
     })
     
     return (
-        <div className="flex h-full ">
+        <div className="flex">
             {id ? CompactList : Table}
         </div>
     )
