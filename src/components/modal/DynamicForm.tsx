@@ -5,7 +5,6 @@ import { Dropdown } from '@components/buttons/dropdown'
 import React from 'react'
 
 export default function DynamicForm({ items }: { items: DynamicFormProps[] }) {
-    console.log('fields', items)
 
     return (
       

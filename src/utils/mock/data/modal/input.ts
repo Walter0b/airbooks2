@@ -42,7 +42,7 @@ export const TravelersMainFields: DynamicFormProps[] = [
                 id: 'WorkPhone', label: 'Work Phone', type: 'tel', span: 'sm:col-span-3'
             },
             {
-                id: 'MobilePhone', label: 'Mobile Phone', type: 'tel', span: 'sm:col-span-3'
+                id: 'mobilePhone', label: 'Mobile Phone', type: 'tel', span: 'sm:col-span-3'
             }
         ]
 

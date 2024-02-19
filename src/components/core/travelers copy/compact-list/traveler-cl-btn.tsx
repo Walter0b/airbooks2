@@ -10,7 +10,7 @@ export default function TravelerCompactListHeader({
     dropdownOptions: TableOptionsInterface
 }>) {
     return (
-        <div className="flex w-full h-full items-end">
+        <div className="flex w-full items-end">
             <div className="flex h-8 w-full justify-end pr-5">
                 <button className="mr-2 h-full rounded border border-stone-300 bg-neutral-100 px-3 hover:shadow-md ">
                     <PenIcon className="w-3" />

@@ -3,13 +3,17 @@ import { useNavigate } from 'react-router-dom'
 
 export default function CloseButton({
     color = 'fill-black',
-}: {
+}: Readonly<{
     onClick?: () => void
     color?: string
-}) {
+}>) {
+    const handleGoBack = () => {
+        navigate("../"); 
+    };
+
     const navigate = useNavigate()
     return (
-        <button type="button" onClick={() => navigate(-1)}>
+        <button type="button" onClick={handleGoBack}>
             <CrossIcon
                 className={`${color} w-4`}
                 className1=" h-10"

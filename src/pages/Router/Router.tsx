@@ -22,15 +22,22 @@ import BalanceSheet from '@pages/report/business_overview/balance_sheet'
 import Consultant from '@pages/report/sales/consultant'
 import ItemDetails from '@components/compactlist'
 import Modal from '@components/modal'
+import Snapshot from '@components/compactlist/snapshot'
+import Bookings from '@components/compactlist/bookings'
 
 const appRouters = createBrowserRouter(
     createRoutesFromElements(
         <Route>
             <Route path="/" element={<Navigate to="/core" replace={true} />} />
             <Route path="core" element={<Layout sidebar={coreNavigation} />}>
+                <Route index element={<Navigate to="dashboard" replace={true} />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="travelers" element={<Travelers />}>
-                    <Route path=":id" element={<ItemDetails />} />
+                    <Route path=":id" element={<ItemDetails />} >
+                        <Route index element={<Snapshot />} />
+                        <Route path="snapshot" element={<Snapshot />} />
+                        <Route path="bookings" element={<Bookings />} />
+                    </Route>
                     <Route path="new" element={<Modal hasOptions={true} title={''} />} />
                 </Route>
                 <Route path="travel-items" element={<TravelItems />}>
