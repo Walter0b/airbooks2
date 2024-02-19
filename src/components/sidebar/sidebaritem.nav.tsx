@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 
-function Buttons({ isOpen }: { isOpen: boolean | undefined }) {
+function Buttons() {
     const navigate = useNavigate();
     const handleClick = () => {
 
@@ -19,7 +19,7 @@ function Buttons({ isOpen }: { isOpen: boolean | undefined }) {
     return (
         <button
             onClick={() => handleClick()}
-            className="hover:bg-cyan-550 group-hover:bg-gray-200  ml-[0.6px] group-[.peer\/compact]/compact:!hidden  h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550  text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
+            className=" group-hover:bg-gray-200  ml-[0.6px] group-[.peer\/compact]/compact:!hidden  h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550  text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
         >
             <CrossIcon
                 className="mr-px w-4 rotate-45 fill-gray-100"
@@ -145,7 +145,7 @@ export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
             ) : (
                 <NavLinks item={item}  isOpen={isOpen} />
             )}
-            {item.button && <Buttons isOpen={isOpen} />}
+            {item.button && <Buttons/>}
         </div>
     )
 }
