@@ -38,7 +38,7 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
             to={item.href ?? ''}
             className={({ isActive }) =>
                 `${isActive ? 'bg-cyan-550 !fill-gray-100 text-white peer ' :
-                    `text-zinc-550 hover:bg-white group-hover:text-cyan-650 `
+                    `text-zinc-550 hover:bg-white group-hover:bg-white group-hover:text-cyan-650 `
                 } ${isOpen ? 'h-11' : 'h-10'} w-full p-2 `
             }
         >
