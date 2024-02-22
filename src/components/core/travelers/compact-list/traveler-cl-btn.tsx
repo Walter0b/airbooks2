@@ -28,8 +28,8 @@ export default function TravelerCompactListHeader({
                     </div>
                     <Dropdown
                         size={44}
-                        text="!text-center py-2"
-                        className="right-0 my-6  font-medium  "
+                        text="r!text-center py-2"
+                        className="right-0 mt-2 mr-11 font-medium"
                         data-slot="dropdown"
                         dropdownOptions={dropdownOptions.more}
                     ></Dropdown>

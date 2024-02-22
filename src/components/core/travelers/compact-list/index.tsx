@@ -7,13 +7,13 @@ export default function TravelerCompactList({
 }: Readonly<{ data: TravelerCompactListInterface[] }>) {
     const currentID = parseInt(useParams().id as string, 10)
     return (
-        <div >
+        <div className='w-full'>
             <ul className="hidScrollbar flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 220px)" }}>
                 {data?.map((item) => (
                     <NavLink
                         to={item.id.toString()}
                         key={item.id}
-                        className={`w flex border-b p-2 hover:!bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
+                        className={`flex border-b p-2 hover:!bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
                     >
                         <div className="px-2 py-1">
                             <input type="checkbox" name="" id="" />
