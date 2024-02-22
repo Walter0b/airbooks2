@@ -7,6 +7,30 @@ import LanguageOption from './languageOption'
 export default function HeaderItems() {
     return (
         <nav className="flex w-full p-1">
+
+            <div className="ml-auto flex space-x-4 md:hidden">
+                <button
+                    data-collapse-toggle="navbar-hamburger"
+                    type="button"
+                    className="px-3 focus:outline-none  "
+                >
+                    <span className="sr-only">Open main menu</span>
+                    <svg
+                        className="h-5 w-5 fill-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 17 14"
+                    >
+                        <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M1 1h15M1 7h15M1 13h15"
+                        />
+                    </svg>
+                </button>
+            </div>
             {/* Logo */}
             <a
                 href="http://airbooks.co.za"
@@ -117,27 +141,6 @@ export default function HeaderItems() {
                         <span className="sr-only">Search</span>
                     </button>
 
-                    <button
-                        data-collapse-toggle="navbar-search"
-                        type="button"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <svg
-                            className="h-5 w-5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 17 14"
-                        >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M1 1h15M1 7h15M1 13h15"
-                            />
-                        </svg>
-                    </button>
                 </div>
             </div>
         </nav>
