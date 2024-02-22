@@ -12,7 +12,7 @@ export default function Header({
             <div 
                 id="table-left-menu-option"
                 aria-label="table left menu option"
-                className="ml-4 "
+                className="ml-4"
             >
                 <ShowButton dropdownOptions={dropdownOptions.show} />
             </div>

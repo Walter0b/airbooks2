@@ -6,7 +6,7 @@ import { Hamburger } from '@assets/svg/hamburger'
 import { LightBulbIcon } from '@assets/svg/lightbulb'
 import { Dropdown } from '../../../buttons/dropdown'
 import { TableOptionsInterface } from '@utils/models/interface/table'
-import {  useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function TableOptions({
     showTableOptions,
@@ -18,10 +18,10 @@ export default function TableOptions({
         <div
             id="table-right-menu-option"
             aria-label="table right menu option"
-            className=" flex text-gray-500"
+            className="flex text-gray-500"
         >
             <div className="flex">
-                <Buttons onClick={()=> navigate('new')} className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
+                <Buttons onClick={() => navigate('new')} className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
                     <CrossIcon
                         data-slot="title"
                         className="w-3 rotate-45 fill-white"
@@ -67,12 +67,13 @@ export default function TableOptions({
             </div>
 
             <div className=" flex">
-                <div className="ml-4 mt-2 h-5 border-l-2 p-2"></div>
+                <hr className='mt-4 -mr-2 md:mx-3 w-5 rotate-90 border' />
+                <div className='flex'>
+                    <LightBulbIcon className="m-1 w-2 fill-blue-500" />
+                    <div className="md:mr-4 flex cursor-pointer items-center font-bold text-blue-500">
+                        Tips
+                    </div></div>
 
-                <LightBulbIcon className="m-1 w-2 fill-blue-500" />
-                <div className="mr-4 flex cursor-pointer items-center font-bold text-blue-500">
-                    Tips
-                </div>
             </div>
         </div>
     )
