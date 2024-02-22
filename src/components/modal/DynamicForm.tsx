@@ -13,8 +13,8 @@ export default function DynamicForm({ items }: { items: DynamicFormProps[] }) {
             {items.map((item, index) => (
                 <React.Fragment key={index}>
                     <div className="flex content-center text-black ">
-                        <div
-                            className={`mt-9 w-1/6 font-medium text-${item?.color}`}
+                       <div
+                            className={`mt-9 w-1/6 ${!item.column &&'invisible'} font-medium text-${item?.color}`}
                         >
                             {' '}
                             {item.column}

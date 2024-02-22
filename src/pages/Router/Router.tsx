@@ -30,7 +30,7 @@ const appRouters = createBrowserRouter(
         <Route>
             <Route path="/" element={<Navigate to="/core" replace={true} />} />
             <Route path="core" element={<Layout sidebar={coreNavigation} />}>
-                <Route index element={<Navigate to="dashboard" replace={true} />} />
+                <Route index element={<Navigate to="travelers" replace={true} />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="travelers" element={<Travelers />}>
                     <Route path=":id" element={<ItemDetails />} >
