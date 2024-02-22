@@ -3,6 +3,7 @@ import { tableOptions } from "@static/travelers/table/dropdown";
 import { NavLink, Outlet } from "react-router-dom";
 import ItemDetailsBody from "./itemdetails";
 
+
 export default function ItemDetails() {
     return (
        

@@ -21,7 +21,7 @@ function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {
                 <Header />
                 <div className="flex h-full">
                     <SideBar navigation={sidebar} />
-                    <main className="mb-14 flex w-full flex-col overflow-hidden bg-white">
+                    <main className="mb-14 flex w-full flex-col bg-white">
                         <Outlet />
                     </main>
                 </div>

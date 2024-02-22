@@ -7,7 +7,7 @@ export default function TravelerCompactList({
 }: Readonly<{ data: TravelerCompactListInterface[] }>) {
     const currentID = parseInt(useParams().id as string)
     return (
-        <ul className="w-full border-r ">
+        <ul className="hidScrollbar flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 230px)" }}>
             {data?.map((item) => (
                 <li
                     // key={item.id}

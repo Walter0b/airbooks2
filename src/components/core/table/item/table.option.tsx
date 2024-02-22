@@ -44,7 +44,7 @@ export default function TableOptions({
                     </div>
                     <Dropdown
                         size={56}
-                        className="right-0 mt-3 w-44"
+                        className="right-0 mt-2 w-44"
                         titles="text-gray-400 font-medium text-xs first:mt-2 first:ml-2 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize"
                         text="text-start font-medium"
                         data-slot="dropdown"
@@ -58,7 +58,7 @@ export default function TableOptions({
                         className="w-3 fill-gray-700"
                     />
                     <Dropdown
-                        className="right-0 mt-5 w-fit"
+                        className="right-0 mt-2 w-fit"
                         text="text-start whitespace-nowrap font-medium"
                         data-slot="dropdown"
                         dropdownOptions={showTableOptions?.action}
