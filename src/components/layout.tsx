@@ -8,7 +8,7 @@ function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {
 
 
     return (
-        <div className="flex h-svh w-svw  bg-white" id="layout">
+        <div className="flex h-screen w-screen  bg-white" id="layout">
             <div className="flex h-full w-full flex-1 flex-col overflow-hidden">
                 <div className="item-center flex justify-center">
                     <div className="p-1 text-center text-lg text-black">
