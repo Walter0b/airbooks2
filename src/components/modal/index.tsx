@@ -18,7 +18,7 @@ const Modal = ({ children, hasOptions, title }: Readonly<{ children?: ReactNode;
 
     return (
         <div className="fixed inset-0 flex items-center justify-center h-screen bg-black/30 backdrop-opacity-35 backdrop-saturate-100">
-            <div className="flex flex-col h-screen w-2/4 overflow-hidden bg-white rounded-sm">
+            <div className="flex flex-col h-screen w-2/4 max-md:w-full overflow-hidden bg-white rounded-sm">
                 <div id='head' className="flex-none">
                     <div className="flex items-center justify-between px-4 py-3 bg-cyan-550">
                         <p className=" text-xl font-bold">{title}</p>
@@ -43,12 +43,12 @@ const Modal = ({ children, hasOptions, title }: Readonly<{ children?: ReactNode;
                         </div>
                     )}
                 </div>
-                <div id="body" className=" h-full mb-10 overflow-auto bg-white sm:rounded-xl md:col-span-2">
+                <div id="body" className="px-6 py-4 overflow-y-auto flex-grow">
 
                     {children}
                     <DynamicForm items={formData} />
                 </div>
-                <div id="footer" className="fixed bottom-0 flex-none flex h-16 w-2/4 items-center justify-start gap-3 border-t px-8 bg-white">
+                <div id="footer" className=" bottom-0 flex-none flex h-16 w-full items-center justify-start gap-3 border-t px-8 bg-white">
                     <button className="buttonStyles bg-red-650">Save</button>
                     <button onClick={() => navigate(-1)} className="buttonStyles text-black bg-zinc-100 border-stone-300 ">Cancel</button>
                 </div>
