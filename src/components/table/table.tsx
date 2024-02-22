@@ -64,22 +64,24 @@ export function Table({
     })
 
     return (
-        <div className="flex h-fit w-full flex-col items-center overscroll-none">
-            <div className="relative w-full overscroll-none pb-3 ">
-                <div className="table-container h-full overflow-x-auto overscroll-auto">
-                    <table className="w-full table-auto text-left text-[13px] text-gray-500 ">
+        <div className="flex h-full w-full flex-col items-center overscroll-none">
+            <div className="relative w-full ">
+                <div className="table-container flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 230px)" }}>
+                    {/* Table with dynamic height */}
+                    <table className="w-full table-auto text-left text-[13px] text-gray-500">
                         {tableHeader}
                         {tableBody}
                     </table>
                 </div>
             </div>
-            <div className="!mb-10 flex w-full flex-row-reverse items-end">
+            <div className="mb-10 flex w-full flex-row-reverse items-end">
                 <Pagination
                     currentPage={0}
                     totalPages={0}
-                    onPageChange={() => {}}
+                    onPageChange={() => { }}
                 />
             </div>
         </div>
+
     )
 }
