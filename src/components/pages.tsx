@@ -19,7 +19,8 @@ export default function Pages({ children }: Readonly<PageProps>) {
         <div className="flex h-full ">
             {
                 <div className={` flex-1 min-w-96 w-full`}>
-                    <div className="max flex h-16 w-full items-center justify-between space-x-4 rounded-sm  border-y border-r">
+                    <div className="flex h-16 md:h-20 items-center max-sm:gap-9 sm:justify-between rounded-sm border-y border-r">
+
                         {Header}
                     </div>
                     {Body}
