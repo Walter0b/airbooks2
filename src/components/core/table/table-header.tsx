@@ -1,15 +1,15 @@
 import ShowButton from '@components/core/table/item/show-button'
 import TableOptions from '@components/core/table/item/table.option'
-import { TableOptionsInterface } from '@utils/models/interface/table'
+import { TableOptionsType } from '@utils/models/interface/table'
 
 export default function Header({
     dropdownOptions,
 }: Readonly<{
-    dropdownOptions: TableOptionsInterface
+    dropdownOptions: TableOptionsType
 }>) {
     return (
         <>
-            <div 
+            <div
                 id="table-left-menu-option"
                 aria-label="table left menu option"
                 className="ml-4"

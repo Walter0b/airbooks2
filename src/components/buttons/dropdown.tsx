@@ -1,4 +1,4 @@
-import { DropdownItems } from '@utils/models/interface/table'
+import { DropdownItemType } from '@utils/models/interface/table'
 import React from 'react'
 
 export function Dropdown({
@@ -9,22 +9,22 @@ export function Dropdown({
     size,
     setSelectedOption,
 }: Readonly<{
-    dropdownOptions?: DropdownItems[]
+    dropdownOptions?: DropdownItemType[]
     className?: string
     titles?: string
     text?: string
-    size?: number  | string
+    size?: number | string
     setSelectedOption?: (title: string) => void
 }>) {
     const dropdownClassName = `${text} text-start block px-4 py-1 w-full text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`
 
-    const handleItemClick = (item: DropdownItems, event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleItemClick = (item: DropdownItemType, event: React.MouseEvent<HTMLButtonElement>) => {
 
         event.preventDefault();
         if (item?.url) {
             window.location.href = item.url
-        } else if (item?.onclick) {
-            item.onclick()
+        } else if (item?.onClick) {
+            item.onClick()
         }
 
         item?.hasMergeTitle && setSelectedOption?.(item.label)
@@ -34,13 +34,13 @@ export function Dropdown({
         <div
             className={`${className} absolute z-10 w-${size} origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
         >
-            {dropdownOptions?.map((item: DropdownItems, index: number) => (
+            {dropdownOptions?.map((item: DropdownItemType, index: number) => (
                 <React.Fragment key={item.label}>
                     {index > 0 &&
                         dropdownOptions[index - 1].group !== item.group && (
                             <hr className=" border-gray-300" />
                         )}
-                    {!item.url && !item.onclick && !item.value ? (
+                    {!item.url && !item.onClick && !item.value ? (
                         <div
                             className={`${titles} pointer-events-none select-none uppercase`}
                         >
@@ -49,7 +49,7 @@ export function Dropdown({
                     ) : (
                         <button
                             key={item.label}
-                            onClick={(event) => handleItemClick(item, event)} 
+                            onClick={(event) => handleItemClick(item, event)}
                             className={`${dropdownClassName}`}
                         >
                             {item.label}

@@ -1,4 +1,4 @@
-import { TableOptionsInterface } from '@utils/models/interface/table'
+import { TableOptionsType } from '@utils/models/interface/table'
 
 const show = {
     title: 'Travelers',
@@ -96,7 +96,7 @@ const more = [
         group: 3,
     },
 ]
-export const tableOptions: TableOptionsInterface = {
+export const tableOptions: TableOptionsType = {
     action,
     sort,
     show,

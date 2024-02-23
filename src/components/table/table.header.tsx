@@ -1,8 +1,8 @@
-import { TableHeaderProps, Column } from '@utils/models/interface/table'
+import { TableHeaderType, TableColumnType } from '@utils/models/interface/table'
 import React from 'react'
 import Checkboxes from './table.checkbox'
 
-export const TableHeader: React.FC<TableHeaderProps> = ({
+export const TableHeader: React.FC<TableHeaderType> = ({
     columns,
     isCheckedAll,
     handleCheckboxAllChange,
@@ -20,7 +20,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
                         onChange={handleCheckboxAllChange}
                     />
                 )}
-                {columns?.map((column: Column) => (
+                {columns?.map((column: TableColumnType) => (
                     <th
                         key={column.key}
                         scope="col"

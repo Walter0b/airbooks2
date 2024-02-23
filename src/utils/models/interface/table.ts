@@ -1,95 +1,119 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode } from 'react'
-export interface Navigation {
-    name: string
-    href?: string
-    count?: string
-    default?: boolean
-    group?: number
-    current?: boolean
-    options?: SubItem[]
-    icon?: React.FC<{ className: string }>
-    className?: string
-    button?: boolean
+import { ReactNode } from 'react';
+
+// Interface for Sidebar item
+export interface SidebarItemType {
+    label: string;
+    href?: string;
+    count?: string;
+    isDefault?: boolean;
+    group?: number;
+    isActive?: boolean;
+    options?: SubItemType[];
+    icon?: React.FC<{ className: string }>;
+    className?: string;
+    isButton?: boolean;
 }
 
-interface SubItem {
-    option: string
-    href: string
-    current?: boolean
+// Interface for sub navigation item
+interface SubItemType {
+    label: string;
+    href: string;
+    isActive?: boolean;
 }
 
-export interface Column {
-    key: string
-    label: string
+// Interface for table column
+export interface TableColumnType {
+    key: string;
+    label: string;
 }
 
-export interface CheckboxProps {
-    hasCheckbox?: boolean
-    isCheckedAll?: boolean
-    setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void
-}
-export interface ItemDetailsProps {
-    children: ReactNode
+// Interface for checkbox 
+export interface CheckboxType {
+    hasCheckbox?: boolean;
+    isCheckedAll: boolean;
+    setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void;
 }
 
-export interface DataTableProps<T> {
-    data: T[]
-    columns: Column[]
-    children?: ReactNode
+// Interface for item details component 
+export interface ItemDetailsType {
+    children: ReactNode;
 }
 
-export interface TableHeaderProps extends CheckboxProps {
-    columns?: Column[]
-    handleCheckboxAllChange?: () => void
+// Interface for data table 
+export interface DataTableType {
+    data: TableDataType;
+    columns: TableColumnType[];
+    children?: ReactNode;
 }
 
-export interface TableBodyProps<T> extends CheckboxProps {
-    data?: T[]
-    columns?: Column[]
-    className?: string
-    checkedItems?: Record<number, boolean>
-    handleCheckboxChange?: (idex: number) => void
-    onClickHandler?: () => void
+// Interface for table header 
+export interface TableHeaderType extends CheckboxType {
+    columns?: TableColumnType[];
+    handleCheckboxAllChange: () => void;
 }
 
-export interface DropdownItems {
-    label: string
-    value?: string
-    url?: string
-    onclick?: () => void
-    group?: number
-    hasMergeTitle?: boolean
-}
-export interface ShowTableOptions {
-    title: string
-    items: DropdownItems[]
-}
-export interface TableOptionsInterface {
-    action: DropdownItems[]
-    more: DropdownItems[]
-    sort: DropdownItems[]
-    show: ShowTableOptions
+// Interface for table body 
+export interface TableBodyType extends CheckboxType {
+    data?: TableDataType[];
+    columns?: TableColumnType[];
+    className?: string;
+    checkedItems?: Record<number, boolean>;
+    handleCheckboxChange?: (index: number) => void;
+    onClickHandler?: () => void;
 }
 
-export interface TableItemProps extends CheckboxProps {
-    data: any[]
-    columns: Column[]
-    children: ReactNode
-    onClickHandler?: (value: string) => void
-    onCheckboxChange?: (value: string) => void
-}
-export interface NavComponentProps {
-    item: Navigation
-    isOpen?: boolean,
-}
-export interface PaginationProps {
-    currentPage: number
-    totalPages: number
-    className?: string
-    onPageChange: (page: number) => void
+// Interface for dropdown items
+export interface DropdownItemType {
+    label: string;
+    value?: string;
+    url?: string;
+    onClick?: () => void;
+    group?: number;
+    hasMergeTitle?: boolean;
 }
 
-export interface NavLinksProps extends NavComponentProps { }
+// Interface for show table options
+export interface ShowTableOptionsType {
+    title: string;
+    items: DropdownItemType[];
+}
 
-export interface ButtonsProps extends NavComponentProps { }
+// Interface for table options
+export interface TableOptionsType {
+    action: DropdownItemType[];
+    more: DropdownItemType[];
+    sort: DropdownItemType[];
+    show: ShowTableOptionsType;
+}
+export interface TableDataType {
+    id: number;
+    [key: string]: string | number;
+}
+// Interface for table item 
+export interface TableItemType extends CheckboxType {
+    data: TableDataType[]
+    columns: TableColumnType[];
+    children: ReactNode;
+    onClickHandler?: (value: string) => void;
+    onCheckboxChange?: (value: string) => void;
+}
+
+// Interface for navigation component 
+export interface NavComponentType {
+    item: SidebarItemType;
+    isOpen?: boolean;
+}
+
+// Interface for pagination 
+export interface PaginationType {
+    currentPage: number;
+    totalPages: number;
+    className?: string;
+    onPageChange: (page: number) => void;
+}
+
+// Interface for nav links 
+export interface NavLinksType extends NavComponentType { }
+
+// Interface for buttons 
+export interface ButtonsType extends NavComponentType { }

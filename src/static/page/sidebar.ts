@@ -7,9 +7,9 @@ import { ShoppingCartIcon } from '@assets/svg/shoppingCart'
 import { TachometerIcon } from '@assets/svg/tachometer'
 import { UserIcon } from '@assets/svg/user'
 import { UsersIcon } from '@assets/svg/users'
-import { Navigation } from '@utils/models/interface/table'
+import { SidebarItemType } from '@utils/models/interface/table'
 
-export const coreNavigation : Navigation[] = [
+export const coreNavigation: SidebarItemType[] = [
     {
         name: 'Dashboard',
         href: 'dashboard',
@@ -101,7 +101,7 @@ export const coreNavigation : Navigation[] = [
     },
 ]
 
-export const reportNavigation: Navigation[] = [
+export const reportNavigation: SidebarItemType[] = [
     {
         name: 'Business Overview',
         options: [

@@ -1,10 +1,10 @@
 import SideBar from './sidebar/sidebar'
 import Header from './header/header'
 import { Outlet } from 'react-router-dom'
-import { Navigation } from '@utils/models/interface/table'
+import { SidebarItemType } from '@utils/models/interface/table'
 
 
-function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {
+function Layout({ sidebar }: Readonly<{ sidebar: SidebarItemType[] }>) {
 
 
     return (
@@ -26,7 +26,7 @@ function Layout({ sidebar }: Readonly<{ sidebar: Navigation[] }>) {
                     </main>
                 </div>
             </div>
-    
+
         </div>
     )
 }

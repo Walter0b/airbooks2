@@ -1,14 +1,14 @@
 import { ArrowIcon } from '@assets/svg/arrow'
 import { ReactNode, useState, useEffect, useRef } from 'react'
-import { ShowTableOptions } from '@utils/models/interface/table'
 import { getCmpByAttr } from '@utils/functions/action'
+import { ShowTableOptionsType } from '@utils/models/interface/table'
 
 interface ButtonInterface {
     children: ReactNode
     buttonClassName?: string
     arrowClassName?: string
     hasDropdownIcon?: boolean
-    onClick?: (item?: ShowTableOptions) => void
+    onClick?: (item?: ShowTableOptionsType) => void
     className?: string
 }
 
@@ -73,13 +73,13 @@ export default function Buttons({
                 </button>
             </div>
             {isOpen && (
-                <div
+                <button
                     onClick={
                         dropdown ? handleToggleDropdown : () => onClick?.()
                     }
                 >
                     {dropdown}
-                </div>
+                </button>
             )}
         </div>
     )

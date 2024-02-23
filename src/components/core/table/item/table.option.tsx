@@ -5,13 +5,13 @@ import { ArrowIcon } from '@assets/svg/arrow'
 import { Hamburger } from '@assets/svg/hamburger'
 import { LightBulbIcon } from '@assets/svg/lightbulb'
 import { Dropdown } from '../../../buttons/dropdown'
-import { TableOptionsInterface } from '@utils/models/interface/table'
+import { TableOptionsType } from '@utils/models/interface/table'
 import { useNavigate } from 'react-router-dom'
 
 export default function TableOptions({
     showTableOptions,
 }: Readonly<{
-    showTableOptions: TableOptionsInterface
+    showTableOptions: TableOptionsType
 }>) {
     const navigate = useNavigate()
     return (

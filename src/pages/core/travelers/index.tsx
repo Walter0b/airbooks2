@@ -13,6 +13,7 @@ import TravelerCompactList from '@components/core/travelers/compact-list'
 // import Modal from '@components/modal'
 
 export default function Travelers() {
+    //todo: add every specific components to their specific folder  
     return (
         <Pages>
             <Header data-slot="header" dropdownOptions={tableOptions} />

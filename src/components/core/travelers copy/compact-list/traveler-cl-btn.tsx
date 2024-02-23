@@ -2,12 +2,12 @@ import { PenIcon } from '@assets/svg/pen'
 import Buttons from '@components/buttons/buttons'
 import { Dropdown } from '@components/buttons/dropdown'
 import CloseButton from '@components/buttons/usefull-buttons'
-import { TableOptionsInterface } from '@utils/models/interface/table'
+import { TableOptionsType } from '@utils/models/interface/table'
 
 export default function TravelerCompactListHeader({
     dropdownOptions,
 }: Readonly<{
-    dropdownOptions: TableOptionsInterface
+    dropdownOptions: TableOptionsType
 }>) {
     return (
         <div className="flex w-full items-end">
@@ -34,7 +34,7 @@ export default function TravelerCompactListHeader({
                         dropdownOptions={dropdownOptions.more}
                     ></Dropdown>
                 </Buttons>
-                <CloseButton  />
+                <CloseButton />
             </div>
         </div>
     )

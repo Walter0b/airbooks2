@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Pagination from './pagination'
 import { getCmpByAttr } from '@utils/functions/action'
-import { TableItemProps } from '@utils/models/interface/table'
+import { TableItemType } from '@utils/models/interface/table'
 
 export function Table({
     children,
@@ -10,25 +10,25 @@ export function Table({
     columns,
     onClickHandler,
     hasCheckbox,
-}: Readonly<TableItemProps>) {
+}: Readonly<TableItemType>) {
     const [isCheckedAll, setIsCheckedAll] = useState<boolean>(false)
 
     const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>(
         {}
     )
     const handleCheckboxAllChange = () => {
-        const allChecked = !isCheckedAll
-        setIsCheckedAll(allChecked)
-        const updatedCheckedItems: Record<string, boolean> = data.reduce(
-            (updatedCheckedItems: any, _: any, index: any) => ({
+        const allChecked = !isCheckedAll;
+        setIsCheckedAll(allChecked);
+        const updatedCheckedItems: Record<number, boolean> = data.reduce(
+            (updatedCheckedItems, _, index) => ({
                 ...updatedCheckedItems,
                 [index]: allChecked,
             }),
             {}
-        )
+        );
 
-        setCheckedItems(updatedCheckedItems)
-    }
+        setCheckedItems(updatedCheckedItems);
+    };
 
     const handleCheckboxChange = (index: number) => {
         const updatedCheckedItems = {

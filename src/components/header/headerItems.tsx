@@ -97,7 +97,7 @@ export default function HeaderItems() {
                     <div className="flex">
                         <LanguageOption className="mr-10 mt-3" />
 
-                        {/* Navigation Options */}
+                        {/* SidebarItemType Options */}
                         <div className="flex ">
                             <button className="flex border-2 border-white p-5 ">
                                 <NotificationsIcon className="w-4 fill-white" />

@@ -27,6 +27,7 @@ import Bookings from '@components/compactlist/bookings'
 
 const appRouters = createBrowserRouter(
     createRoutesFromElements(
+        //Todo: remove modal and put it in the page definition 
         <Route>
             <Route path="/" element={<Navigate to="/core" replace={true} />} />
             <Route path="core" element={<Layout sidebar={coreNavigation} />}>

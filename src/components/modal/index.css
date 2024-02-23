@@ -5,6 +5,7 @@
 .actives {
     @apply border-cyan-550 text-black
 }
-.buttonStyles{
+
+.buttonStyles {
     @apply rounded border px-4 py-2
 }

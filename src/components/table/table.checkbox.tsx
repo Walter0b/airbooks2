@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export default function Checkboxes({
     checkboxState,
     onChange,
 }: Readonly<{
-    checkboxState: any
-    onChange: any
+    checkboxState: boolean
+    onChange: () => void
 }>) {
     return (
         <th scope="col w-1/3" className="p-4">

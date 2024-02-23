@@ -1,41 +1,57 @@
-import { ReactNode } from 'react'
-import { DropdownItems } from './interface/table'
+import { ReactNode } from 'react';
+import { DropdownItemType } from './interface/table';
 
+// Props for the layout component
 export interface LayoutProps {
-    children: ReactNode
+    children: ReactNode;
 }
 
-export interface Column {
-    id: string
-    label?: string
-    type: string
-    span: string
-    className?: string
-    options?: DropdownItems[]
-    autoComplete?: string
-    placeHolder?: string
+// Type for a single field in the dynamic form
+export interface FormFieldType {
+    [key: string]: string | DropdownItemType[];
 }
 
-export interface DynamicFormProps {
-    column?: string
-    color?: string
-    files: Column[]
-    cSpan?: string
+// Type for a group of fields in the dynamic form
+export interface FormTabType {
+    label?: string;
+    color?: string;
+    fields: FormFieldType[];
+    columnSpan?: string;
 }
 
-export interface FetchData {
-    [key: string]: string | null
+
+interface FormErrors {
+    [key: string]: { value: FormFieldType; error: string } | undefined;
+}
+// Type for a group of fields in the dynamic form Props
+export interface DynamicFormType {
+    item: FormTabType
+    values: FormTabType
+    error: FormErrors[]
+}
+// Type for the dynamic form data
+export interface FormDataProps {
+    label?: string;
+    tabs: FormTabType[];
 }
 
-export interface FetchDataOptions {
-    endpoint: string
-    method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
-    body?: object
+// Type for fetching data
+export interface FetchOptionsType {
+    endpoint: string;
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    body?: object;
 }
 
-export const navigation = [
+// Type for an item in the navigation
+export interface SidebarItemType {
+    name: string;
+    href: string;
+}
+
+// SidebarItemType items
+export const navigationItems: SidebarItemType[] = [
     { name: 'Product', href: '#' },
     { name: 'Features', href: '#' },
     { name: 'Marketplace', href: '#' },
     { name: 'Company', href: '#' },
-]
+];

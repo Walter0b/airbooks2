@@ -43,7 +43,7 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
             }
         >
             {({ isActive }) => {
-                item.current = isActive;
+                item.isActive = isActive;
 
                 return (
                     <div
@@ -83,7 +83,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
     useEffect(() => {
         // Calculate isAnySubItemCurrent whenever item changes
         SetIsAnySubItemCurrent(
-            item?.options?.some((subItem) => subItem.current) || false
+            item?.options?.some((subItem) => subItem.isActive) || false
         )
     }, [item])
 
@@ -114,7 +114,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
                 {item?.options?.map((subItem, subIndex) => (
                     <NavLink to={subItem.href} key={subIndex} id="navlink">
                         {({ isActive }) => {
-                            subItem.current = isActive
+                            subItem.isActive = isActive
                             return (
                                 <div
                                     className={` ${isActive && ' bg-slate-50'} group/option relative border-b border-dotted border-gray-300 p-2 pl-8 before:relative before:flex before:items-center before:pl-4 last:border-none hover:text-cyan-550`}
