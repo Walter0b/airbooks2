@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import { DropdownItemType, ShowTableOptionsType } from '@utils/models/interface/table'
-import { Dropdown } from '@components/buttons/dropdown'
 import Buttons from '@components/buttons/buttons'
 
 interface ShowButtonProps {
@@ -20,14 +19,13 @@ export default function ShowButton({
     )
 
     return (
-        <Buttons hasDropdownIcon={true} >
-            {Title}
-            <Dropdown
-                size={36}
-                data-slot="dropdown"
-                dropdownOptions={dropdownOptions.items as DropdownItemType[]}
-                setSelectedOption={setSelectedOption}
-            ></Dropdown>
+
+        < Buttons
+            hasDropdownIcon={true}
+            dropdownSize={36}
+            dropdownOptions={dropdownOptions.items as DropdownItemType[]}
+            setSelectedOption={setSelectedOption}
+        >{Title}
         </Buttons>
     )
 }

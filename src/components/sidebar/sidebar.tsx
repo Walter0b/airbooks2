@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import SideBarItems from './sidebaritem'
+import SideBarItems from './sidebar.item'
 import { SidebarItemType } from '@utils/models/interface/table'
-import NavOption from './navoption'
-import VerticalArrowIcon from './siderbar.reduce'
+import VerticalArrowIcon from './sidebar.reduce'
+import NavOption from './navOption'
 
 export default function SideBar({
     navigation,

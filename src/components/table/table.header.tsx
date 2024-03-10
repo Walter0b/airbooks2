@@ -2,7 +2,7 @@ import { TableHeaderType, TableColumnType } from '@utils/models/interface/table'
 import React from 'react'
 import Checkboxes from './table.checkbox'
 
-export const TableHeader: React.FC<TableHeaderType> = ({
+ const TableHeader: React.FC<TableHeaderType> = ({
     columns,
     isCheckedAll,
     handleCheckboxAllChange,
@@ -33,3 +33,4 @@ export const TableHeader: React.FC<TableHeaderType> = ({
         </thead>
     )
 }
+export default TableHeader

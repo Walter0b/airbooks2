@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
-import Pagination from './pagination'
 import { getCmpByAttr } from '@utils/functions/action'
 import { TableItemType } from '@utils/models/interface/table'
+import TableBody from './table.body'
 
-export function Table({
+export default function Table({
     children,
-    data,
+    tableData,
     columns,
     onClickHandler,
     hasCheckbox,
@@ -19,7 +19,7 @@ export function Table({
     const handleCheckboxAllChange = () => {
         const allChecked = !isCheckedAll;
         setIsCheckedAll(allChecked);
-        const updatedCheckedItems: Record<number, boolean> = data.reduce(
+        const updatedCheckedItems: Record<number, boolean> = tableData.data.reduce(
             (updatedCheckedItems, _, index) => ({
                 ...updatedCheckedItems,
                 [index]: allChecked,
@@ -40,7 +40,7 @@ export function Table({
         const allChecked = Object.values(updatedCheckedItems).every(
             (isChecked) => isChecked
         )
-        Object.values(updatedCheckedItems).length === data.length &&
+        Object.values(updatedCheckedItems).length === tableData.data.length &&
             setIsCheckedAll(allChecked)
     }
 
@@ -50,36 +50,33 @@ export function Table({
         props: { isCheckedAll, columns, handleCheckboxAllChange, hasCheckbox },
     })
 
-    const tableBody = getCmpByAttr({
+    const pagination = getCmpByAttr({
         children,
-        value: 'TableBody',
-        props: {
-            handleCheckboxChange,
-            checkedItems,
-            data,
-            columns,
-            hasCheckbox,
-            onClickHandler,
-        },
+        value: 'Pagination',
+        // props: { isCheckedAll, columns, handleCheckboxAllChange, hasCheckbox },
     })
+
 
     return (
         <div className="flex h-full w-full flex-col items-center overscroll-none">
             <div className="relative w-full ">
                 <div className="table-container flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 230px)" }}>
-                    {/* Table with dynamic height */}
+
                     <table className="w-full table-auto text-left text-[13px] text-gray-500">
                         {tableHeader}
-                        {tableBody}
+                        <TableBody handleCheckboxChange={handleCheckboxChange}
+                            checkedItems={checkedItems}
+                            tableData={tableData}
+                            columns={columns}
+                            hasCheckbox={hasCheckbox}
+                            onClickHandler={onClickHandler}
+                        />
                     </table>
                 </div>
             </div>
             <div className="mb-10 flex w-full flex-row-reverse items-end">
-                <Pagination
-                    currentPage={0}
-                    totalPages={0}
-                    onPageChange={() => { }}
-                />
+                {pagination}
+
             </div>
         </div>
 

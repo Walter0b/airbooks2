@@ -1,4 +1,4 @@
-import TravelerCompactListHeader from "@components/core/travelers/compact-list/traveler-cl-btn";
+import TravelerCompactListHeader from "@pages/core/travelers/compact-list/traveler-cl-btn";
 import { tableOptions } from "@static/travelers/table/dropdown";
 import { NavLink, Outlet } from "react-router-dom";
 import ItemDetailsBody from "./itemdetails";
@@ -6,7 +6,7 @@ import ItemDetailsBody from "./itemdetails";
 
 export default function ItemDetails() {
     return (
-       
+
         <ItemDetailsBody data-slot="itemDetails">
             <TravelerCompactListHeader
                 data-slot="compactListHeader"
@@ -16,20 +16,18 @@ export default function ItemDetails() {
                 <NavLink
                     to="snapshot"
                     className={({ isActive }) =>
-                    `${
-                        isActive ? "border-b-4" :' text-cyan-550'
-                    } border-cyan-550 px-10 py-1 text-black hover:border-b-4"`
-                }
+                        `${isActive ? "border-b-4" : ' text-cyan-550'
+                        } border-cyan-550 px-10 py-1 text-black hover:border-b-4"`
+                    }
                 >
                     Snapshot
                 </NavLink>
                 <NavLink
                     to="bookings"
                     className={({ isActive }) =>
-                    `${
-                        isActive ? "border-b-4" :' text-cyan-550'
-                    } border-cyan-550 px-10 py-1 text-black hover:border-b-4"`
-                }
+                        `${isActive ? "border-b-4" : ' text-cyan-550'
+                        } border-cyan-550 px-10 py-1 text-black hover:border-b-4"`
+                    }
                 >
                     Bookings
                 </NavLink>

@@ -1,10 +1,10 @@
 import { FormDataProps } from "@utils/models/structure";
 
-export const TravelersMainFields: FormDataProps[] = [
+export const TravelersInputFields: FormDataProps[] = [
     {
-
+        label: 'Main',
         tabs: [
-
+            // TODO: Case option
             {
                 label: 'Traveler Name',
                 fields: [
@@ -21,7 +21,7 @@ export const TravelersMainFields: FormDataProps[] = [
             },
             {
                 label: 'Display Name',
-                color: 'red-800',
+                required: true,
                 fields: [
                     {
                         id: 'DisplayName', type: 'select', span: 'sm:col-span-6'
@@ -33,7 +33,7 @@ export const TravelersMainFields: FormDataProps[] = [
                 label: 'Contact',
                 fields: [
                     {
-                        id: 'Email', label: 'Email', type: 'textarea', span: 'sm:col-span-6'
+                        id: 'Email', label: 'Email', type: 'email', span: 'sm:col-span-6'
                     }
                 ]
 
@@ -63,27 +63,14 @@ export const TravelersMainFields: FormDataProps[] = [
                     {
                         id: 'ExpiresDate', label: 'Expires On', type: 'tel', span: 'sm:col-span-2'
                     },
+
                     {
-                        id: 'CountryOfCitizenship', label: 'Country of Citizenship', type: 'select', span: 'sm:col-span-3'
+                        id: 'CountryOfCitizenship', label: 'Country of Citizenship', type: 'select', span: 'sm:col-span-3',
                     },
 
-
-                ]
-
-            },
-            {
-                columnSpan: 'sm:grid-cols-7',
-                fields: [
                     {
-                        id: 'CountryOfCitizenship', label: 'Country of Citizenship', type: 'select', span: 'sm:col-span-3'
+                        id: 'Empty1', type: 'space', span: 'sm:col-span-3',
                     },
-
-                ]
-
-            },
-            {
-                columnSpan: 'sm:grid-cols-7',
-                fields: [
 
                     {
                         id: 'DateOfBirth', label: 'Date Of Birth', type: 'date', span: 'sm:col-span-3'
@@ -92,7 +79,7 @@ export const TravelersMainFields: FormDataProps[] = [
                         id: 'MaritalStatus', label: 'Marital Status', type: 'select', span: 'sm:col-span-2'
                     },
                     {
-                        id: 'Gender', label: 'Gender', type: 'select', span: 'sm:col-span-2', options: [
+                        id: 'Gender', label: 'Gender', type: 'lookup', readOnly:true, span: 'sm:col-span-2', options: [
                             {
                                 label: 'Male',
                                 value: 'Male',
@@ -103,6 +90,9 @@ export const TravelersMainFields: FormDataProps[] = [
                                 value: 'Female'
                             },]
                     }
+
+
+
                 ]
 
             },
@@ -131,7 +121,7 @@ export const TravelersMainFields: FormDataProps[] = [
 
                 fields: [
                     {
-                        id: 'Zip-PostalCode', label: 'Zip/Postal Code', type: 'text', span: 'sm:col-span-3'
+                        id: 'ZipPostalCode', label: 'Zip/Postal Code', type: 'text', span: 'sm:col-span-3'
                     },
                     {
                         id: 'Country', label: 'Country', type: 'select', span: 'sm:col-span-3'

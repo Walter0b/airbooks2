@@ -8,33 +8,64 @@ export interface LayoutProps {
 
 // Type for a single field in the dynamic form
 export interface FormFieldType {
-    [key: string]: string | DropdownItemType[];
+    id: string;
+    span: string
+    label?: string;
+    type: string;
+    end?: boolean;
+    readOnly?: boolean;
+    autoComplete?: string
+    placeHolder?: string
+    options?: DropdownItemType[];
 }
 
 // Type for a group of fields in the dynamic form
 export interface FormTabType {
     label?: string;
-    color?: string;
-    fields: FormFieldType[];
+    required?: boolean;
+    fields?: FormFieldType[];
     columnSpan?: string;
+
+}
+// interface useFormStateProps {
+//     data: { [k: string]: { value: unknown; error: string; }; }
+// }
+export interface DynamicFormProps {
+    items: FormTabType[]
+    FieldsValue: { [k: string]: { value: unknown; error: string; } };
 }
 
 
-interface FormErrors {
+export interface FormErrors {
     [key: string]: { value: FormFieldType; error: string } | undefined;
 }
 // Type for a group of fields in the dynamic form Props
-export interface DynamicFormType {
-    item: FormTabType
-    values: FormTabType
-    error: FormErrors[]
+
+export type FieldComponent = (field: FormFieldType, values: FormFieldType) => JSX.Element;
+
+type FieldsValue = {
+    [k: string]: { value: unknown; error: string };
+  }
+
+export interface FieldComponents {
+    [key: string]: FieldComponent;
 }
+
 // Type for the dynamic form data
 export interface FormDataProps {
-    label?: string;
+    label: string;
     tabs: FormTabType[];
 }
 
+export interface Props{
+    field: FormFieldType;
+    FieldsValue: FieldsValue;
+  
+}
+export interface TabsProps {
+    formData: FormDataProps[]
+    setFormData: (newValue: FormTabType[]) => void;
+}
 // Type for fetching data
 export interface FetchOptionsType {
     endpoint: string;

@@ -30,7 +30,7 @@ export interface TableColumnType {
 // Interface for checkbox 
 export interface CheckboxType {
     hasCheckbox?: boolean;
-    isCheckedAll: boolean;
+    isCheckedAll?: boolean;
     setCheckedAll?: (newValue: boolean | ((prev: boolean) => boolean)) => void;
 }
 
@@ -41,7 +41,7 @@ export interface ItemDetailsType {
 
 // Interface for data table 
 export interface DataTableType {
-    data: TableDataType;
+    data: TravelersDataType;
     columns: TableColumnType[];
     children?: ReactNode;
 }
@@ -49,12 +49,12 @@ export interface DataTableType {
 // Interface for table header 
 export interface TableHeaderType extends CheckboxType {
     columns?: TableColumnType[];
-    handleCheckboxAllChange: () => void;
+    handleCheckboxAllChange?: () => void;
 }
 
 // Interface for table body 
 export interface TableBodyType extends CheckboxType {
-    data?: TableDataType[];
+    tableData?: TravelersDataType;
     columns?: TableColumnType[];
     className?: string;
     checkedItems?: Record<number, boolean>;
@@ -85,13 +85,22 @@ export interface TableOptionsType {
     sort: DropdownItemType[];
     show: ShowTableOptionsType;
 }
-export interface TableDataType {
-    id: number;
-    [key: string]: string | number;
+export interface ResponseDataType {
+    id: number,
+    [key: string]: string | number | JSX.Element;
+}
+
+export interface TravelersDataType {
+    data: ResponseDataType[]
+    totalItems: number,
+    pageSize: number,
+    currentPage: number,
+    totalPages: number
+
 }
 // Interface for table item 
 export interface TableItemType extends CheckboxType {
-    data: TableDataType[]
+    tableData?: TravelersDataType
     columns: TableColumnType[];
     children: ReactNode;
     onClickHandler?: (value: string) => void;
@@ -99,21 +108,20 @@ export interface TableItemType extends CheckboxType {
 }
 
 // Interface for navigation component 
-export interface NavComponentType {
+export interface NavComponentProps {
     item: SidebarItemType;
     isOpen?: boolean;
 }
 
 // Interface for pagination 
-export interface PaginationType {
-    currentPage: number;
-    totalPages: number;
+export interface PaginationPropsType {
+    tableData: TravelersDataType
     className?: string;
     onPageChange: (page: number) => void;
 }
 
 // Interface for nav links 
-export interface NavLinksType extends NavComponentType { }
+export interface NavLinksType extends NavComponentProps { }
 
 // Interface for buttons 
-export interface ButtonsType extends NavComponentType { }
+export interface ButtonsType extends NavComponentProps { }

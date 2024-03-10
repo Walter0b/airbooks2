@@ -1,32 +1,32 @@
-import './index.css'
-import { FormTabType } from '@utils/models/structure'
+import './modal.css'
+import { DynamicFormProps } from '@utils/models/structure'
 import React from 'react'
 import fieldsCompents from './formInputBuilder'
 
-export default function DynamicForm({ items, values, errors }: Readonly<{ items: FormTabType[], }>) {
+export default function DynamicForm({ items, FieldsValue }: Readonly<DynamicFormProps>) {
 
-    console.log(fieldsCompents)
     return (
 
-        <form>
+        <div>
 
             {items.map((item, index) => (
                 <React.Fragment key={index}>
                     <div className="flex content-center text-black ">
                         <div
-                            className={`mt-9 w-1/6 ${!item.column && 'invisible'} font-medium text-${item?.color}`}
+                            className={`mt-9 w-1/6 ${!item.label && 'invisible'} font-medium ${item?.required && 'text-red-800'}`}
                         >
                             {' '}
-                            {item.column}
+                            {item.label}
                         </div>
                         <div
-                            className={`grid w-4/5 max-w-2xl grid-cols-1 gap-x-4 gap-y-2 dark:text-white ${item.cSpan ? item.cSpan : 'sm:grid-cols-6'} `}
+                            className={`grid w-4/5 max-w-2xl grid-cols-1 gap-x-4 gap-y-2 dark:text-white ${item.columnSpan ? item.columnSpan : 'sm:grid-cols-6'} `}
                         >
-                            {item.fields.map((field) => {
+                            {item?.fields?.map((field) => {
                                 return (
+
                                     <div
                                         key={field.id}
-                                        className={field.span}
+                                        className={`${field.span} ${field.type === 'space' && 'invisible'} `}
                                     >
                                         <label
                                             htmlFor={field.id}
@@ -34,10 +34,11 @@ export default function DynamicForm({ items, values, errors }: Readonly<{ items:
                                         >
                                             {field.label}
                                         </label>
+
                                         <div
-                                            className={`${field.label} ${!field.label && 'mt-7'} h-8`}
+                                            className={`${!field.label ? 'mt-7 ' : ''}h-8`}
                                         >
-                                            {fieldsCompents[field.type](field, values, errors)}
+                                            {fieldsCompents[field?.type](field, FieldsValue)}
 
                                         </div>
                                     </div>
@@ -47,7 +48,7 @@ export default function DynamicForm({ items, values, errors }: Readonly<{ items:
                     </div>
                 </React.Fragment>
             ))}
-        </form>
+        </div>
 
     )
 }

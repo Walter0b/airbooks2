@@ -6,7 +6,7 @@ export default function Body({
     children,
 }: Readonly<BodyProps>) {
     const { id } = useParams();
-    
+
     const Table = getCmpByAttr({
         children,
         value: 'table',
@@ -16,7 +16,7 @@ export default function Body({
         children,
         value: 'compactList',
     })
-    
+
     return (
         <div className="h-full w-full flex overflow-auto border">
             {id ? CompactList : Table}
