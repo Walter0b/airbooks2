@@ -1,15 +1,15 @@
 import Pagination from '@components/table/pagination'
-import { TravelerCompactListInterface } from '@utils/mock/data/travelers/table'
+import { TravelersDataType } from '@utils/models/interface/table'
 import { NavLink, useParams } from 'react-router-dom'
 
 export default function TravelerCompactList({
-    data,
-}: Readonly<{ data: TravelerCompactListInterface[] }>) {
+    tableData,
+}: Readonly<{ tableData?: TravelersDataType }>) {
     const currentID = parseInt(useParams().id as string, 10)
     return (
         <div className='w-full'>
             <ul className="hidScrollbar flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 220px)" }}>
-                {data?.map((item) => (
+                {tableData?.data?.map((item) => (
                     <NavLink
                         to={item.id.toString()}
                         key={item.id}

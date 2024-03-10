@@ -1,9 +1,9 @@
 import { getCmpByAttr } from '@utils/functions/action'
-import { ItemDetailsProps } from '@utils/models/interface/table'
+import { ItemDetailsType } from '@utils/models/interface/table'
 
 export default function ItemDetailsBody({
     children,
-}: Readonly<ItemDetailsProps>) {
+}: Readonly<ItemDetailsType>) {
    
     const CompactListHeader = getCmpByAttr({
         children,

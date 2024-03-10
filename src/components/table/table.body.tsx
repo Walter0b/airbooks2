@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Checkboxes from './table.checkbox';
-import { TableBodyProps } from '@utils/models/interface/table';
+import { TableBodyType, ResponseDataType } from '@utils/models/interface/table';
 import { useNavigate } from 'react-router-dom';
 
-export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
-    data,
+const TableBody: React.FC<TableBodyType> = ({
+    tableData,
     columns,
     checkedItems,
     hasCheckbox,
     handleCheckboxChange,
     className,
-}: TableBodyProps<Record<string, unknown>>) => {
+}) => {
     const navigate = useNavigate();
     const handleRowClick = (
         event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
-        id: number
+        id: number | string
     ) => {
         if (!(event.target instanceof HTMLInputElement)) {
             navigate(`${id}`);
@@ -24,7 +24,7 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
 
     return (
         <tbody>
-            {data?.map((item: Record<string, any>, index: number) => (
+            {tableData?.data?.map((item: ResponseDataType, index: number) => (
                 <tr
                     key={index}
                     onClick={(event) => handleRowClick(event, item.id)}
@@ -32,7 +32,7 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
                 >
                     {hasCheckbox && (
                         <Checkboxes
-                            checkboxState={checkedItems?.[index]}
+                            checkboxState={!!checkedItems?.[index]}
                             onChange={() => handleCheckboxChange?.(index)}
                         />
                     )}
@@ -49,3 +49,4 @@ export const TableBody: React.FC<TableBodyProps<Record<string, unknown>>> = ({
         </tbody>
     );
 };
+export default TableBody;

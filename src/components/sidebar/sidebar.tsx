@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import SideBarItems from './sidebaritem'
-import { Navigation } from '@utils/models/interface/table'
-import NavOption from './navoption'
-import VerticalArrowIcon from './siderbar.reduce'
+import SideBarItems from './sidebar.item'
+import { SidebarItemType } from '@utils/models/interface/table'
+import VerticalArrowIcon from './sidebar.reduce'
+import NavOption from './navOption'
 
 export default function SideBar({
     navigation,
-}: Readonly<{ navigation: Navigation[] }>) {
+}: Readonly<{ navigation: SidebarItemType[] }>) {
 
     const [isCompact, setIsCompact] = useState<boolean>(false)
     return (

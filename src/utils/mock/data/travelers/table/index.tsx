@@ -1,115 +1,122 @@
 import { ClockIcon } from '@assets/svg/clock'
+import { TravelersDataType } from '@utils/models/interface/table'
 
-export const travelersData = [
-    {
-        id: 110000000085748,
-        name: 'ACHAMYELEH / DEBELA MR',
-        mobilePhone: '+27 351 191753',
-        nationality: 'ETHIOPIA',
-        travelStatus: 'On Trip',
-        events: <ClockIcon className="w-3 fill-gray-500" />,
-        income: '270,695.36',
-    },
-    {
-        id: 110000000085742,
-        name: 'SMITH / JOHN',
-        mobilePhone: '+1 123 456789',
-        nationality: 'UNITED STATES',
-        travelStatus: 'Planning',
-        events: '',
-        income: '120,000.00',
-    },
-    {
-        id: 110000000085741,
-        name: 'KUMAR / PRIYA',
-        mobilePhone: '+91 9876543210',
-        nationality: 'INDIA',
-        travelStatus: 'On Trip',
-        events: < ClockIcon className="w-3 fill-gray-500" />,
-        income: '150,000.50',
-    },
-    {
-        id: 110000000085743,
-        name: 'GARCIA / MARIA',
-        mobilePhone: '+34 123456789',
-        nationality: 'SPAIN',
-        travelStatus: 'Completed',
-        events: '',
-        income: '80,500.75',
-    },
-    {
-        id: 110000000085745,
-        name: 'ACHAMYELEH / DEBELA MR',
-        mobilePhone: '+27 351 191753',
-        nationality: 'ETHIOPIA',
-        travelStatus: 'On Trip',
-        events: < ClockIcon className="w-3 fill-gray-500" />,
-        income: '270,695.36',
-    },
-    {
-        id: 110000000085740,
-        name: 'JONES / EMMA',
-        mobilePhone: '+44 20 1234 5678',
-        nationality: 'UNITED KINGDOM',
-        travelStatus: 'Planning',
-        events: < ClockIcon className="w-3 fill-gray-500" />,
-        income: '180,000.00',
-    },
-    {
-        id: 110000000085248,
-        name: 'LI / JING',
-        mobilePhone: '+86 10 1234 5678',
-        nationality: 'CHINA',
-        travelStatus: 'On Trip',
-        events: '',
-        income: '200,500.25',
-    },
-    {
-        id: 110000000085348,
-        name: 'MÜLLER / LUKAS',
-        mobilePhone: '+49 30 1234 5678',
-        nationality: 'GERMANY',
-        travelStatus: 'Completed',
-        events: < ClockIcon className="w-3 fill-gray-500" />,
-        income: '120,300.75',
-    },
-    {
-        id: 110000000084238,
-        name: 'ITO / YUKI',
-        mobilePhone: '+81 3 1234 5678',
-        nationality: 'JAPAN',
-        travelStatus: 'Planning',
-        events: '',
-        income: '150,200.50',
-    },
-    {
-        id: 110000000025348,
-        name: 'ALVAREZ / CARLOS',
-        mobilePhone: '+34 987654321',
-        nationality: 'SPAIN',
-        travelStatus: 'On Trip',
-        events: < ClockIcon className="w-3 fill-gray-500" />,
-        income: '90,600.20',
-    },
-    {
-        id: 110000000034748,
-        name: 'KOWALSKI / ANNA',
-        mobilePhone: '+48 123 456 789',
-        nationality: 'POLAND',
-        travelStatus: 'Planning',
-        events: '',
-        income: '130,400.60',
-    },
-    {
-        id: 110000000082741,
-        name: 'CHEN / YUN',
-        mobilePhone: '+86 20 1234 5678',
-        nationality: 'CHINA',
-        travelStatus: 'On Trip',
-        events: < ClockIcon className="w-3 fill-gray-500" />,
-        income: '250,800.90',
-    },
-]
+export const travelersData: TravelersDataType = {
+    data: [
+        {
+            id: 110000000085748,
+            name: 'ACHAMYELEH / DEBELA MR',
+            mobilePhone: '+27 351 191753',
+            nationality: 'ETHIOPIA',
+            travelStatus: 'On Trip',
+            events: <ClockIcon className="w-3 fill-gray-500" />,
+            income: '270,695.36',
+        },
+        {
+            id: 110000000085742,
+            name: 'SMITH / JOHN',
+            mobilePhone: '+1 123 456789',
+            nationality: 'UNITED STATES',
+            travelStatus: 'Planning',
+            events: '',
+            income: '120,000.00',
+        },
+        {
+            id: 110000000085741,
+            name: 'KUMAR / PRIYA',
+            mobilePhone: '+91 9876543210',
+            nationality: 'INDIA',
+            travelStatus: 'On Trip',
+            events: < ClockIcon className="w-3 fill-gray-500" />,
+            income: '150,000.50',
+        },
+        {
+            id: 110000000085743,
+            name: 'GARCIA / MARIA',
+            mobilePhone: '+34 123456789',
+            nationality: 'SPAIN',
+            travelStatus: 'Completed',
+            events: '',
+            income: '80,500.75',
+        },
+        {
+            id: 110000000085745,
+            name: 'ACHAMYELEH / DEBELA MR',
+            mobilePhone: '+27 351 191753',
+            nationality: 'ETHIOPIA',
+            travelStatus: 'On Trip',
+            events: < ClockIcon className="w-3 fill-gray-500" />,
+            income: '270,695.36',
+        },
+        {
+            id: 110000000085740,
+            name: 'JONES / EMMA',
+            mobilePhone: '+44 20 1234 5678',
+            nationality: 'UNITED KINGDOM',
+            travelStatus: 'Planning',
+            events: < ClockIcon className="w-3 fill-gray-500" />,
+            income: '180,000.00',
+        },
+        {
+            id: 110000000085248,
+            name: 'LI / JING',
+            mobilePhone: '+86 10 1234 5678',
+            nationality: 'CHINA',
+            travelStatus: 'On Trip',
+            events: '',
+            income: '200,500.25',
+        },
+        {
+            id: 110000000085348,
+            name: 'MÜLLER / LUKAS',
+            mobilePhone: '+49 30 1234 5678',
+            nationality: 'GERMANY',
+            travelStatus: 'Completed',
+            events: < ClockIcon className="w-3 fill-gray-500" />,
+            income: '120,300.75',
+        },
+        {
+            id: 110000000084238,
+            name: 'ITO / YUKI',
+            mobilePhone: '+81 3 1234 5678',
+            nationality: 'JAPAN',
+            travelStatus: 'Planning',
+            events: '',
+            income: '150,200.50',
+        },
+        {
+            id: 110000000025348,
+            name: 'ALVAREZ / CARLOS',
+            mobilePhone: '+34 987654321',
+            nationality: 'SPAIN',
+            travelStatus: 'On Trip',
+            events: < ClockIcon className="w-3 fill-gray-500" />,
+            income: '90,600.20',
+        },
+        {
+            id: 110000000034748,
+            name: 'KOWALSKI / ANNA',
+            mobilePhone: '+48 123 456 789',
+            nationality: 'POLAND',
+            travelStatus: 'Planning',
+            events: '',
+            income: '130,400.60',
+        },
+        {
+            id: 110000000082741,
+            name: 'CHEN / YUN',
+            mobilePhone: '+86 20 1234 5678',
+            nationality: 'CHINA',
+            travelStatus: 'On Trip',
+            events: < ClockIcon className="w-3 fill-gray-500" />,
+            income: '250,800.90',
+        },
+    ],
+    totalItems: 80,
+    pageSize: 10,
+    currentPage: 1
+
+}
 
 export const travelersColumns = [
     { key: 'name', label: 'Traveler Name' },
@@ -261,14 +268,6 @@ interface MoneyInfo {
     amount: number
 }
 
-export interface TravelerCompactListInterface {
-    nationality: string
-    travelStatus: string
-    mobilePhone: string
-    name: string
-    id: number
-    income: string
-}
 export interface TravelerItemCompactListInterface {
     id: number
     item: number

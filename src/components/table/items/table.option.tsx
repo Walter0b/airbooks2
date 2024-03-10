@@ -1,17 +1,16 @@
 import { CrossIcon } from '@assets/svg/cross'
-import Buttons from '../../../buttons/buttons'
+import Buttons from '../../buttons/buttons'
 import { RotateIcon } from '@assets/svg/rotate'
 import { ArrowIcon } from '@assets/svg/arrow'
 import { Hamburger } from '@assets/svg/hamburger'
 import { LightBulbIcon } from '@assets/svg/lightbulb'
-import { Dropdown } from '../../../buttons/dropdown'
-import { TableOptionsInterface } from '@utils/models/interface/table'
+import { TableOptionsType } from '@utils/models/interface/table'
 import { useNavigate } from 'react-router-dom'
 
 export default function TableOptions({
     showTableOptions,
 }: Readonly<{
-    showTableOptions: TableOptionsInterface
+    showTableOptions: TableOptionsType
 }>) {
     const navigate = useNavigate()
     return (
@@ -37,32 +36,31 @@ export default function TableOptions({
                     />
                 </Buttons>
 
-                <Buttons className="flex h-full  items-center justify-center gap-[1px] border-[0.8px] border-grey-450 bg-gray-100 px-2">
+                <Buttons className="flex h-full  items-center justify-center gap-[1px] border-[0.8px] border-grey-450 bg-gray-100 px-2"
+                dropdownSize={56}
+                dropdownClassName="right-0 mt-2 w-44"
+                dropdownTitles="text-gray-400 font-medium text-xs first:mt-2 first:ml-2 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize"
+                dropdownText="text-start font-medium"
+                dropdownOptions={showTableOptions?.sort}
+                
+                >
                     <div data-slot="title">
                         <ArrowIcon className="w-2 rotate-180" />
                         <ArrowIcon className="mt-[-7px] w-2" />
                     </div>
-                    <Dropdown
-                        size={56}
-                        className="right-0 mt-2 w-44"
-                        titles="text-gray-400 font-medium text-xs first:mt-2 first:ml-2 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize"
-                        text="text-start font-medium"
-                        data-slot="dropdown"
-                        dropdownOptions={showTableOptions?.sort}
-                    ></Dropdown>
+                   
                 </Buttons>
 
-                <Buttons className="flex h-full items-center justify-center rounded-r border-[0.8px] border-grey-450 bg-gray-100 p-2">
+                <Buttons className="flex h-full items-center justify-center rounded-r border-[0.8px] border-grey-450 bg-gray-100 p-2"
+                 dropdownClassName="right-0 mt-2 w-fit"
+                 dropdownText="text-start whitespace-nowrap font-medium"
+                 dropdownOptions={showTableOptions?.action}
+                >
                     <Hamburger
                         data-slot="title"
                         className="w-3 fill-gray-700"
                     />
-                    <Dropdown
-                        className="right-0 mt-2 w-fit"
-                        text="text-start whitespace-nowrap font-medium"
-                        data-slot="dropdown"
-                        dropdownOptions={showTableOptions?.action}
-                    ></Dropdown>
+                    
                 </Buttons>
             </div>
 

@@ -1,17 +1,20 @@
-import { CrossIcon } from '@assets/svg/cross'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { CrossIcon } from '@assets/svg/cross';
+import { useNavigate } from 'react-router-dom';
 
 export default function CloseButton({
+    onClick,
     color = 'fill-black',
 }: Readonly<{
-    onClick?: () => void
-    color?: string
+    onClick?: () => void;
+    color?: string;
 }>) {
+    const navigate = useNavigate();
+
     const handleGoBack = () => {
-        navigate("../"); 
+        onClick ? onClick() : navigate("../");
     };
 
-    const navigate = useNavigate()
     return (
         <button type="button" onClick={handleGoBack}>
             <CrossIcon
@@ -20,5 +23,5 @@ export default function CloseButton({
                 className2="w-10"
             />
         </button>
-    )
+    );
 }

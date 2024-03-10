@@ -20,13 +20,14 @@ import Estimates from '@pages/core/estimates'
 import ProfitAndLoss from '@pages/report/business_overview/profit_and_loss'
 import BalanceSheet from '@pages/report/business_overview/balance_sheet'
 import Consultant from '@pages/report/sales/consultant'
-import ItemDetails from '@components/compactlist'
-import Modal from '@components/modal'
+import ItemDetails from '@components/compactlist/compactlist'
+
 import Snapshot from '@components/compactlist/snapshot'
 import Bookings from '@components/compactlist/bookings'
 
 const appRouters = createBrowserRouter(
     createRoutesFromElements(
+        //Todo: remove modal and put it in the page definition 
         <Route>
             <Route path="/" element={<Navigate to="/core" replace={true} />} />
             <Route path="core" element={<Layout sidebar={coreNavigation} />}>
@@ -38,7 +39,7 @@ const appRouters = createBrowserRouter(
                         <Route path="snapshot" element={<Snapshot />} />
                         <Route path="bookings" element={<Bookings />} />
                     </Route>
-                    <Route path="new" element={<Modal hasOptions={true} title={''} />} />
+
                 </Route>
                 <Route path="travel-items" element={<TravelItems />}>
                     <Route path=":id" element={<Customer />} />

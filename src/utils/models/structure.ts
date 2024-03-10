@@ -1,41 +1,88 @@
-import { ReactNode } from 'react'
-import { DropdownItems } from './interface/table'
+import { ReactNode } from 'react';
+import { DropdownItemType } from './interface/table';
 
+// Props for the layout component
 export interface LayoutProps {
-    children: ReactNode
+    children: ReactNode;
 }
 
-export interface Column {
-    id: string
-    label?: string
-    type: string
+// Type for a single field in the dynamic form
+export interface FormFieldType {
+    id: string;
     span: string
-    className?: string
-    options?: DropdownItems[]
+    label?: string;
+    type: string;
+    end?: boolean;
+    readOnly?: boolean;
     autoComplete?: string
     placeHolder?: string
+    options?: DropdownItemType[];
 }
 
+// Type for a group of fields in the dynamic form
+export interface FormTabType {
+    label?: string;
+    required?: boolean;
+    fields?: FormFieldType[];
+    columnSpan?: string;
+
+}
+// interface useFormStateProps {
+//     data: { [k: string]: { value: unknown; error: string; }; }
+// }
 export interface DynamicFormProps {
-    column?: string
-    color?: string
-    files: Column[]
-    cSpan?: string
+    items: FormTabType[]
+    FieldsValue: { [k: string]: { value: unknown; error: string; } };
 }
 
-export interface FetchData {
-    [key: string]: string | null
+
+export interface FormErrors {
+    [key: string]: { value: FormFieldType; error: string } | undefined;
+}
+// Type for a group of fields in the dynamic form Props
+
+export type FieldComponent = (field: FormFieldType, values: FormFieldType) => JSX.Element;
+
+type FieldsValue = {
+    [k: string]: { value: unknown; error: string };
+  }
+
+export interface FieldComponents {
+    [key: string]: FieldComponent;
 }
 
-export interface FetchDataOptions {
-    endpoint: string
-    method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
-    body?: object
+// Type for the dynamic form data
+export interface FormDataProps {
+    label: string;
+    tabs: FormTabType[];
 }
 
-export const navigation = [
+export interface Props{
+    field: FormFieldType;
+    FieldsValue: FieldsValue;
+  
+}
+export interface TabsProps {
+    formData: FormDataProps[]
+    setFormData: (newValue: FormTabType[]) => void;
+}
+// Type for fetching data
+export interface FetchOptionsType {
+    endpoint: string;
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    body?: object;
+}
+
+// Type for an item in the navigation
+export interface SidebarItemType {
+    name: string;
+    href: string;
+}
+
+// SidebarItemType items
+export const navigationItems: SidebarItemType[] = [
     { name: 'Product', href: '#' },
     { name: 'Features', href: '#' },
     { name: 'Marketplace', href: '#' },
     { name: 'Company', href: '#' },
-]
+];

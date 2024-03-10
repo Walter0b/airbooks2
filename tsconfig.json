@@ -15,8 +15,9 @@
         "jsx": "react-jsx",
         "paths": {
             "@components/*": ["./src/components/*"],
-            "@ui/*": ["./components/common/ui/*"],
+            "@hooks/*": ["./src/hooks/*"],
             "@pages/*": ["./src/pages/*"],
+            "@states/*": ["./src/states/*"],
             "@assets/*": ["./src/assets/*"],
             "@static/*": ["./src/static/*"],
             "@utils/*": ["./src/utils/*"],

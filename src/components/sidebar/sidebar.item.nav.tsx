@@ -2,35 +2,38 @@ import { ArrowIcon } from '@assets/svg/arrow'
 import { CircleIcon } from '@assets/svg/circle'
 import { CrossIcon } from '@assets/svg/cross'
 import { EmptyArrowIcon } from '@assets/svg/emptyarrow'
+import Modal from '@components/modal/modal'
+import useProxiedState from '@hooks/useProxiedState'
+import useSingleState from '@hooks/useSingleState'
 import {
-    NavLinksProps,
+    NavLinksType,
     NavComponentProps,
 } from '@utils/models/interface/table'
 import { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
-function Buttons() {
-    const navigate = useNavigate();
-    const handleClick = () => {
 
-        navigate('travelers/new')
-    }
+
+function Buttons({modalState}) {
+
     return (
         <button
-            onClick={() => handleClick()}
-            className=" group-hover:bg-gray-200  ml-[0.6px] group-[.peer\/compact]/compact:!hidden  h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550  text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
+            onClick={() => modalState.setValue(true)}
+            className="group-hover:bg-gray-200 ml-[0.6px] group-[.peer\/compact]/compact:!hidden h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550 text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
         >
             <CrossIcon
                 className="mr-px w-4 rotate-45 fill-gray-100"
                 className1="h-10"
                 className2="w-10"
             />
+
         </button>
-    )
+    );
 }
 
-function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
+
+function NavLinks({ item, isOpen }: Readonly<NavLinksType>) {
 
 
     return (
@@ -43,7 +46,7 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
             }
         >
             {({ isActive }) => {
-                item.current = isActive;
+                item.isActive = isActive;
 
                 return (
                     <div
@@ -58,7 +61,7 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
                         ) : (
                             <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
                         )}
-                        <span className={`${isOpen ? 'hidden' : 'sm:inline'}`}>{item.name}</span>
+                        <span className={`${isOpen ? 'hidden' : 'sm:inline'}`}>{item.label}</span>
 
 
                         {item.count && (
@@ -77,13 +80,13 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksProps>) {
 }
 
 
-function Accordion({ item }: Readonly<NavLinksProps>) {
+function Accordion({ item }: Readonly<NavLinksType>) {
     const [isOpen, setIsOpen] = useState(false)
     const [isAnySubItemCurrent, SetIsAnySubItemCurrent] = useState(false)
     useEffect(() => {
         // Calculate isAnySubItemCurrent whenever item changes
         SetIsAnySubItemCurrent(
-            item?.options?.some((subItem) => subItem.current) || false
+            item?.options?.some((subItem) => subItem.isActive) || false
         )
     }, [item])
 
@@ -101,7 +104,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
                     className={`${isAnySubItemCurrent ? 'text-white' : ' text-zinc-550 hover:text-cyan-550'} group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium leading-6`}
                     onClick={handleClick}
                 >
-                    {item.name}
+                    {item.label}
                     <EmptyArrowIcon
                         className={` ${isAnySubItemCurrent && '!fill-white'} duration-400 w-3  fill-zinc-550 transition-transform ease-in-out group-hover:fill-cyan-550 ${isOpen ? 'rotate-180' : ''}`}
                     />
@@ -114,7 +117,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
                 {item?.options?.map((subItem, subIndex) => (
                     <NavLink to={subItem.href} key={subIndex} id="navlink">
                         {({ isActive }) => {
-                            subItem.current = isActive
+                            subItem.isActive = isActive
                             return (
                                 <div
                                     className={` ${isActive && ' bg-slate-50'} group/option relative border-b border-dotted border-gray-300 p-2 pl-8 before:relative before:flex before:items-center before:pl-4 last:border-none hover:text-cyan-550`}
@@ -124,7 +127,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
                                         <ArrowIcon
                                             className={`invisible -ml-[1.1rem] w-[0.4rem] ${isOpen ? '-rotate-90 fill-cyan-550' : ''} ${isActive ? '!visible' : ''} group-hover/option:visible`}
                                         />
-                                        {subItem.option}
+                                        {subItem.label}
                                     </div>
                                 </div>
                             )
@@ -136,6 +139,7 @@ function Accordion({ item }: Readonly<NavLinksProps>) {
     )
 }
 export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
+    const modalState = useSingleState(false)
     return (
         <div className="group flex   w-full">
             {item.options?.length ? (
@@ -143,7 +147,8 @@ export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
             ) : (
                 <NavLinks item={item} isOpen={isOpen} />
             )}
-            {item.button && <Buttons />}
+            {item.isButton && <Buttons modalState={modalState} />}
+            {modalState.value && <Modal modalState={modalState} />}
         </div>
     )
 }

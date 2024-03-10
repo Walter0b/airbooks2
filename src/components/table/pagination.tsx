@@ -1,20 +1,22 @@
 import { ArrowIcon } from '@assets/svg/arrow'
-import { PaginationProps } from '@utils/models/interface/table'
+import { PaginationPropsType } from '@utils/models/interface/table'
 import React from 'react'
 
-const Pagination: React.FC<PaginationProps> = ({
-    currentPage,
-    totalPages,
+const Pagination: React.FC<PaginationPropsType> = ({
+    tableData,
     className,
     onPageChange,
 }) => {
     const gotoPage = (page: number) => {
-        if (page >= 1 && page <= totalPages) {
+        if (page >= 1 && page <= tableData.totalPages) {
             onPageChange(page)
         }
     }
 
-    const canPreviousPage = currentPage > 1
+
+    console.log("tableData", tableData)
+
+    const canPreviousPage = tableData?.currentPage > 1
 
     return (
         <div id="Pagination" className={className}>
@@ -35,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({
                 </div>
                 <div>
                     <button
-                        onClick={() => gotoPage(currentPage - 1)}
+                        onClick={() => gotoPage(tableData.currentPage - 1)}
                         disabled={!canPreviousPage}
                     >
                         <span className="sr-only">Previous</span>
@@ -46,7 +48,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
                 <div>
                     <button
-                        onClick={() => gotoPage(currentPage - 1)}
+                        onClick={() => gotoPage(tableData.currentPage - 1)}
                         disabled={!canPreviousPage}
                     >
                         <span className="sr-only">Previous</span>

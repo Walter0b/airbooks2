@@ -1,14 +1,13 @@
 import React from 'react'
-import { NavigationItem } from './sidebaritem.nav'
-import { Navigation } from '@utils/models/interface/table'
-import './index.css'
+import { NavigationItem } from './sidebar.item.nav'
+import { SidebarItemType } from '@utils/models/interface/table'
 
 export default function SideBarItems({
     navigation,
     isCompact,
-    
+
 }: Readonly<{
-    navigation: Navigation[], 
+    navigation: SidebarItemType[],
     isCompact: boolean,
 }>) {
 
@@ -16,8 +15,8 @@ export default function SideBarItems({
     return (
         <>
             <ul className={`  ${isCompact && ' w-12 peer/compact group/compact'} overflow-y-auto scroll-smooth focus:scroll-auto`}>
-                {navigation.map((item: Navigation, index: number) => (
-                    <React.Fragment key={item.name}>
+                {navigation.map((item: SidebarItemType, index: number) => (
+                    <React.Fragment key={item.label}>
                         {index > 0 &&
                             navigation[index - 1].group !== item.group && (
                                 <hr className=" border-gray-300" />

@@ -11,21 +11,17 @@ export default function LanguageOption({ className }: { className?: string }) {
     return (
         <div className="ml-auto flex mb-2 items-center">
             <Buttons
+                dropdownSize={56}
+                dropdownClassName="right-0"
+                dropdownText="!text-xs font-normal"
+                dropdownOptions={LanguageOptions}
+                setSelectedOption={setSelectedOption}
                 className={`${className} items-center hover:text-white`}
                 hasDropdownIcon={true}
-                arrowClassName="fill-white  "
-            >
+                arrowClassName="fill-white  " >
                 <div data-slot="title" className=" hover:text-white mr-2">
                     {selectedOption}
                 </div>
-                <Dropdown
-                    size={56}
-                    className="right-0"
-                    text="!text-xs font-normal"
-                    data-slot="dropdown"
-                    dropdownOptions={LanguageOptions}
-                    setSelectedOption={setSelectedOption}
-                ></Dropdown>
             </Buttons>
         </div>
     )
