@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavigationItem } from './sidebar.item.nav'
-import { SidebarItemType } from '@utils/models/interface/table'
+import { SidebarItemType } from '@/utils/models/interface/table'
 
 export default function SideBarItems({
     navigation,

@@ -1,5 +1,5 @@
 import './modal.css'
-import { DynamicFormProps } from '@utils/models/structure'
+import { DynamicFormProps } from '@/utils/models/structure'
 import React from 'react'
 import fieldsCompents from './formInputBuilder'
 

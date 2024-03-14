@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
-import { getCmpByAttr } from '@utils/functions/action'
-import { TableItemType } from '@utils/models/interface/table'
+import { getCmpByAttr } from '@/utils/functions/action'
+import { TableItemType } from '@/utils/models/interface/table'
 import TableBody from './table.body'
 
 export default function Table({
     children,
     tableData,
     columns,
-    onClickHandler,
     hasCheckbox,
 }: Readonly<TableItemType>) {
     const [isCheckedAll, setIsCheckedAll] = useState<boolean>(false)
@@ -19,7 +18,7 @@ export default function Table({
     const handleCheckboxAllChange = () => {
         const allChecked = !isCheckedAll;
         setIsCheckedAll(allChecked);
-        const updatedCheckedItems: Record<number, boolean> = tableData.data.reduce(
+        const updatedCheckedItems: any = tableData?.data.reduce(
             (updatedCheckedItems, _, index) => ({
                 ...updatedCheckedItems,
                 [index]: allChecked,
@@ -40,7 +39,7 @@ export default function Table({
         const allChecked = Object.values(updatedCheckedItems).every(
             (isChecked) => isChecked
         )
-        Object.values(updatedCheckedItems).length === tableData.data.length &&
+        Object.values(updatedCheckedItems).length === tableData?.data.length &&
             setIsCheckedAll(allChecked)
     }
 
@@ -69,7 +68,6 @@ export default function Table({
                             tableData={tableData}
                             columns={columns}
                             hasCheckbox={hasCheckbox}
-                            onClickHandler={onClickHandler}
                         />
                     </table>
                 </div>

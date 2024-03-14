@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function useSingleState(initialValue: any) {
     const [value, setValue] = useState(initialValue);
 
-    const setCustomValue = (newValue) => {
+    const setCustomValue = (newValue: any) => {
         setValue(newValue);
     };
 

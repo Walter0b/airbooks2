@@ -1,8 +1,8 @@
-import logo from '@assets/image/neema/logo/fa-logo.png'
-import { NotificationsIcon } from '@assets/svg/notificaitons'
-import { HelpIcon } from '@assets/svg/help'
-import { SettingsIcon } from '@assets/svg/settings'
-import { UserIcon } from '@assets/svg/user'
+import logo from '@/assets/image/neema/logo/fa-logo.png'
+import { NotificationsIcon } from '@/assets/svg/notificaitons'
+import { HelpIcon } from '@/assets/svg/help'
+import { SettingsIcon } from '@/assets/svg/settings'
+import { UserIcon } from '@/assets/svg/user'
 import LanguageOption from './languageOption'
 export default function HeaderItems() {
     return (

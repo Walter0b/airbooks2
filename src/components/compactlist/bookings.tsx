@@ -1,10 +1,9 @@
-import { travelersData } from "@utils/mock/data/travelers/table";
+import { travelersData } from "@/utils/mock/data/travelers/table";
 import { useParams } from "react-router-dom";
 
 export default function Bookings() {
     const currentID = parseInt(useParams().id as string, 10);
-    const user = travelersData.find(user => user?.id === currentID);
-
+    const user = travelersData.data.find((user: { id: number; }) => user?.id === currentID);
     return (
         <div className=" mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
             {user && (

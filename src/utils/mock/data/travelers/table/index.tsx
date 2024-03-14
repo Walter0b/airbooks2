@@ -1,7 +1,7 @@
-import { ClockIcon } from '@assets/svg/clock'
-import { TravelersDataType } from '@utils/models/interface/table'
+import { ClockIcon } from '@/assets/svg/clock'
 
-export const travelersData: TravelersDataType = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const travelersData: any = {
     data: [
         {
             id: 110000000085748,

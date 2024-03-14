@@ -1,22 +1,31 @@
-import Pagination from '@components/table/pagination'
-import { TravelersDataType } from '@utils/models/interface/table'
-import { NavLink, useParams } from 'react-router-dom'
+import Pagination from '@/components/table/pagination'
+import useSingleState from '@/hooks/useSingleState'
+import { TravelersDataType } from '@/utils/models/interface/table'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function TravelerCompactList({
     tableData,
 }: Readonly<{ tableData?: TravelersDataType }>) {
+    const page = useSingleState(0)
+    const perPage = useSingleState(0)
+
+    const navigate = useNavigate();
+    const handleClick = (location: number) => {
+        navigate(location);
+    }
+
     const currentID = parseInt(useParams().id as string, 10)
     return (
         <div className='w-full'>
             <ul className="hidScrollbar flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 220px)" }}>
                 {tableData?.data?.map((item) => (
-                    <NavLink
-                        to={item.id.toString()}
+                    <div
+                        onClick={() => handleClick(item.id)}
                         key={item.id}
                         className={`flex border-b p-2 hover:!bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
                     >
-                        <div className="px-2 py-1">
-                            <input type="checkbox" name="" id="" />
+                        <div className=" pointer-events-none px-2 py-1">
+                            <input className=' cursor-pointer pointer-events-auto ' type="checkbox" name="" id="" />
                         </div>
                         <div
                             key={item.id}
@@ -55,17 +64,14 @@ export default function TravelerCompactList({
 
                             </div>
                         </div>
-                    </NavLink>
+                    </div>
                 ))}
 
             </ul>
             <Pagination
-                className="flex justify-end"
-                currentPage={0}
-                totalPages={0}
-                onPageChange={function (): void {
-                    throw new Error('Function not implemented.')
-                }}
+                className="flex justify-end" onPageChange={page}
+                onItemNumberChange={perPage}
+
             />
         </div>
     )

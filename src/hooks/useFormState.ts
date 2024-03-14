@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 
-export function useFormState(initialValues, validations) {
+export function useFormState(initialValues: any, validations: any) {
     const [values, setValues] = useState(() => {
         const initializeFieldStates = Object.fromEntries(
             Object.entries(initialValues).map(([field, value]) => [field, { value, error: '' }])
@@ -8,7 +9,7 @@ export function useFormState(initialValues, validations) {
         return initializeFieldStates;
     });
 
-    const handleChange = (prop, newValue) => {
+    const handleChange = (prop: any, newValue: any) => {
         const validationError = validations[prop]?.(newValue, values) ?? '';
         setValues(prevValues => ({
             ...prevValues,
@@ -17,7 +18,7 @@ export function useFormState(initialValues, validations) {
     };
 
     const FieldsValue = new Proxy(values, {
-        set(target, prop, value) {
+        set( prop, value) {
             handleChange(prop, value);
             return true;
         }

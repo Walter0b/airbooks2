@@ -14,13 +14,7 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "paths": {
-            "@components/*": ["./src/components/*"],
-            "@hooks/*": ["./src/hooks/*"],
-            "@pages/*": ["./src/pages/*"],
-            "@states/*": ["./src/states/*"],
-            "@assets/*": ["./src/assets/*"],
-            "@static/*": ["./src/static/*"],
-            "@utils/*": ["./src/utils/*"],
+            "@/*": ["./src/*"],
         },
         /* Linting */
         "strict": true,

@@ -1,7 +1,8 @@
 import SideBar from './sidebar/sidebar'
 import Header from './header/header'
 import { Outlet } from 'react-router-dom'
-import { SidebarItemType } from '@utils/models/interface/table'
+import { SidebarItemType } from '@/utils/models/interface/table'
+import DisplayModal from './modal/display-modal'
 
 
 function Layout({ sidebar }: Readonly<{ sidebar: SidebarItemType[] }>) {
@@ -23,6 +24,7 @@ function Layout({ sidebar }: Readonly<{ sidebar: SidebarItemType[] }>) {
                     <SideBar navigation={sidebar} />
                     <main className="mb-14 flex w-full flex-col bg-white">
                         <Outlet />
+                        <DisplayModal />
                     </main>
                 </div>
             </div>

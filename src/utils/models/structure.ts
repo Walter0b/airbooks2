@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 import { DropdownItemType } from './interface/table';
 
@@ -36,6 +37,11 @@ export interface DynamicFormProps {
 }
 
 
+export interface useSingleStateType {
+    setValue: (value: any) => void;
+    value: any;
+}
+
 export interface FormErrors {
     [key: string]: { value: FormFieldType; error: string } | undefined;
 }
@@ -44,8 +50,8 @@ export interface FormErrors {
 export type FieldComponent = (field: FormFieldType, values: FormFieldType) => JSX.Element;
 
 type FieldsValue = {
-    [k: string]: { value: unknown; error: string };
-  }
+    [key: string]: { value: unknown; error: string };
+}
 
 export interface FieldComponents {
     [key: string]: FieldComponent;
@@ -57,10 +63,10 @@ export interface FormDataProps {
     tabs: FormTabType[];
 }
 
-export interface Props{
+export interface Props {
     field: FormFieldType;
     FieldsValue: FieldsValue;
-  
+
 }
 export interface TabsProps {
     formData: FormDataProps[]

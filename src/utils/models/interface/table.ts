@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { useSingleStateType } from '../structure';
 
 // Interface for Sidebar item
 export interface SidebarItemType {
@@ -115,9 +116,10 @@ export interface NavComponentProps {
 
 // Interface for pagination 
 export interface PaginationPropsType {
-    tableData: TravelersDataType
+    tableData?: TravelersDataType
     className?: string;
-    onPageChange: (page: number) => void;
+    onPageChange: useSingleStateType
+    onItemNumberChange: useSingleStateType
 }
 
 // Interface for nav links 

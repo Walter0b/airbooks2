@@ -1,9 +1,9 @@
-import { travelersData } from "@utils/mock/data/travelers/table";
+import { travelersData } from "@/utils/mock/data/travelers/table";
 import { useParams } from "react-router-dom";
 
 export default function Snapshot() {
     const currentID = parseInt(useParams().id as string, 10);
-    const user = travelersData.data.find(user => user?.id === currentID);
+    const user = travelersData.data.find((user: { id: number; }) => user?.id === currentID);
 
     return (
         <div className="flex justify-center h-full w-full items-center  bg-gray-100">

@@ -1,13 +1,13 @@
-import { CaseIcon } from '@assets/svg/case'
-import { CreditCardIcon } from '@assets/svg/creditCard'
-import { FileIcon } from '@assets/svg/file'
-import { ManualIcon } from '@assets/svg/manual'
-import { MoneyIcon } from '@assets/svg/money'
-import { ShoppingCartIcon } from '@assets/svg/shoppingCart'
-import { TachometerIcon } from '@assets/svg/tachometer'
-import { UserIcon } from '@assets/svg/user'
-import { UsersIcon } from '@assets/svg/users'
-import { SidebarItemType } from '@utils/models/interface/table'
+import { CaseIcon } from '@/assets/svg/case'
+import { CreditCardIcon } from '@/assets/svg/creditCard'
+import { FileIcon } from '@/assets/svg/file'
+import { ManualIcon } from '@/assets/svg/manual'
+import { MoneyIcon } from '@/assets/svg/money'
+import { ShoppingCartIcon } from '@/assets/svg/shoppingCart'
+import { TachometerIcon } from '@/assets/svg/tachometer'
+import { UserIcon } from '@/assets/svg/user'
+import { UsersIcon } from '@/assets/svg/users'
+import { SidebarItemType } from '@/utils/models/interface/table'
 
 export const coreNavigation: SidebarItemType[] = [
     {

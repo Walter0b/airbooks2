@@ -1,6 +1,5 @@
-import { Dropdown } from '@components/buttons/dropdown'
-import Buttons from '@components/buttons/buttons'
-import { LanguageOptions } from '@static/page/header'
+import Buttons from '@/components/buttons/buttons'
+import { LanguageOptions } from '@/static/page/header'
 import { useState } from 'react'
 
 export default function LanguageOption({ className }: { className?: string }) {
@@ -11,8 +10,7 @@ export default function LanguageOption({ className }: { className?: string }) {
     return (
         <div className="ml-auto flex mb-2 items-center">
             <Buttons
-                dropdownSize={56}
-                dropdownClassName="right-0"
+                dropdownClassName="right-0 w-56"
                 dropdownText="!text-xs font-normal"
                 dropdownOptions={LanguageOptions}
                 setSelectedOption={setSelectedOption}

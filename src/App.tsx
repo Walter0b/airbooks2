@@ -1,5 +1,5 @@
-import appRouters from '@pages/Router/Router'
-import { store } from '@states/store'
+import appRouters from '@/pages/Router/Router'
+import { store } from '@/states/store'
 import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
 

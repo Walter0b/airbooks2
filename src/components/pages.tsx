@@ -1,5 +1,5 @@
-import { getCmpByAttr } from '@utils/functions/action'
-import { PageProps } from '@utils/models/interface/page'
+import { getCmpByAttr } from '@/utils/functions/action'
+import { PageProps } from '@/utils/models/interface/page'
 import { Outlet } from 'react-router-dom';
 
 export default function Pages({ children }: Readonly<PageProps>) {

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Buttons from "@components/buttons/buttons";
-import { Lookup } from "@components/buttons/lookups";
+import Buttons from "@/components/buttons/buttons";
+import { Lookup } from "@/components/buttons/lookups";
 
-import { FieldComponents, FormFieldType } from "@utils/models/structure";
+import { FieldComponents, FormFieldType } from "@/utils/models/structure";
 
-const fieldsComponents: FieldComponents = new Proxy({
+const fieldsComponents: any = new Proxy({
 
     input,
     select,
@@ -59,8 +59,7 @@ function select(field: FormFieldType) {
             arrowClassName="group-hover/button:!fill-cyan-550 fill-gray-500 mr-2"
             className=" !h-full items-center justify-end rounded-sm  !border text-gray-900 shadow-sm hover:border-blue-400 focus:border-blue-400  sm:text-sm sm:leading-6"
 
-            dropdownSize={'full'}
-            dropdownClassName="focus:shadow-outline right-0 rounded-sm border border-blue-400 text-sm text-gray-900 "
+            dropdownClassName="focus:shadow-outline right-0 w-full rounded-sm border border-blue-400 text-sm text-gray-900 "
             dropdownText="!text-xs font-normal text-start"
             dropdownOptions={field.options}
         >

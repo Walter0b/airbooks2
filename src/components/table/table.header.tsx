@@ -1,8 +1,8 @@
-import { TableHeaderType, TableColumnType } from '@utils/models/interface/table'
+import { TableHeaderType, TableColumnType } from '@/utils/models/interface/table'
 import React from 'react'
 import Checkboxes from './table.checkbox'
 
- const TableHeader: React.FC<TableHeaderType> = ({
+const TableHeader: React.FC<TableHeaderType> = ({
     columns,
     isCheckedAll,
     handleCheckboxAllChange,
