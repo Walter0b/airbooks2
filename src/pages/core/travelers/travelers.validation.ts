@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const emailValidation = (value: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -14,7 +15,7 @@ export const travelerValidations = {
     LName: (value: string) => !value && 'Last name is required',
     DisplayName: (value: string) => !value && 'Display name is required',
     
-    Email: (value: string, Fields) => {
+    Email: (value: string, Fields : any) => {
         const generatedEmail = `${Fields.FName.value}${Fields.LName.value}@example.com`;
         return !value && (!Fields.FName.value || !Fields.LName.value)
             ? 'Email should be the concatenation of first name and last name followed by @example.com'

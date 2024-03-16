@@ -1,4 +1,4 @@
-import { FormDataProps, FormTabType, TabsProps } from '@utils/models/structure';
+import { FormDataProps, FormTabType, TabsProps } from '@/utils/models/structure';
 import React, { useState } from 'react';
 
 

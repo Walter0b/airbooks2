@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Checkboxes from './table.checkbox';
-import { TableBodyType, ResponseDataType } from '@utils/models/interface/table';
+import { TableBodyType, ResponseDataType } from '@/utils/models/interface/table';
 import { useNavigate } from 'react-router-dom';
 
 const TableBody: React.FC<TableBodyType> = ({

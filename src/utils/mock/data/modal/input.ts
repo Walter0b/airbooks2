@@ -1,4 +1,4 @@
-import { FormDataProps } from "@utils/models/structure";
+import { FormDataProps } from "@/utils/models/structure";
 
 export const TravelersInputFields: FormDataProps[] = [
     {
@@ -79,7 +79,7 @@ export const TravelersInputFields: FormDataProps[] = [
                         id: 'MaritalStatus', label: 'Marital Status', type: 'select', span: 'sm:col-span-2'
                     },
                     {
-                        id: 'Gender', label: 'Gender', type: 'lookup', readOnly:true, span: 'sm:col-span-2', options: [
+                        id: 'Gender', label: 'Gender', type: 'lookup', readOnly: true, span: 'sm:col-span-2', options: [
                             {
                                 label: 'Male',
                                 value: 'Male',

@@ -1,21 +1,22 @@
-import { ArrowIcon } from '@assets/svg/arrow'
-import { CircleIcon } from '@assets/svg/circle'
-import { CrossIcon } from '@assets/svg/cross'
-import { EmptyArrowIcon } from '@assets/svg/emptyarrow'
-import Modal from '@components/modal/modal'
-import useProxiedState from '@hooks/useProxiedState'
-import useSingleState from '@hooks/useSingleState'
+import { ArrowIcon } from '@/assets/svg/arrow'
+import { CircleIcon } from '@/assets/svg/circle'
+import { CrossIcon } from '@/assets/svg/cross'
+import { EmptyArrowIcon } from '@/assets/svg/emptyarrow'
+import Modal from '@/components/modal/modal'
+import useSingleState from '@/hooks/useSingleState'
 import {
     NavLinksType,
     NavComponentProps,
-} from '@utils/models/interface/table'
+} from '@/utils/models/interface/table'
+import { useSingleStateType } from '@/utils/models/structure'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 
 
 
-function Buttons({modalState}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function Buttons({ modalState }: { modalState: useSingleStateType }) {
 
     return (
         <button
@@ -148,7 +149,7 @@ export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
                 <NavLinks item={item} isOpen={isOpen} />
             )}
             {item.isButton && <Buttons modalState={modalState} />}
-            {modalState.value && <Modal modalState={modalState} />}
+            {modalState.value && <Modal/>}
         </div>
     )
 }

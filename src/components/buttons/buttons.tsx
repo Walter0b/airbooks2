@@ -1,7 +1,7 @@
-import { ArrowIcon } from "@assets/svg/arrow";
+import { ArrowIcon } from "@/assets/svg/arrow";
 import { Dropdown } from "./dropdown";
 import { ReactNode, useState, useRef, useEffect } from "react";
-import { DropdownItemType, ShowTableOptionsType } from "@utils/models/interface/table";
+import { DropdownItemType, ShowTableOptionsType } from "@/utils/models/interface/table";
 
 interface ButtonInterface {
     children?: ReactNode;
@@ -31,7 +31,6 @@ export default function Buttons({
     dropdownClassName,
     dropdownText,
     dropdownTitles,
-    dropdownSize,
 }: Readonly<ButtonInterface>) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -62,7 +61,7 @@ export default function Buttons({
     };
 
     return (
-        <div className="relative flex-row text-left" ref={dropdownRef}>
+        <div className="relative h-full flex-row text-left focus:" ref={dropdownRef}>
             <div className="h-full flex items-center w-full">
                 <button
                     className={`${className} group/button flex w-full`}
@@ -77,9 +76,8 @@ export default function Buttons({
                 </button>
             </div>
             {isOpen && dropdownOptions && (
-                <button onClick={handleToggleDropdown}>
+                <button onClick={handleToggleDropdown} className="block">
                     <Dropdown
-                        size={dropdownSize}
                         className={dropdownClassName}
                         text={dropdownText}
                         titles={dropdownTitles}

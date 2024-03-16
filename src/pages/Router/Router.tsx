@@ -4,26 +4,26 @@ import {
     createBrowserRouter,
     createRoutesFromElements,
 } from 'react-router-dom'
-import Layout from '@components/layout'
-import Customer from '@pages/core/customers'
-import Travelers from '@pages/core/travelers'
-import { coreNavigation, reportNavigation } from '@static/page/sidebar'
-import Dashboard from '@pages/core/dashboard'
-import TravelItems from '@pages/core/travelerItems'
-import Bill from '@pages/core/bill'
-import CreditNotes from '@pages/core/creditNotes'
-import Expenses from '@pages/core/expenses'
-import Invoice from '@pages/core/invoice'
-import ManualJournal from '@pages/core/manualjournal'
-import Payments from '@pages/core/payments'
-import Estimates from '@pages/core/estimates'
-import ProfitAndLoss from '@pages/report/business_overview/profit_and_loss'
-import BalanceSheet from '@pages/report/business_overview/balance_sheet'
-import Consultant from '@pages/report/sales/consultant'
-import ItemDetails from '@components/compactlist/compactlist'
+import Layout from '@/components/layout'
+import Customer from '@/pages/core/customers'
+import Travelers from '@/pages/core/travelers'
+import { coreNavigation, reportNavigation } from '@/static/page/sidebar'
+import Dashboard from '@/pages/core/dashboard'
+import TravelItems from '@/pages/core/travelerItems'
+import Bill from '@/pages/core/bill'
+import CreditNotes from '@/pages/core/creditNotes'
+import Expenses from '@/pages/core/expenses'
+import Invoice from '@/pages/core/invoice'
+import ManualJournal from '@/pages/core/manualjournal'
+import Payments from '@/pages/core/payments'
+import Estimates from '@/pages/core/estimates'
+import ProfitAndLoss from '@/pages/report/business_overview/profit_and_loss'
+import BalanceSheet from '@/pages/report/business_overview/balance_sheet'
+import Consultant from '@/pages/report/sales/consultant'
+import ItemDetails from '@/components/compactlist/compactlist'
 
-import Snapshot from '@components/compactlist/snapshot'
-import Bookings from '@components/compactlist/bookings'
+import Snapshot from '@/components/compactlist/snapshot'
+import Bookings from '@/components/compactlist/bookings'
 
 const appRouters = createBrowserRouter(
     createRoutesFromElements(
@@ -35,7 +35,7 @@ const appRouters = createBrowserRouter(
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="travelers" element={<Travelers />}>
                     <Route path=":id" element={<ItemDetails />} >
-                    <Route index element={<Navigate to="snapshot" replace={true} />} />
+                        <Route index element={<Navigate to="snapshot" replace={true} />} />
                         <Route path="snapshot" element={<Snapshot />} />
                         <Route path="bookings" element={<Bookings />} />
                     </Route>

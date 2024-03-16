@@ -1,5 +1,5 @@
-import { getCmpByAttr } from '@utils/functions/action'
-import { BodyProps } from '@utils/models/interface/page'
+import { getCmpByAttr } from '@/utils/functions/action'
+import { BodyProps } from '@/utils/models/interface/page'
 import { useParams } from 'react-router-dom';
 
 export default function Body({

@@ -1,5 +1,5 @@
-import { BarChartIcon } from '@assets/svg/bar'
-import { HomeIcon } from '@assets/svg/home'
+import { BarChartIcon } from '@/assets/svg/bar'
+import { HomeIcon } from '@/assets/svg/home'
 import { NavLink } from 'react-router-dom'
 
 export default function NavOption() {

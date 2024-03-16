@@ -1,7 +1,7 @@
-import { PenIcon } from '@assets/svg/pen'
-import Buttons from '@components/buttons/buttons'
-import CloseButton from '@components/buttons/usefull-buttons'
-import { TableOptionsType } from '@utils/models/interface/table'
+import { PenIcon } from '@/assets/svg/pen'
+import Buttons from '@/components/buttons/buttons'
+import CloseButton from '@/components/buttons/usefull-buttons'
+import { TableOptionsType } from '@/utils/models/interface/table'
 
 export default function TravelerCompactListHeader({
     dropdownOptions,
@@ -21,9 +21,8 @@ export default function TravelerCompactListHeader({
                     hasDropdownIcon={true}
                     className="mr-12 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md "
                     arrowClassName="ml-2"
-
-                    dropdownSize={44}
-                    dropdownText="r!text-center py-2"
+                    dropdownClassName='mr-12 mt-1 right-0 w-44'
+                    dropdownText="text-center py-2"
                     dropdownTitles="right-0 mt-2 mr-11 font-medium"
                     dropdownOptions={dropdownOptions.more}
                 >

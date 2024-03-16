@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ArrowIcon } from "@assets/svg/arrow";
-import { DropdownItemType } from "@utils/models/interface/table";
-import useProxiedState from "@hooks/useProxiedState";
+import { ArrowIcon } from "@/assets/svg/arrow";
+import { DropdownItemType } from "@/utils/models/interface/table";
+import useProxiedState from "@/hooks/useProxiedState";
 
 interface LookupProps {
     containerClassName?: string;
@@ -64,7 +64,7 @@ export function Lookup({
     // console.log("🚀 ~ FieldsValue?.selectedOption?.value.toLowerCase():", FieldsValue?.selectedOption)
 
     return (
-        <div className="relative flex-row text-left" ref={dropdownRef}>
+        <div className="relative h-full flex-row text-left" ref={dropdownRef}>
             <div className="h-full flex items-center w-full">
                 <div className={`flex group/button ${containerClassName} ${isOpen && 'border-blue-400'}`}>
                     <input

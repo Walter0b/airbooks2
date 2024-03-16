@@ -1,5 +1,5 @@
-import TravelerCompactListHeader from "@pages/core/travelers/compact-list/traveler-cl-btn";
-import { tableOptions } from "@static/travelers/table/dropdown";
+import TravelerCompactListHeader from "@/pages/core/travelers/compact-list/traveler-cl-btn";
+import { tableOptions } from "@/static/travelers/table/dropdown";
 import { NavLink, Outlet } from "react-router-dom";
 import ItemDetailsBody from "./itemdetails";
 

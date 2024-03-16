@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import DynamicForm from './DynamicForm';
-import { TravelersInputFields } from '@utils/mock/data/modal/input';
-import { FormTabType } from '@utils/models/structure';
-import CloseButton from '@components/buttons/usefull-buttons';
+import { TravelersInputFields } from '@/utils/mock/data/modal/input';
+import { FormTabType } from '@/utils/models/structure';
+import CloseButton from '@/components/buttons/usefull-buttons';
 import Tabs from './modal.tabs';
-import { travelerValidations } from '@pages/core/travelers/travelers.validation';
-import { useFormState } from '@hooks/useFormState';
+import { travelerValidations } from '@/pages/core/travelers/travelers.validation';
+import { useFormState } from '@/hooks/useFormState';
+import { useDispatch } from 'react-redux';
+import { closeModal } from '@/states/reducer/modalSlice';
 
-const Modal = ({ modalState, title }: Readonly<{ modalState: any, title: string }>) => {
+// TODO inputFelds,travelerValidations
+const Modal = ({ title }: Readonly<{ title?: string, inputFelds?: any[] }>) => {
     const defaultForm = TravelersInputFields[0].tabs
     const [formData, setFormData] = useState<FormTabType[]>(defaultForm)
 
@@ -18,13 +21,12 @@ const Modal = ({ modalState, title }: Readonly<{ modalState: any, title: string 
         });
         return acc;
     }, {});
-
+    const dispatch = useDispatch();
+    
     const { FieldsValue } = useFormState(idObject, travelerValidations);
 
-
     function handleOnclick() {
-        console.log("modalState.setValue", modalState.value)
-        modalState.setValue(false)
+        dispatch(closeModal());
     }
 
     return (
@@ -33,14 +35,12 @@ const Modal = ({ modalState, title }: Readonly<{ modalState: any, title: string 
                 <div id='head' className="flex-none">
                     <div className="flex items-center justify-between px-4 py-3 bg-cyan-550">
                         <p className=" text-xl font-bold">{title}</p>
-                        <CloseButton onClick={() => modalState.setValue(false)} color="fill-white" />
+                        <CloseButton onClick={handleOnclick} color="fill-white" />
                     </div>
                     <Tabs formData={TravelersInputFields} setFormData={setFormData} />
                 </div>
-                <div id="error" className='bg-sky-100 mt-6 p-2 '><ul></ul></div>
+                {/* <div id="error" className='bg-sky-100 mt-6 p-2 '><ul></ul></div> */}
                 <div id="body" className="px-6 py-4 overflow-y-auto flex-grow">
-
-                    {/* <TestComponent /> */}
                     <DynamicForm items={formData} FieldsValue={FieldsValue} />
 
                 </div>
@@ -48,7 +48,6 @@ const Modal = ({ modalState, title }: Readonly<{ modalState: any, title: string 
                     <button className="buttonStyles bg-red-650">Save</button>
                     <button onClick={handleOnclick} className="buttonStyles text-black bg-zinc-100 border-stone-300 ">Cancel</button>
                 </div>
-                {/* <TestComponent /> */}
             </div>
         </div>
     );

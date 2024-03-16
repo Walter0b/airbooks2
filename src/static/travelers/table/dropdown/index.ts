@@ -1,4 +1,4 @@
-import { TableOptionsType } from '@utils/models/interface/table'
+import { TableOptionsType } from '@/utils/models/interface/table'
 
 const show = {
     title: 'Travelers',
