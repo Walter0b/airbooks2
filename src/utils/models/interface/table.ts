@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useSingleStateType } from '../structure';
+import { FormDataProps, useSingleStateType } from '../structure';
 
 // Interface for Sidebar item
 export interface SidebarItemType {
@@ -13,6 +13,11 @@ export interface SidebarItemType {
     icon?: React.FC<{ className: string }>;
     className?: string;
     isButton?: boolean;
+}
+
+export interface NavButtonsProps {
+    item: SidebarItemType;
+    handleOpenModal: (key: string) => void;
 }
 
 // Interface for sub navigation item
@@ -81,6 +86,7 @@ export interface ShowTableOptionsType {
 
 // Interface for table options
 export interface TableOptionsType {
+    pageLabel: string;
     action: DropdownItemType[];
     more: DropdownItemType[];
     sort: DropdownItemType[];
@@ -91,6 +97,15 @@ export interface ResponseDataType {
     [key: string]: string | number | JSX.Element;
 }
 
+
+export interface ReduxModalType {
+    modalId: string
+    isOpen: boolean;
+    data: TravelersDataType
+    inputFields: FormDataProps;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    validation: any
+}
 export interface TravelersDataType {
     data: ResponseDataType[]
     totalItems: number,
@@ -109,7 +124,10 @@ export interface TableItemType extends CheckboxType {
 }
 
 // Interface for navigation component 
-export interface NavComponentProps {
+export interface NavComponentProps extends BaseNavComponentProps {
+    handleOpenModal: (key: string) => void;
+}
+interface BaseNavComponentProps {
     item: SidebarItemType;
     isOpen?: boolean;
 }
@@ -123,7 +141,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links 
-export interface NavLinksType extends NavComponentProps { }
+export interface NavLinksType extends BaseNavComponentProps { }
 
 // Interface for buttons 
-export interface ButtonsType extends NavComponentProps { }
+export interface ButtonsType extends BaseNavComponentProps { }

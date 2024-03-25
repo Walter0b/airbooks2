@@ -2,7 +2,7 @@ import Header from '@/components/table/table.page.header'
 import Pages from '@/components/pages'
 import { tableOptions } from '@/static/travelers/table/dropdown'
 import {
-    travelersColumns,
+    travelersColumns
 } from '@/utils/mock/data/travelers/table'
 import Body from '@/components/body'
 import TravelerCompactList from '@/pages/core/travelers/compact-list/compact-list'

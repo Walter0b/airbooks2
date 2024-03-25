@@ -1,4 +1,4 @@
-import { FormDataProps, FormTabType, TabsProps } from '@/utils/models/structure';
+import {  FormTabType, IndividualFormDataProp, TabsProps } from '@/utils/models/structure';
 import React, { useState } from 'react';
 
 
@@ -12,11 +12,10 @@ const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {
         setCurrentPage(page);
     };
 
-    // console.log('currentPage', defaultForm)
     return (
         <div className="border">
             <div className="mt-3 flex w-full">
-                {formData.map((tab: FormDataProps, index: number) => (
+                {formData.map((tab: IndividualFormDataProp, index: number) => (
                     <button
                         key={index}
                         onClick={() => handleTabClick(tab.label, tab.tabs)}

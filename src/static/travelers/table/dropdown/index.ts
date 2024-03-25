@@ -97,6 +97,7 @@ const more = [
     },
 ]
 export const tableOptions: TableOptionsType = {
+    pageLabel: 'travelers',
     action,
     sort,
     show,

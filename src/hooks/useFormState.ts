@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useCallback, useMemo, useState } from 'react';
 
-export function useFormState(initialValues: any, validations: any) {
+type Validations = Record<string, (value: any, values: any) => string>;
+
+export function useFormState(initialValues: any, validations: Validations) {
+    
     const [values, setValues] = useState(() => {
         const initializeFieldStates = Object.fromEntries(
             Object.entries(initialValues).map(([field, value]) => [field, { value, error: '' }])
@@ -9,19 +12,31 @@ export function useFormState(initialValues: any, validations: any) {
         return initializeFieldStates;
     });
 
-    const handleChange = (prop: any, newValue: any) => {
-        const validationError = validations[prop]?.(newValue, values) ?? '';
-        setValues(prevValues => ({
+    const memoizedValidations = useMemo(
+        () =>
+            Object.fromEntries(
+                Object.entries(validations).map(([key, fn]) => [key, fn.bind(null, values)])
+            ),
+        [validations, values]
+    );
+
+    const handleChange = useCallback((prop: any, newValue: any) => {
+        const validationError = memoizedValidations[prop]?.(newValue) ?? '';
+        setValues((prevValues) => ({
             ...prevValues,
-            [prop]: { value: newValue, error: validationError }
+            [prop]: {
+                ...prevValues[prop],
+                value: newValue,
+                error: validationError,
+            },
         }));
-    };
+    }, [memoizedValidations]);
 
     const FieldsValue = new Proxy(values, {
-        set( prop, value) {
+        set(_, prop, value) {
             handleChange(prop, value);
             return true;
-        }
+        },
     });
 
     return { FieldsValue };

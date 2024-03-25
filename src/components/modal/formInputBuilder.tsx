@@ -22,16 +22,16 @@ export default fieldsComponents;
 
 function input(field: FormFieldType, FieldsValue: any) {
 
-    console.log(field.id, ' :', FieldsValue[field.id]?.value)
-
     return (
         <input
             type={field.type}
             id={field.id}
             name={field.id}
+            required={field?.required}
             onChange={(e) => FieldsValue[field.id] = e.target.value}
             value={FieldsValue[field.id]?.value}
             autoComplete={field.autoComplete}
+
             placeholder={field.placeHolder}
             className="input-shadow focus:shadow-outline block h-full w-full rounded-sm border border-gray-300 text-sm text-gray-900 focus:border-blue-400 hover:border-blue-400"
         />
@@ -43,6 +43,7 @@ function textarea(field: FormFieldType, FieldsValue: any) {
         <textarea
             id={field.id}
             name={field.id}
+            required={field?.required}
             onChange={(e) => FieldsValue[field.id] = e.target.value}
             value={FieldsValue[field.id]?.value}
             autoComplete={field.autoComplete}
@@ -55,7 +56,6 @@ function select(field: FormFieldType) {
     return (
         <Buttons
             hasDropdownIcon={true}
-            isInput={true}
             arrowClassName="group-hover/button:!fill-cyan-550 fill-gray-500 mr-2"
             className=" !h-full items-center justify-end rounded-sm  !border text-gray-900 shadow-sm hover:border-blue-400 focus:border-blue-400  sm:text-sm sm:leading-6"
 
@@ -76,6 +76,7 @@ function space(field: FormFieldType) {
 function lookup(field: FormFieldType, FieldsValue: any) {
     return (
         <Lookup
+            required={field.required}
             containerClassName=" !h-full items-center justify-end rounded-sm  !border text-gray-900 shadow-sm hover:border-blue-400 focus-within:border-blue-400  sm:text-sm sm:leading-6"
             dropdownWidth={'full'}
             readOnly={FieldsValue.readOnly}

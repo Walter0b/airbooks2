@@ -4,13 +4,9 @@ import { useState } from 'react';
 function useSingleState(initialValue: any) {
     const [value, setValue] = useState(initialValue);
 
-    const setCustomValue = (newValue: any) => {
-        setValue(newValue);
-    };
-
     return {
         value,
-        setValue: setCustomValue,
+        setValue,
     };
 }
 

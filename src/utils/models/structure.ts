@@ -7,6 +7,11 @@ export interface LayoutProps {
     children: ReactNode;
 }
 
+
+export interface ValidationType {
+    [k: string]: any
+}
+
 // Type for a single field in the dynamic form
 export interface FormFieldType {
     id: string;
@@ -17,6 +22,8 @@ export interface FormFieldType {
     readOnly?: boolean;
     autoComplete?: string
     placeHolder?: string
+    required?: boolean;
+    validations?: (value: string, Fields?: FormFieldType[]) => any;
     options?: DropdownItemType[];
 }
 
@@ -58,7 +65,11 @@ export interface FieldComponents {
 }
 
 // Type for the dynamic form data
+
 export interface FormDataProps {
+    [key: string]: IndividualFormDataProp[];
+}
+export interface IndividualFormDataProp {
     label: string;
     tabs: FormTabType[];
 }
@@ -69,7 +80,7 @@ export interface Props {
 
 }
 export interface TabsProps {
-    formData: FormDataProps[]
+    formData: IndividualFormDataProp[]
     setFormData: (newValue: FormTabType[]) => void;
 }
 // Type for fetching data
@@ -83,6 +94,7 @@ export interface FetchOptionsType {
 export interface SidebarItemType {
     name: string;
     href: string;
+    id?: string
 }
 
 // SidebarItemType items

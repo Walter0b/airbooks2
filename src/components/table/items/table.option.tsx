@@ -5,17 +5,36 @@ import { ArrowIcon } from '@/assets/svg/arrow'
 import { Hamburger } from '@/assets/svg/hamburger'
 import { LightBulbIcon } from '@/assets/svg/lightbulb'
 import { TableOptionsType } from '@/utils/models/interface/table'
-import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
+import { useFetchTravelersQuery } from '@/states/reducer/apiSlice';
+import { ModalContext } from '@/hooks/ModalContext'
+import { openModal } from '@/states/reducer/modalSlice'
+import { useContext } from 'react'
+import { useDispatch } from 'react-redux'
 
 export default function TableOptions({
     showTableOptions,
 }: Readonly<{
     showTableOptions: TableOptionsType
 }>) {
+    const { refetch } = useFetchTravelersQuery({ page: 1, perPage: 10})
+    const handleOnclick = async () => {
+        console.log("refetch:")
+        refetch()
+      };
+    
+      const { setPageLabel } = useContext(ModalContext);
+
+    const dispatch = useDispatch()
+    const handleOpenModal = (pageLabel: string) => {
+        if (pageLabel) {
+            console.log(pageLabel)
+            setPageLabel?.(pageLabel);
+            dispatch(openModal());
+        }
+    }
 
     const currentID = parseInt(useParams().id as string, 10);
-    const navigate = useNavigate()
     return (
         <div
             id="table-right-menu-option"
@@ -23,21 +42,22 @@ export default function TableOptions({
             className="flex text-gray-500"
         >
             <div className="flex mr-4">
-                <Buttons onClick={() => navigate('new')} className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
+                <button onClick={() => handleOpenModal(showTableOptions.pageLabel)}  className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
                     <CrossIcon
                         data-slot="title"
                         className="w-3 rotate-45 fill-white"
                         className1=" h-10"
                         className2="w-10"
                     />
-                </Buttons>
+                </button>
 
-                <Buttons className="ml-4 flex h-full items-center justify-center rounded-l border-[0.8px] border-grey-450 bg-gray-100 p-2">
+                <button onClick={handleOnclick} className="ml-4 flex h-full items-center justify-center rounded-l border-[0.8px] border-grey-450 bg-gray-100 p-2"
+                >
                     <RotateIcon
                         data-slot="title"
                         className="w-3 fill-gray-700"
                     />
-                </Buttons>
+                </button>
 
                 <Buttons className="flex h-full  items-center justify-center gap-[1px] border-[0.8px] border-grey-450 bg-gray-100 px-2"
 

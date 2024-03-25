@@ -263,6 +263,10 @@ interface FlightInfo {
     date: string
 }
 
+export const InputFields = [
+    
+]
+
 interface MoneyInfo {
     currency: string
     amount: number

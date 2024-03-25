@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavigationItem } from './sidebar.item.nav'
 import { SidebarItemType } from '@/utils/models/interface/table'
+import { useDispatch } from 'react-redux'
+import { openModal } from '@/states/reducer/modalSlice'
+import { ModalContext } from '@/hooks/ModalContext'
 
 export default function SideBarItems({
     navigation,
@@ -10,7 +13,16 @@ export default function SideBarItems({
     navigation: SidebarItemType[],
     isCompact: boolean,
 }>) {
+    const { setPageLabel } = useContext(ModalContext);
 
+    const dispatch = useDispatch()
+    const handleOpenModal = (pageLabel: string) => {
+        if (pageLabel) {
+            console.log(pageLabel)
+            setPageLabel?.(pageLabel);
+            dispatch(openModal());
+        }
+    }
 
     return (
         <>
@@ -22,7 +34,7 @@ export default function SideBarItems({
                                 <hr className=" border-gray-300" />
                             )}
                         <li className="flex items-center justify-between">
-                            <NavigationItem item={item} isOpen={isCompact} />
+                            <NavigationItem item={item} isOpen={isCompact} handleOpenModal={handleOpenModal} />
                         </li>
                     </React.Fragment>
                 ))}
