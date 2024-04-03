@@ -58,7 +58,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                         <ArrowIcon className="w-3 rotate-90 scale-x-100 fill-gray-300" />
                     </button>
                 </div>
-                <div className="px-3">
+                <div className="px-3 -mt-1">
                     {`${startIndex + 1}-${endIndex} of ${tableData?.totalRowCount}`}
                 </div>
                 <div>

@@ -6,8 +6,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 export default function TravelerCompactList({
     tableData,
 }: Readonly<{ tableData?: TravelersDataType }>) {
-    const page = useSingleState(0)
-    const pageSize = useSingleState(0)
+    const page = useSingleState(1)
+    const pageSize = useSingleState(10)
 
     const navigate = useNavigate();
     const handleClick = (location: number) => {
@@ -68,8 +68,10 @@ export default function TravelerCompactList({
 
             </ul>
             <Pagination
-                className="flex justify-end" onPageChange={page}
+                className="flex justify-end" 
+                onPageChange={page}
                 onItemNumberChange={pageSize}
+                tableData={tableData}
 
             />
         </div>
