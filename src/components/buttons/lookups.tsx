@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ArrowIcon } from "@/assets/svg/arrow";
 import { DropdownItemType } from "@/utils/models/interface/table";
-import useProxiedState from "@/hooks/useProxiedState";
+import usePeroxideState from "@/hooks/usePeroxideState";
 
 interface LookupProps {
     required?: boolean;
@@ -21,11 +21,9 @@ export function Lookup({
     options,
     dropdownContainerClassName,
     dropdownWidth,
-}: LookupProps) {
-    const FieldsValue = useProxiedState({ selectedOption: '' });
+}: Readonly<LookupProps>) {
+    const FieldsValue = usePeroxideState({ selectedOption: '' });
 
-    console.log("🚀 ~ FieldsValue:", FieldsValue.selectedOption, 33)
-    // consol
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -70,7 +68,7 @@ export function Lookup({
                     <input
                         required={required}
                         type="text"
-                        className={`border-none flex w-full`}
+                        className={`text-left px-4 py-2 border-none flex w-full`}
                         onChange={handleInputChange}
                         onFocus={handleToggleDropdown}
                         value={FieldsValue?.selectedOption}

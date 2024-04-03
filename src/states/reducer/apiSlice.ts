@@ -8,9 +8,9 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
   tagTypes: ['Travelers'],
   endpoints: (builder) => ({
-    fetchTravelers: builder.query<TravelersDataType, { page: number; perPage: number }>({
-      query: ({ page, perPage }) => `travelers?page=${page}&perPage=${perPage}`,
-      providesTags: ['Travelers'],
+    fetchTravelers: builder.query<TravelersDataType, { page: number; pageSize: number }>({
+      query: ({ page, pageSize }) => `travelers?page=${page}&page-size=${pageSize}`,
+        providesTags: ['Travelers'],
     }),
   }),
 });

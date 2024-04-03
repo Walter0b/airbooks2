@@ -17,13 +17,13 @@ export default function TableOptions({
 }: Readonly<{
     showTableOptions: TableOptionsType
 }>) {
-    const { refetch } = useFetchTravelersQuery({ page: 1, perPage: 10})
+    const { refetch } = useFetchTravelersQuery({ page: 1, pageSize: 10 })
     const handleOnclick = async () => {
         console.log("refetch:")
         refetch()
-      };
-    
-      const { setPageLabel } = useContext(ModalContext);
+    };
+
+    const { setPageLabel } = useContext(ModalContext);
 
     const dispatch = useDispatch()
     const handleOpenModal = (pageLabel: string) => {
@@ -42,7 +42,7 @@ export default function TableOptions({
             className="flex text-gray-500"
         >
             <div className="flex mr-4">
-                <button onClick={() => handleOpenModal(showTableOptions.pageLabel)}  className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
+                <button onClick={() => handleOpenModal(showTableOptions.pageLabel)} className="flex h-full items-center justify-center  rounded bg-red-650 p-2">
                     <CrossIcon
                         data-slot="title"
                         className="w-3 rotate-45 fill-white"

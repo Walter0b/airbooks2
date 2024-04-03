@@ -5,13 +5,16 @@ import { TableOptionsType } from '@/utils/models/interface/table'
 
 export default function TravelerCompactListHeader({
     dropdownOptions,
+    handleOpenModal
 }: Readonly<{
-    dropdownOptions: TableOptionsType
+    dropdownOptions: TableOptionsType,
+    handleOpenModal: () => void
 }>) {
+
     return (
         <div className="flex w-full h-full items-end">
             <div className="flex h-8 w-full justify-end pr-5">
-                <button className="mr-2 h-full rounded border border-stone-300 bg-neutral-100 px-3 hover:shadow-md ">
+                <button id='edit_buttons' onClick={() => handleOpenModal()} className="mr-2 h-full rounded border border-stone-300 bg-neutral-100 px-3 hover:shadow-md ">
                     <PenIcon className="w-3" />
                 </button>
                 <button className="mr-2 h-full rounded border border-orange-800 bg-red-650 px-3 text-white hover:shadow-md">

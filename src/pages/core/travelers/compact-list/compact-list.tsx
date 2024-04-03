@@ -7,11 +7,11 @@ export default function TravelerCompactList({
     tableData,
 }: Readonly<{ tableData?: TravelersDataType }>) {
     const page = useSingleState(0)
-    const perPage = useSingleState(0)
+    const pageSize = useSingleState(0)
 
     const navigate = useNavigate();
     const handleClick = (location: number) => {
-        navigate(location);
+        navigate(`${location}`);
     }
 
     const currentID = parseInt(useParams().id as string, 10)
@@ -19,10 +19,10 @@ export default function TravelerCompactList({
         <div className='w-full'>
             <ul className="hidScrollbar flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 220px)" }}>
                 {tableData?.data?.map((item) => (
-                    <div
+                    <button
                         onClick={() => handleClick(item.id)}
                         key={item.id}
-                        className={`flex border-b p-2 hover:!bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
+                        className={`w-full flex border-b p-2 hover:!bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
                     >
                         <div className=" pointer-events-none px-2 py-1">
                             <input className=' cursor-pointer pointer-events-auto ' type="checkbox" name="" id="" />
@@ -33,9 +33,8 @@ export default function TravelerCompactList({
                         >
                             <div className="justify-start text-left">
                                 <div id="name" className="text-black">
-                                    {item.name}
+                                    {item.displayName}
                                 </div>
-
 
                                 <div
                                     id="planeArrivalInfo"
@@ -64,13 +63,13 @@ export default function TravelerCompactList({
 
                             </div>
                         </div>
-                    </div>
+                    </button>
                 ))}
 
             </ul>
             <Pagination
                 className="flex justify-end" onPageChange={page}
-                onItemNumberChange={perPage}
+                onItemNumberChange={pageSize}
 
             />
         </div>

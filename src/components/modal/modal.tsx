@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef, useContext } from 'react';
-import DynamicForm from './DynamicForm';
+import DynamicForm from './modal.Form';
 import { FormTabType } from '@/utils/models/structure';
 import CloseButton from '@/components/buttons/usefull-buttons';
 import Tabs from './modal.tabs';
 import { useFormState } from '@/hooks/useFormState';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '@/states/reducer/modalSlice';
 import { ModalContext } from '@/hooks/ModalContext';
+import { RootState } from '@/states/store'
 
 const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
-
+    const { data } = useSelector((state: RootState) => state.modal);
+    console.log("🚀 ~ Modal ~ data:", data)
+    
     const { InputFields } = useContext(ModalContext);
 
     const defaultForm = InputFields![0].tabs
@@ -21,7 +24,7 @@ const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
     const idObject = formData.reduce((acc: any, { fields }: any) => {
         fields.forEach(({ id }: any) => {
-            acc[id] = "";
+            acc[id] = data[id] || '';
         });
         return acc;
 
@@ -40,6 +43,7 @@ const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
 
     const { FieldsValue } = useFormState(idObject, validationObject);
+    console.log("🚀 ~ Modal ~ idObject:", idObject)
 
     console.log("🚀 ~ Modal ~ FieldsValue:", FieldsValue)
 

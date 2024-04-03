@@ -20,10 +20,9 @@ import Estimates from '@/pages/core/estimates'
 import ProfitAndLoss from '@/pages/report/business_overview/profit_and_loss'
 import BalanceSheet from '@/pages/report/business_overview/balance_sheet'
 import Consultant from '@/pages/report/sales/consultant'
-import ItemDetails from '@/components/compactlist/compactlist'
-
 import Snapshot from '@/components/compactlist/snapshot'
 import Bookings from '@/components/compactlist/bookings'
+import TravelersItemDetails from '../core/travelers/compact-list/compact-list.details'
 
 const appRouters = createBrowserRouter(
     createRoutesFromElements(
@@ -34,7 +33,7 @@ const appRouters = createBrowserRouter(
                 <Route index element={<Navigate to="travelers" replace={true} />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="travelers" element={<Travelers />}>
-                    <Route path=":id" element={<ItemDetails />} >
+                    <Route path=":id" element={<TravelersItemDetails />} >
                         <Route index element={<Navigate to="snapshot" replace={true} />} />
                         <Route path="snapshot" element={<Snapshot />} />
                         <Route path="bookings" element={<Bookings />} />

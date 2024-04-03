@@ -112,19 +112,18 @@ export const travelersData: any = {
             income: '250,800.90',
         },
     ],
-    totalItems: 80,
+    totalRowCount: 80,
     pageSize: 10,
     currentPage: 1
 
 }
 
 export const travelersColumns = [
-    { key: 'name', label: 'Traveler Name' },
+    { key: 'displayName', label: 'Traveler Name' },
     { key: 'mobilePhone', label: 'Mobile Phone' },
-    { key: 'nationality', label: 'nationality' },
-    { key: 'travelStatus', label: 'Travel Status' },
-    { key: 'events', label: 'Events' },
-    { key: 'income', label: 'income' },
+    { key: 'state', label: 'State' },
+    { key: 'postalCode', label: 'Postal Code' },
+
 ]
 
 export const travelerCompactList = [
@@ -264,7 +263,7 @@ interface FlightInfo {
 }
 
 export const InputFields = [
-    
+
 ]
 
 interface MoneyInfo {

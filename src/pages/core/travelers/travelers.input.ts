@@ -9,13 +9,13 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 label: 'Traveler Name',
                 fields: [
                     {
-                        id: 'Title', label: 'Title', type: 'select', span: 'sm:col-span-1', required: true
+                        id: 'title', label: 'Title', type: 'select', span: 'sm:col-span-1', required: true
                     },
                     {
-                        id: 'FName', label: 'First Name', type: 'text', span: 'sm:col-span-3', required: true
+                        id: 'firstName', label: 'First Name', type: 'text', span: 'sm:col-span-3', required: true
                     },
                     {
-                        id: 'LName', label: 'Last Name', type: 'text', span: 'sm:col-span-2', required: true
+                        id: 'lastName', label: 'Last Name', type: 'text', span: 'sm:col-span-2', required: true
                     },
                 ]
             },
@@ -24,7 +24,18 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 required: true,
                 fields: [
                     {
-                        id: 'DisplayName', type: 'select', span: 'sm:col-span-6'
+                        id: 'displayName', type: 'select', span: 'sm:col-span-6', options: [
+                            {
+                                id: 'firstName',
+                                label: 'Male',
+                                value: 'Male',
+
+                            },
+                            {
+                                id: 'lastName',
+                                label: 'Female',
+                                value: 'Female'
+                            },]
                     }
                 ]
 
@@ -33,7 +44,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 label: 'Contact',
                 fields: [
                     {
-                        id: 'Email', label: 'Email', type: 'email', span: 'sm:col-span-6', validations: commonValidations.Email
+                        id: 'email', label: 'Email', type: 'email', span: 'sm:col-span-6', validations: commonValidations.Email
                     }
                 ]
 
@@ -42,7 +53,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
 
                 fields: [
                     {
-                        id: 'WorkPhone', label: 'Work Phone', type: 'tel', span: 'sm:col-span-3'
+                        id: 'workPhone', label: 'Work Phone', type: 'tel', span: 'sm:col-span-3'
                     },
                     {
                         id: 'mobilePhone', label: 'Mobile Phone', type: 'tel', span: 'sm:col-span-3'
@@ -55,13 +66,13 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 columnSpan: 'sm:grid-cols-7',
                 fields: [
                     {
-                        id: 'PassportNumber', label: 'Number', type: 'number', span: 'sm:col-span-3'
+                        id: 'passportNumber', label: 'Number', type: 'number', span: 'sm:col-span-3'
                     },
                     {
                         id: 'issuedDate', label: 'issued On', type: 'date', span: 'sm:col-span-2'
                     },
                     {
-                        id: 'ExpiresDate', label: 'Expires On', type: 'tel', span: 'sm:col-span-2'
+                        id: 'expiresDate', label: 'Expires On', type: 'tel', span: 'sm:col-span-2'
                     },
 
                     {
@@ -73,7 +84,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                     },
 
                     {
-                        id: 'DateOfBirth', label: 'Date Of Birth', type: 'date', span: 'sm:col-span-3'
+                        id: 'birthDate', label: 'Date Of Birth', type: 'date', span: 'sm:col-span-3'
                     },
                     {
                         id: 'MaritalStatus', label: 'Marital Status', type: 'select', span: 'sm:col-span-2'
@@ -109,10 +120,10 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
 
                 fields: [
                     {
-                        id: 'City', label: 'City', type: 'text', span: 'sm:col-span-3'
+                        id: 'city', label: 'City', type: 'text', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'State', label: 'State', type: 'text', span: 'sm:col-span-3'
+                        id: 'state', label: 'State', type: 'text', span: 'sm:col-span-3'
                     }
                 ]
 
@@ -124,7 +135,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                         id: 'ZipPostalCode', label: 'Zip/Postal Code', type: 'text', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'Country', label: 'Country', type: 'select', span: 'sm:col-span-3'
+                        id: 'country', label: 'Country', type: 'select', span: 'sm:col-span-3'
                     }
                 ]
 
@@ -133,7 +144,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 label: 'Notes',
                 fields: [
                     {
-                        id: 'Note', type: 'textarea', span: 'sm:col-span-6'
+                        id: 'note', type: 'textarea', span: 'sm:col-span-6'
                     },
 
                 ]
@@ -152,10 +163,10 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                         id: 'Title', label: 'Title', type: 'select', span: 'sm:col-span-1'
                     },
                     {
-                        id: 'FName', label: 'First Name', type: 'text', span: 'sm:col-span-3'
+                        id: 'firstName', label: 'First Name', type: 'text', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'LName', label: 'Last Name', type: 'text', span: 'sm:col-span-2'
+                        id: 'lastName', label: 'Last Name', type: 'text', span: 'sm:col-span-2'
                     },
                 ]
             }

@@ -70,6 +70,7 @@ export interface TableBodyType extends CheckboxType {
 
 // Interface for dropdown items
 export interface DropdownItemType {
+    id?: string
     label: string;
     value?: string;
     url?: string;
@@ -94,7 +95,7 @@ export interface TableOptionsType {
 }
 export interface ResponseDataType {
     id: number,
-    [key: string]: string | number | JSX.Element;
+    [key: string]: string | number;
 }
 
 
@@ -106,9 +107,13 @@ export interface ReduxModalType {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     validation: any
 }
+
+export interface CatchData {
+    data: TravelersDataType
+}
 export interface TravelersDataType {
     data: ResponseDataType[]
-    totalItems: number,
+    totalRowCount: number,
     pageSize: number,
     currentPage: number,
     totalPages: number

@@ -1,10 +1,10 @@
 import Header from '@/components/table/table.page.header'
-import Pages from '@/components/pages'
+import Pages from '@/components/layout/pages'
 import { tableOptions } from '@/static/travelers/table/dropdown'
 import {
     travelersColumns
 } from '@/utils/mock/data/travelers/table'
-import Body from '@/components/body'
+import Body from '@/components/layout/body'
 import TravelerCompactList from '@/pages/core/travelers/compact-list/compact-list'
 import { useFetchTravelersQuery } from '@/states/reducer/apiSlice'
 import Pagination from '@/components/table/pagination'
@@ -15,10 +15,14 @@ import useSingleState from '@/hooks/useSingleState'
 
 export default function Travelers() {
 
-    const page = useSingleState(0)
-    const perPage = useSingleState(0)
+    const page = useSingleState(1)
 
-    const { data: travelersData } = useFetchTravelersQuery({ page: page.value, perPage: perPage.value });
+    // console.log("🚀 ~ Travelers ~ page:", page)
+
+    const pageSize = useSingleState(10)
+    // console.log("🚀 ~ Travelers ~ pageSize:", pageSize)
+
+    const { data: travelersData } = useFetchTravelersQuery({ page: page.value, pageSize: pageSize.value });
 
     if (travelersData) {
         return (
@@ -35,9 +39,9 @@ export default function Travelers() {
                         <Pagination
                             data-slot="Pagination"
                             tableData={travelersData}
-                            onPageChange={page} 
-                            onItemNumberChange={perPage}
-                            />
+                            onPageChange={page}
+                            onItemNumberChange={pageSize}
+                        />
                     </Table>
                     <TravelerCompactList
                         data-slot="compactList"

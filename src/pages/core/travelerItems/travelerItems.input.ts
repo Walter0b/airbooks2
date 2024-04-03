@@ -1,6 +1,6 @@
 import { IndividualFormDataProp } from "@/utils/models/structure";
 
-export const TravelerItemsInputFields: IndividualFormDataProp[] =  [
+export const TravelerItemsInputFields: IndividualFormDataProp[] = [
     {
         label: 'Booking',
         tabs: [
@@ -11,10 +11,10 @@ export const TravelerItemsInputFields: IndividualFormDataProp[] =  [
                         id: 'Title', label: 'Title', type: 'select', span: 'sm:col-span-1',
                     },
                     {
-                        id: 'FName', label: 'First Name', type: 'text', span: 'sm:col-span-3'
+                        id: 'firstName', label: 'First Name', type: 'text', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'LName', label: 'Last Name', type: 'text', span: 'sm:col-span-2'
+                        id: 'lastName', label: 'Last Name', type: 'text', span: 'sm:col-span-2'
                     },
                 ]
             }

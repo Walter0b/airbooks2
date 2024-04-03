@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ClockIcon } from "@/assets/svg/clock";
 import Buttons from "@/components/buttons/buttons";
 import { Lookup } from "@/components/buttons/lookups";
 
@@ -6,35 +7,24 @@ import { FieldComponents, FormFieldType } from "@/utils/models/structure";
 
 const fieldsComponents: any = new Proxy({
 
-    input,
+    events,
     select,
     textarea,
     lookup,
     space,
 }, {
     get(target: FieldComponents, prop: string) {
-        return target[prop] || input;
+        return target[prop] || events;
     },
 });
 
 export default fieldsComponents;
 
 
-function input(field: FormFieldType, FieldsValue: any) {
+function events() {
 
     return (
-        <input
-            type={field.type}
-            id={field.id}
-            name={field.id}
-            required={field?.required}
-            onChange={(e) => FieldsValue[field.id] = e.target.value}
-            value={FieldsValue[field.id]?.value}
-            autoComplete={field.autoComplete}
-
-            placeholder={field.placeHolder}
-            className=" text-left px-4 py-2 input-shadow focus:shadow-outline block h-full w-full rounded-sm border border-gray-300 text-sm text-gray-900 focus:border-blue-400 hover:border-blue-400"
-        />
+        < ClockIcon className="w-3 fill-gray-500" />
     );
 }
 
@@ -47,7 +37,7 @@ function textarea(field: FormFieldType, FieldsValue: any) {
             onChange={(e) => FieldsValue[field.id] = e.target.value}
             value={FieldsValue[field.id]?.value}
             autoComplete={field.autoComplete}
-            className="text-left px-4 py-2 input-shadow focus:shadow-outline mb-11 block h-36 w-full rounded-sm border border-gray-300 text-sm text-gray-900 focus:border-blue-400"
+            className="input-shadow focus:shadow-outline mb-11 block h-36 w-full rounded-sm border border-gray-300 text-sm text-gray-900 focus:border-blue-400"
         />
     );
 }
