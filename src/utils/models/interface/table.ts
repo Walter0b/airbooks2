@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useSingleStateType } from '../structure';
+import { FormDataProps, useSingleStateType } from '../structure';
 
 // Interface for Sidebar item
 export interface SidebarItemType {
@@ -13,6 +13,11 @@ export interface SidebarItemType {
     icon?: React.FC<{ className: string }>;
     className?: string;
     isButton?: boolean;
+}
+
+export interface NavButtonsProps {
+    item: SidebarItemType;
+    handleOpenModal: (key: string) => void;
 }
 
 // Interface for sub navigation item
@@ -65,6 +70,7 @@ export interface TableBodyType extends CheckboxType {
 
 // Interface for dropdown items
 export interface DropdownItemType {
+    id?: string
     label: string;
     value?: string;
     url?: string;
@@ -81,6 +87,7 @@ export interface ShowTableOptionsType {
 
 // Interface for table options
 export interface TableOptionsType {
+    pageLabel: string;
     action: DropdownItemType[];
     more: DropdownItemType[];
     sort: DropdownItemType[];
@@ -88,12 +95,25 @@ export interface TableOptionsType {
 }
 export interface ResponseDataType {
     id: number,
-    [key: string]: string | number | JSX.Element;
+    [key: string]: string | number;
 }
 
+
+export interface ReduxModalType {
+    modalId: string
+    isOpen: boolean;
+    data: TravelersDataType
+    inputFields: FormDataProps;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    validation: any
+}
+
+export interface CatchData {
+    data: TravelersDataType
+}
 export interface TravelersDataType {
     data: ResponseDataType[]
-    totalItems: number,
+    totalRowCount: number,
     pageSize: number,
     currentPage: number,
     totalPages: number
@@ -109,7 +129,10 @@ export interface TableItemType extends CheckboxType {
 }
 
 // Interface for navigation component 
-export interface NavComponentProps {
+export interface NavComponentProps extends BaseNavComponentProps {
+    handleOpenModal: (key: string) => void;
+}
+interface BaseNavComponentProps {
     item: SidebarItemType;
     isOpen?: boolean;
 }
@@ -123,7 +146,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links 
-export interface NavLinksType extends NavComponentProps { }
+export interface NavLinksType extends BaseNavComponentProps { }
 
 // Interface for buttons 
-export interface ButtonsType extends NavComponentProps { }
+export interface ButtonsType extends BaseNavComponentProps { }

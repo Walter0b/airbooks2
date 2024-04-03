@@ -8,7 +8,7 @@
 import { useState } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function useProxiedState(initialValue:any, customSetterFn?:any) {
+function usePeroxideState(initialValue:any, customSetterFn?:any) {
     const [state, setState] = useState(initialValue);
 
     const proxiedState = new Proxy(state, {
@@ -30,7 +30,7 @@ function useProxiedState(initialValue:any, customSetterFn?:any) {
     return proxiedState;
 }
 
-export default useProxiedState;
+export default usePeroxideState;
 
 
 

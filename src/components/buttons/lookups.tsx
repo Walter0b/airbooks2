@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ArrowIcon } from "@/assets/svg/arrow";
 import { DropdownItemType } from "@/utils/models/interface/table";
-import useProxiedState from "@/hooks/useProxiedState";
+import usePeroxideState from "@/hooks/usePeroxideState";
 
 interface LookupProps {
+    required?: boolean;
     containerClassName?: string;
     handleSelectOption?: (selectedOption: string) => void;
     options?: DropdownItemType[];
@@ -16,14 +17,13 @@ export function Lookup({
     containerClassName = 'w-full mt-1 items-start justify-between hover:text-cyan-550 gap-x-1.5 bg-white px-3 py-2 font-semibold text-gray-500 text-lg',
     handleSelectOption,
     readOnly,
+    required = false,
     options,
     dropdownContainerClassName,
     dropdownWidth,
-}: LookupProps) {
-    const FieldsValue = useProxiedState({ selectedOption: '' });
+}: Readonly<LookupProps>) {
+    const FieldsValue = usePeroxideState({ selectedOption: '' });
 
-    console.log("🚀 ~ FieldsValue:", FieldsValue.selectedOption, 33)
-    // consol
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -61,15 +61,14 @@ export function Lookup({
         option.label.toLowerCase().includes(FieldsValue.selectedOption.toLowerCase())
     );
 
-    // console.log("🚀 ~ FieldsValue?.selectedOption?.value.toLowerCase():", FieldsValue?.selectedOption)
-
     return (
         <div className="relative h-full flex-row text-left" ref={dropdownRef}>
             <div className="h-full flex items-center w-full">
                 <div className={`flex group/button ${containerClassName} ${isOpen && 'border-blue-400'}`}>
                     <input
+                        required={required}
                         type="text"
-                        className={`border-none flex w-full`}
+                        className={`text-left px-4 py-2 border-none flex w-full`}
                         onChange={handleInputChange}
                         onFocus={handleToggleDropdown}
                         value={FieldsValue?.selectedOption}

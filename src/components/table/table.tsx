@@ -52,7 +52,6 @@ export default function Table({
     const pagination = getCmpByAttr({
         children,
         value: 'Pagination',
-        // props: { isCheckedAll, columns, handleCheckboxAllChange, hasCheckbox },
     })
 
 

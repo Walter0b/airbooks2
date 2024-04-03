@@ -1,16 +1,36 @@
+import ItemDetailsBody from "@/components/compactlist/itemdetails";
+import { ModalContext } from "@/hooks/ModalContext";
 import TravelerCompactListHeader from "@/pages/core/travelers/compact-list/traveler-cl-btn";
+import { openModalWithData } from "@/states/reducer/modalSlice";
 import { tableOptions } from "@/static/travelers/table/dropdown";
+import useCurrentPageData from "@/utils/functions/getCurrentPageData";
+import { useContext } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
-import ItemDetailsBody from "./itemdetails";
 
 
-export default function ItemDetails() {
+export default function TravelersItemDetails() {
+    const data = useCurrentPageData()!
+    // console.log("🚀 ~ TravelersItemDetails ~ data:", data)
+
+    const { setPageLabel } = useContext(ModalContext);
+
+    const dispatch = useDispatch()
+    const handleOpenModal = () => {
+
+        setPageLabel?.("travelers");
+        // console.log("🚀 ~ action.payload.data:", data)
+        dispatch(openModalWithData({data: data}));
+    }
+
+
     return (
 
         <ItemDetailsBody data-slot="itemDetails">
             <TravelerCompactListHeader
                 data-slot="compactListHeader"
                 dropdownOptions={tableOptions}
+                handleOpenModal={handleOpenModal}
             />
             <div data-slot="compactListBody" className="mt-12 w-full">
                 <NavLink

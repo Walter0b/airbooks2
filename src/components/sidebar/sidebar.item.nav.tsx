@@ -2,13 +2,11 @@ import { ArrowIcon } from '@/assets/svg/arrow'
 import { CircleIcon } from '@/assets/svg/circle'
 import { CrossIcon } from '@/assets/svg/cross'
 import { EmptyArrowIcon } from '@/assets/svg/emptyarrow'
-import Modal from '@/components/modal/modal'
-import useSingleState from '@/hooks/useSingleState'
 import {
     NavLinksType,
     NavComponentProps,
+    NavButtonsProps,
 } from '@/utils/models/interface/table'
-import { useSingleStateType } from '@/utils/models/structure'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -16,11 +14,11 @@ import { NavLink } from 'react-router-dom'
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Buttons({ modalState }: { modalState: useSingleStateType }) {
+function Buttons({ item, handleOpenModal }: Readonly<NavButtonsProps>) {
 
     return (
         <button
-            onClick={() => modalState.setValue(true)}
+            onClick={() => handleOpenModal(item.href || '')}
             className="group-hover:bg-gray-200 ml-[0.6px] group-[.peer\/compact]/compact:!hidden h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550 text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
         >
             <CrossIcon
@@ -139,8 +137,8 @@ function Accordion({ item }: Readonly<NavLinksType>) {
         </div>
     )
 }
-export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
-    const modalState = useSingleState(false)
+export function NavigationItem({ item, isOpen, handleOpenModal }: Readonly<NavComponentProps>) {
+
     return (
         <div className="group flex   w-full">
             {item.options?.length ? (
@@ -148,8 +146,7 @@ export function NavigationItem({ item, isOpen }: Readonly<NavComponentProps>) {
             ) : (
                 <NavLinks item={item} isOpen={isOpen} />
             )}
-            {item.isButton && <Buttons modalState={modalState} />}
-            {modalState.value && <Modal/>}
+            {item.isButton && <Buttons item={item} handleOpenModal={handleOpenModal} />}
         </div>
     )
 }
