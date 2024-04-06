@@ -7,14 +7,14 @@ import Tabs from './modal.tabs';
 import { useFormState } from '@/hooks/useFormState';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '@/states/reducer/modalSlice';
-import { ModalContext } from '@/hooks/ModalContext';
+import { ModalContext } from '@/hooks/context/ModalContext';
 import { RootState } from '@/states/store'
 
 const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
     const { data } = useSelector((state: RootState) => state.modal);
     console.log("🚀 ~ Modal ~ data:", data)
-    
+
     const { InputFields } = useContext(ModalContext);
 
     const defaultForm = InputFields![0].tabs

@@ -1,9 +1,7 @@
 import Header from '@/components/table/table.page.header'
 import Pages from '@/components/layout/pages'
 import { tableOptions } from '@/static/travelers/table/dropdown'
-import {
-    travelersColumns
-} from '@/utils/mock/data/travelers/table'
+
 import Body from '@/components/layout/body'
 import TravelerCompactList from '@/pages/core/travelers/compact-list/compact-list'
 import { useFetchTravelersQuery } from '@/states/reducer/apiSlice'
@@ -12,10 +10,11 @@ import Table from '@/components/table/table'
 import TableHeader from '@/components/table/table.header'
 import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
+import { travelersColumns } from './table'
 
 export default function Travelers() {
 
-    const page = useSingleState(1)
+    const page = useSingleState(0)
 
     // console.log("🚀 ~ Travelers ~ page:", page)
 

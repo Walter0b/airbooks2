@@ -1,7 +1,8 @@
+import { BooleanUseState } from "@/utils/models/structure";
 
 interface DropdownArrowProps {
     isOpen: boolean;
-    setIsOpen: (value: boolean | ((prev: boolean) => boolean)) => void
+    setIsOpen: BooleanUseState
 
 }
 

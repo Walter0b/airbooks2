@@ -1,7 +1,7 @@
 import { TableOptionsType } from '@/utils/models/interface/table'
 
 const show = {
-    title: 'Customer',
+    title: 'Customers',
 
     items: [
         {
@@ -13,47 +13,37 @@ const show = {
             hasMergeTitle: true,
         },
         {
-            label: 'Pending',
+            label: 'Inactive',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Posted',
+            label: 'Corporate',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Receipted',
+            label: 'Sub-Agencies',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Incomplete',
+            label: 'Individual',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'void',
+            label: 'Other Categories',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Void',
+            label: 'Outstanding',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Refunds',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'My Bookings',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'Unused Ticket',
+            label: 'Above Credit Limit',
             url: '#',
             hasMergeTitle: true,
         },
@@ -62,43 +52,28 @@ const show = {
 
 const action = [
     {
-        label: 'Issue Invoice',
-        group: 1,
-        url: '#',
-    },
-    {
-        label: 'Issue Sales Receipt',
-        group: 1,
-        url: '#',
-    },
-    {
-        label: 'Email Traveler',
-        group: 2,
-        url: '#',
-    },
-    {
         label: 'Email Customer',
+        group: 1,
+        url: '#',
+    },
+    {
+        label: 'Sync Profile',
         group: 2,
-        url: '#',
-    },
-    {
-        label: 'Forward',
-        group: 3,
-        url: '#',
-    },
-    {
-        label: 'Delete',
-        group: 3,
         url: '#',
     },
     {
         label: 'Download Sample Import File',
-        group: 4,
+        group: 3,
         url: '#',
     },
     {
         label: 'Export Travelers',
-        group: 4,
+        group: 3,
+        url: '#',
+    },
+    {
+        label: 'Import Travelers',
+        group: 3,
         url: '#',
     },
 ]

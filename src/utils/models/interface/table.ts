@@ -47,7 +47,7 @@ export interface ItemDetailsType {
 
 // Interface for data table 
 export interface DataTableType {
-    data: TravelersDataType;
+    data: ResponseDataType;
     columns: TableColumnType[];
     children?: ReactNode;
 }
@@ -60,7 +60,7 @@ export interface TableHeaderType extends CheckboxType {
 
 // Interface for table body 
 export interface TableBodyType extends CheckboxType {
-    tableData?: TravelersDataType;
+    tableData?: ResponseDataType;
     columns?: TableColumnType[];
     className?: string;
     checkedItems?: Record<number, boolean>;
@@ -93,7 +93,7 @@ export interface TableOptionsType {
     sort: DropdownItemType[];
     show: ShowTableOptionsType;
 }
-export interface ResponseDataType {
+export interface TableDataType {
     id: number,
     [key: string]: string | number;
 }
@@ -102,17 +102,17 @@ export interface ResponseDataType {
 export interface ReduxModalType {
     modalId: string
     isOpen: boolean;
-    data: TravelersDataType
+    data: ResponseDataType
     inputFields: FormDataProps;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     validation: any
 }
 
 export interface CatchData {
-    data: TravelersDataType
+    data: ResponseDataType
 }
-export interface TravelersDataType {
-    data: ResponseDataType[]
+export interface ResponseDataType {
+    data: TableDataType[]
     totalRowCount: number,
     pageSize: number,
     currentPage: number,
@@ -121,7 +121,7 @@ export interface TravelersDataType {
 }
 // Interface for table item 
 export interface TableItemType extends CheckboxType {
-    tableData?: TravelersDataType
+    tableData?: ResponseDataType
     columns: TableColumnType[];
     children: ReactNode;
     onClickHandler?: (value: string) => void;
@@ -139,7 +139,7 @@ interface BaseNavComponentProps {
 
 // Interface for pagination 
 export interface PaginationPropsType {
-    tableData?: TravelersDataType
+    tableData?: ResponseDataType
     className?: string;
     onPageChange: useSingleStateType
     onItemNumberChange: useSingleStateType

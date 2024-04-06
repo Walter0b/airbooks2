@@ -59,7 +59,9 @@ export type FieldComponent = (field: FormFieldType, values: FormFieldType) => JS
 type FieldsValue = {
     [key: string]: { value: unknown; error: string };
 }
-
+export type BooleanUseState={
+    (value: boolean | ((prev: boolean) => boolean)): void;
+}
 export interface FieldComponents {
     [key: string]: FieldComponent;
 }

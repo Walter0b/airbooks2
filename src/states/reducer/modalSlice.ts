@@ -1,9 +1,9 @@
-import { ResponseDataType } from '@/utils/models/interface/table';
+import { TableDataType } from '@/utils/models/interface/table';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ModalState {
     isOpen: boolean;
-    data: ResponseDataType;
+    data: TableDataType;
 }
 
 const initialState: ModalState = {
@@ -17,7 +17,7 @@ const modalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-        openModalWithData: (state, action: PayloadAction<{data: ResponseDataType}>) => {
+        openModalWithData: (state, action: PayloadAction<{ data: TableDataType }>) => {
             state.data = action.payload.data;
             // console.log("🚀 ~ action.payload.data:", action.payload.data)
             state.isOpen = true;
@@ -27,7 +27,7 @@ const modalSlice = createSlice({
         },
         closeModal: (state) => {
             state.isOpen = false;
-            state.data =  {
+            state.data = {
                 id: 0
             };
         },

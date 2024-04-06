@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Checkboxes from './table.checkbox';
-import { TableBodyType, ResponseDataType } from '@/utils/models/interface/table';
+import { TableBodyType, TableDataType } from '@/utils/models/interface/table';
 import { useNavigate } from 'react-router-dom';
 
 const TableBody: React.FC<TableBodyType> = ({
@@ -24,11 +24,11 @@ const TableBody: React.FC<TableBodyType> = ({
 
     return (
         <tbody>
-            {tableData?.data?.map((item: ResponseDataType, index: number) => (
+            {tableData?.data?.map((item: TableDataType, index: number) => (
                 <tr
                     key={index}
                     onClick={(event) => handleRowClick(event, item.id)}
-                    className={`${className} border-b odd:bg-white even:bg-slate-50 hover:bg-neutral-100`}
+                    className={`${className} whitespace-nowrap border-b odd:bg-white even:bg-slate-50 hover:bg-neutral-100`}
                 >
                     {hasCheckbox && (
                         <Checkboxes
