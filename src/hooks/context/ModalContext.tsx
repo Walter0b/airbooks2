@@ -6,11 +6,13 @@ export const ModalContext = createContext<{ setPageLabel?: (label: string) => vo
 
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [pageLabel, setPageLabel] = useState('');
-
+  const [isCompact, setIsCompact] = useState<boolean>(false)
   const processedInputs = modalInputFields[pageLabel];
   const value = {
     InputFields: processedInputs,
     setPageLabel,
+    setIsCompact,
+    isCompact
   };
   console.log("🚀 ~ ModalProvider ~ value:", value)
 

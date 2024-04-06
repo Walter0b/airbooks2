@@ -12,7 +12,7 @@ export default function ShowButton({
 }: Readonly<ShowButtonProps>) {
     const [selectedOption, setSelectedOption] = useState<string>('')
     const Title = (
-        <div data-slot="title" >
+        <div data-slot="title" className='' >
             {' '}
             {selectedOption} {dropdownOptions.title}
         </div>
@@ -22,8 +22,8 @@ export default function ShowButton({
 
         < Buttons
             hasDropdownIcon={true}
-            dropdownText='text-start'
-            dropdownClassName='w-36'
+            dropdownText='text-start font-semibold'
+            dropdownClassName='w-40'
             dropdownOptions={dropdownOptions.items as DropdownItemType[]}
             setSelectedOption={setSelectedOption}
         >{Title}

@@ -3,7 +3,7 @@ import { NavigationItem } from './sidebar.item.nav'
 import { SidebarItemType } from '@/utils/models/interface/table'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/states/reducer/modalSlice'
-import { ModalContext } from '@/hooks/ModalContext'
+import { ModalContext } from '@/hooks/context/ModalContext'
 
 export default function SideBarItems({
     navigation,
@@ -33,7 +33,7 @@ export default function SideBarItems({
                             navigation[index - 1].group !== item.group && (
                                 <hr className=" border-gray-300" />
                             )}
-                        <li className="flex items-center justify-between">
+                        <li className={`flex items-center justify-between ${isCompact && " group/visited hover:w-44"}`}>
                             <NavigationItem item={item} isOpen={isCompact} handleOpenModal={handleOpenModal} />
                         </li>
                     </React.Fragment>

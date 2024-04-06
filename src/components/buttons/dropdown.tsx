@@ -17,7 +17,7 @@ export const Dropdown = React.memo(
         titles = 'text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize',
         setSelectedOption,
     }: DropdownProps) => {
-        const dropdownClassName = `${text} dropdownClassName block px-4 py-1 w-full text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`;
+        const dropdownClassName = `${text} block px-4 py-1 w-full text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`;
 
         const handleItemClick = (
             item: DropdownItemType,

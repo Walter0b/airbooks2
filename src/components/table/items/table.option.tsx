@@ -7,7 +7,7 @@ import { LightBulbIcon } from '@/assets/svg/lightbulb'
 import { TableOptionsType } from '@/utils/models/interface/table'
 import { useParams } from "react-router-dom";
 import { useFetchTravelersQuery } from '@/states/reducer/apiSlice';
-import { ModalContext } from '@/hooks/ModalContext'
+import { ModalContext } from '@/hooks/context/ModalContext'
 import { openModal } from '@/states/reducer/modalSlice'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
@@ -61,9 +61,9 @@ export default function TableOptions({
 
                 <Buttons className="flex h-full  items-center justify-center gap-[1px] border-[0.8px] border-grey-450 bg-gray-100 px-2"
 
-                    dropdownClassName="right-0 mt-2 w-44"
+                    dropdownClassName="right-0 mt-2 w-44  "
                     dropdownTitles="text-gray-400 font-medium text-start text-xs first:mt-2 first:ml-2 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize"
-                    dropdownText="text-start font-medium"
+                    dropdownText="text-start font-medium "
                     dropdownOptions={showTableOptions?.sort}
 
                 >
@@ -76,7 +76,7 @@ export default function TableOptions({
 
                 <Buttons className="flex h-full items-center justify-center rounded-r border-[0.8px] border-grey-450 bg-gray-100 p-2"
                     dropdownClassName="right-0 mt-2 w-fit"
-                    dropdownText="text-start whitespace-nowrap font-medium"
+                    dropdownText="text-start whitespace-nowrap font-medium "
                     dropdownOptions={showTableOptions?.action}
                 >
                     <Hamburger

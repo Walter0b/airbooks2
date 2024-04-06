@@ -1,7 +1,7 @@
 import { TableOptionsType } from '@/utils/models/interface/table'
 
 const show = {
-    title: 'Customer',
+    title: 'Travelers',
 
     items: [
         {
@@ -13,47 +13,17 @@ const show = {
             hasMergeTitle: true,
         },
         {
-            label: 'Pending',
+            label: 'No Plan',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Posted',
+            label: 'Scheduled',
             url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Receipted',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'Incomplete',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'void',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'Void',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'Refunds',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'My Bookings',
-            url: '#',
-            hasMergeTitle: true,
-        },
-        {
-            label: 'Unused Ticket',
+            label: 'On Trip',
             url: '#',
             hasMergeTitle: true,
         },
@@ -62,43 +32,28 @@ const show = {
 
 const action = [
     {
-        label: 'Issue Invoice',
+        label: 'Mark as Active',
         group: 1,
-        url: '#',
-    },
-    {
-        label: 'Issue Sales Receipt',
-        group: 1,
-        url: '#',
-    },
-    {
-        label: 'Email Traveler',
-        group: 2,
-        url: '#',
-    },
-    {
-        label: 'Email Customer',
-        group: 2,
-        url: '#',
-    },
-    {
-        label: 'Forward',
-        group: 3,
         url: '#',
     },
     {
         label: 'Delete',
-        group: 3,
+        group: 1,
         url: '#',
     },
     {
         label: 'Download Sample Import File',
-        group: 4,
+        group: 2,
         url: '#',
     },
     {
         label: 'Export Travelers',
-        group: 4,
+        group: 2,
+        url: '#',
+    },
+    {
+        label: 'Import Travelers',
+        group: 2,
         url: '#',
     },
 ]

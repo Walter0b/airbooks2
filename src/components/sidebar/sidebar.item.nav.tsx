@@ -39,9 +39,9 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksType>) {
         <NavLink
             to={item.href ?? ''}
             className={({ isActive }) =>
-                `${isActive ? 'bg-cyan-550 !fill-gray-100 text-white peer ' :
+                `${isActive ? '  bg-cyan-550 !fill-gray-100 text-white peer ' :
                     `text-zinc-550 hover:bg-white group-hover:bg-white group-hover:text-cyan-650 `
-                } ${isOpen ? 'h-11' : 'h-10'} w-full p-2 `
+                } ${isOpen ? 'h-11 ' : 'h-10'}   w-full p-2 `
             }
         >
             {({ isActive }) => {
@@ -60,7 +60,7 @@ function NavLinks({ item, isOpen }: Readonly<NavLinksType>) {
                         ) : (
                             <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
                         )}
-                        <span className={`${isOpen ? 'hidden' : 'sm:inline'}`}>{item.label}</span>
+                        <span className={`${isOpen ? 'hidden group-hover/visited:!inline' : 'sm:inline'}`}>{item.label}</span>
 
 
                         {item.count && (
@@ -140,7 +140,7 @@ function Accordion({ item }: Readonly<NavLinksType>) {
 export function NavigationItem({ item, isOpen, handleOpenModal }: Readonly<NavComponentProps>) {
 
     return (
-        <div className="group flex   w-full">
+        <div className={`group flex w-full `}>
             {item.options?.length ? (
                 <Accordion item={item} isOpen={isOpen} />
             ) : (

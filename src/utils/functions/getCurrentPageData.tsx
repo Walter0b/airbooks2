@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { CatchData, ResponseDataType } from '../models/interface/table';
+import { CatchData, TableDataType } from '../models/interface/table';
 
-const useCurrentPageData = (): ResponseDataType | null => {
+const useCurrentPageData = (): TableDataType | null => {
     const { id } = useParams();
     const NumberId = parseInt(id as string, 10);
 
@@ -11,7 +11,7 @@ const useCurrentPageData = (): ResponseDataType | null => {
     const requestData = Object.values(travelersData)[0] || { data: { data: [] } };
     const { data } = requestData;
 
-    const specificData = data.data.find((developer: ResponseDataType) => developer.id === NumberId) || null;
+    const specificData = data.data.find((developer: TableDataType) => developer.id === NumberId) || null;
 
     return specificData;
 };
