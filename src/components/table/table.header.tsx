@@ -11,9 +11,9 @@ const TableHeader: React.FC<TableHeaderType> = ({
     return (
         <thead
             data-slot="TableHeader"
-            className="sticky top-0  bg-gray-50 text-xs capitalize"
+            className="sticky top-0 bg-gray-50 text-xs capitalize"
         >
-            <tr className="border-b-2 border-b-gray-200 ">
+            <tr className=" border-b-gray-200 ">
                 {hasCheckbox && (
                     <Checkboxes
                         checkboxState={isCheckedAll}
@@ -29,6 +29,10 @@ const TableHeader: React.FC<TableHeaderType> = ({
                         {column.label}
                     </th>
                 ))}
+
+            </tr>
+            <tr className=' h-px relative -top-px'>
+                <th className=" bg-gray-200" colSpan={20}/>
             </tr>
         </thead>
     )

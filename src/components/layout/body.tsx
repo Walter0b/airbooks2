@@ -18,7 +18,7 @@ export default function Body({
     })
 
     return (
-        <div className="h-full w-full flex overflow-auto border">
+        <div className="h-full w-full flex overflow-hidden border">
             {id ? CompactList : Table}
         </div>
     )
