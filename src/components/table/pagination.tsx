@@ -34,7 +34,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
       <div className="mt-3 flex flex-wrap items-center -space-x-px text-black">
         <div className="mr-3">
           <select
-            className="neuton rounded-sm border bg-white p-2 text-red-800 hover:border-blue-300"
+            className=" rounded-sm border focus:outline-none p-2 text-red-800 hover:border-blue-300"
             name="pagination"
             id="cars"
             value={onItemNumberChange.value}
