@@ -13,7 +13,7 @@ import { RootState } from '@/states/store'
 const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
     const { data } = useSelector((state: RootState) => state.modal);
-    console.log("🚀 ~ Modal ~ data:", data)
+    // console.log("🚀 ~ Modal ~ data:", data)
 
     const { InputFields } = useContext(ModalContext);
 
@@ -43,9 +43,10 @@ const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
 
     const { FieldsValue } = useFormState(idObject, validationObject);
-    console.log("🚀 ~ Modal ~ idObject:", idObject)
+    // console.log("🚀 ~ Modal ~ validationObject:", validationObject)
+    // console.log("🚀 ~ Modal ~ idObject:", idObject)
 
-    console.log("🚀 ~ Modal ~ FieldsValue:", FieldsValue)
+    // console.log("🚀 ~ Modal ~ FieldsValue:", FieldsValue)
 
     function handleOnclick() {
         dispatch(closeModal());
@@ -53,9 +54,9 @@ const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        const formData = new FormData(event.target);
-        const formValues = Object.fromEntries(formData.entries());
-        console.log(formValues);
+        // const formData = new FormData(event.target);
+        // const formValues = Object.fromEntries(formData.entries());
+        // console.log(formValues);
     };
 
     const modalRef = useRef<HTMLDivElement>(null);

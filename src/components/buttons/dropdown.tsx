@@ -30,7 +30,7 @@ export const Dropdown = React.memo(
                 item?.onClick?.();
             }
 
-            item?.hasMergeTitle && setSelectedOption?.(item.label);
+            item?.hasMergeTitle && setSelectedOption?.(item.label!);
         };
 
         return (

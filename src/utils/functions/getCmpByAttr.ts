@@ -22,10 +22,10 @@ export function getCmpByAttr({
     )
 
     if (cmp) {
-        console.log(`Found component with attr ${attr} and value ${value}`)
+        // console.log(`Found component with attr ${attr} and value ${value}`)
         return cloneElement(cmp, props)
     }
 
-    console.warn(`No component found with attr ${attr} and value ${value}`)
+    // console.warn(`No component found with attr ${attr} and value ${value}`)
     return null
 }

@@ -1,4 +1,4 @@
-import { getCmpByAttr } from '@/utils/functions/action'
+import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { PageProps } from '@/utils/models/interface/page'
 import { Outlet } from 'react-router-dom';
 

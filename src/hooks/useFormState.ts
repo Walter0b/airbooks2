@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useMemo, useState } from 'react';
 
-type Validations = Record<string, (value: any, values: any) => string>;
+type Validations = Record<string, (value: string, fields: any) => string>;
 
 export function useFormState(initialValues: any, validations: Validations) {
-    
     const [values, setValues] = useState(() => {
         const initializeFieldStates = Object.fromEntries(
             Object.entries(initialValues).map(([field, value]) => [field, { value, error: '' }])
@@ -15,7 +14,7 @@ export function useFormState(initialValues: any, validations: Validations) {
     const memoizedValidations = useMemo(
         () =>
             Object.fromEntries(
-                Object.entries(validations).map(([key, fn]) => [key, fn.bind(null, values)])
+                Object.entries(validations).map(([key, fn]) => [key, (value: string) => fn(value, values)])
             ),
         [validations, values]
     );
@@ -27,7 +26,7 @@ export function useFormState(initialValues: any, validations: Validations) {
             [prop]: {
                 ...prevValues[prop],
                 value: newValue,
-                error: validationError,
+                error: validationError
             },
         }));
     }, [memoizedValidations]);

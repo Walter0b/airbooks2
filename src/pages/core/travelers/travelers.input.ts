@@ -9,13 +9,13 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 label: 'Traveler Name',
                 fields: [
                     {
-                        id: 'title', label: 'Title', type: 'select', span: 'sm:col-span-1', required: true
+                        id: 'title', label: 'Title', type: 'lookup', span: 'sm:col-span-1', required: true
                     },
                     {
-                        id: 'firstName', label: 'First Name', type: 'text', span: 'sm:col-span-3', required: true
+                        id: 'first_name', label: 'First Name', type: 'text', span: 'sm:col-span-3', required: true
                     },
                     {
-                        id: 'lastName', label: 'Last Name', type: 'text', span: 'sm:col-span-2', required: true
+                        id: 'last_name', label: 'Last Name', type: 'text', span: 'sm:col-span-2', required: true
                     },
                 ]
             },
@@ -24,18 +24,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 required: true,
                 fields: [
                     {
-                        id: 'displayName', type: 'select', span: 'sm:col-span-6', options: [
-                            {
-                                id: 'firstName',
-                                label: 'Male',
-                                value: 'Male',
-
-                            },
-                            {
-                                id: 'lastName',
-                                label: 'Female',
-                                value: 'Female'
-                            },]
+                        id: 'display_name', type: 'input', readOnly: true, span: 'sm:col-span-6'
                     }
                 ]
 
@@ -53,10 +42,10 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
 
                 fields: [
                     {
-                        id: 'workPhone', label: 'Work Phone', type: 'tel', span: 'sm:col-span-3'
+                        id: 'work_phone', label: 'Work Phone', type: 'tel', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'mobilePhone', label: 'Mobile Phone', type: 'tel', span: 'sm:col-span-3'
+                        id: 'mobile_phone', label: 'Mobile Phone', type: 'tel', span: 'sm:col-span-3'
                     }
                 ]
 
@@ -66,17 +55,17 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 columnSpan: 'sm:grid-cols-7',
                 fields: [
                     {
-                        id: 'passportNumber', label: 'Number', type: 'number', span: 'sm:col-span-3'
+                        id: 'passport_number', label: 'Number', type: 'string', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'issuedDate', label: 'issued On', type: 'date', span: 'sm:col-span-2'
+                        id: 'passport_issued_on', label: 'issued On', type: 'date', span: 'sm:col-span-2'
                     },
                     {
-                        id: 'expiresDate', label: 'Expires On', type: 'tel', span: 'sm:col-span-2'
+                        id: 'passport_expire_on', label: 'Expires On', type: 'date', span: 'sm:col-span-2'
                     },
 
                     {
-                        id: 'CountryOfCitizenship', label: 'Country of Citizenship', type: 'select', span: 'sm:col-span-3',
+                        id: 'CountryOfCitizenship', label: 'Country of Citizenship', type: 'lookup', span: 'sm:col-span-3',
                     },
 
                     {
@@ -84,13 +73,13 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                     },
 
                     {
-                        id: 'birthDate', label: 'Date Of Birth', type: 'date', span: 'sm:col-span-3'
+                        id: 'birth_date', label: 'Date Of Birth', type: 'date', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'MaritalStatus', label: 'Marital Status', type: 'select', span: 'sm:col-span-2'
+                        id: 'marital_status', label: 'Marital Status', type: 'lookup', span: 'sm:col-span-2'
                     },
                     {
-                        id: 'Gender', label: 'Gender', type: 'lookup', readOnly: true, span: 'sm:col-span-2', options: [
+                        id: 'gender', label: 'Gender', type: 'lookup', readOnly: true, span: 'sm:col-span-2', options: [
                             {
                                 label: 'Male',
                                 value: 'Male',
@@ -111,7 +100,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 label: 'Address',
                 fields: [
                     {
-                        id: 'Select', label: 'Street', type: 'text', span: 'sm:col-span-6'
+                        id: 'street', label: 'Street', type: 'text', span: 'sm:col-span-6'
                     }
                 ]
 
@@ -132,10 +121,10 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
 
                 fields: [
                     {
-                        id: 'ZipPostalCode', label: 'Zip/Postal Code', type: 'text', span: 'sm:col-span-3'
+                        id: 'postal_code', label: 'Zip/Postal Code', type: 'text', span: 'sm:col-span-3'
                     },
                     {
-                        id: 'country', label: 'Country', type: 'select', span: 'sm:col-span-3'
+                        id: 'country', label: 'Country', type: 'lookup', span: 'sm:col-span-3'
                     }
                 ]
 
@@ -160,7 +149,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 label: 'Traveler Name',
                 fields: [
                     {
-                        id: 'Title', label: 'Title', type: 'select', span: 'sm:col-span-1'
+                        id: 'Title', label: 'Title', type: 'lookup', span: 'sm:col-span-1'
                     },
                     {
                         id: 'firstName', label: 'First Name', type: 'text', span: 'sm:col-span-3'

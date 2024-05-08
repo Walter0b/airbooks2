@@ -71,8 +71,8 @@ export interface TableBodyType extends CheckboxType {
 // Interface for dropdown items
 export interface DropdownItemType {
     id?: string
-    label: string;
-    value?: string;
+    label?: string;
+    value: string;
     url?: string;
     onClick?: () => void;
     group?: number;
@@ -111,9 +111,13 @@ export interface ReduxModalType {
 export interface CatchData {
     data: ResponseDataType
 }
+interface TableMetaData {
+    total_count:number
+    filter_count:number
+}
 export interface ResponseDataType {
     data: TableDataType[]
-    totalRowCount: number,
+    meta:TableMetaData,
     pageSize: number,
     currentPage: number,
     totalPages: number

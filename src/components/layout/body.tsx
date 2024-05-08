@@ -1,4 +1,4 @@
-import { getCmpByAttr } from '@/utils/functions/action'
+import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { BodyProps } from '@/utils/models/interface/page'
 import { useParams } from 'react-router-dom';
 

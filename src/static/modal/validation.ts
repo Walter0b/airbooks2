@@ -10,9 +10,9 @@ const emailValidation = (value: string) => {
 
     return null;
 };
-
-const generateEmail = (Fields: any) => {
-    return `${Fields.firstName.value}${Fields.lastName.value}@example.com`;
+const generateEmail = (fields: any) => {
+    // console.log("🚀 ~ generateEmail ~ fields:", fields)
+    return `${fields.first_name.value}${fields.last_name.value}@example.com`;
 };
 
 export const commonValidations = {
@@ -21,9 +21,10 @@ export const commonValidations = {
     lastName: (value: string) => !value && 'Last name is required',
     DisplayName: (value: string) => !value && 'Display name is required',
 
-    Email: (value: string, Fields: any) => {
-        const generatedEmail = generateEmail(Fields);
-        return !value && (!Fields.firstName.value || !Fields.lastName.value)
+    Email: (value: string, fields: any) => {
+        // console.log("🚀 ~ generateEmail ~ fields2:", fields,value)
+        const generatedEmail = generateEmail(fields);
+        return !value && (!fields.firstName.value || !fields.lastName.value)
             ? 'Email should be the concatenation of first name and last name followed by @example.com'
             : value !== generatedEmail
                 ? 'Email should be the concatenation of first name and last name followed by @example.com'

@@ -24,6 +24,7 @@ function input(field: FormFieldType, FieldsValue: any) {
 
     return (
         <input
+            readOnly={field.readOnly}
             type={field.type}
             id={field.id}
             name={field.id}
@@ -33,7 +34,7 @@ function input(field: FormFieldType, FieldsValue: any) {
             autoComplete={field.autoComplete}
 
             placeholder={field.placeHolder}
-            className=" text-left px-4 py-2 input-shadow focus:shadow-outline block h-full w-full rounded-sm border border-gray-300 text-sm text-gray-900 focus:border-blue-400 hover:border-blue-400"
+            className={` ${field.readOnly && 'pointer-events-none'} text-left px-4 py-2 input-shadow focus:shadow-outline block h-full w-full rounded-sm border border-gray-300 text-sm text-gray-900 focus:border-blue-400 hover:border-blue-400`}
         />
     );
 }
@@ -74,14 +75,18 @@ function space(field: FormFieldType) {
     )
 }
 function lookup(field: FormFieldType, FieldsValue: any) {
+    console.log("🚀 ~ lookup ~ FieldsValue:", field?.options?.map(item => FieldsValue[item.id!]?.value))
+
     return (
         <Lookup
+            value={FieldsValue[field.id]?.value}
             required={field.required}
             containerClassName=" !h-full items-center justify-end rounded-sm  !border text-gray-900 shadow-sm hover:border-blue-400 focus-within:border-blue-400  sm:text-sm sm:leading-6"
             dropdownWidth={'full'}
-            readOnly={FieldsValue.readOnly}
+            // readOnly={FieldsValue.readOnly}
             dropdownContainerClassName="focus:shadow-outline right-0 rounded-sm border border-blue-400 text-sm text-gray-900 "
             handleSelectOption={(value) => FieldsValue[field.id].value = value}
+            // lookupOptions={ field?.options?.map(item => FieldsValue[item.id!]?.value)}
             options={field.options}
         />
     );

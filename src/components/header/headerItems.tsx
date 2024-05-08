@@ -1,4 +1,4 @@
-import logo from '@/assets/image/neema/logo/fa-logo.png'
+import logo from '@/assets/image/neema/logo/Neema.png'
 import { NotificationsIcon } from '@/assets/svg/notificaitons'
 import { HelpIcon } from '@/assets/svg/help'
 import { SettingsIcon } from '@/assets/svg/settings'

@@ -2,10 +2,13 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 export const customerColumns = [
-    { key: 'customerName', label: 'Customer Name' },
-    { key: 'idCurrency', label: 'Currency' },
-    { key: 'state', label: 'State' },
-    { key: 'idCountry', label: 'Country' },
+    { key: 'customer_name', label: 'Customer Name' },
+    { key: 'alias', label: 'Alias' },
+    { key: 'id_currency', label: 'Currency' },
+    { key: 'street', label: 'Street' }, 
+    { key: 'city', label: 'City' }, 
+    { key: 'state', label: 'State' }
+
 
 ]
 
