@@ -15,12 +15,12 @@ import useSingleState from '@/hooks/useSingleState'
 
 export default function Travelers() {
 
-    const page = useSingleState(0)
+    const page = useSingleState(1)
 
     const pageSize = useSingleState(10)
 
     const { data: customersData } = useFetchCustomersQuery({ page: page.value, pageSize: pageSize.value });
-    console.log("🚀 ~ Travelers ~ page.value:", page.value)
+    // console.log("🚀 ~ Travelers ~ page.value:", page.value)
 
     if (customersData) {
         return (

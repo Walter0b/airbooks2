@@ -3,7 +3,7 @@ import os
 def generate_directory_tree(directory, ignore_list=None):
     if ignore_list is None:
         ignore_list = []
-    ignore_list.append('.')  # Add '.' to ignore hidden files and directories
+    ignore_list.append('.')  
         
     tree = {}
     try:
@@ -36,7 +36,7 @@ def write_directory_tree_recursive(tree, file, indent=0):
             file.write("  " * (indent+1) + "|-" + content + '\n')
 
 directory_path = '.'
-ignore_list = ['dist','node_modules']  # Ignore list without '.'
+ignore_list = ['dist','node_modules']  
 directory_tree = generate_directory_tree(directory_path, ignore_list)
 output_file_path = 'directory_tree.txt'
 write_directory_tree_to_file(directory_tree, output_file_path)

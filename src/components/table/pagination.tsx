@@ -8,29 +8,32 @@ const Pagination: React.FC<PaginationPropsType> = ({
   onPageChange,
   onItemNumberChange,
 }) => {
-  const totalPages = tableData?.totalPages || 0;
+  const totalPages = tableData?.meta.filter_count || 0;
 
   const gotoPage = (page: number) => {
+    // console.log("🚀 ~ gotoPage ~ page:", page, onPageChange.value)
     onPageChange.setValue(page);
   };
 
-  const canPreviousPage = onPageChange.value > 0;
-  const canNextPage = onPageChange.value > totalPages - 1;
 
-  const startIndex = onPageChange.value * onItemNumberChange.value;
+  const startIndex = (onPageChange.value - 1) * onItemNumberChange.value;
+  // console.log("🚀 ~ onPageChange.value:", onPageChange.value)
   const endIndex = Math.min(
     startIndex + onItemNumberChange.value,
-    tableData?.totalRowCount || 0
+    tableData?.meta.filter_count || 0
   );
 
   const handleItemsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newItemsPerPage = parseInt(event.target.value, 10);
     onItemNumberChange.setValue(newItemsPerPage);
-    onPageChange.setValue(0);
+    onPageChange.setValue(1);
   };
 
+  const canPreviousPage =  (onPageChange.value - 1) > 0;
+  const canNextPage = endIndex < totalPages - 1;
+
   return (
-    <div id="Pagination" className={className}>
+    <div id="Pagination" className={`${className} mr-3`}>
       <div className="mt-3 flex flex-wrap items-center -space-x-px text-black">
         <div className="mr-3">
           <select
@@ -59,7 +62,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
           </button>
         </div>
         <div className="px-3 -mt-1">
-          {`${startIndex + 1}-${endIndex} of ${tableData?.totalRowCount}`}
+          {`${startIndex + 1}-${endIndex}`}
         </div>
         <div>
           <button

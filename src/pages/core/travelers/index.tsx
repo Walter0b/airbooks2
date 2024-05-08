@@ -14,7 +14,7 @@ import { travelersColumns } from './table'
 
 export default function Travelers() {
 
-    const page = useSingleState(0)
+    const page = useSingleState(1)
 
     // console.log("🚀 ~ Travelers ~ page:", page)
 

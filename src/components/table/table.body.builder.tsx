@@ -69,7 +69,7 @@ function lookup(field: FormFieldType, FieldsValue: any) {
             required={field.required}
             containerClassName=" !h-full items-center justify-end rounded-sm  !border text-gray-900 shadow-sm hover:border-blue-400 focus-within:border-blue-400  sm:text-sm sm:leading-6"
             dropdownWidth={'full'}
-            readOnly={FieldsValue.readOnly}
+            // readOnly={FieldsValue.readOnly}
             dropdownContainerClassName="focus:shadow-outline right-0 rounded-sm border border-blue-400 text-sm text-gray-900 "
             handleSelectOption={(value) => FieldsValue[field.id].value = value}
             options={field.options}

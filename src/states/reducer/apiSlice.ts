@@ -9,8 +9,11 @@ const baseQuery = fetchBaseQuery({
     headers.set('Content-Type', 'application/json');
     return headers;
   },
+  paramsSerializer: (params) => {
+    const queryString = new URLSearchParams(params).toString();
+    return `${queryString}&meta=*`;
+  },
 });
-
 export const api = createApi({
   reducerPath: 'api',
   baseQuery,
@@ -18,15 +21,15 @@ export const api = createApi({
   endpoints: (builder) => ({
     fetchTravelers: builder.query<ResponseDataType, { page: number; pageSize: number }>({
       query: ({ page, pageSize }) => ({
-        url: `travelers`,
-        params: { page, 'page-size': pageSize },
+        url: `traveler`,
+        params: { page, 'limit': pageSize },
       }),
       providesTags: ['Travelers'],
     }),
     fetchCustomers: builder.query<ResponseDataType, { page: number; pageSize: number }>({
       query: ({ page, pageSize }) => ({
-        url: `customers`,
-        params: { page, 'page-size': pageSize },
+        url: `customer`,
+        params: { page, 'limit': pageSize },
       }),
       providesTags: ['Customers'],
     }),

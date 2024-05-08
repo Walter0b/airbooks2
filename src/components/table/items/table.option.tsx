@@ -19,7 +19,7 @@ export default function TableOptions({
 }>) {
     const { refetch } = useFetchTravelersQuery({ page: 1, pageSize: 10 })
     const handleOnclick = async () => {
-        console.log("refetch:")
+        // console.log("refetch:")
         refetch()
     };
 
@@ -28,7 +28,7 @@ export default function TableOptions({
     const dispatch = useDispatch()
     const handleOpenModal = (pageLabel: string) => {
         if (pageLabel) {
-            console.log(pageLabel)
+            // console.log(pageLabel)
             setPageLabel?.(pageLabel);
             dispatch(openModal());
         }

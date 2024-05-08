@@ -1,6 +1,6 @@
 
 const TableLoader = () => {
-    console.log('Loading')
+    // console.log('Loading')
     return (
         <div className="border w-full border-gray-200 shadow-sm rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">

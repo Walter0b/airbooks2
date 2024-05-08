@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
-import { getCmpByAttr } from '@/utils/functions/action'
+import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { TableItemType } from '@/utils/models/interface/table'
 import TableBody from './table.body'
 

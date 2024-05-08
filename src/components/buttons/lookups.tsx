@@ -5,20 +5,22 @@ import usePeroxideState from "@/hooks/usePeroxideState";
 
 interface LookupProps {
     required?: boolean;
+    value?: string;
+    lookupOptions?: []
     containerClassName?: string;
     handleSelectOption?: (selectedOption: string) => void;
     options?: DropdownItemType[];
     dropdownContainerClassName?: string;
     dropdownWidth?: number | string;
-    readOnly?: boolean;
 }
 
 export function Lookup({
     containerClassName = 'w-full mt-1 items-start justify-between hover:text-cyan-550 gap-x-1.5 bg-white px-3 py-2 font-semibold text-gray-500 text-lg',
     handleSelectOption,
-    readOnly,
+    value,
     required = false,
     options,
+    // lookupOptions,
     dropdownContainerClassName,
     dropdownWidth,
 }: Readonly<LookupProps>) {
@@ -45,7 +47,7 @@ export function Lookup({
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         FieldsValue.selectedOption = event.target.value;
-        !readOnly && handleSelectOption?.(event.target.value || '');
+        handleSelectOption?.(event.target.value || '');
         console.log(FieldsValue)
         setIsOpen(true);
     };
@@ -58,20 +60,20 @@ export function Lookup({
     };
 
     const filteredOptions = options?.filter(option =>
-        option.label.toLowerCase().includes(FieldsValue.selectedOption.toLowerCase())
+        option.value.toLowerCase().includes(FieldsValue.selectedOption.toLowerCase())
     );
 
     return (
-        <div className="relative h-full flex-row text-left" ref={dropdownRef}>
+        <div className="relative w-full h-full flex-row text-left" ref={dropdownRef}>
             <div className="h-full flex items-center w-full">
-                <div className={`flex group/button ${containerClassName} ${isOpen && 'border-blue-400'}`}>
+                <div className={`flex group/button w-full ${containerClassName} ${isOpen && 'border-blue-400'}`}>
                     <input
                         required={required}
                         type="text"
-                        className={`text-left px-4 py-2 border-none flex w-full`}
+                        className={`text-left px-4 border-none flex w-full`}
                         onChange={handleInputChange}
                         onFocus={handleToggleDropdown}
-                        value={FieldsValue?.selectedOption}
+                        value={FieldsValue?.selectedOption || value}
                     />
                     <ArrowIcon
                         className={`group-hover/button:!fill-cyan-550 mr-1 fill-gray-500 mt-[7px] w-2 ${isOpen ? 'rotate-180 transform' : ''}`}

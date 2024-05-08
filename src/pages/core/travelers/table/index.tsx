@@ -2,11 +2,11 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 export const travelersColumns = [
-    { key: 'displayName', label: 'Traveler Name' },
-    { key: 'mobilePhone', label: 'Mobile Phone' },
+    { key: 'display_name', label: 'Traveler Name' },
+    { key: 'mobile_phone', label: 'Mobile Phone' },
     { key: 'state', label: 'State' },
-    { key: 'postalCode', label: 'Postal Code' },
-
+    { key: 'city', label: 'City' },
+    { key: 'postal_code', label: 'Postal Code' }
 ]
 
 export const travelerCompactList = [

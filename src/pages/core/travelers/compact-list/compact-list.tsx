@@ -6,6 +6,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 export default function TravelerCompactList({
     tableData,
 }: Readonly<{ tableData?: ResponseDataType }>) {
+    // console.log("🚀 ~ tableData:", tableData)
+    
     const page = useSingleState(1)
     const pageSize = useSingleState(10)
 
@@ -33,7 +35,7 @@ export default function TravelerCompactList({
                         >
                             <div className="justify-start text-left">
                                 <div id="name" className="text-black">
-                                    {item.displayName}
+                                    {item.display_name}
                                 </div>
 
                                 <div
@@ -41,11 +43,11 @@ export default function TravelerCompactList({
                                     className="flex  text-black"
                                 >
                                     <div id="ticketNumber" className="text-gray-500 pr-1">
-                                        {item.nationality}
+                                        {item.city}
                                     </div>
                                     |
                                     <div id="date" className=" font-semibold text-cyan-550 pl-1">
-                                        {item.mobilePhone}
+                                        {item.mobile_phone}
                                     </div>
                                 </div>
                             </div>
@@ -54,11 +56,11 @@ export default function TravelerCompactList({
                                 <div id="money" className="flex text-black">
 
                                     <div id="amount" className="px-1">
-                                        {item.income}
+                                        {item.postal_code}
                                     </div>
                                 </div>
                                 <div id="planeState" className="text-black">
-                                    {item.travelStatus}
+                                    {item.id_country}
                                 </div>
 
                             </div>

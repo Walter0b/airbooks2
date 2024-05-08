@@ -1,4 +1,4 @@
-import { getCmpByAttr } from '@/utils/functions/action'
+import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 // import usePageName from '@/utils/functions/pageName';
 import { ItemDetailsType } from '@/utils/models/interface/table'
 
