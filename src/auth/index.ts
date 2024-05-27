@@ -1,5 +1,5 @@
-import NextAuth from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
     providers: [
@@ -10,29 +10,33 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
-                const { email, password } = credentials as {
-                    email: string
-                    password: string
-                }
+                const { email, password } = credentials as { email: string; password: string; };
 
-                // Make a request to your existing API for authentication
+                
                 const res = await fetch(`${process.env.BASE_URL}/auth/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ email, password }),
-                })
+                });
 
-                const user = await res.json()
+                const data = await res.json();
 
-                // If the authentication was successful, return the user object
+                
                 if (res.ok) {
-                    return user
+                    return {
+                        id: data.id, 
+                        name: data.name, 
+                        email: email,
+                        accessToken: data.accessToken, 
+                        refreshToken: data.refreshToken, 
+                        expiresAt: data.expires, 
+                    };
                 }
 
-                // Otherwise, return null to indicate authentication failure
-                return null
+                
+                return null;
             },
         }),
     ],
@@ -42,4 +46,19 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     pages: {
         signIn: '/auth/signin',
     },
-})
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.accessToken = user.accessToken;
+                token.refreshToken = user.refreshToken;
+                token.expiresAt = user.expiresAt;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            session.user.accessToken = token.accessToken;
+            session.user.expiresAt = token.expiresAt;
+            return session;
+        },
+    },
+});

@@ -49,46 +49,49 @@ const LoginPage: React.FC = () => {
                         </span>{' '}
                         sign in
                     </h2>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div>
-                            <input
-                                type="email"
-                                id="email"
-                                className="w-full rounded border border-gray-300 bg-white py-2 px-3 text-black"
-                                placeholder="Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="bg-white p-4">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+
+                        <div className="bg-white">
                             <div className="relative bg-inherit">
                                 <input
                                     type="text"
                                     id="username"
                                     name="username"
-                                    className="peer h-10 w-72 rounded border-gray-300 bg-transparent bg-white px-2 text-black placeholder-transparent ring-2 ring-gray-500 focus:ring-sky-600 focus:outline-none "
-                                    placeholder="Type inside me"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    className="peer  w-full  py-2 px-3 rounded border-gray-300 bg-transparent bg-white  text-black placeholder-transparent   "
+                                    placeholder="Email"
                                 />
                                 <label
                                     id="username"
                                     className="pointer-events-none absolute -top-3 left-0 mx-1 cursor-text bg-inherit px-1 text-sm text-gray-500 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-sky-600"
                                 >
-                                    Type inside me
+                                    Email
                                 </label>
                             </div>
                         </div>
-                        <div>
-                            <input
-                                type="password"
-                                id="password"
-                                className="w-full rounded border border-gray-300 bg-white py-2 px-3 text-black"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
+                        <div className="bg-white">
+                            <div className="relative bg-inherit">
+                                <input
+                                    type="password"
+                                    id="Password"
+                                    name="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    className="peer  w-full  py-2 px-3 rounded border-gray-300 bg-transparent bg-white  text-black placeholder-transparent   "
+                                    placeholder="Email"
+                                />
+                                <label
+                                    id="Password"
+                                    className="pointer-events-none absolute -top-3 left-0 mx-1 cursor-text bg-inherit px-1 text-sm text-gray-500 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-sky-600"
+                                >
+                                    Password
+                                </label>
+                            </div>
                         </div>
+                       
                         <div className="mb-6 flex items-center">
                             <input
                                 type="checkbox"
