@@ -26,7 +26,7 @@ export default function Pages({ children }: Readonly<PageProps>) {
                     {Body}
                 </div>
             }
-            <Outlet />
+            {/* <Outlet /> */}
         </div>
     )
 }

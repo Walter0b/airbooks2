@@ -23,7 +23,7 @@ function Layout({ sidebar }: Readonly<{ sidebar: SidebarItemType[] }>) {
                 <div className="flex h-full">
                     <SideBar navigation={sidebar} />
                     <main className="mb-14 flex w-full flex-col bg-white">
-                        <Outlet />
+                        {/* <Outlet /> */}
                         <DisplayModal />
                     </main>
                 </div>
