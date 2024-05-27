@@ -16,10 +16,12 @@ jobs:
           message: |
             *New Push Notification*
 
-            🔹 *Repository:* `${{ github.repository }}`
-            🔹 *Pushed by:* `${{ github.actor }}`
+            🔹 *Repository:* ` ${{ github.repository }}`
+            🔹 *Pushed by:* ` ${{ github.actor }}`
             🔹 *Pushed to:* ` ${{ github.ref_name }}`
             🔹 *Commit message:* `${{ github.event.head_commit.message }}`
+            🔹 *Files Modified:* ${{ join(github.event.commits.*.modified, ', ') }}
+            
             🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{github.sha}})
 
 
