@@ -12,6 +12,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown 
           message: |
             **New Push Notification**
 
@@ -19,7 +20,7 @@ jobs:
             🔹 **Pushed by:** `${{ github.actor }}`
             🔹 **Commit message:** `${{ github.event.head_commit.message }}`
 
-            🔗 [View Commit](${github.event.head_commit.url})
+            🔗 [View Commit]: https://github.com/${{ github.repository }}/commit/${{github.sha}}
 
       - name: Send Telegram message on pull request
         if: github.event_name == 'pull_request'
@@ -27,6 +28,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown 
           message: |
             **New Pull Request Notification**
 
