@@ -1,3 +1,4 @@
+'use client'
 import Buttons from '@/components/buttons/buttons'
 import { LanguageOptions } from '@/static/page/header'
 import { useState } from 'react'
@@ -12,7 +13,7 @@ export default function LanguageOption({ className }: { className?: string }) {
             <Buttons
                 dropdownClassName="right-0 w-56"
                 dropdownText="!text-xs font-normal"
-                dropdownOptions={LanguageOptions}
+                // dropdownOptions={LanguageOptions}
                 setSelectedOption={setSelectedOption}
                 className={`${className} items-center hover:text-white`}
                 hasDropdownIcon={true}

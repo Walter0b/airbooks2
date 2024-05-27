@@ -1,5 +1,5 @@
 import { CrossIcon } from '@/assets/svg/cross';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'next/navigation';
 
 export default function CloseButton({
     onClick,

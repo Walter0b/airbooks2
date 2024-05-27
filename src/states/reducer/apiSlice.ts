@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ResponseDataType, TableDataType } from '@/utils/models/interface/table';
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const apiUrl = process.env.BASE_URL;
 
 const baseQuery = fetchBaseQuery({
   baseUrl: apiUrl + '/items',
@@ -26,7 +26,7 @@ const baseQuery = fetchBaseQuery({
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery ,
+  baseQuery,
   tagTypes: ['Travelers', 'Customers'],
   endpoints: (builder) => ({
     fetchTravelers: builder.query<ResponseDataType, { page: number; pageSize: number }>({

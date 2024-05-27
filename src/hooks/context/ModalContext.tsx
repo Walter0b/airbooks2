@@ -1,3 +1,4 @@
+'use client'
 import { modalInputFields } from '@/utils/mock/data/modal/input';
 import { IndividualFormDataProp } from '@/utils/models/structure';
 import { ReactNode, createContext, useState } from 'react';

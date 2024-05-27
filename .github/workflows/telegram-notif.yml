@@ -1,20 +1,47 @@
 name: telegram message
-on: [push]
-jobs:
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
 
-  build:
-    name: Build
+jobs:
+  notify:
+    name: Notify on Push and Pull Request
     runs-on: ubuntu-latest
+
     steps:
-      - name: send telegram message on push
+      - name: Send Telegram message on push
+        if: github.event_name == 'push'
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ${{ github.actor }} created commit:
-            Commit message: ${{ github.event.commits[0].message }}
-            
-            Repository: ${{ github.repository }}
-            
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            **New Push Notification**
+
+            🔹 **Repository:** `${{ github.repository }}`
+            🔹 **Pushed by:** `${{ github.actor }}`
+            🔹 **Commit message:** `${{ github.event.head_commit.message }}`
+
+            🔗 [View Commit](${github.event.head_commit.url})
+
+      - name: Send Telegram message on pull request
+        if: github.event_name == 'pull_request'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            **New Pull Request Notification**
+
+            🔹 **Repository:** `${{ github.repository }}`
+            🔹 **Title:** `${{ github.event.pull_request.title }}`
+            🔹 **Author:** `${{ github.event.pull_request.user.login }}`
+            🔹 **Description:**
+            `${{ github.event.pull_request.body }}`
+
+            [View Pull Request](`${{ github.event.pull_request.html_url }})`
+
+            Please review and provide your feedback.

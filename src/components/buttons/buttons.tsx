@@ -1,3 +1,4 @@
+'user client'
 import  { ReactNode, useState, useRef, useEffect, useCallback, memo } from 'react';
 import { ArrowIcon } from '@/assets/svg/arrow';
 import { DropdownItemType, ShowTableOptionsType } from '@/utils/models/interface/table';
@@ -86,5 +87,4 @@ const Buttons = ({
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default memo(Buttons);

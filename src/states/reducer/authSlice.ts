@@ -26,7 +26,7 @@ const initialState: AuthState = {
   error: null,
 };
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseUrl = process.env.BASE_URL;
 
 export const login = createAsyncThunk(
   'auth/login',

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef, useContext } from 'react';
 import DynamicForm from './modal.Form';
 import { FormTabType } from '@/utils/models/structure';

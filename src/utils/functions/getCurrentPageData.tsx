@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'next/navigation';
 import { CatchData, TableDataType } from '../models/interface/table';
 
 const useCurrentPageData = (): TableDataType | null => {

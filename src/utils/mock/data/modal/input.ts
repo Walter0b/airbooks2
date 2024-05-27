@@ -1,5 +1,5 @@
-import { TravelerItemsInputFields } from "@/pages/core/travelerItems/travelerItems.input";
-import { TravelersInputFields } from "@/pages/core/travelers/travelers.input";
+import { TravelersInputFields } from "@/app/(dashboard)/core/customers/travelers.input";
+import { TravelerItemsInputFields } from "@/app/(dashboard)/core/travelerItems/travelerItems.input";
 import { FormDataProps } from "@/utils/models/structure";
 
 export const modalInputFields: FormDataProps = {

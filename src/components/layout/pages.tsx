@@ -1,6 +1,6 @@
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { PageProps } from '@/utils/models/interface/page'
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'next/navigation';
 
 export default function Pages({ children }: Readonly<PageProps>) {
 

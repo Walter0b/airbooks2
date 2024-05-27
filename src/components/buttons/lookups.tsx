@@ -1,3 +1,4 @@
+'user client'
 import React, { useState, useRef, useEffect } from "react";
 import { ArrowIcon } from "@/assets/svg/arrow";
 import { DropdownItemType } from "@/utils/models/interface/table";

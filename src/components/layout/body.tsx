@@ -1,6 +1,6 @@
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { BodyProps } from '@/utils/models/interface/page'
-import { useParams } from 'react-router-dom';
+import { useParams } from 'next/navigation';
 
 export default function Body({
     children,

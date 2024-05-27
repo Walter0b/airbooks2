@@ -1,6 +1,6 @@
 import SideBar from './sidebar/sidebar'
 import Header from './header/header'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'next/navigation'
 import { SidebarItemType } from '@/utils/models/interface/table'
 import DisplayModal from './modal/display-modal'
 

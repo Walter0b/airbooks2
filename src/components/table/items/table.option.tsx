@@ -5,7 +5,7 @@ import { ArrowIcon } from '@/assets/svg/arrow'
 import { Hamburger } from '@/assets/svg/hamburger'
 import { LightBulbIcon } from '@/assets/svg/lightbulb'
 import { TableOptionsType } from '@/utils/models/interface/table'
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import { useFetchTravelersQuery } from '@/states/reducer/apiSlice';
 import { ModalContext } from '@/hooks/context/ModalContext'
 import { openModal } from '@/states/reducer/modalSlice'

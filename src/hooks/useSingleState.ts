@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+'user client'
 import { useState } from 'react';
 
 function useSingleState(initialValue: any) {

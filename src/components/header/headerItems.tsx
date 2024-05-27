@@ -4,6 +4,7 @@ import { HelpIcon } from '@/assets/svg/help'
 import { SettingsIcon } from '@/assets/svg/settings'
 import { UserIcon } from '@/assets/svg/user'
 import LanguageOption from './languageOption'
+import Image from 'next/image'
 export default function HeaderItems() {
     return (
         <nav className="flex w-full p-1">
@@ -37,11 +38,12 @@ export default function HeaderItems() {
                 target="_blank"
                 className="mr-16 flex items-center justify-between p-2  text-xl   font-semibold text-white "
             >
-                <img
-                    className=" -mp-2 mr-1 w-[40px] text-[80%] "
+                <Image
                     src={logo}
+                    className=" -mp-2 mr-1 w-[40px] text-[80%] "
                     alt="Logo"
                 />
+
                 AirBooks
             </a>
 

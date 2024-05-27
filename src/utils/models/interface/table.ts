@@ -104,7 +104,6 @@ export interface ReduxModalType {
     isOpen: boolean;
     data: ResponseDataType
     inputFields: FormDataProps;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     validation: any
 }
 

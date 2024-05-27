@@ -4,10 +4,10 @@
 //  * this is an alternative of react useState, this return a writable variable
 //  * @param value default value
 //  */
-
+'user client'
 import { useState } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 function usePeroxideState(initialValue:any, customSetterFn?:any) {
     const [state, setState] = useState(initialValue);
 
