@@ -1,11 +1,5 @@
 name: telegram message
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize]
-
+on: [push]
 jobs:
   notify:
     name: Notify on Push and Pull Request
