@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
-import Checkboxes from './table.checkbox';
-import { TableBodyType, TableDataType } from '@/utils/models/interface/table';
-import { useNavigate } from 'next/navigation';
+import React from 'react'
+import Checkboxes from './table.checkbox'
+import { TableBodyType, TableDataType } from '@/utils/models/interface/table'
+import { useNavigate } from 'next/navigation'
 
 const TableBody: React.FC<TableBodyType> = ({
     tableData,
@@ -12,15 +12,15 @@ const TableBody: React.FC<TableBodyType> = ({
     handleCheckboxChange,
     className,
 }) => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const handleRowClick = (
         event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
         id: number | string
     ) => {
         if (!(event.target instanceof HTMLInputElement)) {
-            navigate(`${id}`);
+            navigate(`${id}`)
         }
-    };
+    }
 
     return (
         <tbody>
@@ -39,7 +39,7 @@ const TableBody: React.FC<TableBodyType> = ({
                     {columns?.map((column) => (
                         <td
                             key={column.key}
-                            className="cursor-pointer px-6 py-2 font-normal text-black"
+                            className="cursor-pointer py-2 px-6 font-normal text-black"
                         >
                             {item[column.key]}
                         </td>
@@ -47,6 +47,6 @@ const TableBody: React.FC<TableBodyType> = ({
                 </tr>
             ))}
         </tbody>
-    );
-};
-export default TableBody;
+    )
+}
+export default TableBody

@@ -1,4 +1,7 @@
-import { TableHeaderType, TableColumnType } from '@/utils/models/interface/table'
+import {
+    TableHeaderType,
+    TableColumnType,
+} from '@/utils/models/interface/table'
 import React from 'react'
 import Checkboxes from './table.checkbox'
 
@@ -24,15 +27,14 @@ const TableHeader: React.FC<TableHeaderType> = ({
                     <th
                         key={column.key}
                         scope="col"
-                        className="px-6 font-semibold text-blue-550 active:text-red-500"
+                        className="text-blue-550 px-6 font-semibold active:text-red-500"
                     >
                         {column.label}
                     </th>
                 ))}
-
             </tr>
-            <tr className=' h-px relative -top-px'>
-                <th className=" bg-gray-200" colSpan={20}/>
+            <tr className=" relative -top-px h-px">
+                <th className=" bg-gray-200" colSpan={20} />
             </tr>
         </thead>
     )

@@ -16,18 +16,18 @@ export default function Table({
         {}
     )
     const handleCheckboxAllChange = () => {
-        const allChecked = !isCheckedAll;
-        setIsCheckedAll(allChecked);
+        const allChecked = !isCheckedAll
+        setIsCheckedAll(allChecked)
         const updatedCheckedItems: any = tableData?.data.reduce(
             (updatedCheckedItems, _, index) => ({
                 ...updatedCheckedItems,
                 [index]: allChecked,
             }),
             {}
-        );
+        )
 
-        setCheckedItems(updatedCheckedItems);
-    };
+        setCheckedItems(updatedCheckedItems)
+    }
 
     const handleCheckboxChange = (index: number) => {
         const updatedCheckedItems = {
@@ -54,15 +54,17 @@ export default function Table({
         value: 'Pagination',
     })
 
-
     return (
         <div className="flex h-full w-full flex-col items-center overscroll-none">
             <div className="relative w-full ">
-                <div className="table-container flex-1 overflow-auto" style={{ maxHeight: "calc(100vh - 230px)" }}>
-
+                <div
+                    className="table-container flex-1 overflow-auto"
+                    style={{ maxHeight: 'calc(100vh - 230px)' }}
+                >
                     <table className="w-full table-auto text-left text-[13px] text-gray-500">
                         {tableHeader}
-                        <TableBody handleCheckboxChange={handleCheckboxChange}
+                        <TableBody
+                            handleCheckboxChange={handleCheckboxChange}
                             checkedItems={checkedItems}
                             tableData={tableData}
                             columns={columns}
@@ -73,9 +75,7 @@ export default function Table({
             </div>
             <div className="mb-10 flex w-full flex-row-reverse items-end">
                 {pagination}
-
             </div>
         </div>
-
     )
 }

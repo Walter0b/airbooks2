@@ -1,6 +1,9 @@
 import { useState } from 'react'
 
-import { DropdownItemType, ShowTableOptionsType } from '@/utils/models/interface/table'
+import {
+    DropdownItemType,
+    ShowTableOptionsType,
+} from '@/utils/models/interface/table'
 import Buttons from '@/components/buttons/buttons'
 
 interface ShowButtonProps {
@@ -12,21 +15,21 @@ export default function ShowButton({
 }: Readonly<ShowButtonProps>) {
     const [selectedOption, setSelectedOption] = useState<string>('')
     const Title = (
-        <div data-slot="title" className='' >
+        <div data-slot="title" className="">
             {' '}
             {selectedOption} {dropdownOptions.title}
         </div>
     )
 
     return (
-
-        < Buttons
+        <Buttons
             hasDropdownIcon={true}
-            dropdownText='text-start font-semibold'
-            dropdownClassName='w-40'
+            dropdownText="text-start font-semibold"
+            dropdownClassName="w-40"
             dropdownOptions={dropdownOptions.items as DropdownItemType[]}
             setSelectedOption={setSelectedOption}
-        >{Title}
+        >
+            {Title}
         </Buttons>
     )
 }

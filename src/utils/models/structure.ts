@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode } from 'react';
-import { DropdownItemType } from './interface/table';
+import { ReactNode } from 'react'
+import { DropdownItemType } from './interface/table'
 
 // Props for the layout component
 export interface LayoutProps {
-    children: ReactNode;
+    children: ReactNode
 }
-
 
 export interface ValidationType {
     [k: string]: any
@@ -14,88 +13,88 @@ export interface ValidationType {
 
 // Type for a single field in the dynamic form
 export interface FormFieldType {
-    id: string;
+    id: string
     span: string
-    label?: string;
-    type: string;
-    end?: boolean;
-    readOnly?: boolean;
+    label?: string
+    type: string
+    end?: boolean
+    readOnly?: boolean
     autoComplete?: string
     placeHolder?: string
-    required?: boolean;
-    validations?: (value: string, Fields?: FormFieldType[]) => any;
-    options?: DropdownItemType[];
+    required?: boolean
+    validations?: (value: string, Fields?: FormFieldType[]) => any
+    options?: DropdownItemType[]
 }
 
 // Type for a group of fields in the dynamic form
 export interface FormTabType {
-    label?: string;
-    required?: boolean;
-    fields?: FormFieldType[];
-    columnSpan?: string;
-
+    label?: string
+    required?: boolean
+    fields?: FormFieldType[]
+    columnSpan?: string
 }
 // interface useFormStateProps {
 //     data: { [k: string]: { value: unknown; error: string; }; }
 // }
 export interface DynamicFormProps {
     items: FormTabType[]
-    FieldsValue: { [k: string]: { value: unknown; error: string; } };
+    FieldsValue: { [k: string]: { value: unknown; error: string } }
 }
 
-
 export interface useSingleStateType {
-    setValue: (value: any) => void;
-    value: any;
+    setValue: (value: any) => void
+    value: any
 }
 
 export interface FormErrors {
-    [key: string]: { value: FormFieldType; error: string } | undefined;
+    [key: string]: { value: FormFieldType; error: string } | undefined
 }
 // Type for a group of fields in the dynamic form Props
 
-export type FieldComponent = (field: FormFieldType, values: FormFieldType) => JSX.Element;
+export type FieldComponent = (
+    field: FormFieldType,
+    values: FormFieldType
+) => JSX.Element
 
 type FieldsValue = {
-    [key: string]: { value: unknown; error: string };
+    [key: string]: { value: unknown; error: string }
 }
-export type BooleanUseState={
-    (value: boolean | ((prev: boolean) => boolean)): void;
+export type BooleanUseState = {
+    (value: boolean | ((prev: boolean) => boolean)): void
 }
 export interface FieldComponents {
-    [key: string]: FieldComponent;
+    [key: string]: FieldComponent
 }
 
 // Type for the dynamic form data
 
 export interface FormDataProps {
-    [key: string]: IndividualFormDataProp[];
+    [key: string]: IndividualFormDataProp[]
 }
 export interface IndividualFormDataProp {
-    label: string;
-    tabs: FormTabType[];
+    label: string
+    tabs: FormTabType[]
 }
 
 export interface Props {
-    field: FormFieldType;
-    FieldsValue: FieldsValue;
-
+    field: FormFieldType
+    FieldsValue: FieldsValue
 }
 export interface TabsProps {
     formData: IndividualFormDataProp[]
-    setFormData: (newValue: FormTabType[]) => void;
+    setFormData: (newValue: FormTabType[]) => void
 }
 // Type for fetching data
 export interface FetchOptionsType {
-    endpoint: string;
-    method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-    body?: object;
+    endpoint: string
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
+    body?: object
 }
 
 // Type for an item in the navigation
 export interface SidebarItemType {
-    name: string;
-    href: string;
+    name: string
+    href: string
     id?: string
 }
 
@@ -105,4 +104,4 @@ export const navigationItems: SidebarItemType[] = [
     { name: 'Features', href: '#' },
     { name: 'Marketplace', href: '#' },
     { name: 'Company', href: '#' },
-];
+]

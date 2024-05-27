@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ReactNode, ReactElement, cloneElement, isValidElement } from 'react'
+import React, {
+    ReactNode,
+    ReactElement,
+    cloneElement,
+    isValidElement,
+} from 'react'
 
 interface GetCmpByAttrProps {
     children: ReactNode

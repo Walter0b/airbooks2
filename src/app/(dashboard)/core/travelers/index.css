@@ -1,4 +1,5 @@
-b, strong {
-    font-family: ProximaNovaRegular,Arial,sans-serif;
+b,
+strong {
+    font-family: ProximaNovaRegular, Arial, sans-serif;
     font-weight: 400;
-  }
+}

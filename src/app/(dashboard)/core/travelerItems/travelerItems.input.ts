@@ -1,4 +1,4 @@
-import { IndividualFormDataProp } from "@/utils/models/structure";
+import { IndividualFormDataProp } from '@/utils/models/structure'
 
 export const TravelerItemsInputFields: IndividualFormDataProp[] = [
     {
@@ -8,17 +8,25 @@ export const TravelerItemsInputFields: IndividualFormDataProp[] = [
                 label: 'Traveler Name',
                 fields: [
                     {
-                        id: 'Title', label: 'Title', type: 'select', span: 'sm:col-span-1',
+                        id: 'Title',
+                        label: 'Title',
+                        type: 'select',
+                        span: 'sm:col-span-1',
                     },
                     {
-                        id: 'firstName', label: 'First Name', type: 'text', span: 'sm:col-span-3'
+                        id: 'firstName',
+                        label: 'First Name',
+                        type: 'text',
+                        span: 'sm:col-span-3',
                     },
                     {
-                        id: 'lastName', label: 'Last Name', type: 'text', span: 'sm:col-span-2'
+                        id: 'lastName',
+                        label: 'Last Name',
+                        type: 'text',
+                        span: 'sm:col-span-2',
                     },
-                ]
-            }
-        ]
-    }
-
+                ],
+            },
+        ],
+    },
 ]

@@ -15,7 +15,6 @@ import { travelersColumns } from './table'
 import TravelerCompactList from './compact-list/compact-list'
 
 export default function Travelers() {
-
     const page = useSingleState(1)
 
     // console.log("🚀 ~ Travelers ~ page:", page)
@@ -23,7 +22,10 @@ export default function Travelers() {
     const pageSize = useSingleState(10)
     // console.log("🚀 ~ Travelers ~ pageSize:", pageSize)
 
-    const { data: travelersData } = useFetchTravelersQuery({ page: page.value, pageSize: pageSize.value });
+    const { data: travelersData } = useFetchTravelersQuery({
+        page: page.value,
+        pageSize: pageSize.value,
+    })
 
     console.log(sessionStorage.accessToken)
 
@@ -51,12 +53,9 @@ export default function Travelers() {
                         tableData={travelersData}
                     />
                 </Body>
-
-
             </Pages>
         )
     } else {
         return <TableLoader />
     }
-
 }

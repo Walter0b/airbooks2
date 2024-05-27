@@ -1,12 +1,9 @@
-
-
-
 export const travelersColumns = [
     { key: 'display_name', label: 'Traveler Name' },
     { key: 'mobile_phone', label: 'Mobile Phone' },
     { key: 'state', label: 'State' },
     { key: 'city', label: 'City' },
-    { key: 'postal_code', label: 'Postal Code' }
+    { key: 'postal_code', label: 'Postal Code' },
 ]
 
 export const travelerCompactList = [
@@ -145,9 +142,7 @@ interface FlightInfo {
     date: string
 }
 
-export const InputFields = [
-
-]
+export const InputFields = []
 
 interface MoneyInfo {
     currency: string

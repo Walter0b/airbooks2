@@ -1,19 +1,27 @@
-import { useSelector } from 'react-redux';
-import { useParams } from 'next/navigation';
-import { CatchData, TableDataType } from '../models/interface/table';
+import { useSelector } from 'react-redux'
+import { useParams } from 'next/navigation'
+import { CatchData, TableDataType } from '../models/interface/table'
 
 const useCurrentPageData = (): TableDataType | null => {
-    const { id } = useParams();
-    const NumberId = parseInt(id as string, 10);
+    const { id } = useParams()
+    const NumberId = parseInt(id as string, 10)
 
-    const travelersData = useSelector((state: { api: { queries: Record<string, CatchData> } }) => state.api.queries);
+    const travelersData = useSelector(
+        (state: { api: { queries: Record<string, CatchData> } }) =>
+            state.api.queries
+    )
 
-    const requestData = Object.values(travelersData)[0] || { data: { data: [] } };
-    const { data } = requestData;
+    const requestData = Object.values(travelersData)[0] || {
+        data: { data: [] },
+    }
+    const { data } = requestData
 
-    const specificData = data.data.find((developer: TableDataType) => developer.id === NumberId) || null;
+    const specificData =
+        data.data.find(
+            (developer: TableDataType) => developer.id === NumberId
+        ) || null
 
-    return specificData;
-};
+    return specificData
+}
 
-export default useCurrentPageData;
+export default useCurrentPageData

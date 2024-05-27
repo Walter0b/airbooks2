@@ -1,18 +1,18 @@
-import { CrossIcon } from '@/assets/svg/cross';
-import { useNavigate } from 'next/navigation';
+import { CrossIcon } from '@/assets/svg/cross'
+import { useNavigate } from 'next/navigation'
 
 export default function CloseButton({
     onClick,
     color = 'fill-black',
 }: Readonly<{
-    onClick?: () => void;
-    color?: string;
+    onClick?: () => void
+    color?: string
 }>) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleGoBack = () => {
-        onClick ? onClick() : navigate("../");
-    };
+        onClick ? onClick() : navigate('../')
+    }
 
     return (
         <button type="button" onClick={handleGoBack}>
@@ -22,5 +22,5 @@ export default function CloseButton({
                 className2="w-10"
             />
         </button>
-    );
+    )
 }

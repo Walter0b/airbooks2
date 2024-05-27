@@ -1,16 +1,17 @@
-import {  FormTabType, IndividualFormDataProp, TabsProps } from '@/utils/models/structure';
-import React, { useState } from 'react';
-
-
+import {
+    FormTabType,
+    IndividualFormDataProp,
+    TabsProps,
+} from '@/utils/models/structure'
+import React, { useState } from 'react'
 
 const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {
-
     const defaultForm = formData[0].label
-    const [currentPage, setCurrentPage] = useState(defaultForm);
+    const [currentPage, setCurrentPage] = useState(defaultForm)
     const handleTabClick = (page: string, data: FormTabType[]) => {
-        setFormData(data);
-        setCurrentPage(page);
-    };
+        setFormData(data)
+        setCurrentPage(page)
+    }
 
     return (
         <div className="border">
@@ -19,14 +20,14 @@ const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {
                     <button
                         key={index}
                         onClick={() => handleTabClick(tab.label, tab.tabs)}
-                        className={`borderButtonStyles ${currentPage === (tab.label) && 'actives'}`}
+                        className={`borderButtonStyles ${currentPage === tab.label && 'actives'}`}
                     >
                         {tab.label}
                     </button>
                 ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Tabs;
+export default Tabs

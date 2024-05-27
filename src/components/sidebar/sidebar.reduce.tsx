@@ -1,22 +1,28 @@
-import { BooleanUseState } from "@/utils/models/structure";
+import { BooleanUseState } from '@/utils/models/structure'
 
 interface DropdownArrowProps {
-    isOpen: boolean;
+    isOpen: boolean
     setIsOpen: BooleanUseState
-
 }
 
-const VerticalArrowIcon: React.FC<DropdownArrowProps> = ({ isOpen, setIsOpen }) => {
+const VerticalArrowIcon: React.FC<DropdownArrowProps> = ({
+    isOpen,
+    setIsOpen,
+}) => {
     return (
-        <div className={`peer-[.peer]:px-0  flex justify-center items-center px-5 mt-10`}>
-            <hr className={`${isOpen && 'hidden'}  border-gray-300  w-full`} />
-            <button onClick={() => setIsOpen(!isOpen)} className={`  flex items-center justify-center rounded-full border border-gray-300 ${isOpen ? 'bg-gray-200 h-8  w-8' : 'h-8  w-[4.7rem]'}`}>
-                <div className='text-gray-400 text-lg -mt-1' >«</div>
+        <div
+            className={`mt-10  flex items-center justify-center px-5 peer-[.peer]:px-0`}
+        >
+            <hr className={`${isOpen && 'hidden'}  w-full  border-gray-300`} />
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`  flex items-center justify-center rounded-full border border-gray-300 ${isOpen ? 'h-8 w-8  bg-gray-200' : 'h-8  w-[4.7rem]'}`}
+            >
+                <div className="-mt-1 text-lg text-gray-400">«</div>
             </button>
-            <hr className={`${isOpen && 'hidden'}  border-gray-300  w-full`} />
+            <hr className={`${isOpen && 'hidden'}  w-full  border-gray-300`} />
         </div>
+    )
+}
 
-    );
-};
-
-export default VerticalArrowIcon;
+export default VerticalArrowIcon

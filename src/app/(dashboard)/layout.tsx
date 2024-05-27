@@ -1,36 +1,33 @@
-'use client' 
+'use client'
 // import "./globals.css";
-import Header from "@/components/header/header";
-import { ModalProvider } from "@/hooks/context/ModalContext";
-import { store } from "@/states/store";
-import { Provider } from "react-redux";
+import Header from '@/components/header/header'
+import { ModalProvider } from '@/hooks/context/ModalContext'
+import { store } from '@/states/store'
+import { Provider } from 'react-redux'
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode
 }>) {
-  return (
-    <div className="flex h-screen w-screen  bg-white" id="layout">
-      <div className="flex h-full w-full flex-1 flex-col overflow-hidden">
-        <div className="item-center flex justify-center">
-          <div className="p-1 text-center text-lg text-black">
-            AirBooks is ready. Are you?
-          </div>
-          <button className="my-auto ml-1 h-fit w-fit rounded-sm bg-cyan-550 p-1 text-xs font-medium !uppercase text-white">
-            sign up now
-          </button>
+    return (
+        <div className="flex h-screen w-screen  bg-white" id="layout">
+            <div className="flex h-full w-full flex-1 flex-col overflow-hidden">
+                <div className="item-center flex justify-center">
+                    <div className="p-1 text-center text-lg text-black">
+                        AirBooks is ready. Are you?
+                    </div>
+                    <button className="bg-cyan-550 my-auto ml-1 h-fit w-fit rounded-sm p-1 text-xs font-medium !uppercase text-white">
+                        sign up now
+                    </button>
+                </div>
+                <Header />
+                <div className="flex h-full">
+                    <Provider store={store}>
+                        <ModalProvider>{children}</ModalProvider>
+                    </Provider>
+                </div>
+            </div>
         </div>
-        <Header />
-        <div className="flex h-full">
-        <Provider store={store}>
-          <ModalProvider>
-            {children}
-          </ModalProvider>
-        </Provider>
-        </div>
-      </div>
-
-    </div>
-  )
+    )
 }

@@ -8,7 +8,6 @@ import Image from 'next/image'
 export default function HeaderItems() {
     return (
         <nav className="flex w-full p-1">
-
             <div className="ml-auto flex space-x-4 md:hidden">
                 <button
                     data-collapse-toggle="navbar-hamburger"
@@ -43,7 +42,6 @@ export default function HeaderItems() {
                     className=" -mp-2 mr-1 w-[40px] text-[80%] "
                     alt="Logo"
                 />
-
                 AirBooks
             </a>
 
@@ -74,7 +72,7 @@ export default function HeaderItems() {
                             <input
                                 type="text"
                                 id="search-navbar"
-                                className="block w-96 p-[4px] ps-10 text-sm italic  text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-cyan-1000 dark:text-white dark:placeholder-gray-300 "
+                                className="dark:bg-cyan-1000 block w-96 p-[4px] ps-10 text-sm  italic text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-300 "
                                 placeholder="Find invoices"
                             />
                         </div>
@@ -97,7 +95,7 @@ export default function HeaderItems() {
                         </div>
                     </div>
                     <div className="flex">
-                        <LanguageOption className="mr-10 mt-3" />
+                        <LanguageOption className="mt-3 mr-10" />
 
                         {/* SidebarItemType Options */}
                         <div className="flex ">
@@ -123,7 +121,7 @@ export default function HeaderItems() {
                         data-collapse-toggle="navbar-search"
                         aria-controls="navbar-search"
                         aria-expanded="false"
-                        className="me-1 rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                        className="me-1 rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                     >
                         <svg
                             className="h-5 w-5"
@@ -142,7 +140,6 @@ export default function HeaderItems() {
                         </svg>
                         <span className="sr-only">Search</span>
                     </button>
-
                 </div>
             </div>
         </nav>

@@ -6,12 +6,12 @@ export default function Checkboxes({
     onChange?: () => void
 }>) {
     return (
-        <th scope="col w-1/3" className="p-4 pointer-events-none">
+        <th scope="col w-1/3" className="pointer-events-none p-4">
             <div className="flex items-center !text-purple-300">
                 <input
                     id="checkbox-all"
                     type="checkbox"
-                    className="bg-white cursor-pointer pointer-events-auto"
+                    className="pointer-events-auto cursor-pointer bg-white"
                     checked={!checkboxState ? false : checkboxState}
                     onChange={onChange}
                 />

@@ -1,13 +1,8 @@
 import { RootState } from '@/states/store'
-import Modal from "./modal";
+import Modal from './modal'
 const DisplayModal = () => {
     // const { isOpen } = useSelector((state: RootState) => state.modal);
 
-    return (
-        <>
-            {/* {isOpen && <Modal />} */}
-        </>
-    )
-
+    return <>{/* {isOpen && <Modal />} */}</>
 }
-export default DisplayModal;
+export default DisplayModal

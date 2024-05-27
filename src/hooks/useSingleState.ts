@@ -1,13 +1,13 @@
 'user client'
-import { useState } from 'react';
+import { useState } from 'react'
 
 function useSingleState(initialValue: any) {
-    const [value, setValue] = useState(initialValue);
+    const [value, setValue] = useState(initialValue)
 
     return {
         value,
         setValue,
-    };
+    }
 }
 
-export default useSingleState;
+export default useSingleState
