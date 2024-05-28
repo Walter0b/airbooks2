@@ -2,7 +2,7 @@ name: telegram message
 on: [push, pull_request]
 jobs:
     notify:
-        name: Notify on Push and Pull Request
+        name: Notify on Push, Pull Request
         runs-on: ubuntu-latest
 
         steps:
@@ -15,14 +15,12 @@ jobs:
                   format: markdown
                   message: |
                       *New Push Notification*
-
                       🔹 *Repository:* ` ${{ github.repository }}`
                       🔹 *Pushed by:* ` ${{ github.actor }}`
                       🔹 *Pushed to:* ` ${{ github.ref_name }}`
                       🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
                       🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{github.sha}})
-                      🔗 View Commit history: [Commits Hisotry Link](https://github.com/${{ github.repository }}/commit/{{ github.ref_name }})
-
+                      🔗 View Commits History: [Commits History Link](https://github.com/${{ github.repository }}/commit/${{ github.ref_name }})
             - name: Send Telegram message on pull request
               if: github.event_name == 'pull_request'
               uses: appleboy/telegram-action@master
@@ -32,13 +30,23 @@ jobs:
                   format: markdown
                   message: |
                       *New Pull Request Notification*
-
                       🔹 *Repository:* `${{ github.repository }}`
                       🔹 *Title:* `${{ github.event.pull_request.title }}`
                       🔹 *Author:* `${{ github.event.pull_request.user.login }}`
                       🔹 *Description:*
                       `${{ github.event.pull_request.body }}`
-
                       [View Pull Request](`${{ github.event.pull_request.html_url }})`
-
-                      Please review and provide your feedback.
+            - name: Send Telegram message on stage commit
+              if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/stage')
+              uses: appleboy/telegram-action@master
+              with:
+                  to: ${{ secrets.TELEGRAM_TO }}
+                  token: ${{ secrets.TELEGRAM_TOKEN }}
+                  format: markdown
+                  message: |
+                      *New Stage Commit Notification*
+                      🔹 *Repository:* ` ${{ github.repository }}`
+                      🔹 *Pushed by:* ` ${{ github.actor }}`
+                      🔹 *Pushed to stage branch:* ` ${{ github.ref_name }}`
+                      🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
+                      🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{github.sha}})
