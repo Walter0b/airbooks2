@@ -2,7 +2,7 @@ name: telegram message
 on: [push, pull_request]
 jobs:
     notify:
-        name: Notify on Push, Pull Request, and Stage Commit
+        name: Notify on Push and Pull Request
         runs-on: ubuntu-latest
 
         steps:
@@ -21,6 +21,7 @@ jobs:
                       🔹 *Pushed to:* ` ${{ github.ref_name }}`
                       🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
                       🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{github.sha}})
+                      🔗 View Commit history: [Commits Hisotry Link](https://github.com/${{ github.repository }}/commit/{{ github.ref_name }})
 
             - name: Send Telegram message on pull request
               if: github.event_name == 'pull_request'
@@ -41,19 +42,3 @@ jobs:
                       [View Pull Request](`${{ github.event.pull_request.html_url }})`
 
                       Please review and provide your feedback.
-
-            - name: Send Telegram message on stage commit
-              if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/stage')
-              uses: appleboy/telegram-action@master
-              with:
-                  to: ${{ secrets.TELEGRAM_TO }}
-                  token: ${{ secrets.TELEGRAM_TOKEN }}
-                  format: markdown
-                  message: |
-                      *New Stage Commit Notification*
-
-                      🔹 *Repository:* ` ${{ github.repository }}`
-                      🔹 *Pushed by:* ` ${{ github.actor }}`
-                      🔹 *Pushed to stage branch:* ` ${{ github.ref_name }}`
-                      🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
-                      🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{github.sha}})

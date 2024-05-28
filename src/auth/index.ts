@@ -7,7 +7,7 @@ interface UserData {
     email: string;
     accessToken: string;
     refreshToken: string;
-    expires: number; // Assuming the API returns the expiration time as a timestamp
+    expires: number;
 }
 
 interface CustomSession extends DefaultSession {
