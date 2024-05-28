@@ -1,32 +1,37 @@
-'use client'
+"use client";
 import React, { useState } from 'react'
 import Image from 'next/image'
 import logo from '@/assets/image/neema/logo/airbooks-logo.png'
 import './style.css'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter,useSearchParams } from 'next/navigation'
+import { DEFAULT_REDIRECT } from '@/lib/routes';
 
 const LoginPage: React.FC = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const router = useRouter()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const router = useRouter(); // Use the useRouter hook
+    const searchParams = useSearchParams()
+    console.log("🚀 ~ searchParams:", searchParams.get('callbackUrl'))
+    // Retrieve callbackUrl from query params
+    const callbackUrl =  searchParams.get('callbackUrl')
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError(''); 
         const result = await signIn('credentials', {
-            redirect: false,
             email,
             password,
-        })
+            redirect: false,
+        });
 
-        if (result?.ok) {
-            router.push('/')
+        if (result?.error) {
+            setError('Invalid email or password');
         } else {
-            console.log(result)
+            callbackUrl? router.push(callbackUrl) :router.push(DEFAULT_REDIRECT)
         }
-    }
-
+    };
     return (
         <div className="background  flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
             <div className="flex flex-col rounded-lg shadow-md lg:flex-row">
@@ -91,7 +96,7 @@ const LoginPage: React.FC = () => {
                                 </label>
                             </div>
                         </div>
-                       
+
                         <div className="mb-6 flex items-center">
                             <input
                                 type="checkbox"

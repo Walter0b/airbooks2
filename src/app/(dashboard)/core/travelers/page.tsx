@@ -27,7 +27,6 @@ export default function Travelers() {
         pageSize: pageSize.value,
     })
 
-    console.log(sessionStorage.accessToken)
 
     if (travelersData) {
         return (
