@@ -1,44 +1,32 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import { getToken } from 'next-auth/jwt'
+import NextAuth from 'next-auth';
+import { DEFAULT_REDIRECT, PUBLIC_ROUTES, LOGIN, ROOT } from '@/lib/routes';
+import { authConfig } from '../auth.config';
+import { NextResponse } from 'next/server';
 
-export async function middleware(req: NextRequest) {
-    const session = await getToken({
-        req,
-        secret: process.env.NEXTAUTH_SECRET,
-        secureCookie: process.env.NODE_ENV === 'development',
-    })
+const { auth } = NextAuth(authConfig);
 
-    const { pathname, origin } = req.nextUrl
+export default auth((req) => {
+    const { nextUrl } = req;
 
-    // Paths that require authentication
-    const protectedPaths = ['/']
+    const isAuthenticated = !!req.auth;
+    const isPublicRoute = PUBLIC_ROUTES.includes(nextUrl.pathname);
+    const isLoginPage = nextUrl.pathname === LOGIN;
 
-    // Check if the current path requires authentication
-    const isProtectedPath = protectedPaths.some((path) =>
-        pathname.startsWith(path)
-    )
+    if (isPublicRoute && isAuthenticated && !isLoginPage)
+        return Response.redirect(new URL(DEFAULT_REDIRECT, nextUrl));
 
-    // If the path requires authentication and the user is not authenticated, redirect to the sign-in page
-    if (isProtectedPath && !session && pathname !== '/auth/signin') {
-        const signInUrl = `${origin}/auth/signin?callbackUrl=${pathname}`
-        return NextResponse.redirect(signInUrl)
+    if (isAuthenticated && isLoginPage)
+        return Response.redirect(new URL(ROOT, nextUrl));
+
+    if (!isAuthenticated && !isPublicRoute && !isLoginPage) {
+        const loginUrl = new URL(LOGIN, nextUrl);
+        loginUrl.searchParams.append('callbackUrl', nextUrl.pathname); 
+        return Response.redirect(loginUrl);
     }
-
-    // If the user is authenticated and trying to access the sign-in page, redirect to the home page
-    if (session && pathname === '/auth/signin') {
-        return NextResponse.redirect('/')
-    }
-
-    // If the user is authenticated and trying to access the sign-out page, sign them out
-    if (session && pathname === '/auth/signout') {
-        return NextResponse.redirect('/')
-    }
-
-    // Otherwise, allow the request to continue
-    return NextResponse.next()
-}
+    
+    return NextResponse.next();
+});
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)', '/'],
-}
+    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+};
