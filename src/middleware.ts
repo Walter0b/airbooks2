@@ -6,8 +6,10 @@ import { NextResponse } from 'next/server';
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
+    
     const { nextUrl } = req;
-
+    console.log("🚀 ~ auth ~ nextUrl:", nextUrl.searchParams.get('callbackUrl'))
+    const REDIRECTION_LINK = nextUrl.searchParams.get('callbackUrl') || DEFAULT_REDIRECT
     const isAuthenticated = !!req.auth;
     const isPublicRoute = PUBLIC_ROUTES.includes(nextUrl.pathname);
     const isLoginPage = nextUrl.pathname === LOGIN;
@@ -16,7 +18,7 @@ export default auth((req) => {
         return Response.redirect(new URL(DEFAULT_REDIRECT, nextUrl));
 
     if (isAuthenticated && isLoginPage)
-        return Response.redirect(new URL(ROOT, nextUrl));
+        return Response.redirect(new URL(REDIRECTION_LINK, nextUrl));
 
     if (!isAuthenticated && !isPublicRoute && !isLoginPage) {
         const loginUrl = new URL(LOGIN, nextUrl);
