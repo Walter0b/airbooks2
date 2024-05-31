@@ -1,6 +1,6 @@
-import NextAuth, { DefaultSession } from 'next-auth';
+import NextAuth, { DefaultSession, type User } from "next-auth"
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { middleware } from './middleware';
+
 
 interface UserData {
     data: {
@@ -10,18 +10,9 @@ interface UserData {
     }
 }
 
-interface CustomSession extends DefaultSession {
-    user: {
-        id: string;
-        name: string;
-        email: string;
-        accessToken: string;
-        expiresAt: number;
-    };
-}
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
-    
+
     providers: [
         CredentialsProvider({
             name: 'Credentials',
@@ -65,42 +56,80 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             },
         }),
     ],
-    handlers: [
-        middleware,
-        // Add other handlers here
-      ],
+
     session: {
         strategy: 'jwt',
     },
     pages: {
         signIn: '/auth/signin',
-    }, callbacks: {
+    },
+    callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user.id;
-                token.accessToken = user.accessToken;
-                token.refreshToken = user.refreshToken;
-                token.expiresAt = user.expiresAt;
+                return {
+                    ...user,
+                };
             }
             return token;
         },
         async session({ session, token }) {
-            console.log("🚀 ~ session ~ token:", token);
-            console.log("🚀 ~ session ~ session:", session);
 
-            if (token) {
-                session.user = {
-                    id: token.id,
-                    name: token.name || '', // Provide a default value if name is missing
-                    email: token.email || '', // Provide a default value if email is missing
-                    accessToken: token.accessToken,
-                    refreshToken: token.refreshToken,
-                    expiresAt: token.expiresAt,
-                };
+            console.log("🚀 ~ session ~ token:", token);
+
+
+            if (token.user) {
+                    session.user.name= token.name || '',
+                    session.user.email= token.email || '',
+                    session.user.accessToken= token.accessToken as string,
+                    session.user.refreshToken= token.refreshToken  as string,
+                    session.user.expiresAt= token.expiresAt as number
+ 
+            }
+            console.log("🚀 ~ session ~ session:", session);
+            const expiresAt = session.user.expiresAt;
+            const refreshThreshold = 5 * 60 * 1000; // 5 minutes in milliseconds
+            const shouldRefresh = expiresAt && expiresAt - Date.now() < refreshThreshold;
+
+            if (shouldRefresh) {
+                const newSession = await refreshAccessToken(session.user.refreshToken);
+                session.user = newSession.user;
             }
 
             return session;
+
         }
     },
     secret: process.env.NEXTAUTH_SECRET,
 });
+async function refreshAccessToken(refreshToken: string) {
+    try {
+        const response = await fetch(`${process.env.BASE_URL}/auth/refresh`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ refreshToken }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to refresh token: ${response.status} ${response.statusText}`);
+        }
+
+        const data: UserData = await response.json();
+
+        // Update the session with the new access token and expiration time
+        return {
+            user: {
+                id: data.data.access_token,
+                // name: 'name',
+                // email: 'email@example.com',
+                accessToken: data.data.access_token,
+                refreshToken: data.data.refresh_token,
+                expiresAt: data.data.expires,
+            },
+        };
+    } catch (error) {
+        console.error('Error refreshing access token:', error);
+        throw error;
+    }
+}

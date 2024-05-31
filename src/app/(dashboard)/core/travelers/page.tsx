@@ -13,8 +13,12 @@ import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
 import { travelersColumns } from './table'
 import TravelerCompactList from './compact-list/compact-list'
+import { useSession } from 'next-auth/react'
 
 export default function Travelers() {
+    const session = useSession()
+    console.log("🚀 ~ Travelers ~ session:", session.user)
+    console.log("")
     const page = useSingleState(1)
 
     // console.log("🚀 ~ Travelers ~ page:", page)

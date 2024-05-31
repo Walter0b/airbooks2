@@ -3,6 +3,7 @@
 import Header from '@/components/header/header'
 import { ModalProvider } from '@/hooks/context/ModalContext'
 import { store } from '@/states/store'
+import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
 
 export default function RootLayout({
@@ -23,9 +24,15 @@ export default function RootLayout({
                 </div>
                 <Header />
                 <div className="flex h-full">
-                    <Provider store={store}>
-                        <ModalProvider>{children}</ModalProvider>
-                    </Provider>
+                    <SessionProvider>
+
+                        <Provider store={store}>
+
+
+                            <ModalProvider>{children}</ModalProvider>
+
+                        </Provider>
+                    </SessionProvider>
                 </div>
             </div>
         </div>
