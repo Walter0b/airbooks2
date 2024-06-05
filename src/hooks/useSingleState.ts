@@ -1,4 +1,4 @@
-'user client'
+'use client'
 import { useState } from 'react'
 
 function useSingleState(initialValue: any) {

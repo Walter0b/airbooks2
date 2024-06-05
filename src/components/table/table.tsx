@@ -1,4 +1,4 @@
-'user client'
+'use client'
 import { useState } from 'react'
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { TableItemType } from '@/utils/models/interface/table'

@@ -1,3 +1,4 @@
+'use client'
 import ItemDetailsBody from '@/components/compactlist/itemdetails'
 import NavLink from '@/components/util/navlink'
 import { ModalContext } from '@/hooks/context/ModalContext'
@@ -8,7 +9,11 @@ import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import TravelerCompactListHeader from './traveler-cl-btn'
 
-export default function TravelersItemDetails() {
+export default function TravelersItemDetails({
+    children,
+}: Readonly<{
+    children: React.ReactNode
+}>) {
     const data = useCurrentPageData()!
     // console.log("🚀 ~ TravelersItemDetails ~ data:", data)
 
@@ -44,7 +49,7 @@ export default function TravelersItemDetails() {
                     Bookings
                 </NavLink>
                 <hr className="mt-[0.4rem]"></hr>
-                <div className="h-full w-full">{/* {children} */}</div>
+                <div className="h-full w-full">{children} </div>
             </div>
         </ItemDetailsBody>
     )

@@ -1,7 +1,7 @@
 import Pagination from '@/components/table/pagination'
 import useSingleState from '@/hooks/useSingleState'
 import { ResponseDataType } from '@/utils/models/interface/table'
-import { useNavigate, useParams } from 'next/navigation'
+import { redirect, useParams } from 'next/navigation'
 
 export default function TravelerCompactList({
     tableData,
@@ -9,9 +9,9 @@ export default function TravelerCompactList({
     const page = useSingleState(1)
     const pageSize = useSingleState(10)
 
-    const navigate = useNavigate()
+
     const handleClick = (location: number) => {
-        navigate(`${location}`)
+        redirect(`${location}`)
     }
 
     const currentID = parseInt(useParams().id as string, 10)

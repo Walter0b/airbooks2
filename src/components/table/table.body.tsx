@@ -2,7 +2,7 @@
 import React from 'react'
 import Checkboxes from './table.checkbox'
 import { TableBodyType, TableDataType } from '@/utils/models/interface/table'
-import { useNavigate } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 
 const TableBody: React.FC<TableBodyType> = ({
     tableData,
@@ -12,13 +12,13 @@ const TableBody: React.FC<TableBodyType> = ({
     handleCheckboxChange,
     className,
 }) => {
-    const navigate = useNavigate()
+    const router = useRouter()
     const handleRowClick = (
         event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
         id: number | string
     ) => {
         if (!(event.target instanceof HTMLInputElement)) {
-            navigate(`${id}`)
+            router.push(`${id}`)
         }
     }
 

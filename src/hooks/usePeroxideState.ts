@@ -3,7 +3,7 @@
 //  * this is an alternative of react useState, this return a writable variable
 //  * @param value default value
 //  */
-'user client'
+'use client'
 import { useState } from 'react'
 
 function usePeroxideState(initialValue: any, customSetterFn?: any) {

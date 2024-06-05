@@ -1,5 +1,5 @@
 import { CrossIcon } from '@/assets/svg/cross'
-import { useNavigate } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function CloseButton({
     onClick,
@@ -8,10 +8,10 @@ export default function CloseButton({
     onClick?: () => void
     color?: string
 }>) {
-    const navigate = useNavigate()
+    const router = useRouter()
 
     const handleGoBack = () => {
-        onClick ? onClick() : navigate('../')
+        onClick ? onClick() : router.back()
     }
 
     return (

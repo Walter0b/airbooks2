@@ -26,7 +26,7 @@
 
 //         if (refreshToken) {
 //             // Make a request to your API to refresh the token
-//             const refreshResponse = await fetch(`${process.env.BASE_URL}/refresh`, {
+//             const refreshResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/refresh`, {
 //                 method: 'POST',
 //                 headers: {
 //                     'Content-Type': 'application/json',

@@ -1,17 +1,23 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ResponseDataType, TableDataType } from '@/utils/models/interface/table'
-import { useSession } from 'next-auth/react';
-const apiUrl = process.env.BASE_URL
+// import { useSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
+
+import { auth } from '@/auth';
+const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
+console.log("🚀 ~ process.env.:", process.env)
+console.log("🚀 ~ apiUrl:", apiUrl)
 
 const baseQuery = fetchBaseQuery({
     baseUrl: apiUrl + '/items',
-    prepareHeaders: (
-        headers
-        // { getState }
-    ) => {
-        const token = sessionStorage.getItem('accessToken')
-        const expiresAt = sessionStorage.getItem('accessTokenExpiresAt')
-
+    prepareHeaders: async (headers) => {
+        console.log("🚀 ~ Travelers ~ sessionss before:")
+        const session = await getSession();
+        console.log("🚀 ~ Travelers ~ sessionss:", session)
+        const token = session?.user.accessToken
+        console.log("🚀 ~ prepareHeaders: ~ token:", token)
+        const expiresAt = session?.user.expiresAt
+        console.log("🚀 ~ prepareHeaders: ~ expiresAt:", expiresAt)
         if (token && expiresAt && new Date().getTime() < parseInt(expiresAt)) {
             headers.set('Authorization', `Bearer ${token}`)
         }
@@ -19,6 +25,7 @@ const baseQuery = fetchBaseQuery({
         headers.set('Content-Type', 'application/json')
         return headers
     },
+
     paramsSerializer: (params) => {
         const queryString = new URLSearchParams(params).toString()
         return `${queryString}&meta=*`

@@ -1,4 +1,4 @@
-'user client'
+'use client'
 import React, { useState, useRef, useEffect } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { DropdownItemType } from '@/utils/models/interface/table'
@@ -100,7 +100,7 @@ export function Lookup({
                             <React.Fragment key={item.label}>
                                 {index > 0 &&
                                     options![index - 1].group !==
-                                        item.group && (
+                                    item.group && (
                                         <hr className="border-gray-300" />
                                     )}
                                 {!item.url && !item.onClick && !item.value ? (
