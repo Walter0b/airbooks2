@@ -19,7 +19,7 @@ function Buttons({ item, handleOpenModal }: Readonly<NavButtonsProps>) {
     return (
         <button
             onClick={() => handleOpenModal(item.href || '')}
-            className="group-hover:bg-gray-200 ml-[0.6px] group-[.peer\/compact]/compact:!hidden h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550 text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
+            className="group-hover:bg-gray-200 ml-[0.6px] group-[.peer\/compact]/compact:!hidden h-10 gap-x-3 p-2 pl-2 peer-[]:!bg-cyan-550 text-center pt-3  text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
         >
             <CrossIcon
                 className="mr-px w-4 rotate-45 fill-gray-100"
@@ -32,53 +32,106 @@ function Buttons({ item, handleOpenModal }: Readonly<NavButtonsProps>) {
 }
 
 
-function NavLinks({ item, isOpen }: Readonly<NavLinksType>) {
+function NavLinks({ item, isOpen, handleOpenModal }: Readonly<NavLinksType>) {
 
 
     return (
-        <NavLink
-            to={item.href ?? ''}
-            className={({ isActive }) =>
-                `${isActive ? '  bg-cyan-550 !fill-gray-100 text-white peer ' :
-                    `text-zinc-550 hover:bg-white group-hover:bg-white group-hover:text-cyan-650 `
-                } ${isOpen ? 'h-11 ' : 'h-10'}   w-full p-2 `
-            }
-        >
-            {({ isActive }) => {
-                item.isActive = isActive;
+        <div className='flex'>
+            <NavLink
+                to={item.href ?? ''}
+                className={({ isActive }) =>
+                    `${isActive ? '  bg-cyan-550 !fill-gray-100 text-white peer ' :
+                        `text-zinc-550 hover:bg-white group-hover:bg-white group-hover:text-cyan-650 `
+                    } ${isOpen ? 'h-11 ' : 'h-10'}   w-full p-2 `
+                }
+            >
+                {({ isActive }) => {
+                    item.isActive = isActive;
 
-                return (
-                    <div
-                        className={`flex w-full gap-x-2 text-[13px] font-medium leading-6`}
-                    >
-                        {item.icon ? (
-                            <div
-                                className={`group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'}   m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
-                            >
-                                <item.icon className={` ${isOpen ? ' w-4' : 'w-full'} h-full `} />
-                            </div>
-                        ) : (
-                            <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
-                        )}
-                        <span className={`${isOpen ? 'hidden group-hover/visited:!inline' : 'sm:inline'}`}>{item.label}</span>
+                    return (
+                        <div
+                            className={`flex w-full gap-x-2 text-[13px] font-medium leading-6`}
+                        >
+                            {item.icon ? (
+                                <div
+                                    className={`group-hover:fill-cyan-550 ${isActive && '!fill-gray-100'}   m-1 w-3 items-center self-center fill-zinc-550 font-semibold leading-6 active:!fill-gray-100`}
+                                >
+                                    <item.icon className={` ${isOpen ? ' w-4' : 'w-full'} h-full `} />
+                                </div>
+                            ) : (
+                                <CircleIcon className="ml-2 mr-2 w-3 fill-gray-100" />
+                            )}
+                            <span className={`${isOpen ? 'hidden ' : 'sm:inline'}`}>{item.label}</span>
 
 
-                        {item.count && (
-                            <span
-                                className="ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-gray-900 px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-white ring-1 ring-inset ring-gray-700"
-                                aria-hidden="true"
-                            >
-                                {item.count}
-                            </span>
-                        )}
-                    </div>
-                )
-            }}
-        </NavLink >
+                            {item.count && (
+                                <span
+                                    className="ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-gray-900 px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-white ring-1 ring-inset ring-gray-700"
+                                    aria-hidden="true"
+                                >
+                                    {item.count}
+                                </span>
+                            )}
+                        </div>
+                    )
+                }}
+
+            </NavLink >
+            <Buttons item={item} handleOpenModal={handleOpenModal} />
+        </div>
+
     )
 }
 
+function Compact({ item, handleOpenModal }) {
+    return (
+        <div className=' hidden group-hover:flex group/extract  border-y border-r border-gray-300 z-50 sm:min-w-36 '>
 
+            <NavLink
+                to={item.href ?? ''}
+
+            >
+                {({ isActive }) => {
+                    item.isActive = isActive;
+
+                    return (
+                        <div
+                            className={`flex items-center w-full gap-x-2 text-[13px] font-medium leading-6`}
+                        >
+                            <span className={` ${isActive ? '  bg-cyan-550' : 'group-hover/extract:bg-white bg-gray-100'} contain-[""] -ml-[1.2rem]  border-l border-b border-gray-300 absolute rotate-45 size-3`} />
+
+                            <span className={`${'sm:inline'}`}>{item.label}</span>
+
+
+                            {item.count && (
+                                <span
+                                    className="ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-gray-900 px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-white ring-1 ring-inset ring-gray-700"
+                                    aria-hidden="true"
+                                >
+                                    {item.count}
+                                </span>
+                            )}
+                        </div>
+                    )
+                }}
+
+            </NavLink >
+            <button
+                onClick={() => handleOpenModal(item.href || '')}
+                className="group-hover:bg-gray-200 ml-[0.6px] h-[2.76rem] gap-x-3 p-2 pt-3 pl-2 peer-[]:!bg-cyan-550 text-center text-[13px] font-semibold leading-6 text-white hover:!bg-cyan-550 sm:flex"
+            >
+                <CrossIcon
+                    className="mr-px w-4 rotate-45 fill-gray-100"
+                    className1="h-10"
+                    className2="w-10"
+                />
+
+            </button>
+        </div>
+
+
+    )
+}
 function Accordion({ item }: Readonly<NavLinksType>) {
     const [isOpen, setIsOpen] = useState(false)
     const [isAnySubItemCurrent, SetIsAnySubItemCurrent] = useState(false)
@@ -144,9 +197,10 @@ export function NavigationItem({ item, isOpen, handleOpenModal }: Readonly<NavCo
             {item.options?.length ? (
                 <Accordion item={item} isOpen={isOpen} />
             ) : (
-                <NavLinks item={item} isOpen={isOpen} />
+                <div className='group flex w-full gap-5'> <NavLinks handleOpenModal={handleOpenModal} item={item} isOpen={isOpen} />  {isOpen &&
+                    <div className='fixed ml-12 -mt-px z-10 bg-slate-100 '><Compact item={item} handleOpenModal={undefined} /></div>}</div>
             )}
-            {item.isButton && <Buttons item={item} handleOpenModal={handleOpenModal} />}
+            {item.isButton && ''}
         </div>
     )
 }

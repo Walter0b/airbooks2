@@ -99,16 +99,16 @@ export default function HeaderItems() {
 
                         {/* SidebarItemType Options */}
                         <div className="flex ">
-                            <button className="flex border-2 border-white p-5 ">
+                            <button className=" border-2 border-white p-5 ">
                                 <NotificationsIcon className="w-4 fill-white" />
                             </button>
-                            <button className="flex border-r-2 border-white p-5 ">
+                            <button className=" border-r-2 border-white p-5">
                                 <SettingsIcon className="w-4 fill-white" />
                             </button>
-                            <button className="flex border-r-2 border-white p-5 ">
+                            <button className=" border-r-2 border-white p-5 ">
                                 <HelpIcon className="w-4 fill-white" />
                             </button>
-                            <button className="flex p-4 ">
+                            <button className=" p-4 ">
                                 <UserIcon className="w-4 fill-white" />
                             </button>
                         </div>

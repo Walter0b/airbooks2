@@ -9,8 +9,14 @@
 button,
 select {
     -webkit-appearance: none
-    
 }
+
+.box {
+    --mask: conic-gradient(from -135deg at right, #0000, #000 1deg 89deg, #0000 80deg) 50%/100% 60px;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+}
+
 
 :root {
     line-height: 1.5;
@@ -61,7 +67,9 @@ h1 {
     font-size: 3.2em;
     line-height: 1.1;
 }
-b, strong {
-    font-family: ProximaNovaRegular,Arial,sans-serif;
+
+b,
+strong {
+    font-family: ProximaNovaRegular, Arial, sans-serif;
     font-weight: 400;
-  }
+}

@@ -69,6 +69,7 @@ export default function TravelerCompactList({
                 ))}
 
             </ul>
+            {/* To-Do share pagination between table and compact list */}
             <Pagination
                 className="flex justify-end"
                 onPageChange={page}

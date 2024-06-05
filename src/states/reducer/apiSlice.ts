@@ -4,8 +4,17 @@ import { ResponseDataType, TableDataType } from '@/utils/models/interface/table'
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: apiUrl,
-  prepareHeaders: (headers) => {
+  baseUrl: apiUrl + '/items',
+  prepareHeaders: (headers,
+    // { getState }
+  ) => {
+    const token = sessionStorage.getItem('accessToken');
+    const expiresAt = sessionStorage.getItem('accessTokenExpiresAt');
+
+    if (token && expiresAt && new Date().getTime() < parseInt(expiresAt)) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+
     headers.set('Content-Type', 'application/json');
     return headers;
   },
@@ -14,9 +23,10 @@ const baseQuery = fetchBaseQuery({
     return `${queryString}&meta=*`;
   },
 });
+
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery,
+  baseQuery ,
   tagTypes: ['Travelers', 'Customers'],
   endpoints: (builder) => ({
     fetchTravelers: builder.query<ResponseDataType, { page: number; pageSize: number }>({

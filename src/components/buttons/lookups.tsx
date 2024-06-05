@@ -48,7 +48,7 @@ export function Lookup({
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         FieldsValue.selectedOption = event.target.value;
         handleSelectOption?.(event.target.value || '');
-        console.log(FieldsValue)
+        // console.log(FieldsValue)
         setIsOpen(true);
     };
 

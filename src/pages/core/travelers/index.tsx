@@ -23,6 +23,8 @@ export default function Travelers() {
 
     const { data: travelersData } = useFetchTravelersQuery({ page: page.value, pageSize: pageSize.value });
 
+    console.log(sessionStorage.accessToken)
+
     if (travelersData) {
         return (
             <Pages>
@@ -35,6 +37,7 @@ export default function Travelers() {
                         hasCheckbox={true}
                     >
                         <TableHeader data-slot="TableHeader" />
+                        {/* To-Do share pagination between table and compact list from body */}
                         <Pagination
                             data-slot="Pagination"
                             tableData={travelersData}
@@ -47,8 +50,6 @@ export default function Travelers() {
                         tableData={travelersData}
                     />
                 </Body>
-
-
             </Pages>
         )
     } else {

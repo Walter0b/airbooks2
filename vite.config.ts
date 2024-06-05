@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(root),
+      '@public': path.resolve(__dirname, "./public")
     },
   },
 });
