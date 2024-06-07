@@ -51,10 +51,10 @@ export default function Travelers() {
                             onItemNumberChange={pageSize}
                         />
                     </Table>
-                    <TravelerCompactList
+                    {/* <TravelerCompactList
                         data-slot="compactList"
                         tableData={travelersData}
-                    />
+                    /> */}
                 </Body>
             </Pages>
         )

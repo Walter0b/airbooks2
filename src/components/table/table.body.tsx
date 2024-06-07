@@ -2,7 +2,7 @@
 import React from 'react'
 import Checkboxes from './table.checkbox'
 import { TableBodyType, TableDataType } from '@/utils/models/interface/table'
-import { redirect, useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const TableBody: React.FC<TableBodyType> = ({
     tableData,
@@ -13,12 +13,14 @@ const TableBody: React.FC<TableBodyType> = ({
     className,
 }) => {
     const router = useRouter()
+    const {  } = router;
+    const pathname = usePathname()
     const handleRowClick = (
         event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
         id: number | string
     ) => {
         if (!(event.target instanceof HTMLInputElement)) {
-            router.push(`${id}`)
+            router.push(`${pathname}/${id}`)
         }
     }
 
@@ -28,7 +30,7 @@ const TableBody: React.FC<TableBodyType> = ({
                 <tr
                     key={index}
                     onClick={(event) => handleRowClick(event, item.id)}
-                    className={`${className} whitespace-nowrap border-b odd:bg-white even:bg-slate-50 hover:bg-neutral-100`}
+                    className={`${className ? className : ''} whitespace-nowrap border-b odd:bg-white even:bg-slate-50 hover:bg-neutral-100`}
                 >
                     {hasCheckbox && (
                         <Checkboxes

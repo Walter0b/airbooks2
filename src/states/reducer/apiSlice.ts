@@ -18,7 +18,7 @@ const baseQuery = fetchBaseQuery({
         console.log("🚀 ~ prepareHeaders: ~ token:", token)
         const expiresAt = session?.user.expiresAt
         console.log("🚀 ~ prepareHeaders: ~ expiresAt:", expiresAt)
-        if (token && expiresAt && new Date().getTime() < parseInt(expiresAt)) {
+        if (token && expiresAt && new Date().getTime() < expiresAt) {
             headers.set('Authorization', `Bearer ${token}`)
         }
 
