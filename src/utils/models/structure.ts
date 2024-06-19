@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react'
-import { DropdownItemType } from './interface/table'
+import { DropdownItemType, ShowTableOptionsType } from './interface/table'
 
 // Props for the layout component
 export interface LayoutProps {
@@ -105,3 +105,18 @@ export const navigationItems: SidebarItemType[] = [
     { name: 'Marketplace', href: '#' },
     { name: 'Company', href: '#' },
 ]
+
+export interface ButtonInterface {
+    children?: ReactNode
+    buttonClassName?: string
+    arrowClassName?: string
+    hasDropdownIcon?: boolean
+    onClick?: (item?: ShowTableOptionsType) => void
+    className?: string
+    dropdownOptions?: DropdownItemType[]
+    setSelectedOption?: (title: string) => void
+    dropdownClassName?: string
+    dropdownText?: string
+    dropdownTitles?: string
+    dropdownSize?: number | string
+}

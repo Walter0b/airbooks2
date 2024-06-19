@@ -18,7 +18,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
         setIsCompact,
         isCompact,
     }
-    console.log('🚀 ~ ModalProvider ~ value:', value)
+    // console.log('🚀 ~ ModalProvider ~ value:', value)
 
     return (
         <ModalContext.Provider value={value}> {children}</ModalContext.Provider>

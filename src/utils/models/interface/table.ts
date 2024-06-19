@@ -129,6 +129,14 @@ export interface TableItemType extends CheckboxType {
     onCheckboxChange?: (value: string) => void
 }
 
+export interface GenericTablePageType {
+    fetchQuery: ResponseDataType,
+    columns: TableColumnType[],
+    headerSlot: ReactNode,
+    bodySlot: ReactNode,
+    tableOptions: TableOptionsType
+}
+
 // Interface for navigation component
 export interface NavComponentProps extends BaseNavComponentProps {
     handleOpenModal: (key: string) => void
@@ -147,7 +155,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps {}
+export interface NavLinksType extends BaseNavComponentProps { }
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps {}
+export interface ButtonsType extends BaseNavComponentProps { }

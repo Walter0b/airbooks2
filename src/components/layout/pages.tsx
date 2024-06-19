@@ -12,7 +12,8 @@ export default function Pages({ children }: Readonly<PageProps>) {
         children,
         value: 'body',
     })
-
+    // console.log("🚀 ~ Body ~ Table:", Header)
+    // console.log("🚀 ~ Body ~ CompactList:", Header?.props.children[0].props)
     return (
         <div className="flex h-full ">
             {

@@ -8,7 +8,7 @@ const { auth } = NextAuth(authConfig);
 export default auth((req) => {
     
     const { nextUrl } = req;
-    console.log("🚀 ~ auth ~ req:", req)
+    // console.log("🚀 ~ auth ~ req:", req)
     const REDIRECTION_LINK = nextUrl.searchParams.get('callbackUrl') || DEFAULT_REDIRECT
     const isAuthenticated = !!req.auth;
     const isPublicRoute = PUBLIC_ROUTES.includes(nextUrl.pathname);

@@ -1,8 +1,8 @@
 "use client"
 import Bookings from "@/components/compactlist/bookings"
 import Snapshot from "@/components/compactlist/snapshot"
-import TravelersItemDetails from "../../travelers/compact-list/compact-list.details"
-import TravelerCompactList from "../../customers/compact-list/compact-list"
+import TravelersItemDetails from "../../compact-list/compact-list.details"
+import TravelerCompactList from "../../../customers/compact-list/compact-list"
 import useSingleState from "@/hooks/useSingleState"
 import { useFetchTravelersQuery } from "@/states/reducer/apiSlice"
 

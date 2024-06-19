@@ -141,7 +141,7 @@ const more = [
         group: 3,
     },
 ]
-export const tableOptions: TableOptionsType = {
+export const travelerTableOptions: TableOptionsType = {
     pageLabel: 'travelers',
     action,
     sort,

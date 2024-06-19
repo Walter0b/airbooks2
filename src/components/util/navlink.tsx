@@ -22,7 +22,7 @@ const NavLink: React.FC<NavLinkProps> = ({
     const pathname = usePathname()
     const isActive = pathname.includes(to)
 
-    console.log('🚀 ~ pathname:', pathname, to, isActive)
+    // console.log('🚀 ~ pathname:', pathname, to, isActive)
 
     const renderChildren = () => {
         if (typeof children === 'function') {

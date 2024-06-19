@@ -8,26 +8,10 @@ import {
     memo,
 } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
-import {
-    DropdownItemType,
-    ShowTableOptionsType,
-} from '@/utils/models/interface/table'
 import { Dropdown } from './dropdown'
+import { ButtonInterface } from '@/utils/models/structure'
 
-interface ButtonInterface {
-    children?: ReactNode
-    buttonClassName?: string
-    arrowClassName?: string
-    hasDropdownIcon?: boolean
-    onClick?: (item?: ShowTableOptionsType) => void
-    className?: string
-    dropdownOptions?: DropdownItemType[]
-    setSelectedOption?: (title: string) => void
-    dropdownClassName?: string
-    dropdownText?: string
-    dropdownTitles?: string
-    dropdownSize?: number | string
-}
+
 
 const Buttons = ({
     children,

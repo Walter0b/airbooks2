@@ -13,7 +13,7 @@ const LoginPage: React.FC = () => {
     const [error, setError] = useState('');
     const router = useRouter(); // Use the useRouter hook
     const searchParams = useSearchParams()
-    console.log("🚀 ~ searchParams:", searchParams.get('callbackUrl'))
+    // console.log("🚀 ~ searchParams:", searchParams.get('callbackUrl'))
     // Retrieve callbackUrl from query params
     const callbackUrl =  searchParams.get('callbackUrl')
 

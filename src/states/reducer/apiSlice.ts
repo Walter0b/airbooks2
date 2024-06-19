@@ -5,19 +5,19 @@ import { getSession } from 'next-auth/react';
 
 import { auth } from '@/auth';
 const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
-console.log("🚀 ~ process.env.:", process.env)
-console.log("🚀 ~ apiUrl:", apiUrl)
+// console.log("🚀 ~ process.env.:", process.env)
+// console.log("🚀 ~ apiUrl:", apiUrl)
 
 const baseQuery = fetchBaseQuery({
     baseUrl: apiUrl + '/items',
     prepareHeaders: async (headers) => {
-        console.log("🚀 ~ Travelers ~ sessionss before:")
+        // console.log("🚀 ~ Travelers ~ sessionss before:")
         const session = await getSession();
-        console.log("🚀 ~ Travelers ~ sessionss:", session)
+        // console.log("🚀 ~ Travelers ~ sessionss:", session)
         const token = session?.user.accessToken
-        console.log("🚀 ~ prepareHeaders: ~ token:", token)
+        // console.log("🚀 ~ prepareHeaders: ~ token:", token)
         const expiresAt = session?.user.expiresAt
-        console.log("🚀 ~ prepareHeaders: ~ expiresAt:", expiresAt)
+        // console.log("🚀 ~ prepareHeaders: ~ expiresAt:", expiresAt)
         if (token && expiresAt && new Date().getTime() < expiresAt) {
             headers.set('Authorization', `Bearer ${token}`)
         }
