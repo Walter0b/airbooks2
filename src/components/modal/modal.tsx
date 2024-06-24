@@ -13,7 +13,7 @@ import { RootState } from '@/states/store'
 const Modal = ({ title, }: Readonly<{ title?: string }>) => {
 
     const { data } = useSelector((state: RootState) => state.modal);
-    // console.log("🚀 ~ Modal ~ data:", data)
+    console.log("🚀 ~ Modal ~ data:", data)
 
     const { InputFields } = useContext(ModalContext);
 

@@ -21,6 +21,7 @@ export default function TravelersItemDetails() {
         setPageLabel?.("travelers");
         // console.log("🚀 ~ action.payload.data:", data)
         dispatch(openModalWithData({ data: data }));
+        console.log("🚀 ~ handleOpenModal ~ data:", data)
     }
 
 
