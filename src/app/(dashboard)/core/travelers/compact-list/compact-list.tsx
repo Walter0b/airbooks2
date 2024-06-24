@@ -18,7 +18,7 @@ export default function TravelerCompactList({
 
     const currentID = parseInt(useParams().id as string, 10)
     return (
-        <div className="w-full">
+        <div className="">
             <ul
                 className="hidScrollbar flex-1 overflow-auto"
                 style={{ maxHeight: 'calc(100vh - 220px)' }}

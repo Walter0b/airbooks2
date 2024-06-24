@@ -1,5 +1,5 @@
 import { BarChartIcon } from '@/assets/svg/bar'
-import NavLink from '../util/navlink'
+import NavLink from '../../utils/navlink'
 import HomeIcon from '@/assets/svg/home'
 
 export default function NavOption() {

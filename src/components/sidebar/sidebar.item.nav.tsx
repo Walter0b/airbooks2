@@ -8,7 +8,7 @@ import {
     NavButtonsProps,
 } from '@/utils/models/interface/table'
 import { useEffect, useState } from 'react'
-import NavLink from '../util/navlink'
+import NavLink from '../../utils/navlink'
 
 function Buttons({ item, handleOpenModal }: Readonly<NavButtonsProps>) {
     return (
@@ -164,9 +164,8 @@ function Accordion({ item }: Readonly<NavLinksType>) {
                 </button>
             </div>
             <div
-                className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${
-                    isOpen ? 'max-h-[500px]' : 'max-h-0'
-                }`}
+                className={`transition-max-height stop w-full  overflow-hidden bg-white text-black duration-500 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'
+                    }`}
             >
                 {item?.options?.map((subItem, subIndex) => (
                     <NavLink to={subItem.href} key={subIndex} id="navlink">

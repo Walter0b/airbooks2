@@ -130,11 +130,15 @@ export interface TableItemType extends CheckboxType {
 }
 
 export interface GenericTablePageType {
-    fetchQuery: ResponseDataType,
+    fetchQuery: any,
     columns: TableColumnType[],
-    headerSlot: ReactNode,
-    bodySlot: ReactNode,
+    // headerSlot: ReactNode,
+    // bodySlot: ReactNode,
     tableOptions: TableOptionsType
+}
+
+export interface PageConfigType {
+    [key: string]: GenericTablePageType
 }
 
 // Interface for navigation component

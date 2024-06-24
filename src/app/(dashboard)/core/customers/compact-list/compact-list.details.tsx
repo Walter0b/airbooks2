@@ -6,7 +6,7 @@ import useCurrentPageData from '@/utils/functions/getCurrentPageData'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import TravelerCompactListHeader from '../../travelers/compact-list/traveler-cl-btn'
-import NavLink from '@/components/util/navlink'
+import NavLink from '@/utils/navlink'
 
 export default function TravelersItemDetails() {
     const data = useCurrentPageData()!
