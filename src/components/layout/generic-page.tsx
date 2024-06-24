@@ -9,6 +9,7 @@ import Table from '@/components/table/table'
 import TableHeader from '@/components/table/table.header'
 import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
+import { GenericTablePageType } from '@/utils/models/interface/table'
 
 
 
@@ -16,8 +17,7 @@ export default function GenericTablePage({
     fetchQuery,
     columns,
     tableOptions,
-    headerSlot,
-    bodySlot
+
 }: Readonly<GenericTablePageType>) {
     console.log("🚀 ~ tableOptions:", tableOptions)
     const page = useSingleState(1)
@@ -31,8 +31,8 @@ export default function GenericTablePage({
     if (tableData) {
         return (
             <Pages>
-                <Header data-slot="header" dropdownOptions={tableOptions} />
-                <Body data-slot="body">
+                <Header data-slot="header"  dropdownOptions={tableOptions} />
+                <div data-slot="body">
                     <Table
                         data-slot="table"
                         tableData={tableData}
@@ -48,7 +48,7 @@ export default function GenericTablePage({
                         />
                     </Table>
 
-                </Body>
+                </div>
 
             </Pages>
         )
