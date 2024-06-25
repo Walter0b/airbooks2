@@ -4,6 +4,7 @@ import { SidebarItemType } from '@/utils/models/interface/table'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/states/reducer/modalSlice'
 import { ModalContext } from '@/hooks/context/ModalContext'
+import { cn } from '@/utils/intext'
 
 export default function SideBarItems({
     navigation,
@@ -24,28 +25,35 @@ export default function SideBarItems({
     }
 
     return (
-        <>
-            <ul
-                className={`  ${isCompact && ' peer group/compact w-12'} overflow-y-auto scroll-smooth focus:scroll-auto`}
-            >
-                {navigation.map((item: SidebarItemType, index: number) => (
-                    <React.Fragment key={item.label}>
-                        {index > 0 &&
-                            navigation[index - 1].group !== item.group && (
-                                <hr className=" border-gray-300" />
-                            )}
-                        <li
-                            className={`flex items-center justify-between ${isCompact ? ' group/visited hover:w-44' : ''}`}
-                        >
-                            <NavigationItem
-                                item={item}
-                                isOpen={isCompact}
-                                handleOpenModal={handleOpenModal}
-                            />
-                        </li>
-                    </React.Fragment>
-                ))}
-            </ul>
-        </>
+
+        <ul
+            className={cn(
+                'overflow-y-auto scroll-smooth focus:scroll-auto',
+                isCompact && 'peer group/compact w-12'
+            )}
+        >
+            {navigation.map((item: SidebarItemType, index: number) => (
+                <React.Fragment key={item.label}>
+                    {index > 0 &&
+                        navigation[index - 1].group !== item.group && (
+                            <hr className=" border-gray-300" />
+                        )}
+                    <li
+                        className={cn(
+                            'flex items-center justify-between',
+                            isCompact && 'group/visited hover:w-44'
+                        )}
+
+                    >
+                        <NavigationItem
+                            item={item}
+                            isOpen={isCompact}
+                            handleOpenModal={handleOpenModal}
+                        />
+                    </li>
+                </React.Fragment>
+            ))}
+        </ul>
+
     )
 }

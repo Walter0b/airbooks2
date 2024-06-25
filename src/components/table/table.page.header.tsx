@@ -1,6 +1,6 @@
 import ShowButton from '@/components/table/items/show-button'
 import TableOptions from '@/components/table/items/table.option'
-import { cn } from '@/utils/classNames'
+import { cn } from '@/utils/intext'
 import { TableOptionsType } from '@/utils/models/interface/table'
 
 export default function Header({

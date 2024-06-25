@@ -11,9 +11,10 @@ import { RootState } from '@/states/store'
 
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
     const { data } = useSelector((state: RootState) => state.modal)
-    // console.log("🚀 ~ Modal ~ data:", data)
+    console.log("🚀 ~ Modal ~ data:", data)
 
     const { InputFields } = useContext(ModalContext)
+    // console.log("🚀 ~ Modal ~ InputFields:", InputFields)
 
     const defaultForm = InputFields![0].tabs
     const [formData, setFormData] = useState<FormTabType[]>(defaultForm)
@@ -26,6 +27,7 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
         })
         return acc
     }, {})
+    console.log("🚀 ~ idObject ~ idObject:", idObject)
 
     const validationObject = formData.reduce((acc: any, { fields }: any) => {
         fields.forEach(({ id, validations }: any) => {

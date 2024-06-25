@@ -6,7 +6,8 @@ import useCurrentPageData from '@/utils/functions/getCurrentPageData'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import TravelerCompactListHeader from '../../travelers/compact-list/traveler-cl-btn'
-import NavLink from '@/utils/navlink'
+import NavLink from '@/components/util/navlink'
+import { cn } from '@/utils/intext'
 
 export default function TravelersItemDetails() {
     const data = useCurrentPageData()!
@@ -32,14 +33,20 @@ export default function TravelersItemDetails() {
                 <NavLink
                     to="snapshot"
                     activeClassName="border-b-4 !text-black"
-                    className={`text-cyan-550 border-cyan-550 py-1 px-10 hover:border-b-4`}
+                    className={cn(
+                        'text-cyan-550 border-cyan-550 py-1 px-10 hover:border-b-4'
+                    )}
+
                 >
                     Snapshot
                 </NavLink>
                 <NavLink
                     to="bookings"
                     activeClassName="border-b-4 !text-black"
-                    className={`text-cyan-550 border-cyan-550 py-1 px-10 hover:border-b-4`}
+                    className={cn(
+                        'text-cyan-550 border-cyan-550 py-1 px-10 hover:border-b-4'
+                    )}
+
                 >
                     Bookings
                 </NavLink>

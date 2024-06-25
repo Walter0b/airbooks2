@@ -1,6 +1,5 @@
 "use client"
 import Header from '@/components/table/table.page.header'
-import Pages from '@/components/layout/pages'
 import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
 import { GenericTablePageType } from '@/utils/models/interface/table'
@@ -38,7 +37,7 @@ export default function GenericCompactPage({
                     />
 
                 </div>
-                <TravelersItemDetails children={undefined} fetchQuery={undefined} />
+                <TravelersItemDetails children={undefined} />
 
             </div>
         )

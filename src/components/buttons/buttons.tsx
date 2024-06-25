@@ -10,6 +10,7 @@ import {
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { Dropdown } from './dropdown'
 import { ButtonInterface } from '@/utils/models/structure'
+import { cn } from '@/utils/intext'
 
 
 
@@ -66,13 +67,19 @@ const Buttons = ({
         >
             <div className="flex h-full w-full items-center">
                 <button
-                    className={`${className} group/button flex w-full`}
+                    className={cn(className, 'group/button flex w-full')}
+
                     onClick={handleButtonClick}
                 >
                     {children}
                     {hasDropdownIcon && (
                         <ArrowIcon
-                            className={`${arrowClassName} w-2 ${isOpen ? 'rotate-180 transform' : ''}`}
+                            className={cn(
+                                arrowClassName,
+                                'w-2',
+                                isOpen && 'rotate-180 transform'
+                            )}
+
                         />
                     )}
                 </button>

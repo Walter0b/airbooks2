@@ -2,6 +2,7 @@
 import { ClockIcon } from '@/assets/svg/clock'
 import Buttons from '@/components/buttons/buttons'
 import { Lookup } from '@/components/buttons/lookups'
+import { cn } from '@/utils/intext'
 
 import { FieldComponents, FormFieldType } from '@/utils/models/structure'
 
@@ -55,7 +56,7 @@ function select(field: FormFieldType) {
     )
 }
 function space(field: FormFieldType) {
-    return <div key={field.id} className={`${field.span} invisible`}></div>
+    return <div key={field.id} className={cn(field.span, 'invisible')}></div>
 }
 function lookup(field: FormFieldType, FieldsValue: any) {
     return (

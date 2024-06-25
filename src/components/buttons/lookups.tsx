@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { DropdownItemType } from '@/utils/models/interface/table'
 import usePeroxideState from '@/hooks/usePeroxideState'
+import { cn } from '@/utils/intext'
 
 interface LookupProps {
     required?: boolean
@@ -75,7 +76,12 @@ export function Lookup({
         >
             <div className="flex h-full w-full items-center">
                 <div
-                    className={`group/button flex w-full ${containerClassName} ${isOpen && 'border-blue-400'}`}
+                    className={cn(
+                        'group/button flex w-full',
+                        containerClassName,
+                        isOpen && 'border-blue-400'
+                    )}
+
                 >
                     <input
                         required={required}
@@ -86,13 +92,20 @@ export function Lookup({
                         value={FieldsValue?.selectedOption || value}
                     />
                     <ArrowIcon
-                        className={`group-hover/button:!fill-cyan-550 mt-[7px] mr-1 w-2 fill-gray-500 ${isOpen ? 'rotate-180 transform' : ''}`}
+                        className={cn(
+                            'group-hover/button:!fill-cyan-550 mt-[7px] mr-1 w-2 fill-gray-500',
+                            isOpen && 'rotate-180 transform'
+                        )}
+
                     />
                 </div>
             </div>
             {isOpen && (
                 <div
-                    className={`${dropdownContainerClassName} absolute z-10 w-${dropdownWidth} ring-opacity-5 origin-top-right bg-white ring-1 shadow-lg ring-black focus:outline-none`}
+                    className={cn(
+                        dropdownContainerClassName,
+                        `absolute z-10 w-${dropdownWidth} ring-opacity-5 origin-top-right bg-white ring-1 shadow-lg ring-black focus:outline-none`
+                    )}
                 >
                     {!filteredOptions?.length && <div className="py-3"></div>}
                     {filteredOptions?.map(

@@ -200,13 +200,13 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                 label: 'Traveler Name',
                 fields: [
                     {
-                        id: 'Title',
+                        id: 'title',
                         label: 'Title',
                         type: 'lookup',
                         span: 'sm:col-span-1',
                     },
                     {
-                        id: 'firstName',
+                        id: 'first_name',
                         label: 'First Name',
                         type: 'text',
                         span: 'sm:col-span-3',

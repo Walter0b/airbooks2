@@ -1,6 +1,7 @@
 import React from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { PaginationPropsType } from '@/utils/models/interface/table'
+import { cn } from '@/utils/intext'
 
 const Pagination: React.FC<PaginationPropsType> = ({
     tableData,
@@ -34,7 +35,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
     const canNextPage = endIndex < totalPages - 1
 
     return (
-        <div id="Pagination" className={`${className} mr-3`}>
+        <div id="Pagination" className={cn(className, 'mr-3')}>
             <div className="mt-3 flex flex-wrap items-center -space-x-px text-black">
                 <div className="mr-3">
                     <select
@@ -56,7 +57,10 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     <button
                         onClick={() => gotoPage(onPageChange.value - 1)}
                         disabled={!canPreviousPage}
-                        className={`${!canPreviousPage ? 'cursor-not-allowed opacity-50' : ''}`}
+                        className={cn(
+                            !canPreviousPage && 'cursor-not-allowed opacity-50'
+                        )}
+
                     >
                         <span className="sr-only">Previous</span>
                         <ArrowIcon className="w-3 scale-x-100 rotate-90 fill-gray-300" />
@@ -69,7 +73,10 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     <button
                         onClick={() => gotoPage(onPageChange.value + 1)}
                         disabled={!canNextPage}
-                        className={`${!canNextPage ? 'cursor-not-allowed opacity-50' : ''}`}
+                        className={cn(
+                            !canNextPage && 'cursor-not-allowed opacity-50'
+                        )}
+
                     >
                         <span className="sr-only">Next</span>
                         <ArrowIcon className="mr-3 w-3 scale-x-100 -rotate-90 fill-gray-300" />

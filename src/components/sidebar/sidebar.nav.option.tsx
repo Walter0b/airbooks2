@@ -1,6 +1,7 @@
 import { BarChartIcon } from '@/assets/svg/bar'
-import NavLink from '../../utils/navlink'
+import NavLink from '../util/navlink'
 import HomeIcon from '@/assets/svg/home'
+import { cn } from '@/utils/intext'
 
 export default function NavOption() {
     const baseClassName =
@@ -11,7 +12,7 @@ export default function NavOption() {
                 to="/core"
                 id="core"
                 activeClassName="border-emerald-500"
-                className={`${baseClassName} hover:border-emerald-500`}
+                className={cn(baseClassName, ' hover:border-emerald-500')}
             >
                 <HomeIcon className="fill-green-550 w-4" />
             </NavLink>
@@ -20,7 +21,7 @@ export default function NavOption() {
                 to="/report"
                 id="report"
                 activeClassName="border-red-500"
-                className={`${baseClassName} hover:border-red-500`}
+                className={cn(baseClassName, '  hover:border-red-500')}
             >
                 <BarChartIcon className="fill-red-550 w-4" />
             </NavLink>

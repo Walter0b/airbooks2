@@ -1,3 +1,4 @@
+import { cn } from '@/utils/intext'
 import {
     FormTabType,
     IndividualFormDataProp,
@@ -20,7 +21,11 @@ const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {
                     <button
                         key={index}
                         onClick={() => handleTabClick(tab.label, tab.tabs)}
-                        className={`borderButtonStyles ${currentPage === tab.label && 'actives'}`}
+                        className={cn(
+                            'borderButtonStyles',
+                            currentPage === tab.label && 'actives'
+                        )}
+
                     >
                         {tab.label}
                     </button>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Link, { LinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
+import { cn } from '@/utils/intext'
 
 interface NavLinkProps {
     children?: React.ReactNode | ((isActive: boolean) => React.ReactNode)
@@ -36,7 +37,11 @@ const NavLink: React.FC<NavLinkProps> = ({
         <Link
             href={to}
             id={id}
-            className={`${className || ''} ${isActive ? activeClassName : conditionalClassName}`}
+            className={cn(
+                className,
+                isActive ? activeClassName : conditionalClassName
+            )}
+
         >
             {renderChildren()}
         </Link>

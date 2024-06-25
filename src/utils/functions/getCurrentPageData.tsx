@@ -4,6 +4,7 @@ import { CatchData, TableDataType } from '../models/interface/table'
 
 const useCurrentPageData = (): TableDataType | null => {
     const { id } = useParams()
+    console.log("🚀 ~ useCurrentPageData ~ id:", id)
     const NumberId = parseInt(id as string, 10)
 
     const travelersData = useSelector(
@@ -18,7 +19,7 @@ const useCurrentPageData = (): TableDataType | null => {
 
     const specificData =
         data.data.find(
-            (developer: TableDataType) => developer.id === NumberId
+            (developer: any) => developer.id === NumberId
         ) || null
 
     return specificData

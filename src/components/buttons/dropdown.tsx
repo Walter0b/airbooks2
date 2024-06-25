@@ -1,5 +1,6 @@
 import React from 'react'
 import { DropdownItemType } from '@/utils/models/interface/table'
+import { cn } from '@/utils/intext'
 
 interface DropdownProps {
     dropdownOptions?: DropdownItemType[]
@@ -35,7 +36,7 @@ export const Dropdown = React.memo(
 
         return (
             <div
-                className={`${className} ring-opacity-5 absolute z-10 origin-top-right bg-white ring-1 shadow-lg ring-black focus:outline-none`}
+                className={cn(className, 'ring-opacity-5 absolute z-10 origin-top-right bg-white ring-1 shadow-lg ring-black focus:outline-none')}
             >
                 {!dropdownOptions?.length && <div className="py-3"></div>}
                 {dropdownOptions?.map(
@@ -43,12 +44,12 @@ export const Dropdown = React.memo(
                         <React.Fragment key={item.label}>
                             {index > 0 &&
                                 dropdownOptions[index - 1].group !==
-                                    item.group && (
+                                item.group && (
                                     <hr className=" border-gray-300" />
                                 )}
                             {!item.url && !item.onClick && !item.value ? (
                                 <div
-                                    className={`${titles} pointer-events-none uppercase select-none`}
+                                    className={cn(titles, 'pointer-events-none uppercase select-none')}
                                 >
                                     {item.label}
                                 </div>
@@ -58,7 +59,7 @@ export const Dropdown = React.memo(
                                     onClick={(event) =>
                                         handleItemClick(item, event)
                                     }
-                                    className={`${dropdownClassName}`}
+                                    className={cn(dropdownClassName)}
                                 >
                                     {item.label}
                                 </button>

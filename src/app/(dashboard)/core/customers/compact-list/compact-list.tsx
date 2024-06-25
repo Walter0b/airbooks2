@@ -1,5 +1,6 @@
 import Pagination from '@/components/table/pagination'
 import useSingleState from '@/hooks/useSingleState'
+import { cn } from '@/utils/intext'
 import { ResponseDataType } from '@/utils/models/interface/table'
 import { redirect, useParams } from 'next/navigation'
 
@@ -25,7 +26,11 @@ export default function TravelerCompactList({
                     <button
                         onClick={() => handleClick(item.id)}
                         key={item.id}
-                        className={`flex w-full border-b p-2 hover:!bg-gray-100 ${currentID === item.id && 'bg-gray-100'}`}
+                        className={cn(
+                            'flex w-full border-b p-2 hover:!bg-gray-100',
+                            currentID === item.id && 'bg-gray-100'
+                        )}
+
                     >
                         <div className=" pointer-events-none py-1 px-2">
                             <input

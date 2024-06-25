@@ -1,4 +1,5 @@
 import { CrossIcon } from '@/assets/svg/cross'
+import { cn } from '@/utils/intext'
 import { useRouter } from 'next/navigation'
 
 export default function CloseButton({
@@ -17,7 +18,7 @@ export default function CloseButton({
     return (
         <button type="button" onClick={handleGoBack}>
             <CrossIcon
-                className={`${color} w-4`}
+                className={cn(color, 'w-4')}
                 className1=" h-10"
                 className2="w-10"
             />
