@@ -1,7 +1,7 @@
 // components/layout/GenericTablePage.js
 'use client'
 
-import Header from '@/components/table/table.page.header'
+import Header from '@/components/table/items/table.page.header'
 import Pages from '@/components/layout/pages'
 import Body from '@/components/layout/body'
 import Pagination from '@/components/table/pagination'

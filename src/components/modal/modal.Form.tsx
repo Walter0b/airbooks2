@@ -1,6 +1,6 @@
 import { DynamicFormProps } from '@/utils/models/structure'
 import React from 'react'
-import fieldsCompents from './formInputBuilder'
+import fieldsCompents from './form-Input-Builder'
 import { cn } from '@/utils/intext'
 
 export default function DynamicForm({

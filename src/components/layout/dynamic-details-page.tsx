@@ -1,5 +1,5 @@
 'use client'
-import Header from '@/components/table/table.page.header'
+import Header from '@/components/table/items/table.page.header'
 import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
 import { GenericTablePageType } from '@/utils/models/interface/table'

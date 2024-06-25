@@ -3,7 +3,7 @@ import { NotificationsIcon } from '@/assets/svg/notificaitons'
 import { HelpIcon } from '@/assets/svg/help'
 import { SettingsIcon } from '@/assets/svg/settings'
 import { UserIcon } from '@/assets/svg/user'
-import LanguageOption from './languageOption'
+import LanguageOption from './header.languageOption'
 import Image from 'next/image'
 export default function HeaderItems() {
     return (

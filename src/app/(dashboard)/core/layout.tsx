@@ -1,5 +1,5 @@
 'use client'
-import DisplayModal from '@/components/modal/display-modal'
+import DisplayModal from '@/components/modal/modal.display'
 import SideBar from '@/components/sidebar/sidebar'
 import { coreNavigation } from '@/static/page/sidebar'
 import React from 'react'

@@ -1,7 +1,7 @@
 // app/[...slug].js
 'use client'
 
-import GenericTablePage from '@/components/layout/generic-page'
+import GenericTablePage from '@/components/layout/dynamic-table-page'
 import { pagesConfig } from './_page'
 
 export default function DynamicPage({

@@ -1,7 +1,7 @@
 import SideBar from './sidebar/sidebar'
 import Header from './header/header'
 import { SidebarItemType } from '@/utils/models/interface/table'
-import DisplayModal from './modal/display-modal'
+import DisplayModal from './modal/modal.display'
 import { ReactNode } from 'react'
 
 function Layout({

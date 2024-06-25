@@ -1,7 +1,7 @@
 // app/[...slug].js
 'use client'
 
-import GenericCompactPage from '@/components/layout/generic-page-details'
+import GenericCompactPage from '@/components/layout/dynamic-details-page'
 import { pagesConfig } from '../_page'
 
 export default function DynamicPage({

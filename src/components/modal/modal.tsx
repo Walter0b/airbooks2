@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useContext } from 'react'
-import DynamicForm from './modal.Form'
+
 import { FormTabType } from '@/utils/models/structure'
 import CloseButton from '@/components/buttons/close-Button'
 import Tabs from './modal.tabs'
@@ -8,13 +8,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { closeModal } from '@/states/reducer/modalSlice'
 import { ModalContext } from '@/hooks/context/ModalContext'
 import { RootState } from '@/states/store'
+import DynamicForm from './modal.Form'
 
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
     const { data } = useSelector((state: RootState) => state.modal)
     console.log('🚀 ~ Modal ~ data:', data)
 
     const { InputFields } = useContext(ModalContext)
-    // console.log("🚀 ~ Modal ~ InputFields:", InputFields)
 
     const defaultForm = InputFields![0].tabs
     const [formData, setFormData] = useState<FormTabType[]>(defaultForm)
@@ -39,10 +39,6 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
     }, {})
 
     const { FieldsValue } = useFormState(idObject, validationObject)
-    // console.log("🚀 ~ Modal ~ validationObject:", validationObject)
-    // console.log("🚀 ~ Modal ~ idObject:", idObject)
-
-    // console.log("🚀 ~ Modal ~ FieldsValue:", FieldsValue)
 
     function handleOnclick() {
         dispatch(closeModal())
@@ -50,9 +46,6 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault()
-        // const formData = new FormData(event.target);
-        // const formValues = Object.fromEntries(formData.entries());
-        // console.log(formValues);
     }
 
     const modalRef = useRef<HTMLDivElement>(null)

@@ -1,4 +1,4 @@
-import HeaderItems from './headerItems'
+import HeaderItems from './header.Items'
 
 export default function Header() {
     return (
