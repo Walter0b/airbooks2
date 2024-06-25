@@ -37,19 +37,13 @@ function NavLinks({
                 to={item.href ?? ''}
                 activeClassName=" bg-cyan-550 !fill-gray-100 text-white peer"
                 conditionalClassName="text-zinc-550 hover:bg-white group-hover:bg-white group-hover:text-cyan-650 "
-                className={cn(
-                    isOpen ? 'h-11' : 'h-10',
-                    'w-full p-2'
-                )}
-
+                className={cn(isOpen ? 'h-11' : 'h-10', 'w-full p-2')}
             >
                 {(isActive) => {
                     item.isActive = isActive
 
                     return (
-                        <div
-                            className='flex w-full gap-x-2 text-[13px] font-medium leading-6'
-                        >
+                        <div className="flex w-full gap-x-2 text-[13px] font-medium leading-6">
                             {item.icon ? (
                                 <div
                                     className={cn(
@@ -57,14 +51,12 @@ function NavLinks({
                                         isActive && '!fill-gray-100',
                                         'fill-zinc-550 m-1 w-3 items-center self-center font-semibold leading-6 active:!fill-gray-100'
                                     )}
-
                                 >
                                     <item.icon
                                         className={cn(
                                             isOpen ? 'w-4' : 'w-full',
                                             'h-full'
                                         )}
-
                                     />
                                 </div>
                             ) : (
@@ -72,9 +64,10 @@ function NavLinks({
                             )}
                             <span
                                 className={cn(
-                                    isOpen ? 'group-hover/visited:!inline hidden' : 'sm:inline'
+                                    isOpen
+                                        ? 'hidden group-hover/visited:!inline'
+                                        : 'sm:inline'
                                 )}
-
                             >
                                 {item.label}
                             </span>
@@ -106,26 +99,23 @@ function MiniNavLink({ item, handleOpenModal }: Readonly<NavComponentProps>) {
                 to={item.href ?? ''}
                 activeClassName=" bg-cyan-550 !fill-gray-100 text-white peer"
                 conditionalClassName="text-zinc-550  group-hover/extract:bg-white group-hover/compact:text-cyan-650"
-                className='h-11 w-full  p-2 pl-3 '
+                className="h-11 w-full  p-2 pl-3 "
             >
                 {(isActive) => {
                     item.isActive = isActive
 
                     return (
-                        <div
-                            className="flex w-full items-center gap-x-2 text-[13px] font-medium leading-6"
-                        >
+                        <div className="flex w-full items-center gap-x-2 text-[13px] font-medium leading-6">
                             <span
                                 className={cn(
-                                    isActive ? 'bg-cyan-550' : 'bg-gray-100 group-hover/extract:bg-white',
+                                    isActive
+                                        ? 'bg-cyan-550'
+                                        : 'bg-gray-100 group-hover/extract:bg-white',
                                     'absolute -ml-[1.2rem] size-3 rotate-45 border-b border-l border-gray-300 contain-[""]'
                                 )}
-
                             />
 
-                            <span className="sm:inline">
-                                {item.label}
-                            </span>
+                            <span className="sm:inline">{item.label}</span>
 
                             {item.count && (
                                 <span
@@ -177,15 +167,15 @@ function Accordion({ item }: Readonly<NavLinksType>) {
                     'target:¡bg-black flex w-full flex-row',
                     isAnySubItemCurrent && 'bg-cyan-550'
                 )}
-
             >
                 <CircleIcon className="mr-2 ml-4 w-4 fill-gray-100" />
                 <button
                     className={cn(
-                        isAnySubItemCurrent ? 'text-white' : 'text-zinc-550 hover:text-cyan-550',
+                        isAnySubItemCurrent
+                            ? 'text-white'
+                            : 'text-zinc-550 hover:text-cyan-550',
                         'group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium leading-6'
                     )}
-
                     onClick={handleClick}
                 >
                     {item.label}
@@ -195,7 +185,6 @@ function Accordion({ item }: Readonly<NavLinksType>) {
                             'fill-zinc-550 group-hover:fill-cyan-550 w-3 transition-transform duration-400 ease-in-out',
                             isOpen && 'rotate-180'
                         )}
-
                     />
                 </button>
             </div>
@@ -204,7 +193,6 @@ function Accordion({ item }: Readonly<NavLinksType>) {
                     'transition-max-height stop w-full overflow-hidden bg-white text-black duration-500 ease-in-out',
                     isOpen ? 'max-h-[500px]' : 'max-h-0'
                 )}
-
             >
                 {item?.options?.map((subItem, subIndex) => (
                     <NavLink to={subItem.href} key={subIndex} id="navlink">
@@ -216,18 +204,17 @@ function Accordion({ item }: Readonly<NavLinksType>) {
                                         isActive && 'bg-slate-50',
                                         'group/option hover:text-cyan-550 relative border-b border-dotted border-gray-300 p-2 pl-8 before:relative before:flex before:items-center before:pl-4 last:border-none'
                                     )}
-
                                 >
                                     <span className="before:content-'' before:border-cyan-550 z-50 before:absolute before:left-0 before:-mt-2 before:ml-4 before:block before:h-full before:w-px before:border-r before:border-dotted"></span>
                                     <div className="flex gap-5">
                                         <ArrowIcon
                                             className={cn(
                                                 'invisible -ml-[1.1rem] w-[0.4rem]',
-                                                isOpen && 'fill-cyan-550 -rotate-90',
+                                                isOpen &&
+                                                    'fill-cyan-550 -rotate-90',
                                                 isActive && '!visible',
                                                 'group-hover/option:visible'
                                             )}
-
                                         />
                                         {subItem.label}
                                     </div>
@@ -246,7 +233,7 @@ export function NavigationItem({
     handleOpenModal,
 }: Readonly<NavComponentProps>) {
     return (
-        <div className='group flex w-full '>
+        <div className="group flex w-full ">
             {item.options?.length ? (
                 <Accordion item={item} isOpen={isOpen} />
             ) : (

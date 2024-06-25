@@ -1,37 +1,39 @@
-"use client";
+'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
 import logo from '@/assets/image/neema/logo/airbooks-logo.png'
 import './style.css'
 import { signIn } from 'next-auth/react'
-import { useRouter,useSearchParams } from 'next/navigation'
-import { DEFAULT_REDIRECT } from '@/lib/routes';
+import { useRouter, useSearchParams } from 'next/navigation'
+import { DEFAULT_REDIRECT } from '@/lib/routes'
 
 const LoginPage: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const router = useRouter(); // Use the useRouter hook
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
+    const router = useRouter() // Use the useRouter hook
     const searchParams = useSearchParams()
     // console.log("🚀 ~ searchParams:", searchParams.get('callbackUrl'))
     // Retrieve callbackUrl from query params
-    const callbackUrl =  searchParams.get('callbackUrl')
+    const callbackUrl = searchParams.get('callbackUrl')
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError(''); 
+        e.preventDefault()
+        setError('')
         const result = await signIn('credentials', {
             email,
             password,
             redirect: false,
-        });
+        })
 
         if (result?.error) {
-            setError('Invalid email or password');
+            setError('Invalid email or password')
         } else {
-            callbackUrl? router.push(callbackUrl) :router.push(DEFAULT_REDIRECT)
+            callbackUrl
+                ? router.push(callbackUrl)
+                : router.push(DEFAULT_REDIRECT)
         }
-    };
+    }
     return (
         <div className="background  flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
             <div className="flex flex-col rounded-lg shadow-md lg:flex-row">
@@ -55,7 +57,6 @@ const LoginPage: React.FC = () => {
                         sign in
                     </h2>
                     <form onSubmit={handleSubmit} className="space-y-6">
-
                         <div className="bg-white">
                             <div className="relative bg-inherit">
                                 <input
@@ -65,7 +66,7 @@ const LoginPage: React.FC = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    className="peer  w-full  py-2 px-3 rounded border-gray-300 bg-transparent bg-white  text-black placeholder-transparent   "
+                                    className="peer  w-full  rounded border-gray-300 bg-transparent bg-white py-2 px-3  text-black placeholder-transparent   "
                                     placeholder="Email"
                                 />
                                 <label
@@ -83,9 +84,11 @@ const LoginPage: React.FC = () => {
                                     id="Password"
                                     name="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
                                     required
-                                    className="peer  w-full  py-2 px-3 rounded border-gray-300 bg-transparent bg-white  text-black placeholder-transparent   "
+                                    className="peer  w-full  rounded border-gray-300 bg-transparent bg-white py-2 px-3  text-black placeholder-transparent   "
                                     placeholder="Email"
                                 />
                                 <label

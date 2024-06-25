@@ -14,7 +14,6 @@ export default function Body({ children }: Readonly<BodyProps>) {
         children,
         value: 'compactList',
     })
-    
 
     return (
         <div className="flex h-full w-full overflow-hidden border">

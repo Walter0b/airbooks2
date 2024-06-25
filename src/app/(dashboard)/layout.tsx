@@ -25,12 +25,8 @@ export default function RootLayout({
                 <Header />
                 <div className="flex h-full">
                     <SessionProvider>
-
                         <Provider store={store}>
-
-
                             <ModalProvider>{children}</ModalProvider>
-
                         </Provider>
                     </SessionProvider>
                 </div>

@@ -1,10 +1,10 @@
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import NextAuth from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
 
 interface UserData {
     data: {
-        expires: number,
-        refresh_token: string,
+        expires: number
+        refresh_token: string
         access_token: string
     }
 }
@@ -19,23 +19,31 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             },
             async authorize(credentials) {
                 try {
-                    const { email, password } = credentials as { email: string; password: string; };
-
-                    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email, password }),
-                    });
-
-                    if (!res.ok) {
-                        console.error(`Failed to log in: ${res.status} ${res.statusText}`);
-                        return null;
+                    const { email, password } = credentials as {
+                        email: string
+                        password: string
                     }
 
-                    const response: UserData = await res.json();
-                    const { data } = response;
+                    const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ email, password }),
+                        }
+                    )
+
+                    if (!res.ok) {
+                        console.error(
+                            `Failed to log in: ${res.status} ${res.statusText}`
+                        )
+                        return null
+                    }
+
+                    const response: UserData = await res.json()
+                    const { data } = response
 
                     return {
                         id: data.access_token,
@@ -43,11 +51,11 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                         email: email,
                         accessToken: data.access_token,
                         refreshToken: data.refresh_token,
-                        expiresAt: Date.now() + data.expires,  // Calculate the expiration timestamp
-                    };
+                        expiresAt: Date.now() + data.expires, // Calculate the expiration timestamp
+                    }
                 } catch (error) {
-                    console.error("Error in authorize function:", error);
-                    return null;
+                    console.error('Error in authorize function:', error)
+                    return null
                 }
             },
         }),
@@ -65,63 +73,71 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                 return {
                     ...token,
                     ...user,
-                };
+                }
             }
-            return token;
+            return token
         },
         async session({ session, token }) {
             if (token) {
-                session.user.name = token.name || '';
-                session.user.email = token.email || '';
-                session.user.accessToken = token.accessToken as string;
-                session.user.refreshToken = token.refreshToken as string;
-                session.user.expiresAt = token.expiresAt as number;
+                session.user.name = token.name || ''
+                session.user.email = token.email || ''
+                session.user.accessToken = token.accessToken as string
+                session.user.refreshToken = token.refreshToken as string
+                session.user.expiresAt = token.expiresAt as number
             }
 
-            const expiresAt = session.user.expiresAt;
-            const refreshThreshold = 5 * 60 * 1000; // 5 minutes in milliseconds
-            const shouldRefresh = expiresAt && expiresAt - Date.now() < refreshThreshold;
+            const expiresAt = session.user.expiresAt
+            const refreshThreshold = 5 * 60 * 1000 // 5 minutes in milliseconds
+            const shouldRefresh =
+                expiresAt && expiresAt - Date.now() < refreshThreshold
 
             if (shouldRefresh) {
-                const newSession = await refreshAccessToken(session.user.refreshToken);
+                const newSession = await refreshAccessToken(
+                    session.user.refreshToken
+                )
                 session.user = {
                     ...session.user,
                     ...newSession.user,
-                };
+                }
             }
 
-            return session;
-        }
+            return session
+        },
     },
     secret: process.env.NEXTAUTH_SECRET,
-});
+})
 
 async function refreshAccessToken(refreshToken: string) {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ refreshToken }),
-        });
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ refreshToken }),
+            }
+        )
 
         if (!response.ok) {
-            throw new Error(`Failed to refresh token: ${response.status} ${response.statusText}`);
+            throw new Error(
+                `Failed to refresh token: ${response.status} ${response.statusText}`
+            )
         }
 
-        const data: UserData = await response.json();
+        const data: UserData = await response.json()
 
         return {
             user: {
                 id: data.data.access_token,
                 accessToken: data.data.access_token,
                 refreshToken: data.data.refresh_token,
-                expiresAt: Date.now() + data.data.expires,  // Calculate the new expiration timestamp
+                expiresAt: Date.now() + data.data.expires, // Calculate the new expiration timestamp
             },
-        };
+        }
     } catch (error) {
-        console.error('Error refreshing access token:', error);
-        throw error;
+        console.error('Error refreshing access token:', error)
+        throw error
     }
 }

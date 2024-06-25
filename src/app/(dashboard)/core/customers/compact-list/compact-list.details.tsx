@@ -36,7 +36,6 @@ export default function TravelersItemDetails() {
                     className={cn(
                         'text-cyan-550 border-cyan-550 py-1 px-10 hover:border-b-4'
                     )}
-
                 >
                     Snapshot
                 </NavLink>
@@ -46,7 +45,6 @@ export default function TravelersItemDetails() {
                     className={cn(
                         'text-cyan-550 border-cyan-550 py-1 px-10 hover:border-b-4'
                     )}
-
                 >
                     Bookings
                 </NavLink>

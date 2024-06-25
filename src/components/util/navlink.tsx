@@ -41,7 +41,6 @@ const NavLink: React.FC<NavLinkProps> = ({
                 className,
                 isActive ? activeClassName : conditionalClassName
             )}
-
         >
             {renderChildren()}
         </Link>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useContext } from 'react'
 import DynamicForm from './modal.Form'
 import { FormTabType } from '@/utils/models/structure'
-import CloseButton from '@/components/buttons/usefull-buttons'
+import CloseButton from '@/components/buttons/close-Button'
 import Tabs from './modal.tabs'
 import { useFormState } from '@/hooks/useFormState'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ import { RootState } from '@/states/store'
 
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
     const { data } = useSelector((state: RootState) => state.modal)
-    console.log("🚀 ~ Modal ~ data:", data)
+    console.log('🚀 ~ Modal ~ data:', data)
 
     const { InputFields } = useContext(ModalContext)
     // console.log("🚀 ~ Modal ~ InputFields:", InputFields)
@@ -27,7 +27,7 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
         })
         return acc
     }, {})
-    console.log("🚀 ~ idObject ~ idObject:", idObject)
+    console.log('🚀 ~ idObject ~ idObject:', idObject)
 
     const validationObject = formData.reduce((acc: any, { fields }: any) => {
         fields.forEach(({ id, validations }: any) => {

@@ -16,13 +16,13 @@ export default function LanguageOption({ className }: { className?: string }) {
                 dropdownText="!text-xs font-normal"
                 setSelectedOption={setSelectedOption}
                 className={cn(className, 'items - center hover:text-white')}
-            hasDropdownIcon={true}
-            arrowClassName="fill-white  "
+                hasDropdownIcon={true}
+                arrowClassName="fill-white  "
             >
-            <div data-slot="title" className=" mr-2 hover:text-white">
-                {selectedOption}
-            </div>
-        </Buttons>
-        </div >
+                <div data-slot="title" className=" mr-2 hover:text-white">
+                    {selectedOption}
+                </div>
+            </Buttons>
+        </div>
     )
 }

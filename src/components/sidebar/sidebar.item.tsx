@@ -25,7 +25,6 @@ export default function SideBarItems({
     }
 
     return (
-
         <ul
             className={cn(
                 'overflow-y-auto scroll-smooth focus:scroll-auto',
@@ -43,7 +42,6 @@ export default function SideBarItems({
                             'flex items-center justify-between',
                             isCompact && 'group/visited hover:w-44'
                         )}
-
                     >
                         <NavigationItem
                             item={item}
@@ -54,6 +52,5 @@ export default function SideBarItems({
                 </React.Fragment>
             ))}
         </ul>
-
     )
 }

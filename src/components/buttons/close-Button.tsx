@@ -5,14 +5,22 @@ import { useRouter } from 'next/navigation'
 export default function CloseButton({
     onClick,
     color = 'fill-black',
+    redirect,
 }: Readonly<{
     onClick?: () => void
     color?: string
+    redirect?: string
 }>) {
     const router = useRouter()
 
     const handleGoBack = () => {
-        onClick ? onClick() : router.back()
+        if (onClick) {
+            onClick()
+        } else if (redirect) {
+            router.push(redirect)
+        } else {
+            router.back()
+        }
     }
 
     return (

@@ -25,7 +25,6 @@ const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {
                             'borderButtonStyles',
                             currentPage === tab.label && 'actives'
                         )}
-
                     >
                         {tab.label}
                     </button>

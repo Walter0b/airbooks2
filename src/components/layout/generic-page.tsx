@@ -11,15 +11,12 @@ import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
 import { GenericTablePageType } from '@/utils/models/interface/table'
 
-
-
 export default function GenericTablePage({
     fetchQuery,
     columns,
     tableOptions,
-
 }: Readonly<GenericTablePageType>) {
-    console.log("🚀 ~ tableOptions:", tableOptions)
+    console.log('🚀 ~ tableOptions:', tableOptions)
     const page = useSingleState(1)
     const pageSize = useSingleState(10)
 
@@ -31,7 +28,7 @@ export default function GenericTablePage({
     if (tableData) {
         return (
             <Pages>
-                <Header data-slot="header"  dropdownOptions={tableOptions} />
+                <Header data-slot="header" dropdownOptions={tableOptions} />
                 <div data-slot="body">
                     <Table
                         data-slot="table"
@@ -47,9 +44,7 @@ export default function GenericTablePage({
                             onItemNumberChange={pageSize}
                         />
                     </Table>
-
                 </div>
-
             </Pages>
         )
     } else {

@@ -29,9 +29,12 @@
 
 body {
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(to bottom,
+    background: linear-gradient(
+            to bottom,
             transparent,
-            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+            rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -40,21 +43,25 @@ body {
     }
 }
 
-
-[type=button],
-[type=reset],
-[type=submit],
+[type='button'],
+[type='reset'],
+[type='submit'],
 button,
 select {
-    -webkit-appearance: none
+    -webkit-appearance: none;
 }
 
 .box {
-    --mask: conic-gradient(from -135deg at right, #0000, #000 1deg 89deg, #0000 80deg) 50%/100% 60px;
+    --mask: conic-gradient(
+            from -135deg at right,
+            #0000,
+            #000 1deg 89deg,
+            #0000 80deg
+        )
+        50%/100% 60px;
     -webkit-mask: var(--mask);
     mask: var(--mask);
 }
-
 
 :root {
     line-height: 1.5;

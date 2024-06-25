@@ -1,6 +1,6 @@
 import { PenIcon } from '@/assets/svg/pen'
 import Buttons from '@/components/buttons/buttons'
-import CloseButton from '@/components/buttons/usefull-buttons'
+import CloseButton from '@/components/buttons/close-Button'
 import { TableOptionsType } from '@/utils/models/interface/table'
 
 export default function TravelerCompactListHeader({
@@ -36,7 +36,7 @@ export default function TravelerCompactListHeader({
                         More
                     </div>
                 </Buttons>
-                <CloseButton />
+                <CloseButton redirect="/" />
             </div>
         </div>
     )

@@ -8,11 +8,9 @@ import {
     memo,
 } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
-import { Dropdown } from './dropdown'
+import { Dropdown } from './buttons.dropdown'
 import { ButtonInterface } from '@/utils/models/structure'
 import { cn } from '@/utils/intext'
-
-
 
 const Buttons = ({
     children,
@@ -68,7 +66,6 @@ const Buttons = ({
             <div className="flex h-full w-full items-center">
                 <button
                     className={cn(className, 'group/button flex w-full')}
-
                     onClick={handleButtonClick}
                 >
                     {children}
@@ -79,7 +76,6 @@ const Buttons = ({
                                 'w-2',
                                 isOpen && 'rotate-180 transform'
                             )}
-
                         />
                     )}
                 </button>

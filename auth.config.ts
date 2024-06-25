@@ -1,4 +1,4 @@
-import type { NextAuthConfig } from 'next-auth';
+import type { NextAuthConfig } from 'next-auth'
 
 export const authConfig = {
     session: {
@@ -11,10 +11,10 @@ export const authConfig = {
     },
     callbacks: {
         authorized({ auth }) {
-            const isAuthenticated = !!auth?.user;
+            const isAuthenticated = !!auth?.user
 
-            return isAuthenticated;
+            return isAuthenticated
         },
     },
     providers: [],
-} satisfies NextAuthConfig;
+} satisfies NextAuthConfig

@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ResponseDataType, TableDataType } from '@/utils/models/interface/table'
 // import { useSession } from 'next-auth/react';
-import { getSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react'
 
-import { auth } from '@/auth';
+import { auth } from '@/auth'
 const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
 // console.log("🚀 ~ process.env.:", process.env)
 // console.log("🚀 ~ apiUrl:", apiUrl)
@@ -12,7 +12,7 @@ const baseQuery = fetchBaseQuery({
     baseUrl: apiUrl + '/items',
     prepareHeaders: async (headers) => {
         // console.log("🚀 ~ Travelers ~ sessionss before:")
-        const session = await getSession();
+        const session = await getSession()
         // console.log("🚀 ~ Travelers ~ sessionss:", session)
         const token = session?.user.accessToken
         // console.log("🚀 ~ prepareHeaders: ~ token:", token)

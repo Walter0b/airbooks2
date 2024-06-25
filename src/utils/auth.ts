@@ -16,7 +16,7 @@
 //                 Authorization: `Bearer ${accessToken}`,
 //             },
 //         };
-//     } 
+//     }
 
 //     const response = await fetch(url, options);
 

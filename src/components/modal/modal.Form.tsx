@@ -19,7 +19,6 @@ export default function DynamicForm({
                                 'font-medium',
                                 item?.required && 'text-red-800'
                             )}
-
                         >
                             {' '}
                             {item.label}
@@ -27,7 +26,9 @@ export default function DynamicForm({
                         <div
                             className={cn(
                                 'grid w-4/5 max-w-2xl grid-cols-1 gap-x-4 gap-y-2 dark:text-white',
-                                item.columnSpan ? item.columnSpan : 'sm:grid-cols-6'
+                                item.columnSpan
+                                    ? item.columnSpan
+                                    : 'sm:grid-cols-6'
                             )}
                         >
                             {item?.fields?.map((field) => {
@@ -36,9 +37,9 @@ export default function DynamicForm({
                                         key={field.id}
                                         className={cn(
                                             field.span,
-                                            field.type === 'space' && 'invisible'
+                                            field.type === 'space' &&
+                                                'invisible'
                                         )}
-
                                     >
                                         <label
                                             htmlFor={field.id}
@@ -46,17 +47,15 @@ export default function DynamicForm({
                                                 !field.label && 'mt-7',
                                                 'h-8'
                                             )}
-
                                         >
                                             {field.label}
                                         </label>
 
                                         <div
-                                           className={cn(
-                                            !field.label && 'mt-7',
-                                            'h-8'
-                                          )}
-                                          
+                                            className={cn(
+                                                !field.label && 'mt-7',
+                                                'h-8'
+                                            )}
                                         >
                                             {fieldsCompents[field?.type](
                                                 field,

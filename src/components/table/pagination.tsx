@@ -60,7 +60,6 @@ const Pagination: React.FC<PaginationPropsType> = ({
                         className={cn(
                             !canPreviousPage && 'cursor-not-allowed opacity-50'
                         )}
-
                     >
                         <span className="sr-only">Previous</span>
                         <ArrowIcon className="w-3 scale-x-100 rotate-90 fill-gray-300" />
@@ -76,7 +75,6 @@ const Pagination: React.FC<PaginationPropsType> = ({
                         className={cn(
                             !canNextPage && 'cursor-not-allowed opacity-50'
                         )}
-
                     >
                         <span className="sr-only">Next</span>
                         <ArrowIcon className="mr-3 w-3 scale-x-100 -rotate-90 fill-gray-300" />

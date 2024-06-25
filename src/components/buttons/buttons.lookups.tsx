@@ -81,7 +81,6 @@ export function Lookup({
                         containerClassName,
                         isOpen && 'border-blue-400'
                     )}
-
                 >
                     <input
                         required={required}
@@ -96,7 +95,6 @@ export function Lookup({
                             'group-hover/button:!fill-cyan-550 mt-[7px] mr-1 w-2 fill-gray-500',
                             isOpen && 'rotate-180 transform'
                         )}
-
                     />
                 </div>
             </div>
@@ -113,7 +111,7 @@ export function Lookup({
                             <React.Fragment key={item.label}>
                                 {index > 0 &&
                                     options![index - 1].group !==
-                                    item.group && (
+                                        item.group && (
                                         <hr className="border-gray-300" />
                                     )}
                                 {!item.url && !item.onClick && !item.value ? (

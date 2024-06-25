@@ -29,10 +29,9 @@ export default function TravelerCompactList({
                         onClick={() => handleClick(item.id)}
                         key={item.id}
                         className={cn(
-                            'flex w-full border-b p-2 hover:!bg-gray-100', 
+                            'flex w-full border-b p-2 hover:!bg-gray-100',
                             currentID === item.id && 'bg-gray-100'
-                          )}
-                          
+                        )}
                     >
                         <div className=" pointer-events-none py-1 px-2">
                             <input

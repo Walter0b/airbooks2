@@ -130,8 +130,8 @@ export interface TableItemType extends CheckboxType {
 }
 
 export interface GenericTablePageType {
-    fetchQuery: any,
-    columns: TableColumnType[],
+    fetchQuery: any
+    columns: TableColumnType[]
     // headerSlot: ReactNode,
     // bodySlot: ReactNode,
     tableOptions: TableOptionsType
@@ -159,7 +159,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps { }
+export interface NavLinksType extends BaseNavComponentProps {}
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps { }
+export interface ButtonsType extends BaseNavComponentProps {}

@@ -4,10 +4,10 @@
 import GenericTablePage from '@/components/layout/generic-page'
 import { pagesConfig } from './_page'
 
-export default function DynamicPage({ params }: Readonly<{ params: { pages: string } }>) {
-    console.log("🚀 ~ DynamicPage ~ params.slug:", params.pages)
-
-
+export default function DynamicPage({
+    params,
+}: Readonly<{ params: { pages: string } }>) {
+    console.log('🚀 ~ DynamicPage ~ params.slug:', params.pages)
 
     const pageConfig = pagesConfig[params.pages]
 

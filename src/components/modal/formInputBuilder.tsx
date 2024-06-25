@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Buttons from '@/components/buttons/buttons'
-import { Lookup } from '@/components/buttons/lookups'
+import { Lookup } from '@/components/buttons/buttons.lookups'
 import { cn } from '@/utils/intext'
 
 import { FieldComponents, FormFieldType } from '@/utils/models/structure'
@@ -23,7 +23,7 @@ const fieldsComponents: any = new Proxy(
 export default fieldsComponents
 
 function input(field: FormFieldType, FieldsValue: any) {
-    console.log("🚀 ~ input ~ FieldsValue:", FieldsValue)
+    console.log('🚀 ~ input ~ FieldsValue:', FieldsValue)
     return (
         <input
             readOnly={field.readOnly}
@@ -39,7 +39,6 @@ function input(field: FormFieldType, FieldsValue: any) {
                 field.readOnly && 'pointer-events-none',
                 'input-shadow focus:shadow-outline block h-full w-full rounded-sm border border-gray-300 py-2 px-4 text-left text-sm text-gray-900 hover:border-blue-400 focus:border-blue-400'
             )}
-
         />
     )
 }
@@ -63,7 +62,7 @@ function select(field: FormFieldType) {
         <Buttons
             hasDropdownIcon={true}
             arrowClassName="group-hover/button:!fill-cyan-550 fill-gray-500 mr-2"
-            className=" !h-full items-center justify-end rounded-sm border-gray-300  !border text-gray-900 shadow-sm hover:border-blue-400 focus:border-blue-400  sm:text-sm sm:leading-6"
+            className=" !h-full items-center justify-end rounded-sm !border  border-gray-300 text-gray-900 shadow-sm hover:border-blue-400 focus:border-blue-400  sm:text-sm sm:leading-6"
             dropdownClassName="focus:shadow-outline right-0 w-full rounded-sm border border-blue-400 text-sm text-gray-900 "
             dropdownText="!text-xs font-normal text-start"
             dropdownOptions={field.options}
