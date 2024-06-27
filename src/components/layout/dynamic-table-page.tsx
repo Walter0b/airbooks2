@@ -14,6 +14,7 @@ import { GenericTablePageType } from '@/utils/models/interface/table'
 export default function GenericTablePage({
     fetchQuery,
     columns,
+    param,
     tableOptions,
 }: Readonly<GenericTablePageType>) {
     console.log('🚀 ~ tableOptions:', tableOptions)
@@ -23,6 +24,7 @@ export default function GenericTablePage({
     const { data: tableData } = fetchQuery({
         page: page.value,
         pageSize: pageSize.value,
+        search: param.filter === 'all' ? '' : param.filter,
     })
 
     if (tableData) {

@@ -26,7 +26,7 @@ export default function ShowButton({
             hasDropdownIcon={true}
             dropdownText="text-start font-semibold"
             dropdownClassName="w-40"
-            dropdownOptions={dropdownOptions.items as DropdownItemType[]}
+            dropdownOptions={dropdownOptions.items}
             setSelectedOption={setSelectedOption}
         >
             {Title}

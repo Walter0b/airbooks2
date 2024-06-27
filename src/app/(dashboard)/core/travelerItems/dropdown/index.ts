@@ -9,25 +9,31 @@ const show = {
         },
         {
             label: 'All',
-            url: '#',
+            title: 'All Travelers',
+            url: '?filter=all',
             hasMergeTitle: true,
         },
         {
             label: 'No Plan',
-            url: '#',
+            title: 'No Plan Travelers',
+            url: '?filter=no_plan',
             hasMergeTitle: true,
         },
         {
             label: 'Scheduled',
-            url: '#',
+            title: 'Scheduled Travelers',
+            url: '?filter=scheduled',
             hasMergeTitle: true,
         },
         {
             label: 'On Trip',
-            url: '#',
+            title: 'On Trip Travelers',
+            url: '?filter=on_trip',
             hasMergeTitle: true,
         },
+
     ],
+
 }
 
 const action = [
@@ -96,7 +102,7 @@ const more = [
         group: 3,
     },
 ]
-export const tableOptions: TableOptionsType = {
+export const travelerTableOptions: TableOptionsType = {
     pageLabel: 'travelers',
     action,
     sort,
