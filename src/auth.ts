@@ -44,6 +44,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
                     const response: UserData = await res.json()
                     const { data } = response
+                    console.log("🚀 ~ authorize ~ data:", data)
 
                     return {
                         id: data.access_token,
@@ -87,27 +88,33 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             }
 
             const expiresAt = session.user.expiresAt
-            const refreshThreshold = 5 * 60 * 1000 // 5 minutes in milliseconds
+            const refreshThreshold = 5 * 60 * 1000
             const shouldRefresh =
                 expiresAt && expiresAt - Date.now() < refreshThreshold
 
             if (shouldRefresh) {
-                const newSession = await refreshAccessToken(
-                    session.user.refreshToken
-                )
-                session.user = {
-                    ...session.user,
-                    ...newSession.user,
+                try {
+                    const newSession = await refreshAccessToken(
+                        session.user.refreshToken,
+                        session.user.accessToken
+                    )
+                    session.user = {
+                        ...session.user,
+                        ...newSession.user,
+                    }
+                } catch (error) {
+                    console.error('Error refreshing access token:', error)
                 }
             }
 
             return session
         },
     },
+
     secret: process.env.NEXTAUTH_SECRET,
 })
 
-async function refreshAccessToken(refreshToken: string) {
+async function refreshAccessToken(refreshToken: string, accessToken: string) {
     try {
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`,
@@ -115,8 +122,12 @@ async function refreshAccessToken(refreshToken: string) {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
                 },
-                body: JSON.stringify({ refreshToken }),
+                body: JSON.stringify({
+                    refresh_token: refreshToken,
+                    mode: 'json'
+                }),
             }
         )
 
@@ -133,7 +144,7 @@ async function refreshAccessToken(refreshToken: string) {
                 id: data.data.access_token,
                 accessToken: data.data.access_token,
                 refreshToken: data.data.refresh_token,
-                expiresAt: Date.now() + data.data.expires, // Calculate the new expiration timestamp
+                expiresAt: Date.now() + data.data.expires,
             },
         }
     } catch (error) {
@@ -141,3 +152,4 @@ async function refreshAccessToken(refreshToken: string) {
         throw error
     }
 }
+
