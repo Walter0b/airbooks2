@@ -7,7 +7,7 @@ import { ShoppingCartIcon } from '@/assets/svg/shoppingCart'
 import { TachometerIcon } from '@/assets/svg/tachometer'
 import { UserIcon } from '@/assets/svg/user'
 import { UsersIcon } from '@/assets/svg/users'
-import { SidebarItemType } from '@/utils/models/interface/table'
+import { SidebarItemType } from '@/utils/types/page-type/table.type'
 
 export const coreNavigation: SidebarItemType[] = [
     {

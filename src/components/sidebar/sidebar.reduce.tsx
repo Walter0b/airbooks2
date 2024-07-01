@@ -1,5 +1,5 @@
 import { cn } from '@/utils/intext'
-import { BooleanUseState } from '@/utils/models/structure'
+import { BooleanUseState } from '@/utils/types/structure'
 
 interface DropdownArrowProps {
     isOpen: boolean

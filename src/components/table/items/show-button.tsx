@@ -3,7 +3,7 @@ import { useState } from 'react'
 import {
     DropdownItemType,
     ShowTableOptionsType,
-} from '@/utils/models/interface/table'
+} from '@/utils/types/page-type/table.type'
 import Buttons from '@/components/buttons/buttons'
 
 interface ShowButtonProps {

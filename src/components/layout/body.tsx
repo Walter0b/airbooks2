@@ -1,5 +1,5 @@
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
-import { BodyProps } from '@/utils/models/interface/page'
+import { BodyProps } from '@/utils/types/page-type/page.type'
 import { useParams } from 'next/navigation'
 
 export default function Body({ children }: Readonly<BodyProps>) {

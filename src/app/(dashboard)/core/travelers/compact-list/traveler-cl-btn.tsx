@@ -1,7 +1,7 @@
 import { PenIcon } from '@/assets/svg/pen'
 import Buttons from '@/components/buttons/buttons'
 import CloseButton from '@/components/buttons/close-Button'
-import { TableOptionsType } from '@/utils/models/interface/table'
+import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
 export default function TravelerCompactListHeader({
     dropdownOptions,

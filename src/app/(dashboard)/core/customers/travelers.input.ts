@@ -1,5 +1,5 @@
 import { commonValidations } from '@/static/modal/validation'
-import { IndividualFormDataProp } from '@/utils/models/structure'
+import { IndividualFormDataProp } from '@/utils/types/structure'
 
 export const TravelersInputFields: IndividualFormDataProp[] = [
     {

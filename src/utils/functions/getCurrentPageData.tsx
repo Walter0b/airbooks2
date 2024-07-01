@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useParams } from 'next/navigation'
-import { CatchData, TableDataType } from '../models/interface/table'
+import { CatchData, TableDataType } from '../types/page-type/table.type'
 
 const useCurrentPageData = (): TableDataType | null => {
     const { id } = useParams()

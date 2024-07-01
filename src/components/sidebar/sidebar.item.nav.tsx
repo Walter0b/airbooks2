@@ -6,7 +6,7 @@ import {
     NavLinksType,
     NavComponentProps,
     NavButtonsProps,
-} from '@/utils/models/interface/table'
+} from '@/utils/types/page-type/table.type'
 import { useEffect, useState } from 'react'
 import NavLink from '../util/navlink'
 import { cn } from '@/utils/intext'
@@ -211,7 +211,7 @@ function Accordion({ item }: Readonly<NavLinksType>) {
                                             className={cn(
                                                 'invisible -ml-[1.1rem] w-[0.4rem]',
                                                 isOpen &&
-                                                    'fill-cyan-550 -rotate-90',
+                                                'fill-cyan-550 -rotate-90',
                                                 isActive && '!visible',
                                                 'group-hover/option:visible'
                                             )}

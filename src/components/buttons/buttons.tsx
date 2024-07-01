@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect, useCallback, memo } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { Dropdown } from './buttons.dropdown'
-import { ButtonInterface } from '@/utils/models/structure'
+import { ButtonInterface } from '@/utils/types/structure'
 import { cn } from '@/utils/intext'
 
 const Buttons = ({

@@ -1,4 +1,4 @@
-import { TableDataType } from '@/utils/models/interface/table'
+import { TableDataType } from '@/utils/types/page-type/table.type'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface ModalState {

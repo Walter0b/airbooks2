@@ -3,7 +3,7 @@ import {
     FormTabType,
     IndividualFormDataProp,
     TabsProps,
-} from '@/utils/models/structure'
+} from '@/utils/types/structure'
 import React, { useState } from 'react'
 
 const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {

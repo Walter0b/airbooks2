@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ResponseDataType, TableDataType } from '@/utils/models/interface/table';
+import { ResponseDataType, TableDataType } from '@/utils/types/page-type/table.type';
 import { getSession } from 'next-auth/react';
 
 const apiUrl = process.env.NEXT_PUBLIC_BASE_URL;

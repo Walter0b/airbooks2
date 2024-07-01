@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react'
-import { DropdownItemType, ShowTableOptionsType } from './interface/table'
+import { DropdownItemType, ShowTableOptionsType } from './page-type/table.type'
 
 // Props for the layout component
 export interface LayoutProps {

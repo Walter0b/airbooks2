@@ -1,7 +1,7 @@
 import Pagination from '@/components/table/pagination'
 import useSingleState from '@/hooks/useSingleState'
 import { cn } from '@/utils/intext'
-import { ResponseDataType } from '@/utils/models/interface/table'
+import { ResponseDataType } from '@/utils/types/page-type/table.type'
 import { redirect, useParams } from 'next/navigation'
 
 export default function TravelerCompactList({

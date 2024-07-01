@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useContext } from 'react'
 
-import { FormTabType } from '@/utils/models/structure'
+import { FormTabType } from '@/utils/types/structure'
 import CloseButton from '@/components/buttons/close-Button'
 import Tabs from './modal.tabs'
 import { useFormState } from '@/hooks/useFormState'

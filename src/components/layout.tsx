@@ -1,6 +1,6 @@
 import SideBar from './sidebar/sidebar'
 import Header from './header/header'
-import { SidebarItemType } from '@/utils/models/interface/table'
+import { SidebarItemType } from '@/utils/types/page-type/table.type'
 import DisplayModal from './modal/modal.display'
 import { ReactNode } from 'react'
 

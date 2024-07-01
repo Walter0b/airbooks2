@@ -1,4 +1,4 @@
-import { DynamicFormProps } from '@/utils/models/structure'
+import { DynamicFormProps } from '@/utils/types/structure'
 import React from 'react'
 import fieldsCompents from './form-Input-Builder'
 import { cn } from '@/utils/intext'
@@ -38,7 +38,7 @@ export default function DynamicForm({
                                         className={cn(
                                             field.span,
                                             field.type === 'space' &&
-                                                'invisible'
+                                            'invisible'
                                         )}
                                     >
                                         <label

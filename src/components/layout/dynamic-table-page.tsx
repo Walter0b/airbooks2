@@ -9,7 +9,7 @@ import Table from '@/components/table/table'
 import TableHeader from '@/components/table/table.header'
 import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
-import { GenericTablePageType } from '@/utils/models/interface/table'
+import { GenericTablePageType } from '@/utils/types/page-type/table.type'
 
 export default function GenericTablePage({
     fetchQuery,
@@ -24,7 +24,7 @@ export default function GenericTablePage({
     const { data: tableData } = fetchQuery({
         page: page.value,
         pageSize: pageSize.value,
-        search: param.filter === 'all' ? '' : param.filter,
+        search: param?.filter === 'all' ? '' : param?.filter,
     })
 
     if (tableData) {

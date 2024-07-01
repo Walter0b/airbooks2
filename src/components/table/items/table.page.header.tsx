@@ -1,7 +1,7 @@
 import ShowButton from '@/components/table/items/show-button'
 import TableOptions from '@/components/table/items/table.option'
 import { cn } from '@/utils/intext'
-import { TableOptionsType } from '@/utils/models/interface/table'
+import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
 export default function Header({
     dropdownOptions,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
-import { PaginationPropsType } from '@/utils/models/interface/table'
+import { PaginationPropsType } from '@/utils/types/page-type/table.type'
 import { cn } from '@/utils/intext'
 
 const Pagination: React.FC<PaginationPropsType> = ({

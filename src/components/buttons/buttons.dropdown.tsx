@@ -1,5 +1,5 @@
 import React from 'react'
-import { DropdownItemType } from '@/utils/models/interface/table'
+import { DropdownItemType } from '@/utils/types/page-type/table.type'
 import { cn } from '@/utils/intext'
 
 import { useRouter } from 'next/navigation'

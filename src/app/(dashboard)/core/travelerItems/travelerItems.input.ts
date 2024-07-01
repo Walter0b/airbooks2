@@ -1,4 +1,4 @@
-import { IndividualFormDataProp } from '@/utils/models/structure'
+import { IndividualFormDataProp } from '@/utils/types/structure'
 
 export const TravelerItemsInputFields: IndividualFormDataProp[] = [
     {

@@ -1,6 +1,6 @@
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 // import usePageName from '@/utils/functions/pageName';
-import { ItemDetailsType } from '@/utils/models/interface/table'
+import { ItemDetailsType } from '@/utils/types/page-type/table.type'
 
 export default function ItemDetailsBody({
     children,

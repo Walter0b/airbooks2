@@ -1,5 +1,5 @@
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
-import { PageProps } from '@/utils/models/interface/page'
+import { PageProps } from '@/utils/types/page-type/page.type'
 
 export default function Pages({ children }: Readonly<PageProps>) {
     const Header = getCmpByAttr({

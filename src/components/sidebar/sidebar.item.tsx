@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { NavigationItem } from './sidebar.item.nav'
-import { SidebarItemType } from '@/utils/models/interface/table'
+import { SidebarItemType } from '@/utils/types/page-type/table.type'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/states/reducer/modalSlice'
 import { ModalContext } from '@/hooks/context/ModalContext'

@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
-import { TableItemType } from '@/utils/models/interface/table'
+import { TableItemType } from '@/utils/types/page-type/table.type'
 import TableBody from './table.body'
 
 export default function Table({

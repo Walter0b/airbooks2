@@ -2,7 +2,7 @@ import {
     useFetchCustomersQuery,
     useFetchTravelersQuery,
 } from '@/states/reducer/apiSlice'
-import { PageConfigType } from '@/utils/models/interface/table'
+import { PageConfigType } from '@/utils/types/page-type/table.type'
 import { travelersColumns } from '../travelers/table'
 import { customerColumns } from '../customers/table'
 import { customerTableOptions } from '../customers/dropdown'

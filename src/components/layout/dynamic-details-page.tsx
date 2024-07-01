@@ -2,7 +2,7 @@
 import Header from '@/components/table/items/table.page.header'
 import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
-import { GenericTablePageType } from '@/utils/models/interface/table'
+import { GenericTablePageType } from '@/utils/types/page-type/table.type'
 import TravelerCompactList from '@/app/(dashboard)/core/travelers/compact-list/compact-list'
 import TravelersItemDetails from '@/app/(dashboard)/core/travelers/compact-list/compact-list.details'
 
@@ -33,7 +33,9 @@ export default function GenericCompactPage({
                         tableData={tableData}
                     />
                 </div>
-                <TravelersItemDetails children={undefined} />
+                <TravelersItemDetails >
+                    <div></div>
+                </TravelersItemDetails>
             </div>
         )
     } else {

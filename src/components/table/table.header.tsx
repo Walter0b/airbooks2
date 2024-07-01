@@ -1,7 +1,7 @@
 import {
     TableHeaderType,
     TableColumnType,
-} from '@/utils/models/interface/table'
+} from '@/utils/types/page-type/table.type'
 import React from 'react'
 import Checkboxes from './table.checkbox'
 

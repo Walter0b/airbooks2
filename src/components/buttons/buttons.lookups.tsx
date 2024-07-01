@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
-import { DropdownItemType } from '@/utils/models/interface/table'
+import { DropdownItemType } from '@/utils/types/page-type/table.type'
 import usePeroxideState from '@/hooks/usePeroxideState'
 import { cn } from '@/utils/intext'
 
@@ -111,7 +111,7 @@ export function Lookup({
                             <React.Fragment key={item.label}>
                                 {index > 0 &&
                                     options![index - 1].group !==
-                                        item.group && (
+                                    item.group && (
                                         <hr className="border-gray-300" />
                                     )}
                                 {!item.url && !item.onClick && !item.value ? (
