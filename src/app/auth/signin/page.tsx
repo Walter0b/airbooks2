@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import Image from 'next/image'
 import logo from '@/assets/image/neema/logo/airbooks-logo.png'
 import { signIn } from 'next-auth/react'
@@ -11,10 +11,10 @@ const Page: React.FC = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const router = useRouter() // Use the useRouter hook
-    const searchParams = useSearchParams()
-    // console.log("🚀 ~ searchParams:", searchParams.get('callbackUrl'))
+
     // Retrieve callbackUrl from query params
-    const callbackUrl = searchParams.get('callbackUrl')
+    const searchParams = useSearchParams()
+    const callbackUrl = searchParams ? searchParams.get('callbackUrl') : null
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -33,8 +33,9 @@ const Page: React.FC = () => {
                 : router.push(DEFAULT_REDIRECT)
         }
     }
+
     return (
-        <div className="background  flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
+        <div className="background flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
             <div className="flex flex-col rounded-lg shadow-md lg:flex-row">
                 <div className="border-b bg-slate-100 py-7 px-10 lg:w-72 lg:border-r">
                     <Image
@@ -60,16 +61,16 @@ const Page: React.FC = () => {
                             <div className="relative bg-inherit">
                                 <input
                                     type="text"
-                                    id="username"
-                                    name="username"
+                                    id="email"
+                                    name="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    className="peer  w-full  rounded border-gray-300 bg-transparent bg-white py-2 px-3  text-black placeholder-transparent   "
+                                    className="peer w-full rounded border-gray-300 bg-transparent bg-white py-2 px-3 text-black placeholder-transparent"
                                     placeholder="Email"
                                 />
                                 <label
-                                    id="username"
+                                    htmlFor="email"
                                     className="pointer-events-none absolute -top-3 left-0 mx-1 cursor-text bg-inherit px-1 text-sm text-gray-500 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-sky-600"
                                 >
                                     Email
@@ -80,25 +81,24 @@ const Page: React.FC = () => {
                             <div className="relative bg-inherit">
                                 <input
                                     type="password"
-                                    id="Password"
+                                    id="password"
                                     name="password"
                                     value={password}
                                     onChange={(e) =>
                                         setPassword(e.target.value)
                                     }
                                     required
-                                    className="peer  w-full  rounded border-gray-300 bg-transparent bg-white py-2 px-3  text-black placeholder-transparent   "
-                                    placeholder="Email"
+                                    className="peer w-full rounded border-gray-300 bg-transparent bg-white py-2 px-3 text-black placeholder-transparent"
+                                    placeholder="Password"
                                 />
                                 <label
-                                    id="Password"
+                                    htmlFor="password"
                                     className="pointer-events-none absolute -top-3 left-0 mx-1 cursor-text bg-inherit px-1 text-sm text-gray-500 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-sky-600"
                                 >
                                     Password
                                 </label>
                             </div>
                         </div>
-
                         <div className="mb-6 flex items-center">
                             <input
                                 type="checkbox"
@@ -141,4 +141,10 @@ const Page: React.FC = () => {
     )
 }
 
-export default Page
+const WrappedPage: React.FC = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+        <Page />
+    </Suspense>
+)
+
+export default WrappedPage
