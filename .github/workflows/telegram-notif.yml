@@ -24,13 +24,13 @@ jobs:
               status=$(git diff --name-status HEAD~1 $file | awk '{print $1}')
               case "$status" in
                 A)
-                  added+="    $file %0A"
+                  added+="     ➟$file %0A"
                   ;;
                 M)
-                  modified+="   $file %0A"
+                  modified+="     ➟$file %0A"
                   ;;
                 D)
-                  deleted+="    $file %0A"
+                  deleted+="      ➟$file %0A"
                   ;;
               esac
             done
