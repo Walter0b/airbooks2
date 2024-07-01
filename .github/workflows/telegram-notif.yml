@@ -37,13 +37,13 @@ jobs:
 
                     message="*Changed Files:* %0A"
                     if [ -n "$added" ]; then
-                      message+="  🟢 *Added:* %0A$added"
+                      message+="  🟢 *Added:* %0A   $added"
                     fi
                     if [ -n "$modified" ]; then
-                      message+="  🟡 *Modified:* $modified"
+                      message+="  🟡 *Modified:* %0A%09$modified"
                     fi
                     if [ -n "$deleted" ]; then
-                      message+="  🔴 *Deleted:* $deleted"
+                      message+="  🔴 *Deleted:* %0A   $deleted"
                     fi
 
                     echo "::set-output name=message::$message"
