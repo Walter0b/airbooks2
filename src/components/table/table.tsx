@@ -1,17 +1,19 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { TableItemType } from '@/utils/types/page-type/table.type'
 import TableBody from './table.body'
+import TableLoader from '../loader/table-loader'
 
 export default function Table({
+    loading,
     children,
     tableData,
     columns,
     hasCheckbox,
 }: Readonly<TableItemType>) {
     const [isCheckedAll, setIsCheckedAll] = useState<boolean>(false)
-
+    const [isLoading, setIsLoading] = useState(true);
     const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>(
         {}
     )
@@ -28,7 +30,11 @@ export default function Table({
 
         setCheckedItems(updatedCheckedItems)
     }
-
+    useEffect(() => {
+        if (tableData) {
+            setIsLoading(false);
+        }
+    }, [tableData]);
     const handleCheckboxChange = (index: number) => {
         const updatedCheckedItems = {
             ...checkedItems,
@@ -61,21 +67,25 @@ export default function Table({
                     className="table-container flex-1 overflow-auto"
                     style={{ maxHeight: 'calc(100vh - 230px)' }}
                 >
-                    <table className="w-full table-auto text-left text-[13px] text-gray-500">
-                        {tableHeader}
-                        <TableBody
-                            handleCheckboxChange={handleCheckboxChange}
-                            checkedItems={checkedItems}
-                            tableData={tableData}
-                            columns={columns}
-                            hasCheckbox={hasCheckbox}
-                        />
-                    </table>
+                    {isLoading ? (
+                        <TableLoader />
+                    ) : (
+                        <table className="w-full table-auto text-left text-[13px] text-gray-500">
+                            {tableHeader}
+                            <TableBody
+                                handleCheckboxChange={handleCheckboxChange}
+                                checkedItems={checkedItems}
+                                tableData={tableData}
+                                columns={columns}
+                                hasCheckbox={hasCheckbox}
+                            />
+                        </table>
+                    )}
                 </div>
             </div>
             <div className="mb-10 flex w-full flex-row-reverse items-end">
                 {pagination}
             </div>
         </div>
-    )
+    );
 }

@@ -65,7 +65,7 @@ function NavLinks({
                             <span
                                 className={cn(
                                     isOpen
-                                        ? 'hidden group-hover/visited:!inline'
+                                        ? 'hidden'
                                         : 'sm:inline'
                                 )}
                             >

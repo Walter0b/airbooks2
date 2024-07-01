@@ -3,13 +3,12 @@
 
 import Header from '@/components/table/items/table.page.header'
 import Pages from '@/components/layout/pages'
-import Body from '@/components/layout/body'
 import Pagination from '@/components/table/pagination'
 import Table from '@/components/table/table'
 import TableHeader from '@/components/table/table.header'
-import TableLoader from '@/components/table/loader'
 import useSingleState from '@/hooks/useSingleState'
 import { GenericTablePageType } from '@/utils/types/page-type/table.type'
+import PageLoader from '../loader/page-loader'
 
 export default function GenericTablePage({
     fetchQuery,
@@ -50,6 +49,6 @@ export default function GenericTablePage({
             </Pages>
         )
     } else {
-        return <TableLoader />
+        return <PageLoader />
     }
 }
