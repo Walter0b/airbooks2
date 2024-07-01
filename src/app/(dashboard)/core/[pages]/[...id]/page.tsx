@@ -1,4 +1,4 @@
-// app/[...slug].js
+// app/[...pages].js
 'use client'
 
 import GenericCompactPage from '@/components/layout/dynamic-details-page'
@@ -8,15 +8,15 @@ export default function DynamicPage({
     params,
     searchParams,
 }: Readonly<{
-    params: { slug: string }
+    params: { pages: string }
     searchParams: { [key: string]: string | string[] | undefined }
 }>) {
     console.log("🚀 ~ searchParams:", searchParams)
-    console.log('🚀 ~ DynamicPage ~ params.slug:', params.slug)
- 
-    const pageConfig = pagesConfig[params.slug]
+    console.log('🚀 ~ DynamicPage ~ params.pages:', params)
 
-    if (!pageConfig) return <p>Page not found</p>
+    const pageConfig = pagesConfig[params.pages]
+
+    if (!pageConfig) return <p>Page {params.pages} found</p>
 
     const { fetchQuery, columns, tableOptions } = pageConfig
 

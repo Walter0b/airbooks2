@@ -29,12 +29,9 @@
 
 body {
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
+    background: linear-gradient(to bottom,
             transparent,
-            rgb(var(--background-end-rgb))
-        )
-        rgb(var(--background-start-rgb));
+            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -52,13 +49,10 @@ select {
 }
 
 .box {
-    --mask: conic-gradient(
-            from -135deg at right,
+    --mask: conic-gradient(from -135deg at right,
             #0000,
             #000 1deg 89deg,
-            #0000 80deg
-        )
-        50%/100% 60px;
+            #0000 80deg) 50%/100% 60px;
     -webkit-mask: var(--mask);
     mask: var(--mask);
 }
@@ -129,4 +123,12 @@ strong {
 
 .buttonStyles {
     @apply rounded border py-2 px-4;
+}
+
+button {
+    cursor: pointer;
+}
+
+.loader {
+    cursor: wait;
 }
