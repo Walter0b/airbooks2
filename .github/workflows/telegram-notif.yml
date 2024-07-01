@@ -40,10 +40,10 @@ jobs:
                       message+="  🟢 *Added:* %0A   $added"
                     fi
                     if [ -n "$modified" ]; then
-                      message+="  🟡 *Modified:* %0A%09$modified"
+                      message+="  🟡 *Modified:* %0A %09$modified"
                     fi
                     if [ -n "$deleted" ]; then
-                      message+="  🔴 *Deleted:* %0A   $deleted"
+                      message+="  🔴 *Deleted:* %0A$deleted"
                     fi
 
                     echo "::set-output name=message::$message"
