@@ -46,7 +46,7 @@ jobs:
               message+="🔴 *Deleted:*\n$deleted"
             fi
 
-            echo "::set-output name=message::$message"
+            echo "::set-output name=message::$(echo -e "$message" | awk '{gsub(/%/,"%25"); gsub(/\n/,"%0A"); gsub(/\r/,"%0D"); print}')"
           }
 
           generate_message "${{ steps.changed-files.outputs.all_changed_files }}"
