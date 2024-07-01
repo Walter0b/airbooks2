@@ -4,7 +4,7 @@ import { ReactNode, createContext, useState } from 'react'
 export const SideBarContext = createContext<{
     setIsCompact: BooleanUseState
     isCompact: boolean
-}>({ setIsCompact: () => { }, isCompact: false })
+}>({ setIsCompact: () => {}, isCompact: false })
 
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
     const [isCompact, setIsCompact] = useState<boolean>(false)

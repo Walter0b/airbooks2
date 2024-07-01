@@ -38,7 +38,7 @@ export default function DynamicForm({
                                         className={cn(
                                             field.span,
                                             field.type === 'space' &&
-                                            'invisible'
+                                                'invisible'
                                         )}
                                     >
                                         <label

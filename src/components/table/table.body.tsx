@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import Checkboxes from './table.checkbox'
-import { TableBodyType, TableDataType } from '@/utils/types/page-type/table.type'
+import {
+    TableBodyType,
+    TableDataType,
+} from '@/utils/types/page-type/table.type'
 import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/utils/intext'
 
@@ -14,7 +17,7 @@ const TableBody: React.FC<TableBodyType> = ({
     className,
 }) => {
     const router = useRouter()
-    const { } = router
+    const {} = router
     const pathname = usePathname()
     const handleRowClick = (
         event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,

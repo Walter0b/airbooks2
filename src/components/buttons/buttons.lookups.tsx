@@ -64,7 +64,7 @@ export function Lookup({
     }
 
     const filteredOptions = options?.filter((option) =>
-        option.value
+        option.value!
             .toLowerCase()
             .includes(FieldsValue.selectedOption.toLowerCase())
     )

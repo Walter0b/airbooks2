@@ -6,7 +6,7 @@ import { ReactNode, createContext, useState } from 'react'
 export const ModalContext = createContext<{
     setPageLabel?: (label: string) => void
     InputFields?: IndividualFormDataProp[]
-}>({ setPageLabel: () => { } })
+}>({ setPageLabel: () => {} })
 
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
     const [pageLabel, setPageLabel] = useState('')

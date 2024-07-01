@@ -38,7 +38,7 @@ The main container for the sidebar navigation. It includes the `NavOption` compo
 
 #### Props
 
-- `navigation`: An array of navigation items of type `SidebarItemType`.
+-   `navigation`: An array of navigation items of type `SidebarItemType`.
 
 ### Example Usage
 
@@ -71,8 +71,8 @@ A simple button that toggles the sidebar between compact and expanded states.
 
 #### Props
 
-- `isOpen`: A boolean indicating whether the sidebar is in compact state.
-- `setIsOpen`: A function to toggle the compact state of the sidebar.
+-   `isOpen`: A boolean indicating whether the sidebar is in compact state.
+-   `setIsOpen`: A function to toggle the compact state of the sidebar.
 
 ### Example Usage
 
@@ -102,8 +102,8 @@ Renders the list of navigation items within the sidebar.
 
 #### Props
 
-- `navigation`: An array of navigation items of type `SidebarItemType`.
-- `isCompact`: A boolean indicating whether the sidebar is in compact state.
+-   `navigation`: An array of navigation items of type `SidebarItemType`.
+-   `isCompact`: A boolean indicating whether the sidebar is in compact state.
 
 ### Example Usage
 

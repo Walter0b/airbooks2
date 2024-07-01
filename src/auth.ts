@@ -1,9 +1,8 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { Session } from "next-auth";
-import { JWT } from "next-auth/jwt";
-import { NewSession, UserData } from './utils/types/next-auth.type';
-
+import { Session } from 'next-auth'
+import { JWT } from 'next-auth/jwt'
+import { NewSession, UserData } from './utils/types/next-auth.type'
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
     providers: [
@@ -40,7 +39,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
                     const response: UserData = await res.json()
                     const { data } = response
-                    console.log("🚀 ~ authorize ~ data:", data)
+                    console.log('🚀 ~ authorize ~ data:', data)
 
                     return {
                         id: data.access_token,
@@ -65,18 +64,23 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         signIn: '/auth/signin',
     },
 
-
     callbacks: {
-        async jwt({ token, user }: { token: JWT, user?: any }) {
+        async jwt({ token, user }: { token: JWT; user?: any }) {
             if (user) {
                 return {
                     ...token,
                     ...user,
-                };
+                }
             }
-            return token;
+            return token
         },
-        async session({ session, token }: { session: Session, token: JWT }): Promise<Session> {
+        async session({
+            session,
+            token,
+        }: {
+            session: Session
+            token: JWT
+        }): Promise<Session> {
             if (token) {
                 session.user = {
                     ...session.user,
@@ -85,25 +89,26 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                     accessToken: token.accessToken as string,
                     refreshToken: token.refreshToken as string,
                     expiresAt: token.expiresAt as number,
-                };
+                }
             }
 
-            const expiresAt = session.user.expiresAt;
-            const refreshThreshold = 5 * 60 * 1000; // 5 minutes
-            const shouldRefresh = expiresAt && expiresAt - Date.now() < refreshThreshold;
+            const expiresAt = session.user.expiresAt
+            const refreshThreshold = 5 * 60 * 1000 // 5 minutes
+            const shouldRefresh =
+                expiresAt && expiresAt - Date.now() < refreshThreshold
 
             if (shouldRefresh) {
                 try {
                     const newSession = await refreshAccessToken(
                         session.user.refreshToken,
                         session.user.accessToken
-                    );
+                    )
                     session.user = {
                         ...session.user,
                         ...newSession.user,
-                    };
+                    }
                 } catch (error) {
-                    console.error('Error refreshing access token:', error);
+                    console.error('Error refreshing access token:', error)
                     // Invalidate the session if refresh fails
                     // Return an empty session object instead of null to comply with the expected return type
                     return {
@@ -116,22 +121,21 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                             refreshToken: '',
                             expiresAt: 0,
                         },
-                    };
+                    }
                 }
             }
 
-            return session;
+            return session
         },
     },
-
-
 
     secret: process.env.NEXTAUTH_SECRET,
 })
 
-
-
-async function refreshAccessToken(refreshToken: string, accessToken: string): Promise<NewSession> {
+async function refreshAccessToken(
+    refreshToken: string,
+    accessToken: string
+): Promise<NewSession> {
     try {
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`,
@@ -139,22 +143,22 @@ async function refreshAccessToken(refreshToken: string, accessToken: string): Pr
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`,
+                    Authorization: `Bearer ${accessToken}`,
                 },
                 body: JSON.stringify({
                     refresh_token: refreshToken,
-                    mode: 'json'
+                    mode: 'json',
                 }),
             }
-        );
+        )
 
         if (!response.ok) {
             throw new Error(
                 `Failed to refresh token: ${response.status} ${response.statusText}`
-            );
+            )
         }
 
-        const data: UserData = await response.json();
+        const data: UserData = await response.json()
 
         return {
             user: {
@@ -163,9 +167,9 @@ async function refreshAccessToken(refreshToken: string, accessToken: string): Pr
                 refreshToken: data.data.refresh_token,
                 expiresAt: Date.now() + data.data.expires,
             },
-        };
+        }
     } catch (error) {
-        console.error('Error refreshing access token:', error);
-        throw error; // Rethrow the error to handle it in the session callback
+        console.error('Error refreshing access token:', error)
+        throw error // Rethrow the error to handle it in the session callback
     }
 }

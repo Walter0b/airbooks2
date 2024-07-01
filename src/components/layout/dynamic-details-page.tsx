@@ -33,12 +33,12 @@ export default function GenericCompactPage({
                         tableData={tableData}
                     />
                 </div>
-                <TravelersItemDetails >
+                <TravelersItemDetails>
                     <div></div>
                 </TravelersItemDetails>
             </div>
         )
     } else {
-        return    <PageLoader />
+        return <PageLoader />
     }
 }

@@ -1,13 +1,13 @@
 import ItemDetailsBody from '@/components/compactlist/itemdetails'
 import { ModalContext } from '@/hooks/context/ModalContext'
 import { openModalWithData } from '@/states/reducer/modalSlice'
-import { tableOptions } from '@/static/travelers/table/dropdown'
 import useCurrentPageData from '@/utils/functions/getCurrentPageData'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import TravelerCompactListHeader from '../../travelers/compact-list/traveler-cl-btn'
 import NavLink from '@/components/util/navlink'
 import { cn } from '@/utils/intext'
+import { tableOptions } from '../../travelers/dropdown'
 
 export default function TravelersItemDetails() {
     const data = useCurrentPageData()!

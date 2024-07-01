@@ -31,9 +31,7 @@ const show = {
             url: '?filter=on_trip',
             hasMergeTitle: true,
         },
-
     ],
-
 }
 
 const action = [

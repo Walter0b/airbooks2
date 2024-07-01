@@ -63,11 +63,7 @@ function NavLinks({
                                 <CircleIcon className="mr-2 ml-2 w-3 fill-gray-100" />
                             )}
                             <span
-                                className={cn(
-                                    isOpen
-                                        ? 'hidden'
-                                        : 'sm:inline'
-                                )}
+                                className={cn(isOpen ? 'hidden' : 'sm:inline')}
                             >
                                 {item.label}
                             </span>
@@ -211,7 +207,7 @@ function Accordion({ item }: Readonly<NavLinksType>) {
                                             className={cn(
                                                 'invisible -ml-[1.1rem] w-[0.4rem]',
                                                 isOpen &&
-                                                'fill-cyan-550 -rotate-90',
+                                                    'fill-cyan-550 -rotate-90',
                                                 isActive && '!visible',
                                                 'group-hover/option:visible'
                                             )}

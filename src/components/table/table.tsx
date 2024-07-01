@@ -6,14 +6,13 @@ import TableBody from './table.body'
 import TableLoader from '../loader/table-loader'
 
 export default function Table({
-    loading,
     children,
     tableData,
     columns,
     hasCheckbox,
 }: Readonly<TableItemType>) {
     const [isCheckedAll, setIsCheckedAll] = useState<boolean>(false)
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
     const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>(
         {}
     )
@@ -30,11 +29,13 @@ export default function Table({
 
         setCheckedItems(updatedCheckedItems)
     }
+    
     useEffect(() => {
         if (tableData) {
-            setIsLoading(false);
+            setIsLoading(false)
         }
-    }, [tableData]);
+    }, [tableData])
+
     const handleCheckboxChange = (index: number) => {
         const updatedCheckedItems = {
             ...checkedItems,
@@ -87,5 +88,5 @@ export default function Table({
                 {pagination}
             </div>
         </div>
-    );
+    )
 }

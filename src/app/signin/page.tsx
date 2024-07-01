@@ -2,12 +2,11 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import logo from '@/assets/image/neema/logo/airbooks-logo.png'
-import './style.css'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { DEFAULT_REDIRECT } from '@/lib/routes'
 
-const LoginPage: React.FC = () => {
+const Page: React.FC = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -142,4 +141,4 @@ const LoginPage: React.FC = () => {
     )
 }
 
-export default LoginPage
+export default Page

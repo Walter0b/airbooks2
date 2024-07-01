@@ -11,7 +11,7 @@ export default function DynamicPage({
     params: { pages: string }
     searchParams: { [key: string]: string | string[] | undefined }
 }>) {
-    console.log("🚀 ~ searchParams:", searchParams)
+    console.log('🚀 ~ searchParams:', searchParams)
     console.log('🚀 ~ DynamicPage ~ params.pages:', params)
 
     const pageConfig = pagesConfig[params.pages]
