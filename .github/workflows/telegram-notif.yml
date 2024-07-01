@@ -24,26 +24,26 @@ jobs:
               status=$(git diff --name-status HEAD~1 $file | awk '{print $1}')
               case "$status" in
                 A)
-                  added+="     ➟$file %0A"
+                  added+="              ➤$file %0A"
                   ;;
                 M)
-                  modified+="     ➟$file %0A"
+                  modified+="             ➤$file %0A"
                   ;;
                 D)
-                  deleted+="      ➟$file %0A"
+                  deleted+="             ➤$file %0A"
                   ;;
               esac
             done
 
-            message="*Changed Files:* %0A"
+            message="*🔹 Changed Files:* %0A"
             if [ -n "$added" ]; then
-              message+="  🟢 *Added:* %0A$added"
+              message+="   🟢 *Added:* %0A$added"
             fi
             if [ -n "$modified" ]; then
-              message+="  🟡 *Modified:* %0A$modified"
+              message+="   🟡 *Modified:* %0A$modified"
             fi
             if [ -n "$deleted" ]; then
-              message+="  🔴 *Deleted:* %0A$deleted"
+              message+="   🔴 *Deleted:* %0A$deleted"
             fi
 
             echo "::set-output name=message::$message"
