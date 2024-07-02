@@ -72,7 +72,7 @@ export default function HeaderItems() {
                             <input
                                 type="text"
                                 id="search-navbar"
-                                className="dark:bg-cyan-1000 block w-96 p-[4px] ps-10 text-sm  italic text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-300 "
+                                className="dark:bg-cyan-1000 border-none w-96 p-[4px] ps-10 text-sm  italic text-gray-900  dark:text-white rounded  !bg-white/10 "
                                 placeholder="Find invoices"
                             />
                         </div>
