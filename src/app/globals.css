@@ -66,6 +66,12 @@ select {
     mask: var(--mask);
 }
 
+.nav_links {
+    transition-property: color, fill;
+    transition-duration: 0s;
+    transition-delay: 0s;
+}
+
 :root {
     line-height: 1.5;
     font-weight: 400;
