@@ -67,9 +67,7 @@ select {
 }
 
 .nav_links {
-    transition-property: color, fill;
-    transition-duration: 0s;
-    transition-delay: 0s;
+    transition: none;
 }
 
 :root {

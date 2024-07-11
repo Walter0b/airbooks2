@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+'use client'
+import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/utils/intext'
@@ -14,7 +15,7 @@ interface NavLinkProps {
     onClick?: () => void
 }
 
-const NavLink: React.FC<NavLinkProps> = ({
+const NavLink: React.FC<NavLinkProps> = React.memo(({
     to,
     redirection = true,
     id,
@@ -25,19 +26,14 @@ const NavLink: React.FC<NavLinkProps> = ({
     onClick,
 }) => {
     const pathname = usePathname()
-
-    const [isActive, setIsActive] = useState(false)
-
-    useEffect(() => {
-        setIsActive(pathname.includes(to))
-    }, [pathname, to]) // Ensure pathname is included in the dependency array
+    const isActive = pathname.includes(to)
 
     const renderChildren = typeof children === 'function' ? children(isActive) : children
 
     const commonProps = {
         id,
-        className: cn(className , isActive ? activeClassName : conditionalClassName,'nav_links'),
-        onClick,
+        className: cn(className, isActive ? activeClassName : conditionalClassName, 'nav_links'),
+        onClick: onClick,
     }
 
     if (!redirection) {
@@ -45,6 +41,8 @@ const NavLink: React.FC<NavLinkProps> = ({
     }
 
     return <Link href={to} {...commonProps}>{renderChildren}</Link>
-}
+})
+
+NavLink.displayName = 'NavLink'
 
 export default NavLink

@@ -2,6 +2,7 @@
 import DisplayModal from '@/components/modal/modal.display'
 import SideBar from '@/components/sidebar/sidebar'
 import {  reportNavigation } from '@/static/page/sidebar'
+import reportWebVitals from '@/utils/reportWebVitals'
 import React from 'react'
 
 export default function layout({
@@ -19,3 +20,4 @@ export default function layout({
         </>
     )
 }
+reportWebVitals();

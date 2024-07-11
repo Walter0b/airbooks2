@@ -1,6 +1,6 @@
 
 import { NavLinksType, NavComponentProps, NavButtonsProps } from '@/utils/types/page-type/table.type'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import NavLink from '../util/navlink'
 import { cn } from '@/utils/intext'
 import { ArrowIcon } from '@/assets/svg/arrow'
