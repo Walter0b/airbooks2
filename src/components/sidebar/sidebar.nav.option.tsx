@@ -9,7 +9,7 @@ export default function NavOption() {
     return (
         <div className=" flex min-h-10 items-center justify-between bg-white p-0.5">
             <NavLink
-                to="/core"
+                to="/core/travelers"
                 id="core"
                 activeClassName="border-emerald-500"
                 className={cn(baseClassName, ' hover:border-emerald-500')}
@@ -18,7 +18,7 @@ export default function NavOption() {
             </NavLink>
 
             <NavLink
-                to="/reports"
+                to="/reports/business_overview/profit_and_loss"
                 id="reports"
                 activeClassName="border-red-500"
                 className={cn(baseClassName, '  hover:border-red-500')}
