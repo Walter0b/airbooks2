@@ -8,7 +8,6 @@ export interface SidebarItemType {
     count?: string
     isDefault?: boolean
     group?: number
-    isActive?: boolean
     options?: SubItemType[]
     icon?: React.FC<{ className: string }>
     className?: string
@@ -24,7 +23,6 @@ export interface NavButtonsProps {
 interface SubItemType {
     label: string
     href: string
-    isActive?: boolean
 }
 
 // Interface for table column
@@ -162,7 +160,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps {}
+export interface NavLinksType extends BaseNavComponentProps { }
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps {}
+export interface ButtonsType extends BaseNavComponentProps { }
