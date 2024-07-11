@@ -18,8 +18,8 @@ export default function NavOption() {
             </NavLink>
 
             <NavLink
-                to="/report"
-                id="report"
+                to="/reports"
+                id="reports"
                 activeClassName="border-red-500"
                 className={cn(baseClassName, '  hover:border-red-500')}
             >
