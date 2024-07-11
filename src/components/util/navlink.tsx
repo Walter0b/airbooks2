@@ -1,5 +1,5 @@
-import React from 'react'
-import Link, { LinkProps } from 'next/link'
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/utils/intext'
 
@@ -9,42 +9,42 @@ interface NavLinkProps {
     conditionalClassName?: string
     className?: string
     to: string
+    redirection?: boolean
     id?: string
+    onClick?: () => void
 }
 
 const NavLink: React.FC<NavLinkProps> = ({
     to,
+    redirection = true,
     id,
     children,
     conditionalClassName = '',
     className,
     activeClassName = 'active',
+    onClick,
 }) => {
     const pathname = usePathname()
-    const isActive = pathname.includes(to)
 
-    // console.log('🚀 ~ pathname:', pathname, to, isActive)
+    const [isActive, setIsActive] = useState(false)
 
-    const renderChildren = () => {
-        if (typeof children === 'function') {
-            return children(isActive)
-        } else {
-            return children
-        }
+    useEffect(() => {
+        setIsActive(pathname.includes(to))
+    }, [pathname, to]) // Ensure pathname is included in the dependency array
+
+    const renderChildren = typeof children === 'function' ? children(isActive) : children
+
+    const commonProps = {
+        id,
+        className: cn(className , isActive ? activeClassName : conditionalClassName,'nav_links'),
+        onClick,
     }
 
-    return (
-        <Link
-            href={to}
-            id={id}
-            className={cn(
-                className,
-                isActive ? activeClassName : conditionalClassName
-            )}
-        >
-            {renderChildren()}
-        </Link>
-    )
+    if (!redirection) {
+        return <span {...commonProps}>{renderChildren}</span>
+    }
+
+    return <Link href={to} {...commonProps}>{renderChildren}</Link>
 }
 
 export default NavLink
