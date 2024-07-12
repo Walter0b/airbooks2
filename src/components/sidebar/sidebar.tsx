@@ -1,4 +1,3 @@
-'use client'
 import { useState } from 'react'
 import SideBarItems from './sidebar.item'
 import { SidebarItemType } from '@/utils/types/page-type/table.type'
@@ -9,19 +8,25 @@ import { cn } from '@/utils/intext'
 
 export default function SideBar({
     navigation,
-}: Readonly<{ navigation: SidebarItemType[] }>) {
+    canCompact = true
+}: Readonly<{ navigation: SidebarItemType[], canCompact?: boolean }>) {
     const [isCompact, setIsCompact] = useState(false)
 
     return (
         <div
             className={cn(
                 isCompact ? 'w-fit' : 'sm:min-w-48',
-                'hidden h-screen grow flex-col !overflow-hidden overflow-y-auto border-r border-r-gray-300 bg-gray-100 md:flex'
+                'hidden flex-col !overflow-hidden border-r border-r-gray-300 bg-gray-100 md:flex'
             )}
         >
             {!isCompact && <NavOption />}
-            <SideBarItems navigation={navigation} isCompact={isCompact} />
-            <VerticalArrowIcon isOpen={isCompact} setIsOpen={setIsCompact} />
+            <div className='overflow-y-scroll h-full scroll-smooth focus:scroll-auto'>
+                <SideBarItems navigation={navigation} isCompact={isCompact} />
+                <div className={cn(!canCompact && '!hidden')}>
+                    <VerticalArrowIcon isOpen={isCompact} setIsOpen={setIsCompact} />
+                </div>
+
+            </div>
         </div>
     )
 }
