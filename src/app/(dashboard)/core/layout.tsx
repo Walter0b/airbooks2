@@ -12,7 +12,7 @@ export default function layout({
     return (
         <>
             <SideBar navigation={coreNavigation} />
-            <main className="mb-14 flex w-full flex-col bg-white">
+            <main className=" flex w-full flex-col bg-white">
                 {children}
                 <DisplayModal />
             </main>

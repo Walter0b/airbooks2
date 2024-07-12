@@ -27,7 +27,7 @@ export default function SideBarItems({
     return (
         <ul
             className={cn(
-                'overflow-y-auto scroll-smooth focus:scroll-auto',
+                ' overflow-hidden h-fit',
                 isCompact && 'peer group/compact w-12'
             )}
         >
@@ -51,6 +51,7 @@ export default function SideBarItems({
                     </li>
                 </React.Fragment>
             ))}
+        
         </ul>
     )
 }

@@ -20,7 +20,7 @@ function Layout({
                     </button>
                 </div>
                 <Header />
-                <div className="flex h-full">
+                <div className="flex">
                     <SideBar navigation={sidebar} />
                     <main className="mb-14 flex w-full flex-col bg-white">
                         {children}

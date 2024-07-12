@@ -102,7 +102,7 @@ const Accordion = ({ item }: Readonly<NavLinksType>) => {
                     <>
                         <CircleIcon className="mr-2 ml-4 w-4 fill-gray-100" />
                         <button
-                            className="group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium leading-6"
+                            className="group flex h-10 w-full items-center justify-between gap-x-2 p-2 text-[13px] font-medium break-normal leading-6"
                             onClick={() => setIsOpen(!isOpen)}
                         >
                             {item.label}

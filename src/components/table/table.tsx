@@ -29,7 +29,7 @@ export default function Table({
 
         setCheckedItems(updatedCheckedItems)
     }
-    
+
     useEffect(() => {
         if (tableData) {
             setIsLoading(false)
@@ -84,7 +84,7 @@ export default function Table({
                     )}
                 </div>
             </div>
-            <div className="mb-10 flex w-full flex-row-reverse items-end">
+            <div className="mb-6 flex w-full flex-row-reverse items-end">
                 {pagination}
             </div>
         </div>

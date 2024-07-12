@@ -17,7 +17,7 @@ export default function Pages({ children }: Readonly<PageProps>) {
         <div className="flex h-full ">
             {
                 <div className={`w-full min-w-96 flex-1 overflow-hidden`}>
-                    <div className="">{Header}</div>
+                    {Header}
                     {Body}
                 </div>
             }
