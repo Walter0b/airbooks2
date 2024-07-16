@@ -33,7 +33,7 @@ const baseQuery = fetchBaseQuery({
 export const api = createApi({
     reducerPath: 'api',
     baseQuery,
-    tagTypes: ['Travelers', 'Customers'],
+    tagTypes: ['Travelers', 'Customers', 'Travel Items'],
     endpoints: (builder) => ({
         fetchTravelers: builder.query<
             ResponseDataType,
@@ -58,6 +58,30 @@ export const api = createApi({
                 },
             }),
             providesTags: ['Travelers'],
+        }),
+        fetchTravelItems: builder.query<
+            ResponseDataType,
+            {
+                page: number
+                pageSize: number
+                fields?: string
+                filter?: any
+                search?: string
+                sort?: string
+            }
+        >({
+            query: ({ page, pageSize, fields, filter, search, sort }) => ({
+                url: 'travel_item',
+                params: {
+                    page,
+                    limit: pageSize,
+                    ...(fields && { fields }),
+                    ...(filter && { filter }),
+                    ...(search && { search }),
+                    ...(sort && { sort }),
+                },
+            }),
+            providesTags: ['Travel Items'],
         }),
         fetchCustomers: builder.query<
             ResponseDataType,
@@ -96,6 +120,7 @@ export const api = createApi({
 
 export const {
     useFetchTravelersQuery,
+    useFetchTravelItemsQuery,
     useFetchCustomersQuery,
     useCreateTravelerMutation,
 } = api

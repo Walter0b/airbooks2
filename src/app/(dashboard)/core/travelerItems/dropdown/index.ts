@@ -1,7 +1,7 @@
 import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
 const show = {
-    title: 'Travelers',
+    title: 'Travel Items',
 
     items: [
         {
@@ -9,74 +9,142 @@ const show = {
         },
         {
             label: 'All',
-            title: 'All Travelers',
-            url: '?filter=all',
+            url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'No Plan',
-            title: 'No Plan Travelers',
-            url: '?filter=no_plan',
+            label: 'Pending',
+            url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'Scheduled',
-            title: 'Scheduled Travelers',
-            url: '?filter=scheduled',
+            label: 'Posted',
+            url: '#',
             hasMergeTitle: true,
         },
         {
-            label: 'On Trip',
-            title: 'On Trip Travelers',
-            url: '?filter=on_trip',
+            label: 'Invoiced',
+            url: '#',
             hasMergeTitle: true,
         },
+        {
+            label: 'Receipted',
+            url: '#',
+            hasMergeTitle: true,
+        },
+        {
+            label: 'Incomplete',
+            url: '#',
+            hasMergeTitle: true,
+        },
+        {
+            label: 'Void',
+            url: '#',
+            hasMergeTitle: true,
+        },
+        {
+            label: 'Refund',
+            url: '#',
+            hasMergeTitle: true,
+        },
+        {
+            label: 'My Booking',
+            url: '#',
+            hasMergeTitle: true,
+        },
+        {
+            label: 'Unused Tickets',
+            url: '#',
+            hasMergeTitle: true,
+        }
     ],
 }
 
 const action = [
     {
-        label: 'Mark as Active',
+        label: 'Issue Invoice',
         group: 1,
+        url: '#',
+    },
+    {
+        label: 'Issue Sales Receipt',
+        group: 1,
+        url: '#',
+    },
+    {
+        label: 'Email Traveler',
+        group: 2,
+        url: '#',
+    },
+    {
+        label: 'Email Customer',
+        group: 2,
+        url: '#',
+    },
+    {
+        label: 'Forward',
+        group: 3,
         url: '#',
     },
     {
         label: 'Delete',
-        group: 1,
+        group: 3,
         url: '#',
     },
     {
         label: 'Download Sample Import File',
-        group: 2,
+        group: 4,
         url: '#',
     },
     {
-        label: 'Export Travelers',
-        group: 2,
+        label: 'Export Travel Items',
+        group: 4,
         url: '#',
     },
     {
-        label: 'Import Travelers',
-        group: 2,
+        label: 'Import Travel Items',
+        group: 4,
         url: '#',
     },
+    {
+        label: 'Custom Export',
+        group: 5,
+        url: '#',
+    },
+    {
+        label: 'TMC Reporting',
+        group: 6,
+        url: '#',
+    }
 ]
 const sort = [
     {
         label: 'SORT BY',
     },
     {
+        label: 'Issuing Date',
+        url: '#',
+    },
+    {
+        label: 'Item#',
+        url: '#',
+    },
+    {
+        label: 'Fare',
+        url: '#',
+    },
+    {
         label: 'Traveler Name',
         url: '#',
     },
     {
-        label: 'nationality',
+        label: 'Travel Start',
         url: '#',
     },
     {
-        label: 'income',
+        label: 'Invoice#',
         url: '#',
-    },
+    }
 ]
 const more = [
     {
@@ -85,23 +153,78 @@ const more = [
         group: 1,
     },
     {
-        label: 'Duplicate Profile',
+        label: 'Email Customer',
+        url: '#',
+        group: 1,
+    },
+    {
+        label: 'Open Sales Receipt',
         url: '#',
         group: 2,
     },
     {
-        label: 'Mark as Inactive',
+        label: 'Associate Traveler Profile',
         url: '#',
         group: 3,
     },
     {
-        label: 'Delete',
+        label: 'Create Traveler Profile',
         url: '#',
         group: 3,
     },
+    {
+        label: 'Open Traveler Profile',
+        url: '#',
+        group: 3,
+    },
+    {
+        label: 'Duplicate Item',
+        url: '#',
+        group: 4,
+    },
+    {
+        label: 'Refund Item',
+        url: '#',
+        group: 4,
+    },
+    {
+        label: 'Record ADM',
+        url: '#',
+        group: 4,
+    },
+    {
+        label: 'Record ACM',
+        url: '#',
+        group: 4,
+    },
+    {
+        label: 'Copy to Branch',
+        url: '#',
+        group: 5,
+    },
+    {
+        label: 'Forward',
+        url: '#',
+        group: 5,
+    },
+    {
+        label: 'Void',
+        url: '#',
+        group: 5,
+    },
+    {
+        label: 'Delete',
+        url: '#',
+        group: 5,
+    },
+    {
+        label: 'Transaction Logs',
+        url: '#',
+        group: 6,
+    }
 ]
-export const travelerTableOptions: TableOptionsType = {
-    pageLabel: 'travelers',
+export const travelItemsTableOptions: TableOptionsType = {
+    pageLabel: 'travel Items',
     action,
     sort,
     show,

@@ -1,5 +1,12 @@
-import Pages from '@/components/layout/pages'
+export const TravelerItemsColums = [
+    { key: 'date', label: 'Date' },
+    { key: 'item', label: 'Item#' },
+    { key: 'traveler_name', label: 'Traveler' },
+    { key: 'trip', label: 'Trip' },
+    { key: 'travel_start', label: 'Traveler Start' },
+    { key: 'status', label: 'Status' },
+    { key: 'fcy', label: 'FCY' },
+    { key: 'fare', label: 'Fare' },
+    { key: 'invoice', label: 'Invoice#' }
+]
 
-export default function TravelItems() {
-    return <Pages></Pages>
-}
