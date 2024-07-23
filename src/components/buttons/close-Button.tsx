@@ -1,5 +1,5 @@
 import { CrossIcon } from '@/assets/svg/cross'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 import { useRouter } from 'next/navigation'
 
 export default function CloseButton({

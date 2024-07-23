@@ -3,7 +3,7 @@ import { useState, useRef, useEffect, useCallback, memo } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { Dropdown } from './buttons.dropdown'
 import { ButtonInterface } from '@/utils/types/structure'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 const Buttons = ({
     children,

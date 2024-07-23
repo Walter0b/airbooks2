@@ -1,7 +1,7 @@
 import { BarChartIcon } from '@/assets/svg/bar'
-import NavLink from '../util/navlink'
+import NavLink from '../../utils/functions/navlink'
 import HomeIcon from '@/assets/svg/home'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 export default function NavOption() {
     const baseClassName =

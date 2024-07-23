@@ -3,7 +3,7 @@ import SideBarItems from './sidebar.item'
 import { SidebarItemType } from '@/utils/types/page-type/table.type'
 import VerticalArrowIcon from './sidebar.reduce'
 import NavOption from './sidebar.nav.option'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 // import { SideBarContext } from '@/hooks/context/sidebarContext'
 
 export default function SideBar({

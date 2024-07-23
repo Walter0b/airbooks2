@@ -1,36 +1,57 @@
 'use client';
-import React, { useEffect } from 'react';
-import 'stimulsoft-reports-js/Css/stimulsoft.viewer.office2013.whiteblue.css';
-import { Test_report_json } from '@/static/test/test_report'; // Adjust the import if needed
 
-export default function DynamicPage() {
+import { useEffect, useRef } from 'react';
+import * as Stimulsoft from 'stimulsoft-reports-js';
+
+export default function ReportViewer() {
+  const viewerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const loadStimulsoft = async () => {
-      if (typeof window !== 'undefined') { // Ensure window is defined before using it
-        console.log('Loading Viewer view');
+    const loadReport = async () => {
+      // Load necessary scripts and styles
+      await Promise.all([
+        loadScript('/api/report/reports.js'),
+        loadScript('/api/report/viewer.js'),
+        loadStyle('/api/report/viewer.css'),
+      ]);
 
-        // Dynamically import Stimulsoft on the client-side
-        const { Stimulsoft } = await import('stimulsoft-reports-js/Scripts/stimulsoft.viewer');
+      const response = await fetch('/api/report');
+      const reportJson = await response.text();
 
-        // Initialize the viewer and report objects
-        const viewer = new Stimulsoft.Viewer.StiViewer(undefined, 'StiViewer', false);
-        const report = new Stimulsoft.Report.StiReport();
+      const report = new Stimulsoft.Report.StiReport();
+      report.loadDocumentFromJson(reportJson);
 
-        console.log('Load report from JSON data');
-        report.loadDocument(Test_report_json);
-        viewer.report = report;
+      const options = new Stimulsoft.Viewer.StiViewerOptions();
+      options.appearance.fullScreenMode = true;
 
-        console.log('Rendering the viewer to selected element');
-        viewer.renderHtml('viewer');
-      }
+      const viewer = new Stimulsoft.Viewer.StiViewer(options, 'StiViewer', false);
+      viewer.report = report;
+      viewer.renderHtml('viewer');
     };
 
-    loadStimulsoft();
+    loadReport();
   }, []);
 
-  return (
-    <div className='w-full'>
-      <div id="viewer" className="App w-full"></div>
-    </div>
-  );
+  return <div id="viewer" ref={viewerRef} style={{ width: '100%', height: '100vh' }} />;
+}
+
+function loadScript(src: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve();
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+function loadStyle(href: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.onload = () => resolve();
+    link.onerror = reject;
+    document.head.appendChild(link);
+  });
 }

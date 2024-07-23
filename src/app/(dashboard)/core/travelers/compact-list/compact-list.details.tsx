@@ -1,6 +1,6 @@
 'use client'
 import ItemDetailsBody from '@/components/compactlist/itemdetails'
-import NavLink from '@/components/util/navlink'
+import NavLink from '@/utils/functions/navlink'
 import { ModalContext } from '@/hooks/context/ModalContext'
 import { openModalWithData } from '@/states/reducer/modalSlice'
 import { useContext } from 'react'

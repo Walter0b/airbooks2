@@ -4,7 +4,7 @@ import { SidebarItemType } from '@/utils/types/page-type/table.type'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/states/reducer/modalSlice'
 import { ModalContext } from '@/hooks/context/ModalContext'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 export default function SideBarItems({
     navigation,
@@ -51,7 +51,7 @@ export default function SideBarItems({
                     </li>
                 </React.Fragment>
             ))}
-        
+
         </ul>
     )
 }

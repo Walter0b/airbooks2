@@ -1,4 +1,4 @@
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 import {
     FormTabType,
     IndividualFormDataProp,

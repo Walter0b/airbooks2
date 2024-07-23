@@ -6,7 +6,7 @@ import {
     TableDataType,
 } from '@/utils/types/page-type/table.type'
 import { usePathname, useRouter } from 'next/navigation'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 const TableBody: React.FC<TableBodyType> = ({
     tableData,

@@ -1,6 +1,6 @@
 import Pagination from '@/components/table/pagination'
 import useSingleState from '@/hooks/useSingleState'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 import { ResponseDataType } from '@/utils/types/page-type/table.type'
 import { redirect, useParams } from 'next/navigation'
 

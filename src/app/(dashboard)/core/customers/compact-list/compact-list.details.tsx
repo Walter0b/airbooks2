@@ -5,8 +5,8 @@ import useCurrentPageData from '@/utils/functions/getCurrentPageData'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import TravelerCompactListHeader from '../../travelers/compact-list/traveler-cl-btn'
-import NavLink from '@/components/util/navlink'
-import { cn } from '@/utils/intext'
+import NavLink from '@/utils/functions/navlink'
+import { cn } from '@/utils/functions/classNames'
 import { tableOptions } from '../../travelers/dropdown'
 
 export default function TravelersItemDetails() {

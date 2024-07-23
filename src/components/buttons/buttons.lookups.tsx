@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { DropdownItemType } from '@/utils/types/page-type/table.type'
 import usePeroxideState from '@/hooks/usePeroxideState'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 interface LookupProps {
     required?: boolean

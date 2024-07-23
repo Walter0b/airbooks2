@@ -2,6 +2,7 @@ import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { PageProps } from '@/utils/types/page-type/page.type'
 
 export default function Pages({ children }: Readonly<PageProps>) {
+    console.log("🚀 ~ Pages ~ children:", children)
     const Header = getCmpByAttr({
         children,
         value: 'header',
@@ -11,8 +12,6 @@ export default function Pages({ children }: Readonly<PageProps>) {
         children,
         value: 'body',
     })
-    // console.log("🚀 ~ Body ~ Table:", Header)
-    // console.log("🚀 ~ Body ~ CompactList:", Header?.props.children[0].props)
     return (
         <div className="flex h-full ">
             {

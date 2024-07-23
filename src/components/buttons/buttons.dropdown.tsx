@@ -1,6 +1,6 @@
 import React from 'react'
 import { DropdownItemType } from '@/utils/types/page-type/table.type'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 import { useRouter } from 'next/navigation'
 
@@ -49,7 +49,7 @@ export const Dropdown = React.memo(
                         <React.Fragment key={item.label}>
                             {index > 0 &&
                                 dropdownOptions[index - 1].group !==
-                                    item.group && (
+                                item.group && (
                                     <hr className=" border-gray-300" />
                                 )}
                             {!item.url && !item.onClick && !item.value ? (

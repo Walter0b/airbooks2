@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 interface NavLinkProps {
     children?: React.ReactNode | ((isActive: boolean) => React.ReactNode)
