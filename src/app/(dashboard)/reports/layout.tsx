@@ -20,4 +20,4 @@ export default function layout({
         </>
     )
 }
-reportWebVitals();
+reportWebVitals()

@@ -29,10 +29,14 @@ const TableLoader = () => {
                             scope="col"
                             className="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
                         ></th>
+                         <th
+                            scope="col"
+                            className="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                        ></th>
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white even:bg-slate-50">
-                    {[...Array(6)].map((_, index) => (
+                    {[...Array(10)].map((_, index) => (
                         <tr key={index}>
                             <td className="whitespace-nowrap py-4 px-6">
                                 <div className="h-4 w-8 animate-pulse rounded bg-gray-300"></div>

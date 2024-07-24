@@ -8,8 +8,8 @@ import { cn } from '@/utils/functions/classNames'
 
 export default function SideBar({
     navigation,
-    canCompact = true
-}: Readonly<{ navigation: SidebarItemType[], canCompact?: boolean }>) {
+    canCompact = true,
+}: Readonly<{ navigation: SidebarItemType[]; canCompact?: boolean }>) {
     const [isCompact, setIsCompact] = useState(false)
 
     return (
@@ -20,12 +20,14 @@ export default function SideBar({
             )}
         >
             {!isCompact && <NavOption />}
-            <div className='overflow-y-scroll h-full scroll-smooth focus:scroll-auto'>
+            <div className="h-full overflow-y-scroll scroll-smooth focus:scroll-auto">
                 <SideBarItems navigation={navigation} isCompact={isCompact} />
                 <div className={cn(!canCompact && '!hidden')}>
-                    <VerticalArrowIcon isOpen={isCompact} setIsOpen={setIsCompact} />
+                    <VerticalArrowIcon
+                        isOpen={isCompact}
+                        setIsOpen={setIsCompact}
+                    />
                 </div>
-
             </div>
         </div>
     )

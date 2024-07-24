@@ -68,7 +68,6 @@ export interface TableBodyType extends CheckboxType {
 
 // Interface for dropdown items
 
-
 export interface DropdownItemType {
     id?: string
     label?: string
@@ -160,7 +159,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps { }
+export interface NavLinksType extends BaseNavComponentProps {}
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps { }
+export interface ButtonsType extends BaseNavComponentProps {}

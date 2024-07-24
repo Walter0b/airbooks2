@@ -10,7 +10,6 @@ import { ModalContext } from '@/hooks/context/ModalContext'
 import { RootState } from '@/states/store'
 import DynamicForm from './modal.form'
 
-
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
     const { data } = useSelector((state: RootState) => state.modal)
     console.log('🚀 ~ Modal ~ data:', data)

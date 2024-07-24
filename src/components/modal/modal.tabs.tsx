@@ -16,7 +16,7 @@ const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {
 
     return (
         <div className="border">
-            <div className="mt-3 flex w-full">
+            <div className="border-cyan-550/30 mt-3 flex w-full border-b-[0.1px] font-medium">
                 {formData.map((tab: IndividualFormDataProp, index: number) => (
                     <button
                         key={index}

@@ -30,7 +30,6 @@ export default function TravelersItemDetails() {
                 handleOpenModal={handleOpenModal}
             />
             <div data-slot="compactListBody" className="mt-12 w-full">
-
                 <NavLink
                     to="snapshot"
                     activeClassName="border-b-4 !text-black"

@@ -9,7 +9,7 @@ export default function layout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    console.log("🚀 ~ children:", children)
+    console.log('🚀 ~ children:', children)
     return (
         <>
             <SideBar navigation={coreNavigation} />

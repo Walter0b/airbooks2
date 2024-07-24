@@ -32,15 +32,17 @@
     background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
 }
 
-
 body {
     overflow: hidden;
     font-size: 13px;
     font-family: 'Open Sans', Helvetica, ProximaNovaRegular, Arial, sans-serif;
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(to bottom,
+    background: linear-gradient(
+            to bottom,
             transparent,
-            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+            rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -58,10 +60,13 @@ select {
 }
 
 .box {
-    --mask: conic-gradient(from -135deg at right,
+    --mask: conic-gradient(
+            from -135deg at right,
             #0000,
             #000 1deg 89deg,
-            #0000 80deg) 50%/100% 60px;
+            #0000 80deg
+        )
+        50%/100% 60px;
     -webkit-mask: var(--mask);
     mask: var(--mask);
 }
@@ -149,7 +154,7 @@ button {
 .input-label {
     font-weight: 400;
     margin-bottom: 0;
-    font-size: .7em;
+    font-size: 0.7em;
 
     color: #264f68;
 }

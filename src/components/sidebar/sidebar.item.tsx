@@ -27,7 +27,7 @@ export default function SideBarItems({
     return (
         <ul
             className={cn(
-                ' overflow-hidden h-fit',
+                ' h-fit overflow-hidden',
                 isCompact && 'peer group/compact w-12'
             )}
         >
@@ -51,7 +51,6 @@ export default function SideBarItems({
                     </li>
                 </React.Fragment>
             ))}
-
         </ul>
     )
 }

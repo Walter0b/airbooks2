@@ -64,8 +64,8 @@ export function Lookup({
     }
 
     const filteredOptions = options?.filter((option) =>
-        option.value!
-            .toLowerCase()
+        option
+            .value!.toLowerCase()
             .includes(FieldsValue.selectedOption.toLowerCase())
     )
 
@@ -79,7 +79,8 @@ export function Lookup({
                     className={cn(
                         'group/button flex w-full',
                         containerClassName,
-                        isOpen && 'border-blue-400', 'border-gray-300'
+                        isOpen && 'border-blue-400',
+                        'border-gray-300'
                     )}
                 >
                     <input
@@ -111,9 +112,7 @@ export function Lookup({
                             <React.Fragment key={item.label}>
                                 {index > 0 &&
                                     options![index - 1].group !==
-                                    item.group && (
-                                        <hr className="borde" />
-                                    )}
+                                        item.group && <hr className="borde" />}
                                 {!item.url && !item.onClick && !item.value ? (
                                     <div
                                         className={` pointer-events-none uppercase select-none`}

@@ -2,7 +2,7 @@ import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { PageProps } from '@/utils/types/page-type/page.type'
 
 export default function Pages({ children }: Readonly<PageProps>) {
-    console.log("🚀 ~ Pages ~ children:", children)
+    console.log('🚀 ~ Pages ~ children:', children)
     const Header = getCmpByAttr({
         children,
         value: 'header',
