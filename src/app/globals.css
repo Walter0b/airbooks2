@@ -145,3 +145,11 @@ button {
 .loader {
     cursor: wait;
 }
+
+.input-label {
+    font-weight: 400;
+    margin-bottom: 0;
+    font-size: .7em;
+
+    color: #264f68;
+}

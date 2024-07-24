@@ -79,7 +79,7 @@ export function Lookup({
                     className={cn(
                         'group/button flex w-full',
                         containerClassName,
-                        isOpen && 'border-blue-400'
+                        isOpen && 'border-blue-400', 'border-gray-300'
                     )}
                 >
                     <input
@@ -102,7 +102,7 @@ export function Lookup({
                 <div
                     className={cn(
                         dropdownContainerClassName,
-                        `absolute z-10 w-${dropdownWidth} ring-opacity-5 origin-top-right bg-white ring-1 shadow-lg ring-black focus:outline-none`
+                        `absolute z-10 w-${dropdownWidth} ring-opacity-5 origin-top-right bg-white  focus:outline-none`
                     )}
                 >
                     {!filteredOptions?.length && <div className="py-3"></div>}
@@ -112,7 +112,7 @@ export function Lookup({
                                 {index > 0 &&
                                     options![index - 1].group !==
                                     item.group && (
-                                        <hr className="border-gray-300" />
+                                        <hr className="borde" />
                                     )}
                                 {!item.url && !item.onClick && !item.value ? (
                                     <div

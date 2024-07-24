@@ -1,5 +1,5 @@
 import { BarChartIcon } from '@/assets/svg/bar'
-import NavLink from '../../utils/functions/navlink'
+import NavLink from 'next-navlink'
 import HomeIcon from '@/assets/svg/home'
 import { cn } from '@/utils/functions/classNames'
 

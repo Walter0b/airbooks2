@@ -38,14 +38,15 @@ export default function DynamicForm({
                                         className={cn(
                                             field.span,
                                             field.type === 'space' &&
-                                            'invisible'
+                                            'invisible',
+                                            'text-end'
                                         )}
                                     >
                                         <label
                                             htmlFor={field.id}
                                             className={cn(
                                                 !field.label && 'mt-7',
-                                                'h-8'
+                                                'h-8 input-label !text-right'
                                             )}
                                         >
                                             {field.label}

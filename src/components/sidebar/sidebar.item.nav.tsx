@@ -1,7 +1,7 @@
 
 import { NavLinksType, NavComponentProps, NavButtonsProps } from '@/utils/types/page-type/table.type'
 import { useState } from 'react'
-import NavLink from '../../utils/functions/navlink'
+import NavLink from 'next-navlink'
 import { cn } from '@/utils/functions/classNames'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { CircleIcon } from '@/assets/svg/circle'
