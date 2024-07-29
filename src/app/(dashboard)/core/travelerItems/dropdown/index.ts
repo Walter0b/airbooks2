@@ -1,4 +1,5 @@
-import { TableOptionsType } from '@/utils/types/page-type/table.type'
+import {DetailComponentInputs, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
+import {MailIcon} from "@/assets/svg/mail";
 
 const show = {
     title: 'Travel Items',
@@ -223,10 +224,39 @@ const more = [
         group: 6,
     }
 ]
+
+const detailInputs = [
+    {
+        id: 'edit_button',
+        type: InputType.Button,
+        icon: MailIcon,
+        attrs: {
+            className: 'mr-2 h-full rounded border border-stone-300 bg-neutral-100 px-3 hover:shadow-md',
+        },
+        group: 1
+    },
+    {
+        id: 'dropdown',
+        type: InputType.Dropdown,
+        value: 'More',
+        attrs: {
+            hasDropdownIcon: true,
+            className:'mr-12 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md ',
+            arrowClassName:'ml-2',
+            dropdownClassName:'mr-12 mt-1 right-0 w-44',
+            dropdownText:'text-center py-2',
+            dropdownTitles:'right-0 mt-2 mr-11 font-medium',
+            dropdownOptions: more
+        },
+        group: 2
+    }
+]
+
 export const travelItemsTableOptions: TableOptionsType = {
     pageLabel: 'travel Items',
     action,
     sort,
     show,
+    detailInputs,
     more,
 }

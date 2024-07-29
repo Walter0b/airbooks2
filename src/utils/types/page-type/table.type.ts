@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { FormDataProps, useSingleStateType } from '../structure'
+import { useSingleStateType } from '../structure'
 
 // Interface for Sidebar item
 export interface SidebarItemType {
@@ -92,18 +92,30 @@ export interface TableOptionsType {
     more: DropdownItemType[]
     sort: DropdownItemType[]
     show: ShowTableOptionsType
+    detailInputs: DetailComponentInputs[]
 }
+
+export interface DetailComponentInputs {
+    id: string
+    type: InputType
+    value?: string
+    icon?: React.FC<{ className: string }>
+    attrs: {
+        [key: string]: string | boolean | DropdownItemType[]
+    }
+    group: number
+}
+
+export enum InputType {
+    Button = 'button',
+    Dropdown = 'dropdown',
+    Text = 'text',
+    TextArea = 'textArea'
+}
+
 export interface TableDataType {
     id: number
     [key: string]: string | number
-}
-
-export interface ReduxModalType {
-    modalId: string
-    isOpen: boolean
-    data: ResponseDataType
-    inputFields: FormDataProps
-    validation: any
 }
 
 export interface CatchData {

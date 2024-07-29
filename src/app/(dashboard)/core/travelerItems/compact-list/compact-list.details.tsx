@@ -20,7 +20,7 @@ export default function TravelersItemDetails({
 
     const dispatch = useDispatch()
     const handleOpenModal = () => {
-        setPageLabel?.('travelers')
+        setPageLabel?.('travel-items')
 
         dispatch(openModalWithData({ data: data }))
     }

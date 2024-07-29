@@ -1,7 +1,7 @@
 import { PenIcon } from '@/assets/svg/pen'
 import Buttons from '@/components/buttons/buttons'
 import CloseButton from '@/components/buttons/close-Button'
-import { TableOptionsType } from '@/utils/types/page-type/table.type'
+import {TableOptionsType} from '@/utils/types/page-type/table.type'
 
 export default function TravelerCompactListHeader({
     dropdownOptions,
@@ -13,6 +13,7 @@ export default function TravelerCompactListHeader({
     return (
         <div className="flex h-full w-full items-end">
             <div className="flex h-8 w-full justify-end pr-5">
+                <CloseButton redirect="/" />
                 <button
                     id="edit_buttons"
                     onClick={() => handleOpenModal()}
