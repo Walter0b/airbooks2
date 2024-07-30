@@ -1,4 +1,4 @@
-export function NewWindowIcon({ className }: { className: string }) {
+export function NewTabIcon({ className }: { className: string }) {
     return (
         <svg viewBox="0 0 17 17"
              xmlns="http://www.w3.org/2000/svg"

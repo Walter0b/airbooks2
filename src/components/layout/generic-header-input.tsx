@@ -33,7 +33,9 @@ export default function GenericInput({ children, type, action, ...props }: { chi
             return (<Buttons
                 {...props}
             >
-                {children}
+                <div data-slot="title" className="text-sm text-black ">
+                    {children}
+                </div>
             </Buttons>)
         default:
             return null
@@ -46,12 +48,12 @@ export default function GenericInput({ children, type, action, ...props }: { chi
     function openNewWindow(id: string) {
 
     }
-    
+
     function sendEmail(id: string) {
-        
+
     }
-    
+
     function showAsPDF(id: string) {
-        
+
     }
 }

@@ -1,5 +1,9 @@
 import {DetailComponentInputs, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
 import {MailIcon} from "@/assets/svg/mail";
+import {PrintIcon} from "@/assets/svg/print";
+import {NewTabIcon} from "@/assets/svg/new_window";
+import {PDFIcon} from "@/assets/svg/pdf";
+import {PenIcon} from "@/assets/svg/pen";
 
 const show = {
     title: 'Travel Items',
@@ -225,15 +229,69 @@ const more = [
     }
 ]
 
-const detailInputs = [
+const detailInputs: DetailComponentInputs[] = [
     {
         id: 'edit_button',
         type: InputType.Button,
-        icon: MailIcon,
+        icon: PenIcon,
         attrs: {
-            className: 'mr-2 h-full rounded border border-stone-300 bg-neutral-100 px-3 hover:shadow-md',
+            className: 'border-grey-450 ml-4 flex h-full items-center justify-center rounded-l border-[0.8px] bg-gray-100 p-2 hover:shadow-md',
         },
         group: 1
+    },
+    {
+        id: 'pdf_button',
+        type: InputType.Button,
+        icon: PDFIcon,
+        attrs: {
+            className: 'border-grey-450 flex  h-full items-center justify-center gap-[1px] border-[0.8px] bg-gray-100 px-2 hover:shadow-md',
+        },
+        group: 1
+    },
+    {
+        id: 'print_button',
+        type: InputType.Button,
+        icon: PrintIcon,
+        attrs: {
+            className: 'border-grey-450 flex  h-full items-center justify-center gap-[1px] border-[0.8px] bg-gray-100 px-2 hover:shadow-md',
+        },
+        group: 1
+    },
+    {
+        id: 'mail_button',
+        type: InputType.Button,
+        icon: MailIcon,
+        attrs: {
+            className: 'border-grey-450 flex h-full items-center justify-center rounded-r border-[0.8px] bg-gray-100 p-2 hover:shadow-md',
+        },
+        group: 1
+    },
+    {
+        id: 'newTab_button',
+        type: InputType.Button,
+        icon: NewTabIcon,
+        attrs: {
+            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
+        },
+        group: 2
+    },
+    {
+        id: 'issueInvoice_button',
+        type: InputType.Button,
+        value: 'Issue Invoice',
+        attrs: {
+            className: 'border-grey-450 bg-red-650 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
+        },
+        group: 3
+    },
+    {
+        id: 'IssueSalesR_button',
+        type: InputType.Button,
+        value: 'Issue Sales Receipt',
+        attrs: {
+            className: 'border-grey-450 bg-red-650 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
+        },
+        group: 4
     },
     {
         id: 'dropdown',
@@ -241,14 +299,14 @@ const detailInputs = [
         value: 'More',
         attrs: {
             hasDropdownIcon: true,
-            className:'mr-12 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md ',
+            className:'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md ',
             arrowClassName:'ml-2',
             dropdownClassName:'mr-12 mt-1 right-0 w-44',
             dropdownText:'text-center py-2',
             dropdownTitles:'right-0 mt-2 mr-11 font-medium',
             dropdownOptions: more
         },
-        group: 2
+        group: 5
     }
 ]
 

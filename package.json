@@ -31,6 +31,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.19",
     "bun-types": "latest",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8.4.39",
@@ -40,5 +41,10 @@
     "typescript": "^5"
   },
   "module": "index.ts",
-  "type": "module"
+  "type": "module",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

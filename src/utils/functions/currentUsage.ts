@@ -1,12 +1,12 @@
 import {DetailComponentInputs} from "@/utils/types/page-type/table.type";
 
-function currentUsage(detailComponentInputs: DetailComponentInputs[] | any[]): Record<string, any> {
+function groupElementsByGroup(detailComponentInputs: DetailComponentInputs[] | any[]): DetailComponentInputs[][] {
     return detailComponentInputs.reduce((acc, detailComponentInput) => {
         const { group } = detailComponentInput
-        if (!acc[`group ${group}`]) acc[`group ${group}`] = []
-        acc[`group ${group}`].push(detailComponentInput)
+        if (!acc[group]) acc[group] = []
+        acc[group].push(detailComponentInput)
         return acc
     }, [])
 }
 
-export { currentUsage }
+export { groupElementsByGroup }
