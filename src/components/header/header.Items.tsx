@@ -5,6 +5,9 @@ import { SettingsIcon } from '@/assets/svg/settings'
 import { UserIcon } from '@/assets/svg/user'
 import LanguageOption from './header.languageOption'
 import Image from 'next/image'
+import Buttons from '../buttons/buttons'
+import HeaderOptions from './header.Items.Profil'
+import { settingsOption } from '@/static/header/heart'
 export default function HeaderItems() {
     return (
         <nav className="flex w-full p-1">
@@ -102,15 +105,26 @@ export default function HeaderItems() {
                             <button className=" border-2 border-white p-5 ">
                                 <NotificationsIcon className="w-4 fill-white" />
                             </button>
-                            <button className=" border-r-2 border-white p-5">
-                                <SettingsIcon className="w-4 fill-white" />
-                            </button>
+
+                            <Buttons className=" border-r-2 border-white p-5"     dropdownClassName="right-0 -mt-2 w-44 text-start whitespace-nowrap font-medium "
+                            dropdownText="text-start whitespace-nowrap font-medium " dropdownOptions={settingsOption}>
+                                <div data-slot="title">
+                                    <SettingsIcon className="w-4 fill-white" />
+                                </div>
+
+                            </Buttons>
                             <button className=" border-r-2 border-white p-5 ">
                                 <HelpIcon className="w-4 fill-white" />
                             </button>
-                            <button className=" p-4 ">
-                                <UserIcon className="w-4 fill-white" />
-                            </button>
+                            <Buttons className=" p-4 ">
+                                <div data-slot="title">
+                                    <UserIcon className="w-4 fill-white" />
+                                </div>
+                                <div data-slot="dropDown">
+                                    <HeaderOptions />
+
+                                </div>
+                            </Buttons>
                         </div>
                     </div>
                 </div>

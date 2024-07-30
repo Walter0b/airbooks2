@@ -32,17 +32,26 @@
     background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
 }
 
+html {
+    font-family: sans-serif;
+    /* -webkit-text-size-adjust: 100%; */
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
     overflow: hidden;
     font-size: 13px;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
     font-family: 'Open Sans', Helvetica, ProximaNovaRegular, Arial, sans-serif;
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
+    background: linear-gradient(to bottom,
             transparent,
-            rgb(var(--background-end-rgb))
-        )
-        rgb(var(--background-start-rgb));
+            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -60,13 +69,10 @@ select {
 }
 
 .box {
-    --mask: conic-gradient(
-            from -135deg at right,
+    --mask: conic-gradient(from -135deg at right,
             #0000,
             #000 1deg 89deg,
-            #0000 80deg
-        )
-        50%/100% 60px;
+            #0000 80deg) 50%/100% 60px;
     -webkit-mask: var(--mask);
     mask: var(--mask);
 }
@@ -108,21 +114,6 @@ input:focus {
 
 .input-shadow:focus {
     box-shadow: 0px 0px 3px 1px rgba(33, 150, 243, 0.47);
-}
-
-body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    font-size: 13px;
-    min-width: 320px;
-    min-height: 100vh;
-    font-size: 13px;
-}
-
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
 }
 
 b,
