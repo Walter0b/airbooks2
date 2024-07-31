@@ -51,8 +51,8 @@ const AgencySelection: React.FC = () => {
 
                     <div>
                         {agencies.map((agency, index) => (
-                            <div>
-                                <NavLink key={index} to={'core'}>
+                            <div key={index}>
+                                <NavLink to={'core'}>
                                     <AgencyCard  {...agency} />
                                 </NavLink>
                                 <hr className=" border-gray-100 p-2" />
