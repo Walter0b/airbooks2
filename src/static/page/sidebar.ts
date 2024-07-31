@@ -239,3 +239,43 @@ export const reportNavigation: SidebarItemType[] = [
         ],
     },
 ]
+export const settingsNavigation: SidebarItemType[] = [
+
+    {
+        label: 'Agency Profile',
+        href: 'agency_profile',
+    },
+    {
+        label: 'Users',
+        href: 'users',
+    },
+    {
+        label: 'Charts Of Accounts',
+        href: 'chart_of_accounts',
+    },
+    {
+        label: 'Products',
+        href: 'products',
+    },
+    {
+        label: 'Currencies',
+        href: 'currencies',
+    },
+    {
+        label: 'Business Rules',
+        href: 'business_rules',
+    },
+    {
+        label: 'Preferences',
+        href: 'preferences',
+    },
+    {
+        label: 'Mail Templates',
+        href: 'mail_templates',
+    },
+    {
+        label: 'Integrations',
+        href: 'integrations',
+    },
+
+]

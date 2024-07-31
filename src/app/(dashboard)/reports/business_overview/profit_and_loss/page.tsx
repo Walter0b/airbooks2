@@ -1,67 +1,30 @@
 'use client'
+import { Test_report_json } from '@/static/test/test_report';
+import React, { useEffect } from 'react';
+import { Stimulsoft } from 'stimulsoft-reports-js/Scripts/stimulsoft.viewer';
 
-import { useEffect, useRef } from 'react'
-import * as Stimulsoft from 'stimulsoft-reports-js'
 
-export default function ReportViewer() {
-    const viewerRef = useRef<HTMLDivElement>(null)
-
+const Page: React.FC = () => {
+    console.log("🚀 ~ reportData:",  Test_report_json);
     useEffect(() => {
-        const loadReport = async () => {
-            // Load necessary scripts and styles
-            await Promise.all([
-                loadScript('/api/report/reports.js'),
-                loadScript('/api/report/viewer.js'),
-                loadStyle('/api/report/viewer.css'),
-            ])
+        console.log('Loading Viewer view');
 
-            const response = await fetch('/api/report')
-            const reportJson = await response.text()
+        const viewer = new Stimulsoft.Viewer.StiViewer(undefined, 'StiViewer', false);
+        const report = new Stimulsoft.Report.StiReport();
 
-            const report = new Stimulsoft.Report.StiReport()
-            report.loadDocumentFromJson(reportJson)
+        console.log('Load report from url');
+        report.loadDocument(Test_report_json);
+        viewer.report = report;
 
-            const options = new Stimulsoft.Viewer.StiViewerOptions()
-            options.appearance.fullScreenMode = true
-
-            const viewer = new Stimulsoft.Viewer.StiViewer(
-                options,
-                'StiViewer',
-                false
-            )
-            viewer.report = report
-            viewer.renderHtml('viewer')
-        }
-
-        loadReport()
-    }, [])
+        console.log('Rendering the viewer to selected element');
+        viewer.renderHtml('viewer');
+    }, []);
 
     return (
-        <div
-            id="viewer"
-            ref={viewerRef}
-            style={{ width: '100%', height: '100vh' }}
-        />
-    )
-}
+        <div className='bg-black'>
+            <div id="viewer" className="App"></div>
+        </div>
+    );
+};
 
-function loadScript(src: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = src
-        script.onload = () => resolve()
-        script.onerror = reject
-        document.head.appendChild(script)
-    })
-}
-
-function loadStyle(href: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = href
-        link.onload = () => resolve()
-        link.onerror = reject
-        document.head.appendChild(link)
-    })
-}
+export default Page;
