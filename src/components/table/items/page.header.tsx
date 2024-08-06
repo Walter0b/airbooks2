@@ -3,7 +3,7 @@ import TableOptions from '@/components/table/items/table.option'
 import { cn } from '@/utils/functions/classNames'
 import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
-export default function Header({
+export default function PageHeader({
     dropdownOptions,
     className,
 }: Readonly<{

@@ -8,7 +8,7 @@ export default function DynamicForm({
     FieldsValue,
 }: Readonly<DynamicFormProps>) {
     return (
-        <div>
+        <>
             {items.map((item, index) => (
                 <React.Fragment key={index}>
                     <div className="flex content-center text-black ">
@@ -70,6 +70,6 @@ export default function DynamicForm({
                     </div>
                 </React.Fragment>
             ))}
-        </div>
+        </>
     )
 }

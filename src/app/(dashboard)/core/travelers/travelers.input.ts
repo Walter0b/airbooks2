@@ -78,7 +78,7 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                     {
                         id: 'passport_number',
                         label: 'Number',
-                        type: 'string',
+                        type: 'text',
                         span: 'sm:col-span-3',
                     },
                     {

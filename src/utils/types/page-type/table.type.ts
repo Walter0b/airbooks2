@@ -87,7 +87,7 @@ export interface ShowTableOptionsType {
 // Interface for table options
 export interface TableOptionsType {
     pageLabel: string
-    action: DropdownItemType[]
+    options: DropdownItemType[]
     more: DropdownItemType[]
     sort: DropdownItemType[]
     show: ShowTableOptionsType

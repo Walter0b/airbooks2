@@ -19,7 +19,6 @@ export default function TableOptions({
 }>) {
     const { refetch } = useFetchTravelersQuery({ page: 1, pageSize: 10 })
     const handleOnclick = async () => {
-        // console.log("refetch:")
         refetch()
     }
 
@@ -28,7 +27,6 @@ export default function TableOptions({
     const dispatch = useDispatch()
     const handleOpenModal = (pageLabel: string) => {
         if (pageLabel) {
-            // console.log(pageLabel)
             setPageLabel?.(pageLabel)
             dispatch(openModal())
         }
@@ -41,8 +39,8 @@ export default function TableOptions({
             aria-label="table right menu option"
             className="flex text-gray-500"
         >
-            <div className="mr-4 flex">
-                <button
+            <div aria-label='add button' className="mr-4 flex">
+                {showTableOptions?.sort && <button
                     onClick={() => handleOpenModal(showTableOptions.pageLabel)}
                     className="bg-red-650 flex h-full items-center  justify-center rounded p-2"
                 >
@@ -53,8 +51,10 @@ export default function TableOptions({
                         className2="w-10"
                     />
                 </button>
+                }
 
-                <button
+
+                <button aria-label='refresh'
                     onClick={handleOnclick}
                     className="border-grey-450 ml-4 flex h-full items-center justify-center rounded-l border-[0.8px] bg-gray-100 p-2"
                 >
@@ -63,31 +63,34 @@ export default function TableOptions({
                         className="w-3 fill-gray-700"
                     />
                 </button>
+                {showTableOptions?.sort &&
+                    <Buttons aria-label='sort'
+                        className="border-grey-450 flex  h-full items-center justify-center gap-[1px] border-[0.8px] bg-gray-100 px-2"
+                        dropdownClassName="right-0 mt-2 w-44  "
+                        dropdownTitles="text-gray-400 font-medium text-start text-xs first:mt-2 first:ml-2 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize"
+                        dropdownText="text-start font-medium "
+                        dropdownOptions={showTableOptions?.sort}
+                    >
+                        <div data-slot="title">
+                            <ArrowIcon className="w-2 rotate-180" />
+                            <ArrowIcon className="mt-[-7px] w-2" />
+                        </div>
+                    </Buttons>
+                }
 
-                <Buttons
-                    className="border-grey-450 flex  h-full items-center justify-center gap-[1px] border-[0.8px] bg-gray-100 px-2"
-                    dropdownClassName="right-0 mt-2 w-44  "
-                    dropdownTitles="text-gray-400 font-medium text-start text-xs first:mt-2 first:ml-2 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize"
-                    dropdownText="text-start font-medium "
-                    dropdownOptions={showTableOptions?.sort}
-                >
-                    <div data-slot="title">
-                        <ArrowIcon className="w-2 rotate-180" />
-                        <ArrowIcon className="mt-[-7px] w-2" />
-                    </div>
-                </Buttons>
-
-                <Buttons
+                {showTableOptions?.options && <Buttons aria-label='options'
                     className="border-grey-450 flex h-full items-center justify-center rounded-r border-[0.8px] bg-gray-100 p-2"
                     dropdownClassName="right-0 mt-2 w-fit"
                     dropdownText="text-start whitespace-nowrap font-medium "
-                    dropdownOptions={showTableOptions?.action}
+                    dropdownOptions={showTableOptions?.options}
                 >
                     <Hamburger
                         data-slot="title"
                         className="w-3 fill-gray-700"
                     />
                 </Buttons>
+                }
+
             </div>
 
             {!currentID && (

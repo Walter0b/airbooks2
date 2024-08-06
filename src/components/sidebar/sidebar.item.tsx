@@ -18,7 +18,6 @@ export default function SideBarItems({
     const dispatch = useDispatch()
     const handleOpenModal = (pageLabel: string) => {
         if (pageLabel) {
-            // console.log(pageLabel)
             setPageLabel?.(pageLabel)
             dispatch(openModal())
         }

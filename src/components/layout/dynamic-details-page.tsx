@@ -1,5 +1,5 @@
 'use client'
-import Header from '@/components/table/items/table.page.header'
+import Header from '@/components/table/items/page.header'
 import useSingleState from '@/hooks/useSingleState'
 import { GenericTablePageType } from '@/utils/types/page-type/table.type'
 import TravelerCompactList from '@/app/(dashboard)/core/travelers/compact-list/compact-list'

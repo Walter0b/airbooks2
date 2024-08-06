@@ -1,7 +1,7 @@
 // components/layout/GenericTablePage.js
 'use client'
 
-import Header from '@/components/table/items/table.page.header'
+import PageHeader from '@/components/table/items/page.header'
 import Pages from '@/components/layout/pages'
 import Pagination from '@/components/table/pagination'
 import Table from '@/components/table/table'
@@ -29,7 +29,7 @@ export default function GenericTablePage({
     if (tableData) {
         return (
             <Pages>
-                <Header data-slot="header" dropdownOptions={tableOptions} />
+                <PageHeader data-slot="header" dropdownOptions={tableOptions} />
                 <div data-slot="body">
                     <Table
                         data-slot="table"

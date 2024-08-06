@@ -11,23 +11,19 @@ import { RootState } from '@/states/store'
 import DynamicForm from './modal.form'
 
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
+
     const { data } = useSelector((state: RootState) => state.modal)
-    console.log('🚀 ~ Modal ~ data:', data)
-
     const { InputFields } = useContext(ModalContext)
-
     const defaultForm = InputFields![0].tabs
     const [formData, setFormData] = useState<FormTabType[]>(defaultForm)
-
     const dispatch = useDispatch()
-
+    
     const idObject = formData.reduce((acc: any, { fields }: any) => {
         fields.forEach(({ id }: any) => {
             acc[id] = data[id] || ''
         })
         return acc
     }, {})
-    console.log('🚀 ~ idObject ~ idObject:', idObject)
 
     const validationObject = formData.reduce((acc: any, { fields }: any) => {
         fields.forEach(({ id, validations }: any) => {
