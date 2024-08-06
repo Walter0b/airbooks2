@@ -1,8 +1,8 @@
-
 import React, { useCallback } from 'react'
 import { DropdownItemType } from '@/utils/types/page-type/table.type'
 import { cn } from '@/utils/functions/classNames'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 interface DropdownProps {
     dropdownOptions?: DropdownItemType[]
@@ -24,14 +24,12 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({
 
     const handleItemClick = useCallback((item: DropdownItemType) => (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
-        if (item?.url) {
-            router.push(item.url)
-        } else if (item?.onClick) {
+        if (item?.onClick) {
             item.onClick()
         }
 
         item?.hasMergeTitle && setSelectedOption?.(item.label!)
-    }, [router, setSelectedOption])
+    }, [setSelectedOption])
 
     return (
         <div className={cn(className, 'absolute z-10 origin-top-right border border-gray-300 bg-white shadow-lg')}>
@@ -45,6 +43,10 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({
                         <div className={cn(titles, 'pointer-events-none uppercase select-none')}>
                             {item.label}
                         </div>
+                    ) : item.url ? (
+                        <Link href={item.url} className={cn(dropdownClassName)}>
+                            {item.label}
+                        </Link>
                     ) : (
                         <button
                             onClick={handleItemClick(item)}
