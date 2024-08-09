@@ -3,7 +3,7 @@ import React from 'react'
 
 function Loader() {
     return (
-        <div><GlobalLoader /></div>
+        <div className='h-screen w-screen !bg-white'><GlobalLoader /></div>
     )
 }
 
