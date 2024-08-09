@@ -24,7 +24,7 @@ const Buttons = ({ item, handleOpenModal }: Readonly<NavButtonsProps>) => (
     </button>
 )
 
-const NavLinks = ({
+export const NavLinks = ({
     item,
     isOpen,
     handleOpenModal,
@@ -70,7 +70,7 @@ const NavLinks = ({
             )}
         </NavLink>
         {item.isButton && (
-            <Buttons item={item} handleOpenModal={handleOpenModal} />
+            <Buttons item={item} handleOpenModal={handleOpenModal!} />
         )}
     </div>
 )
@@ -107,7 +107,7 @@ const MiniNavLink = ({
             }
         </NavLink>
         <button
-            onClick={() => handleOpenModal(item.href || '')}
+            onClick={() => handleOpenModal?.(item.href || '')}
             className="peer-[]:!bg-cyan-550 hover:!bg-cyan-550 ml-[0.6px] h-[2.76rem] gap-x-3 p-2 pt-3 pl-2 text-center text-[13px] font-semibold leading-6 text-white group-hover:bg-gray-200 sm:flex"
         >
             <CrossIcon

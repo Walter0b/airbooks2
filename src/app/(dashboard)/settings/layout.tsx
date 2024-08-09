@@ -1,7 +1,7 @@
 'use client'
 import DisplayModal from '@/components/modal/modal.display'
 import SideBar from '@/components/sidebar/sidebar'
-import { settingsNavigation } from '@/static/page/sidebar'
+import { settingsNavigation } from '@/static/sideBar/sidebar'
 import React from 'react'
 
 export default function settingsLayout({

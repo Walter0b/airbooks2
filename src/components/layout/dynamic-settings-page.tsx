@@ -3,14 +3,13 @@
 
 import TableFilterOptions from '@/components/table/items/page.header'
 import Pages from '@/components/layout/pages'
-import Pagination from '@/components/table/pagination'
 import Table from '@/components/table/table'
 import TableHeader from '@/components/table/table.header'
 import useSingleState from '@/hooks/useSingleState'
 import { GenericTablePageType } from '@/utils/types/page-type/table.type'
 import PageLoader from '../loader/page-loader'
 
-export default function GenericTablePage({
+export default function GenericSettingsPage({
     fetchQuery,
     columns,
     param,
@@ -38,12 +37,7 @@ export default function GenericTablePage({
                         hasCheckbox={true}
                     >
                         <TableHeader data-slot="TableHeader" />
-                        <Pagination
-                            data-slot="Pagination"
-                            tableData={tableData}
-                            onPageChange={page}
-                            onItemNumberChange={pageSize}
-                        />
+
                     </Table>
                 </div>
             </Pages>

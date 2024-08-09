@@ -9,6 +9,7 @@ interface DropdownProps {
     className?: string
     titles?: string
     text?: string
+    closeDropdown:()=> void
     setSelectedOption?: (title: string) => void
 }
 
@@ -16,11 +17,11 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({
     dropdownOptions,
     className = '',
     text = '',
-    titles = 'text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize',
+    titles = 'text-gray-400 font-medium text-xs first:mt-1 first:mb-2 last:mb-1 ml-1 pt-1 last:capitalize', closeDropdown,
     setSelectedOption,
 }) => {
     const dropdownClassName = `${text} block px-4 py-1 w-full text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`
-    const router = useRouter()
+
 
     const handleItemClick = useCallback((item: DropdownItemType) => (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -29,6 +30,7 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({
         }
 
         item?.hasMergeTitle && setSelectedOption?.(item.label!)
+        closeDropdown()
     }, [setSelectedOption])
 
     return (
@@ -44,7 +46,7 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({
                             {item.label}
                         </div>
                     ) : item.url ? (
-                        <Link href={item.url} className={cn(dropdownClassName)}>
+                        <Link href={item.url} onClick={() => closeDropdown()} className={cn(dropdownClassName)}>
                             {item.label}
                         </Link>
                     ) : (

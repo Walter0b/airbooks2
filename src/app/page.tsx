@@ -52,7 +52,7 @@ const AgencySelection: React.FC = () => {
                     <div>
                         {agencies.map((agency, index) => (
                             <div key={index}>
-                                <NavLink to={'core'}>
+                                <NavLink to={'auth/signin?callbackUrl=%2Fcore'}>
                                     <AgencyCard  {...agency} />
                                 </NavLink>
                                 <hr className=" border-gray-100 p-2" />

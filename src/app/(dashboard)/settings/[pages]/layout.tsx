@@ -1,7 +1,8 @@
 'use client'
 import DisplayModal from '@/components/modal/modal.display'
-import SideBar from '@/components/sidebar/sidebar'
-import { settingsNavigation } from '@/static/page/sidebar'
+import MiniSidebar from '@/components/sidebar/sidebar.mini'
+
+import { settingsNavigation } from '@/static/sideBar/sidebar'
 import React from 'react'
 
 export default function settingsSubPageLayout({
@@ -11,12 +12,8 @@ export default function settingsSubPageLayout({
 }>) {
     console.log('🚀 ~ children:', children)
     return (
-        <>
-            <SideBar navigation={settingsNavigation} />
-            <main className=" flex w-full flex-col bg-white">
-                {children}
-                <DisplayModal />
-            </main>
-        </>
+        <div className='flex'>
+            {children}
+        </div>
     )
 }

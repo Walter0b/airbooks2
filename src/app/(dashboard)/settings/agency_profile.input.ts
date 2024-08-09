@@ -38,6 +38,7 @@ export const AgencyProfileInputFields: FormTabType[] =
             required: true,
             fields: [
                 {
+                    label: 'country',
                     id: 'country',
                     type: 'lookup',
                     span: 'sm:col-span-6',
@@ -277,6 +278,6 @@ export const AgencyProfileInputFields: FormTabType[] =
                 },
             ],
         },
-      
+
     ]
 

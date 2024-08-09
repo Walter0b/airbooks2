@@ -1,7 +1,7 @@
 import NextAuth, { Session, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { JWT } from 'next-auth/jwt'
-
+import { nanoid } from 'nanoid';
 const REFRESH_TOKEN_ERROR = 'RefreshAccessTokenError'
 
 interface ExtendedUser extends User {
@@ -70,12 +70,12 @@ export const authOptions = {
 
             return refreshAccessToken(extendedToken)
         },
+        
         async session({ session, token }: {
             session: Session
             token: JWT
         }): Promise<Session> {
             const extendedToken = token as ExtendedJWT
-
             if (extendedToken) {
                 session.user = {
                     ...session.user,
@@ -83,14 +83,13 @@ export const authOptions = {
                     accessToken: extendedToken.accessToken,
                     refreshToken: extendedToken.refreshToken,
                     expiresAt: extendedToken.expiresAt,
-                }
+                };
 
                 if (extendedToken.error === REFRESH_TOKEN_ERROR) {
-                    session.error = REFRESH_TOKEN_ERROR
+                    session.error = REFRESH_TOKEN_ERROR;
                 }
             }
-
-            return session
+            return session;
         },
     },
     pages: {
@@ -100,6 +99,14 @@ export const authOptions = {
         strategy: 'jwt' as const,
         maxAge: 30 * 24 * 60 * 60, // 30 days
         updateAge: 24 * 60 * 60,   // 24 hours
+        generateSessionToken: () => nanoid(),
+        cookieName: 'next-auth.session-token',
+        cookieOptions: {
+            httpOnly: true,
+            sameSite: 'strict',
+            path: '/',
+            secure: process.env.NODE_ENV === 'production',
+        },
     },
     secret: process.env.NEXTAUTH_SECRET,
 }
@@ -119,7 +126,14 @@ async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
         })
 
         if (!response.ok) {
-            throw new Error('Failed to refresh token')
+            if (response.status === 401) {
+                // Refresh token has expired
+                return {
+                    ...token,
+                    error: 'RefreshTokenExpiredError',
+                };
+            }
+            throw new Error('Failed to refresh token');
         }
 
         const data = await response.json()

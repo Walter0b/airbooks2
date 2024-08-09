@@ -143,7 +143,7 @@ export interface PageConfigType {
 
 // Interface for navigation component
 export interface NavComponentProps extends BaseNavComponentProps {
-    handleOpenModal: (key: string) => void
+    handleOpenModal?: (key: string) => void
 }
 interface BaseNavComponentProps {
     item: SidebarItemType

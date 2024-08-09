@@ -3,7 +3,7 @@ import TableOptions from '@/components/table/items/table.option'
 import { cn } from '@/utils/functions/classNames'
 import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
-export default function PageHeader({
+export default function TableFilterOptions({
     dropdownOptions,
     className,
 }: Readonly<{
@@ -22,7 +22,7 @@ export default function PageHeader({
                 aria-label="table left menu option"
                 className="ml-4"
             >
-                <ShowButton dropdownOptions={dropdownOptions.show} />
+                {dropdownOptions.show ? <ShowButton dropdownOptions={dropdownOptions.show} />:dropdownOptions.pageLabel}
             </div>
             <TableOptions showTableOptions={dropdownOptions} />
         </div>

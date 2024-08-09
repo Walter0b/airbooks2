@@ -65,16 +65,15 @@ const Buttons: React.FC<ButtonInterface> = memo(({
                 </button>
             </div>
             {isOpen && (
-                DropdownOption ? DropdownOption : (
-                    dropdownOptions && (
-                        <Dropdown
-                            className={dropdownClassName}
-                            text={dropdownText}
-                            titles={dropdownTitles}
-                            dropdownOptions={dropdownOptions}
-                            setSelectedOption={setSelectedOption}
-                        />
-                    )
+                DropdownOption || (
+                    <Dropdown
+                    closeDropdown={handleToggleDropdown}
+                        className={dropdownClassName}
+                        text={dropdownText}
+                        titles={dropdownTitles}
+                        dropdownOptions={dropdownOptions}
+                        setSelectedOption={setSelectedOption}
+                    />
                 )
             )}
 
