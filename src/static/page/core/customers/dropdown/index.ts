@@ -50,7 +50,7 @@ const show = {
     ],
 }
 
-const action = [
+const options = [
     {
         label: 'Email Customer',
         group: 1,
@@ -118,7 +118,7 @@ const more = [
 ]
 export const customerTableOptions: TableOptionsType = {
     pageLabel: 'travelers',
-    action,
+    options,
     sort,
     show,
     more,
