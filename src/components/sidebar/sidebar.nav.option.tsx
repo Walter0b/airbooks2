@@ -11,6 +11,7 @@ export default function NavOption() {
             <NavLink
                 to="/core/travelers"
                 id="core"
+                customActiveUrl='core'
                 activeClassName="border-emerald-500"
                 inActiveClassName='border-gray-100 border-r-0'
                 className={cn(baseClassName, 'hover:border-r-1 hover:border-emerald-500  ')}
@@ -21,6 +22,7 @@ export default function NavOption() {
             <NavLink
                 to="/reports/business_overview/profit_and_loss"
                 id="reports"
+                customActiveUrl='reports'
                 activeClassName="border-red-500"
                 inActiveClassName='border-gray-100 '
                 className={cn(baseClassName, '  hover:border-red-500')}

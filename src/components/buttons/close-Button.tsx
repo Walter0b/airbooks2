@@ -12,7 +12,6 @@ export default function CloseButton({
     redirect?: string
 }>) {
     const router = useRouter()
-
     const handleGoBack = () => {
         if (onClick) {
             onClick()

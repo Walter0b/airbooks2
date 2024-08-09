@@ -9,52 +9,53 @@ import { UserIcon } from '@/assets/svg/user'
 import { UsersIcon } from '@/assets/svg/users'
 import { SidebarItemType } from '@/utils/types/page-type/table.type'
 
+
 export const coreNavigation: SidebarItemType[] = [
     {
         label: 'Dashboard',
-        href: 'dashboard',
+        href: '/core/dashboard',
         group: 1,
         icon: TachometerIcon,
         isButton: false,
     },
     {
         label: 'Travelers',
-        href: 'travelers',
+        href: '/core/travelers',
         group: 1,
         icon: UserIcon,
         isButton: true,
     },
     {
         label: 'Travel Item',
-        href: 'travel-items',
+        href: '/core/travel-items',
         group: 1,
         icon: CaseIcon,
         isButton: true,
     },
     {
         label: 'Customer',
-        href: 'customer',
+        href: '/core/customer',
         group: 2,
         icon: UsersIcon,
         isButton: true,
     },
     {
         label: 'Estimates',
-        href: 'estimates',
+        href: '/core/estimates',
         group: 2,
         icon: ShoppingCartIcon,
         isButton: true,
     },
     {
         label: 'Invoice',
-        href: 'invoice',
+        href: '/core/invoice',
         group: 2,
         icon: ShoppingCartIcon,
         isButton: true,
     },
     {
         label: 'Credit Notes',
-        href: 'credit_notes',
+        href: '/core/credit_notes',
         group: 2,
         icon: ShoppingCartIcon,
         className: '-scale-x-100',
@@ -62,28 +63,28 @@ export const coreNavigation: SidebarItemType[] = [
     },
     {
         label: 'Payments',
-        href: 'payments',
+        href: '/core/payments',
         group: 3,
         icon: CreditCardIcon,
         isButton: false,
     },
     {
         label: 'Bill',
-        href: 'bill',
+        href: '/core/bill',
         group: 4,
         icon: FileIcon,
         isButton: true,
     },
     {
         label: 'Expenses',
-        href: 'expenses',
+        href: '/core/expenses',
         group: 4,
         icon: MoneyIcon,
         isButton: true,
     },
     {
         label: 'Manual Journal',
-        href: 'manual_journal',
+        href: '/core/manual_journal',
         group: 5,
         icon: ManualIcon,
         isButton: false,

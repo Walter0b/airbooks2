@@ -38,7 +38,7 @@ export const NavLinks = ({
         >
             {(isActive) => (
 
-                <div className="flex w-full gap-x-2 text-[13px] font-medium leading-6">
+                <div className={cn(item.icon && ' gap-x-2 ', "flex w-fulltext-[13px] font-medium leading-6")}>
                     {item.icon ? (
                         <div
                             className={cn(
@@ -140,7 +140,7 @@ const Accordion = ({ item }: Readonly<NavLinksType>) => {
                     <>
                         <CircleIcon className="mr-2 ml-4 w-4 fill-gray-100" />
                         <button
-                            className="group flex h-10 w-full items-center justify-between gap-x-2 break-normal p-2 text-[13px] font-medium leading-6"
+                            className="group flex h-10 w-full items-center justify-between gap-x-2 break-normal pr-2 text-[13px] font-medium leading-6"
                             onClick={() => setIsOpen(!isOpen)}
                         >
                             {item.label}
