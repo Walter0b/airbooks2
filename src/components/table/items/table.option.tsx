@@ -95,7 +95,7 @@ export default function TableOptions({
 
             {!currentID && (
                 <div className=" flex">
-                    <hr className="mt-4 w-5 rotate-90 border" />
+                    <hr className="mt-3 w-5 rotate-90 border" />
                     <div className="flex">
                         <LightBulbIcon className="m-1 w-2 fill-blue-500" />
                         <div className="flex cursor-pointer items-center font-bold text-blue-500 md:mr-4">

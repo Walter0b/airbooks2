@@ -50,18 +50,18 @@ export default function DynamicPage({
 
   if (!pageConfig) return <p>Page {params.pages} found</p>
 
-  const { fetchQuery, columns, tableOptions } = pageConfig
+  const { fetchQuery, columns, tableOptions, SideBar } = pageConfig
 
   return (
     <>
-      <MiniSidebar navigation='' />
+      {SideBar && <MiniSidebar MiniNavOptions={SideBar} />}
       <div className=" flex w-full flex-col bg-white">
-         <GenericSettingsPage
+        <GenericSettingsPage
           fetchQuery={fetchQuery}
           columns={columns}
           tableOptions={tableOptions}
-        /> 
-        
+        />
+
       </div>
     </>
 

@@ -36,7 +36,7 @@ export default function TravelerCompactListHeader({
                         More
                     </div>
                 </Buttons>
-                <CloseButton redirect="/" />
+                <CloseButton />
             </div>
         </div>
     )

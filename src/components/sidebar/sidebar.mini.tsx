@@ -4,21 +4,13 @@ import NavLink from 'next-navlink'
 import { NavLinks } from './sidebar.item.nav'
 import { CircleIcon } from '@/assets/svg/circle'
 import { cn } from '@/utils/functions/classNames'
-function MiniSidebar() {
-    const MiniNavOptions =
-    {
-        title: 'Roles',
-        sideBarItem: [
-            {
-                label: 'Users',
-                href: '/',
-            },
-            {
-                label: 'Charts Of Accounts',
-                href: 'chart_of_accounts',
-            },
-        ],
-    }
+import SideBar from './sidebar'
+import SideBarItems from './sidebar.item'
+import { MiniSidebarType } from '@/utils/types/page-type/table.type'
+
+
+function MiniSidebar({ MiniNavOptions }: { MiniNavOptions: MiniSidebarType }) {
+
 
 
     return (

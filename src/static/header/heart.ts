@@ -32,7 +32,7 @@ export const settingsOption = [
     {
         label: 'All settings',
         group: 2,
-        url: '/settings',
+        url: '/settings/agency_profile',
     },
     {
         label: 'Create a Report',

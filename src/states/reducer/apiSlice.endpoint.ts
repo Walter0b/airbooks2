@@ -11,7 +11,7 @@ export const endpointConfig: EndpointConfig[] = [
     { name: 'AgencyProfile', endpoint: 'agency' },
     { name: 'Users', endpoint: 'user' },
     { name: 'ChartsOfAccounts', endpoint: 'chart_of_accounts' },
-    { name: 'Products', endpoint: 'products' },
+    { name: 'Products', endpoint: 'product' },
     { name: 'Currencies', endpoint: 'currency' },
     { name: 'BusinessRules', endpoint: 'business_rules' },
     { name: 'Preferences', endpoint: 'preferences' },

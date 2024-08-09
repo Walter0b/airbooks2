@@ -87,10 +87,10 @@ export interface ShowTableOptionsType {
 // Interface for table options
 export interface TableOptionsType {
     pageLabel: string
-    options: DropdownItemType[]
-    more: DropdownItemType[]
-    sort: DropdownItemType[]
-    show: ShowTableOptionsType
+    options?: DropdownItemType[]
+    more?: DropdownItemType[]
+    sort?: DropdownItemType[]
+    show?: ShowTableOptionsType
 }
 export interface TableDataType {
     id: number
@@ -131,12 +131,18 @@ export interface TableItemType extends CheckboxType {
 export interface GenericTablePageType {
     fetchQuery: any
     columns: TableColumnType[]
+    SideBar?: MiniSidebarType
     param?: { [key: string]: string | string[] | undefined }
     // headerSlot: ReactNode,
     // bodySlot: ReactNode,
     tableOptions: TableOptionsType
 }
 
+export interface MiniSidebarType {
+    [x: string]: any
+    title: string,
+    sideBarItem: SubItemType[]
+}
 export interface PageConfigType {
     [key: string]: GenericTablePageType
 }
@@ -159,7 +165,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps {}
+export interface NavLinksType extends BaseNavComponentProps { }
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps {}
+export interface ButtonsType extends BaseNavComponentProps { }
