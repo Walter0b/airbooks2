@@ -2,7 +2,7 @@
 'use client'
 
 import GenericCompactPage from '@/components/layout/dynamic-details-page'
-import { pagesConfig } from '../_page'
+import { pagesConfig } from '../_pagesConfig'
 
 export default function DynamicPage({
     params,

@@ -1,5 +1,5 @@
 import ItemDetailsBody from '@/components/compactlist/itemdetails'
-import { ModalContext } from '@/hooks/context/ModalContext'
+import { ModalContext } from '@/states/context/ModalContext'
 import { openModalWithData } from '@/states/reducer/modalSlice'
 import useCurrentPageData from '@/utils/functions/getCurrentPageData'
 import { useContext } from 'react'

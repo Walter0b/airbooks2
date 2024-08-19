@@ -3,7 +3,7 @@ import { NavigationItem } from './sidebar.item.nav'
 import { SidebarItemType } from '@/utils/types/page-type/table.type'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/states/reducer/modalSlice'
-import { ModalContext } from '@/hooks/context/ModalContext'
+import { ModalContext } from '@/states/context/ModalContext'
 import { cn } from '@/utils/functions/classNames'
 
 export default function SideBarItems({

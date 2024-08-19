@@ -2,7 +2,7 @@
 'use client'
 
 import GenericTablePage from '@/components/layout/dynamic-table-page'
-import { pagesConfig } from './_page'
+import { pagesConfig } from './_pagesConfig'
 
 export default function DynamicPage({
     params,
@@ -26,6 +26,6 @@ export default function DynamicPage({
             fetchQuery={fetchQuery}
             columns={columns}
             tableOptions={tableOptions}
-        />
+            pageName={params.pages} />
     )
 }

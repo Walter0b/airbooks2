@@ -1,7 +1,7 @@
 'use client'
 import ItemDetailsBody from '@/components/compactlist/itemdetails'
 import NavLink from 'next-navlink'
-import { ModalContext } from '@/hooks/context/ModalContext'
+import { ModalContext } from '@/states/context/ModalContext'
 import { openModalWithData } from '@/states/reducer/modalSlice'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'

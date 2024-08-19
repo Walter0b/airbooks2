@@ -29,39 +29,43 @@ const TableLoader = () => {
                             scope="col"
                             className="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
                         ></th>
-                         <th
+                        <th
                             scope="col"
                             className="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
                         ></th>
                     </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200 bg-white even:bg-slate-50">
-                    {[...Array(10)].map((_, index) => (
-                        <tr key={index}>
-                            <td className="whitespace-nowrap py-4 px-6">
-                                <div className="h-4 w-8 animate-pulse rounded bg-gray-300"></div>
-                            </td>
-                            <td className="whitespace-nowrap py-4 px-6">
-                                <div className="h-4 w-32 animate-pulse rounded bg-gray-300"></div>
-                            </td>
-                            <td className="whitespace-nowrap py-4 px-6">
-                                <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
-                            </td>
-                            <td className="whitespace-nowrap py-4 px-6">
-                                <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
-                            </td>
-                            <td className="whitespace-nowrap py-4 px-6">
-                                <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
-                            </td>
-                            <td className="whitespace-nowrap py-4 px-6">
-                                <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
+                <TableBodyLoader />
             </table>
         </div>
     )
+}
+export const TableBodyLoader = () => {
+    return (<tbody className="divide-y divide-gray-200 bg-white even:bg-slate-50">
+        {[...Array(10)].map((_, index) => (
+            <tr key={index}>
+                <td className="whitespace-nowrap py-4 px-4">
+                    <div className="h-4 w-4 animate-pulse rounded bg-gray-300"></div>
+                </td>
+                <td className="whitespace-nowrap py-4 px-6">
+                    <div className="h-4 w-32 animate-pulse rounded bg-gray-300"></div>
+                </td>
+                <td className="whitespace-nowrap py-4 px-6">
+                    <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
+                </td>
+                <td className="whitespace-nowrap py-4 px-6">
+                    <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
+                </td>
+                <td className="whitespace-nowrap py-4 px-6">
+                    <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
+                </td>
+                <td className="whitespace-nowrap py-4 px-6">
+                    <div className="h-4 w-24 animate-pulse rounded bg-gray-300"></div>
+                </td>
+            </tr>
+        ))}
+    </tbody>)
+
 }
 
 export default TableLoader

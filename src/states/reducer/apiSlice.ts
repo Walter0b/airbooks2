@@ -28,10 +28,22 @@ const baseQuery = fetchBaseQuery({
         return headers;
     },
     paramsSerializer: (params: Record<string, any>) => {
-        const queryString = new URLSearchParams(
-            Object.entries(params).filter(([_, value]) => value !== undefined)
-        ).toString();
-        return `${queryString}&meta=*`;
+        const queryParams = new URLSearchParams();
+
+        Object.entries(params).forEach(([key, value]) => {
+            if (value !== undefined) {
+                if (key === 'sort' && Array.isArray(value)) {
+                    value.forEach((sortItem) => {
+                        queryParams.append('sort[]', sortItem);
+                    });
+                } else {
+                    queryParams.append(key, String(value));
+                }
+            }
+        });
+
+        queryParams.append('meta', '*');
+        return queryParams.toString();
     },
 });
 
@@ -40,14 +52,13 @@ interface EndpointConfig {
     endpoint: string;
 }
 
-
 interface QueryParams {
     page: number;
     pageSize: number;
     fields?: string;
     filter?: Record<string, any>;
     search?: string;
-    sort?: string;
+    sort?: string[];
 }
 
 type CustomBaseQuery = BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>;
@@ -70,6 +81,13 @@ const generateEndpoints = (
                     ...(sort && { sort }),
                 },
             }),
+            transformResponse: (response: ResponseDataType, meta, arg) => {
+                const updatedMeta = {
+                    ...response.meta,
+                    sort: arg.sort,
+                };
+                return { ...response, meta: updatedMeta };
+            },
             providesTags: [name],
         });
 

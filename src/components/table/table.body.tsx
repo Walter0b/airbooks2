@@ -36,7 +36,7 @@ const TableBody: React.FC<TableBodyType> = ({
                     onClick={(event) => handleRowClick(event, item.id)}
                     className={cn(
                         className,
-                        'whitespace-nowrap border-b border-gray-200 odd:bg-white even:bg-slate-50 hover:bg-neutral-100'
+                        'whitespace-nowrap border-b border-gray-200 odd:bg-white even:bg-slate-50 hover:bg-black/7'
                     )}
                 >
                     {hasCheckbox && (

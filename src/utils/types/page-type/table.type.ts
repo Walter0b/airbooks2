@@ -27,8 +27,10 @@ interface SubItemType {
 
 // Interface for table column
 export interface TableColumnType {
-    key: string
-    label: string
+    key: string;
+    label: string;
+    sortable?: boolean | undefined;
+    sortDirection?: 'asc' | 'desc' | undefined;
 }
 
 // Interface for checkbox
@@ -54,6 +56,7 @@ export interface DataTableType {
 export interface TableHeaderType extends CheckboxType {
     columns?: TableColumnType[]
     handleCheckboxAllChange?: () => void
+    onSortChange?: (key: string) => void
 }
 
 // Interface for table body
@@ -90,6 +93,7 @@ export interface TableOptionsType {
     options?: DropdownItemType[]
     more?: DropdownItemType[]
     sort?: DropdownItemType[]
+    refresh?:  () => void
     show?: ShowTableOptionsType
 }
 export interface TableDataType {
@@ -122,6 +126,7 @@ export interface ResponseDataType {
 // Interface for table item
 export interface TableItemType extends CheckboxType {
     tableData?: ResponseDataType
+    isFetching: boolean
     columns: TableColumnType[]
     children: ReactNode
     onClickHandler?: (value: string) => void
