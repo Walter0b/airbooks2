@@ -1,102 +1,102 @@
 name: telegram message
 on: [push, pull_request]
 jobs:
-  notify:
-    name: Notify on Push, Pull Request
-    runs-on: ubuntu-latest
+    notify:
+        name: Notify on Push, Pull Request
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v44
+            - name: Get changed files
+              id: changed-files
+              uses: tj-actions/changed-files@v44
 
-      - name: Generate changed files message
-        id: generate-changed-files-message
-        run: |
-          generate_message() {
-            local files="$1"
-            local added=""
-            local modified=""
-            local deleted=""
-            for file in $files; do
-              status=$(git diff --name-status HEAD~1 $file | awk '{print $1}')
-              case "$status" in
-                A)
-                  added+="             ➤$file %0A"
-                  ;;
-                M)
-                  modified+="            ➤$file %0A"
-                  ;;
-                D)
-                  deleted+="            ➤$file %0A"
-                  ;;
-              esac
-            done
+            - name: Generate changed files message
+              id: generate-changed-files-message
+              run: |
+                  generate_message() {
+                    local files="$1"
+                    local added=""
+                    local modified=""
+                    local deleted=""
+                    for file in $files; do
+                      status=$(git diff --name-status HEAD~1 $file | awk '{print $1}')
+                      case "$status" in
+                        A)
+                          added+="             ➤$file %0A"
+                          ;;
+                        M)
+                          modified+="            ➤$file %0A"
+                          ;;
+                        D)
+                          deleted+="            ➤$file %0A"
+                          ;;
+                      esac
+                    done
 
-            message="*🔹 Changed Files:* %0A"
-            if [ -n "$added" ]; then
-              message+="    🟢 *Added:* %0A$added"
-            fi
-            if [ -n "$modified" ]; then
-              message+="    🟡 *Modified:* %0A$modified"
-            fi
-            if [ -n "$deleted" ]; then
-              message+="    🔴 *Deleted:* %0A$deleted"
-            fi
+                    message="*🔹 Changed Files:* %0A"
+                    if [ -n "$added" ]; then
+                      message+="    🟢 *Added:* %0A$added"
+                    fi
+                    if [ -n "$modified" ]; then
+                      message+="    🟡 *Modified:* %0A$modified"
+                    fi
+                    if [ -n "$deleted" ]; then
+                      message+="    🔴 *Deleted:* %0A$deleted"
+                    fi
 
-            echo "::set-output name=message::$message"
-          }
+                    echo "::set-output name=message::$message"
+                  }
 
-          generate_message "${{ steps.changed-files.outputs.all_changed_files }}"
+                  generate_message "${{ steps.changed-files.outputs.all_changed_files }}"
 
-      - name: Send Telegram message on push
-        if: github.event_name == 'push'
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          message: |
-            *New Push Notification*
-            🔹 *Repository:* ` ${{ github.repository }}`
-            🔹 *Pushed by:* ` ${{ github.actor }}`
-            🔹 *Pushed to:* ` ${{ github.ref_name }}`
-            🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
-            ${{ steps.generate-changed-files-message.outputs.message }}
-            🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
-            🔗 View Commits History: [Commits History Link](https://github.com/${{ github.repository }}/commit/${{ github.ref_name }})
+            - name: Send Telegram message on push
+              if: github.event_name == 'push'
+              uses: appleboy/telegram-action@master
+              with:
+                  to: ${{ secrets.TELEGRAM_TO }}
+                  token: ${{ secrets.TELEGRAM_TOKEN }}
+                  format: markdown
+                  message: |
+                      *New Push Notification*
+                      🔹 *Repository:* ` ${{ github.repository }}`
+                      🔹 *Pushed by:* ` ${{ github.actor }}`
+                      🔹 *Pushed to:* ` ${{ github.ref_name }}`
+                      🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
+                      ${{ steps.generate-changed-files-message.outputs.message }}
+                      🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+                      🔗 View Commits History: [Commits History Link](https://github.com/${{ github.repository }}/commit/${{ github.ref_name }})
 
-      - name: Send Telegram message on pull request
-        if: github.event_name == 'pull_request'
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          message: |
-            *New Pull Request Notification*
-            🔹 *Repository:* `${{ github.repository }}`
-            🔹 *Title:* `${{ github.event.pull_request.title }}`
-            🔹 *Author:* `${{ github.event.pull_request.user.login }}`
-            🔹 *Description:*
-            `${{ github.event.pull_request.body }}`
-            ${{ steps.generate-changed-files-message.outputs.message }}
-            🔗View Pull Request: [Pull Request Link](`${{ github.event.pull_request.html_url }})`
+            - name: Send Telegram message on pull request
+              if: github.event_name == 'pull_request'
+              uses: appleboy/telegram-action@master
+              with:
+                  to: ${{ secrets.TELEGRAM_TO }}
+                  token: ${{ secrets.TELEGRAM_TOKEN }}
+                  format: markdown
+                  message: |
+                      *New Pull Request Notification*
+                      🔹 *Repository:* `${{ github.repository }}`
+                      🔹 *Title:* `${{ github.event.pull_request.title }}`
+                      🔹 *Author:* `${{ github.event.pull_request.user.login }}`
+                      🔹 *Description:*
+                      `${{ github.event.pull_request.body }}`
+                      ${{ steps.generate-changed-files-message.outputs.message }}
+                      🔗View Pull Request: [Pull Request Link](`${{ github.event.pull_request.html_url }})`
 
-      - name: Send Telegram message on stage commit
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/stage')
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          message: |
-            *New Stage Commit Notification*
-            🔹 *Repository:* ` ${{ github.repository }}`
-            🔹 *Pushed by:* ` ${{ github.actor }}`
-            🔹 *Pushed to stage branch:* ` ${{ github.ref_name }}`
-            🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
-            ${{ steps.generate-changed-files-message.outputs.message }}
-            🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+            - name: Send Telegram message on stage commit
+              if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/stage')
+              uses: appleboy/telegram-action@master
+              with:
+                  to: ${{ secrets.TELEGRAM_TO }}
+                  token: ${{ secrets.TELEGRAM_TOKEN }}
+                  format: markdown
+                  message: |
+                      *New Stage Commit Notification*
+                      🔹 *Repository:* ` ${{ github.repository }}`
+                      🔹 *Pushed by:* ` ${{ github.actor }}`
+                      🔹 *Pushed to stage branch:* ` ${{ github.ref_name }}`
+                      🔹 *Commit message:* ` ${{ github.event.head_commit.message }}`
+                      ${{ steps.generate-changed-files-message.outputs.message }}
+                      🔗 View Commit: [Commit Link](https://github.com/${{ github.repository }}/commit/${{ github.sha }})

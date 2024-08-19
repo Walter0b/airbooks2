@@ -1,36 +1,30 @@
-'use client';
+'use client'
+import { Test_report_json } from '@/static/test/test_report';
 import React, { useEffect } from 'react';
-import 'stimulsoft-reports-js/Css/stimulsoft.viewer.office2013.whiteblue.css';
-import { Test_report_json } from '@/static/test/test_report'; // Adjust the import if needed
+import { Stimulsoft } from 'stimulsoft-reports-js/Scripts/stimulsoft.viewer';
 
-export default function DynamicPage() {
-  useEffect(() => {
-    const loadStimulsoft = async () => {
-      if (typeof window !== 'undefined') { // Ensure window is defined before using it
-        console.log('Loading Viewer view');
 
-        // Dynamically import Stimulsoft on the client-side
-        const { Stimulsoft } = await import('stimulsoft-reports-js/Scripts/stimulsoft.viewer');
+const Page: React.FC = () => {
+    console.log("🚀 ~ reportData:",  Test_report_json);
+    // useEffect(() => {
+    //     console.log('Loading Viewer view');
 
-        // Initialize the viewer and report objects
-        const viewer = new Stimulsoft.Viewer.StiViewer(undefined, 'StiViewer', false);
-        const report = new Stimulsoft.Report.StiReport();
+    //     const viewer = new Stimulsoft.Viewer.StiViewer(undefined, 'StiViewer', false);
+    //     const report = new Stimulsoft.Report.StiReport();
 
-        console.log('Load report from JSON data');
-        report.loadDocument(Test_report_json);
-        viewer.report = report;
+    //     console.log('Load report from url');
+    //     report.loadDocument(Test_report_json);
+    //     viewer.report = report;
 
-        console.log('Rendering the viewer to selected element');
-        viewer.renderHtml('viewer');
-      }
-    };
+    //     console.log('Rendering the viewer to selected element');
+    //     viewer.renderHtml('viewer');
+    // }, []);
 
-    loadStimulsoft();
-  }, []);
+    return (
+        <div className='bg-black'>
+            {/* <div id="viewer" className="App"></div> */}
+        </div>
+    );
+};
 
-  return (
-    <div className='w-full'>
-      <div id="viewer" className="App w-full"></div>
-    </div>
-  );
-}
+export default Page;

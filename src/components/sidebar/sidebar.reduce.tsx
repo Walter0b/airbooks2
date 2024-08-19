@@ -1,4 +1,4 @@
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 import { BooleanUseState } from '@/utils/types/structure'
 
 interface DropdownArrowProps {
@@ -11,7 +11,7 @@ const VerticalArrowIcon: React.FC<DropdownArrowProps> = ({
     setIsOpen,
 }) => {
     return (
-        <div className="flex items-center justify-center px-5 sm:px-0 mt-10 sm:mt-5 md:mt-10">
+        <div className="mt-10 flex items-center justify-center px-5 sm:mt-5 sm:px-0 md:mt-10">
             <hr className={cn(isOpen && 'hidden', 'w-full border-gray-300')} />
             <button
                 onClick={() => setIsOpen(!isOpen)}

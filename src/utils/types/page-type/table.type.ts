@@ -27,8 +27,10 @@ interface SubItemType {
 
 // Interface for table column
 export interface TableColumnType {
-    key: string
-    label: string
+    key: string;
+    label: string;
+    sortable?: boolean | undefined;
+    sortDirection?: 'asc' | 'desc' | undefined;
 }
 
 // Interface for checkbox
@@ -54,6 +56,7 @@ export interface DataTableType {
 export interface TableHeaderType extends CheckboxType {
     columns?: TableColumnType[]
     handleCheckboxAllChange?: () => void
+    onSortChange?: (key: string) => void
 }
 
 // Interface for table body
@@ -67,7 +70,6 @@ export interface TableBodyType extends CheckboxType {
 }
 
 // Interface for dropdown items
-
 
 export interface DropdownItemType {
     id?: string
@@ -88,10 +90,12 @@ export interface ShowTableOptionsType {
 // Interface for table options
 export interface TableOptionsType {
     pageLabel: string
-    action: DropdownItemType[]
-    more: DropdownItemType[]
-    sort: DropdownItemType[]
-    show: ShowTableOptionsType
+    options?: DropdownItemType[]
+    more?: DropdownItemType[]
+    sort?: DropdownItemType[]
+    refresh?:  () => void
+    show?: ShowTableOptionsType
+    action?: DropdownItemType[]
     detailInputs: DetailComponentInputs[]
 }
 
@@ -135,6 +139,7 @@ export interface ResponseDataType {
 // Interface for table item
 export interface TableItemType extends CheckboxType {
     tableData?: ResponseDataType
+    isFetching: boolean
     columns: TableColumnType[]
     children: ReactNode
     onClickHandler?: (value: string) => void
@@ -144,19 +149,25 @@ export interface TableItemType extends CheckboxType {
 export interface GenericTablePageType {
     fetchQuery: any
     columns: TableColumnType[]
+    SideBar?: MiniSidebarType
     param?: { [key: string]: string | string[] | undefined }
     // headerSlot: ReactNode,
     // bodySlot: ReactNode,
     tableOptions: TableOptionsType
 }
 
+export interface MiniSidebarType {
+    [x: string]: any
+    title: string,
+    sideBarItem: SubItemType[]
+}
 export interface PageConfigType {
     [key: string]: GenericTablePageType
 }
 
 // Interface for navigation component
 export interface NavComponentProps extends BaseNavComponentProps {
-    handleOpenModal: (key: string) => void
+    handleOpenModal?: (key: string) => void
 }
 interface BaseNavComponentProps {
     item: SidebarItemType

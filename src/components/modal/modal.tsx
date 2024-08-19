@@ -6,20 +6,16 @@ import Tabs from './modal.tabs'
 import { useFormState } from '@/hooks/useFormState'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal } from '@/states/reducer/modalSlice'
-import { ModalContext } from '@/hooks/context/ModalContext'
+import { ModalContext } from '@/states/context/ModalContext'
 import { RootState } from '@/states/store'
 import DynamicForm from './modal.form'
 
-
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
+
     const { data } = useSelector((state: RootState) => state.modal)
-    console.log('🚀 ~ Modal ~ data:', data)
-
     const { InputFields } = useContext(ModalContext)
-
     const defaultForm = InputFields![0].tabs
     const [formData, setFormData] = useState<FormTabType[]>(defaultForm)
-
     const dispatch = useDispatch()
 
     const idObject = formData.reduce((acc: any, { fields }: any) => {
@@ -28,7 +24,6 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
         })
         return acc
     }, {})
-    console.log('🚀 ~ idObject ~ idObject:', idObject)
 
     const validationObject = formData.reduce((acc: any, { fields }: any) => {
         fields.forEach(({ id, validations }: any) => {

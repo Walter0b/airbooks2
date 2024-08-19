@@ -60,7 +60,7 @@ const show = {
     ],
 }
 
-const action = [
+const options = [
     {
         label: 'Issue Invoice',
         group: 1,
@@ -143,7 +143,7 @@ const more = [
 ]
 export const travelerTableOptions: TableOptionsType = {
     pageLabel: 'travelers',
-    action,
+    options,
     sort,
     show,
     more,

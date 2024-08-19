@@ -6,7 +6,7 @@ import {
     TableDataType,
 } from '@/utils/types/page-type/table.type'
 import { usePathname, useRouter } from 'next/navigation'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 const TableBody: React.FC<TableBodyType> = ({
     tableData,
@@ -17,7 +17,7 @@ const TableBody: React.FC<TableBodyType> = ({
     className,
 }) => {
     const router = useRouter()
-    const { } = router
+    const {} = router
     const pathname = usePathname()
     const handleRowClick = (
         event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
@@ -36,7 +36,7 @@ const TableBody: React.FC<TableBodyType> = ({
                     onClick={(event) => handleRowClick(event, item.id)}
                     className={cn(
                         className,
-                        'whitespace-nowrap border-b border-gray-200 odd:bg-white even:bg-slate-50 hover:bg-neutral-100'
+                        'whitespace-nowrap border-b border-gray-200 odd:bg-white even:bg-slate-50 hover:bg-black/7'
                     )}
                 >
                     {hasCheckbox && (

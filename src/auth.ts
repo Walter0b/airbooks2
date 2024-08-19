@@ -1,10 +1,23 @@
-import NextAuth from 'next-auth'
+import NextAuth, { Session, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { Session } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
-import { NewSession, UserData } from './utils/types/next-auth.type'
+import { nanoid } from 'nanoid';
+const REFRESH_TOKEN_ERROR = 'RefreshAccessTokenError'
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
+interface ExtendedUser extends User {
+    accessToken: string;
+    refreshToken: string;
+    expiresAt: number;
+}
+
+interface ExtendedJWT extends JWT {
+    accessToken: string;
+    refreshToken: string;
+    expiresAt: number;
+    error?: string;
+}
+
+export const authOptions = {
     providers: [
         CredentialsProvider({
             name: 'Credentials',
@@ -12,39 +25,26 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                 email: { label: 'Email', type: 'text' },
                 password: { label: 'Password', type: 'password' },
             },
-            async authorize(credentials) {
-                try {
-                    const { email, password } = credentials as {
-                        email: string
-                        password: string
-                    }
+            async authorize(credentials): Promise<ExtendedUser | null> {
+                if (!credentials?.email || !credentials?.password) return null
 
-                    const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
-                        {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ email, password }),
-                        }
-                    )
+                try {
+                    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(credentials),
+                    })
 
                     if (!res.ok) {
-                        console.error(
-                            `Failed to log in: ${res.status} ${res.statusText}`
-                        )
+                        console.error(`Login failed: ${res.status} ${res.statusText}`)
                         return null
                     }
 
-                    const response: UserData = await res.json()
-                    const { data } = response
-                    console.log('🚀 ~ authorize ~ data:', data)
+                    const { data } = await res.json()
 
                     return {
                         id: data.access_token,
-                        name: 'name',
-                        email: email,
+                        email: credentials.email.toString(),
                         accessToken: data.access_token,
                         refreshToken: data.refresh_token,
                         expiresAt: Date.now() + data.expires,
@@ -56,123 +56,101 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             },
         }),
     ],
-    trustHost: true,
-    session: {
-        strategy: 'jwt',
-        maxAge: 30 * 24 * 60 * 60, 
-        updateAge: 12 * 60 * 60, 
-    },
-
-    pages: {
-        signIn: '/auth/signin',
-    },
-
     callbacks: {
         async jwt({ token, user }: { token: JWT; user?: any }) {
             if (user) {
-                return {
-                    ...token,
-                    ...user,
-                }
+                return { ...token, ...user } as ExtendedJWT
             }
-            return token
+
+            const extendedToken = token as ExtendedJWT
+
+            if (Date.now() < extendedToken.expiresAt) {
+                return extendedToken
+            }
+
+            return refreshAccessToken(extendedToken)
         },
-        async session({
-            session,
-            token,
-        }: {
+        
+        async session({ session, token }: {
             session: Session
             token: JWT
         }): Promise<Session> {
-            if (token) {
+            const extendedToken = token as ExtendedJWT
+            if (extendedToken) {
                 session.user = {
                     ...session.user,
-                    name: token.name || '',
-                    email: token.email || '',
-                    accessToken: token.accessToken as string,
-                    refreshToken: token.refreshToken as string,
-                    expiresAt: token.expiresAt as number,
+                    email: extendedToken.email!,
+                    accessToken: extendedToken.accessToken,
+                    refreshToken: extendedToken.refreshToken,
+                    expiresAt: extendedToken.expiresAt,
+                };
+
+                if (extendedToken.error === REFRESH_TOKEN_ERROR) {
+                    session.error = REFRESH_TOKEN_ERROR;
                 }
             }
-
-            const expiresAt = session.user.expiresAt
-            const refreshThreshold = 5 * 60 * 1000 // 5 minutes
-            const shouldRefresh =
-                expiresAt && expiresAt - Date.now() < refreshThreshold
-
-            if (shouldRefresh) {
-                try {
-                    const newSession = await refreshAccessToken(
-                        session.user.refreshToken,
-                        session.user.accessToken
-                    )
-                    session.user = {
-                        ...session.user,
-                        ...newSession.user,
-                    }
-                } catch (error) {
-                    console.error('Error refreshing access token:', error)
-                    // Invalidate the session if refresh fails
-                    // Return an empty session object instead of null to comply with the expected return type
-                    return {
-                        ...session,
-                        user: {
-                            ...session.user,
-                            name: '',
-                            email: '',
-                            accessToken: '',
-                            refreshToken: '',
-                            expiresAt: 0,
-                        },
-                    }
-                }
-            }
-
-            return session
+            return session;
         },
     },
-
+    pages: {
+        signIn: '/auth/signin',
+    },
+    session: {
+        strategy: 'jwt' as const,
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+        updateAge: 24 * 60 * 60,   // 24 hours
+        generateSessionToken: () => nanoid(),
+        cookieName: 'next-auth.session-token',
+        cookieOptions: {
+            httpOnly: true,
+            sameSite: 'strict',
+            path: '/',
+            secure: process.env.NODE_ENV === 'production',
+        },
+    },
     secret: process.env.NEXTAUTH_SECRET,
-})
+}
 
-async function refreshAccessToken(
-    refreshToken: string,
-    accessToken: string
-): Promise<NewSession> {
+async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
     try {
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${accessToken}`,
-                },
-                body: JSON.stringify({
-                    refresh_token: refreshToken,
-                    mode: 'json',
-                }),
-            }
-        )
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token.accessToken}`,
+            },
+            body: JSON.stringify({
+                refresh_token: token.refreshToken,
+                mode: 'json',
+            }),
+        })
 
         if (!response.ok) {
-            throw new Error(
-                `Failed to refresh token: ${response.status} ${response.statusText}`
-            )
+            if (response.status === 401) {
+                // Refresh token has expired
+                return {
+                    ...token,
+                    error: 'RefreshTokenExpiredError',
+                };
+            }
+            throw new Error('Failed to refresh token');
         }
 
-        const data: UserData = await response.json()
+        const data = await response.json()
 
         return {
-            user: {
-                id: data.data.access_token,
-                accessToken: data.data.access_token,
-                refreshToken: data.data.refresh_token,
-                expiresAt: Date.now() + data.data.expires,
-            },
+            ...token,
+            accessToken: data.data.access_token,
+            refreshToken: data.data.refresh_token,
+            expiresAt: Date.now() + data.data.expires,
         }
     } catch (error) {
         console.error('Error refreshing access token:', error)
-        throw error // Rethrow the error to handle it in the session callback
+        return {
+            ...token,
+            error: REFRESH_TOKEN_ERROR,
+        }
     }
 }
+
+export const { auth, handlers, signIn, signOut } = NextAuth(authOptions)

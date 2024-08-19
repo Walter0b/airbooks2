@@ -17,7 +17,7 @@ export interface FormFieldType {
     id: string
     span: string
     label?: string
-    type: string
+    type: 'text' | 'input' | 'tel' | 'date' | 'email' | 'space' | 'lookup' | 'textarea' | 'checkbox' | 'number'
     end?: boolean
     readOnly?: boolean
     autoComplete?: string
@@ -73,7 +73,7 @@ export interface FormDataProps {
     [key: string]: IndividualFormDataProp[]
 }
 export interface IndividualFormDataProp {
-    label: string
+    label?: string
     tabs: FormTabType[]
 }
 

@@ -1,14 +1,14 @@
 import { DynamicFormProps } from '@/utils/types/structure'
 import React from 'react'
 import fieldsCompents from './form-Input-Builder'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 export default function DynamicForm({
     items,
     FieldsValue,
 }: Readonly<DynamicFormProps>) {
     return (
-        <div>
+        <>
             {items.map((item, index) => (
                 <React.Fragment key={index}>
                     <div className="flex content-center text-black ">
@@ -38,14 +38,15 @@ export default function DynamicForm({
                                         className={cn(
                                             field.span,
                                             field.type === 'space' &&
-                                                'invisible'
+                                                'invisible',
+                                            'text-end'
                                         )}
                                     >
                                         <label
                                             htmlFor={field.id}
                                             className={cn(
                                                 !field.label && 'mt-7',
-                                                'h-8'
+                                                'input-label h-8 !text-right'
                                             )}
                                         >
                                             {field.label}
@@ -69,6 +70,6 @@ export default function DynamicForm({
                     </div>
                 </React.Fragment>
             ))}
-        </div>
+        </>
     )
 }

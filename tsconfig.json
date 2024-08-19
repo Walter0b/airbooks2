@@ -18,7 +18,13 @@
             }
         ],
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@static/*": ["./src/static*"],
+            "@assets/*": ["./src/assets/*"],
+            "@core/*": ["./src/app/(dashboard)/core/*"],
+            "@reports*": ["./src/app/(dashboard)/reports/*"],
+            "@settings*": ["./src/app/(dashboard)/settings/*"]
+            
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

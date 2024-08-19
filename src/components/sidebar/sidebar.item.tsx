@@ -3,8 +3,8 @@ import { NavigationItem } from './sidebar.item.nav'
 import { SidebarItemType } from '@/utils/types/page-type/table.type'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/states/reducer/modalSlice'
-import { ModalContext } from '@/hooks/context/ModalContext'
-import { cn } from '@/utils/intext'
+import { ModalContext } from '@/states/context/ModalContext'
+import { cn } from '@/utils/functions/classNames'
 
 export default function SideBarItems({
     navigation,
@@ -18,7 +18,6 @@ export default function SideBarItems({
     const dispatch = useDispatch()
     const handleOpenModal = (pageLabel: string) => {
         if (pageLabel) {
-            // console.log(pageLabel)
             setPageLabel?.(pageLabel)
             dispatch(openModal())
         }
@@ -27,7 +26,7 @@ export default function SideBarItems({
     return (
         <ul
             className={cn(
-                ' overflow-hidden h-fit',
+                ' h-fit overflow-hidden',
                 isCompact && 'peer group/compact w-12'
             )}
         >
@@ -51,7 +50,6 @@ export default function SideBarItems({
                     </li>
                 </React.Fragment>
             ))}
-        
         </ul>
     )
 }

@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { DropdownItemType } from '@/utils/types/page-type/table.type'
 import usePeroxideState from '@/hooks/usePeroxideState'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 interface LookupProps {
     required?: boolean
@@ -64,8 +64,8 @@ export function Lookup({
     }
 
     const filteredOptions = options?.filter((option) =>
-        option.value!
-            .toLowerCase()
+        option
+            .value!.toLowerCase()
             .includes(FieldsValue.selectedOption.toLowerCase())
     )
 
@@ -79,7 +79,8 @@ export function Lookup({
                     className={cn(
                         'group/button flex w-full',
                         containerClassName,
-                        isOpen && 'border-blue-400'
+                        isOpen && 'border-blue-400',
+                        'border-gray-300'
                     )}
                 >
                     <input
@@ -102,7 +103,7 @@ export function Lookup({
                 <div
                     className={cn(
                         dropdownContainerClassName,
-                        `absolute z-10 w-${dropdownWidth} ring-opacity-5 origin-top-right bg-white ring-1 shadow-lg ring-black focus:outline-none`
+                        `absolute z-10 w-${dropdownWidth} ring-opacity-5 origin-top-right bg-white  focus:outline-none`
                     )}
                 >
                     {!filteredOptions?.length && <div className="py-3"></div>}
@@ -111,9 +112,7 @@ export function Lookup({
                             <React.Fragment key={item.label}>
                                 {index > 0 &&
                                     options![index - 1].group !==
-                                    item.group && (
-                                        <hr className="border-gray-300" />
-                                    )}
+                                        item.group && <hr className="borde" />}
                                 {!item.url && !item.onClick && !item.value ? (
                                     <div
                                         className={` pointer-events-none uppercase select-none`}

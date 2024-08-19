@@ -2,7 +2,7 @@
 
 // import "./globals.css";
 import Header from '@/components/header/header'
-import { ModalProvider } from '@/hooks/context/ModalContext'
+import { ModalProvider } from '@/states/context/ModalContext'
 import { store } from '@/states/store'
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
@@ -24,7 +24,7 @@ export default function RootLayout({
                     </button>
                 </div>
                 <Header />
-                <div className="flex h-full grow shrink basis-0 overflow-hidden">
+                <div className="flex h-full shrink grow basis-0 overflow-hidden">
                     <SessionProvider>
                         <Provider store={store}>
                             <ModalProvider>{children}</ModalProvider>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ArrowIcon } from '@/assets/svg/arrow'
 import { PaginationPropsType } from '@/utils/types/page-type/table.type'
-import { cn } from '@/utils/intext'
+import { cn } from '@/utils/functions/classNames'
 
 const Pagination: React.FC<PaginationPropsType> = ({
     tableData,
