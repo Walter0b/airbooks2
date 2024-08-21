@@ -1,35 +1,38 @@
-'use client'
-import ItemDetailsBody from '@/components/compactlist/itemdetails'
-import NavLink from 'next-navlink'
-import { ModalContext } from '@/states/context/ModalContext'
-import { openModalWithData } from '@/states/reducer/modalSlice'
-import { useContext } from 'react'
-import { useDispatch } from 'react-redux'
-import TravelerCompactListHeader from './traveler-cl-btn'
-import { tableOptions } from '../dropdown'
-import useCurrentPageData from '@/utils/functions/getCurrentPageData'
+import useCurrentPageData from "@/utils/functions/getCurrentPageData";
+import {useContext} from "react";
+import {ModalContext} from "@/states/context/ModalContext";
+import {useDispatch} from "react-redux";
+import {useParams} from "next/navigation";
+import {openModalWithData} from "@/states/reducer/modalSlice";
+import ItemDetailsBody from "@/components/compactlist/itemdetails";
+import NavLink from "next-navlink";
+import {TableOptionsType} from "@/utils/types/page-type/table.type";
+import CompactListHeader from "@/foundry/ItemDetails/cl-header";
 
-export default function TravelersItemDetails({
-    children,
-}: Readonly<{
-    children: React.ReactNode
-}>) {
+export default function CompactListDetails
+    ({ dropdownOptions,
+         justify_content }
+    : { dropdownOptions: TableOptionsType,
+        justify_content?: string
+    }) {
     const data = useCurrentPageData()!
 
     const { setPageLabel } = useContext(ModalContext)
 
     const dispatch = useDispatch()
-    const handleOpenModal = () => {
-        setPageLabel?.('travelers')
 
+    const { route, id } = useParams<{ route: string, id: string }>();
+    const handleOpenModal = () => {
+        setPageLabel?.(route)
         dispatch(openModalWithData({ data: data }))
     }
 
     return (
         <ItemDetailsBody data-slot="itemDetails">
-            <TravelerCompactListHeader
+            <CompactListHeader
                 data-slot="compactListHeader"
-                dropdownOptions={tableOptions}
+                dropdownOptions={dropdownOptions}
+                justify_content={justify_content}
                 handleOpenModal={handleOpenModal}
             />
             <div
@@ -51,7 +54,7 @@ export default function TravelersItemDetails({
                     Bookings
                 </NavLink>
                 <hr className="mt-[0.4rem]"></hr>
-                <div className="h-full w-full">{children} </div>
+                {/*<div className="h-full w-full">{children}</div>*/}
             </div>
         </ItemDetailsBody>
     )

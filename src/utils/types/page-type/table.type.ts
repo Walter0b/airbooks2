@@ -146,6 +146,12 @@ export interface TableItemType extends CheckboxType {
     onCheckboxChange?: (value: string) => void
 }
 
+export interface fieldsToDisplayType {
+    justify_content: string
+    leftGroup: Record<string, string[]>[]
+    rightGroup: Record<string, string[]>[]
+}
+
 export interface GenericTablePageType {
     fetchQuery: any
     columns: TableColumnType[]
@@ -154,6 +160,7 @@ export interface GenericTablePageType {
     // headerSlot: ReactNode,
     // bodySlot: ReactNode,
     tableOptions: TableOptionsType
+    compactListFieldsToDisplay?: fieldsToDisplayType
 }
 
 export interface MiniSidebarType {

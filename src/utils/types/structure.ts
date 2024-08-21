@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react'
 import { DropdownItemType, ShowTableOptionsType } from './page-type/table.type'
-import {string} from "prop-types";
 
 // Props for the layout component
 export interface LayoutProps {
@@ -17,7 +16,7 @@ export interface FormFieldType {
     id: string
     span: string
     label?: string
-    type: 'text' | 'input' | 'tel' | 'date' | 'email' | 'space' | 'lookup' | 'textarea' | 'checkbox' | 'number'
+    type: 'text' | 'input' | 'tel' | 'date' | 'email' | 'space' | 'lookup' | 'textarea' | 'checkbox' | 'number' | 'select'
     end?: boolean
     readOnly?: boolean
     autoComplete?: string

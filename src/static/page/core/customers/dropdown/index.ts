@@ -1,4 +1,9 @@
-import { TableOptionsType } from '@/utils/types/page-type/table.type'
+import {DetailComponentInputs, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
+import {PenIcon} from "@assets/svg/pen";
+import {PDFIcon} from "@assets/svg/pdf";
+import {PrintIcon} from "@assets/svg/print";
+import {MailIcon} from "@assets/svg/mail";
+import {NewTabIcon} from "@assets/svg/new_window";
 
 const show = {
     title: 'Customers',
@@ -116,9 +121,47 @@ const more = [
         group: 3,
     },
 ]
+
+const detailInputs: DetailComponentInputs[] = [
+    {
+        id: 'edit_button',
+        type: InputType.Button,
+        icon: PenIcon,
+        attrs: {
+            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
+        },
+        group: 1
+    },
+    {
+        id: 'newTravelItem_button',
+        type: InputType.Button,
+        value: 'New Travel Item',
+        attrs: {
+            className: 'border-grey-450 bg-red-650 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
+        },
+        group: 2
+    },
+    {
+        id: 'dropdown',
+        type: InputType.Dropdown,
+        value: 'More',
+        attrs: {
+            hasDropdownIcon: true,
+            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md ',
+            arrowClassName: 'ml-2',
+            dropdownClassName: 'mr-12 mt-1 right-0 w-44',
+            dropdownText: 'text-center py-2',
+            dropdownTitles: 'right-0 mt-2 mr-11 font-medium',
+            dropdownOptions: more
+        },
+        group: 3
+    }
+]
+
 export const customerTableOptions: TableOptionsType = {
     pageLabel: 'travelers',
     options,
+    detailInputs,
     sort,
     show,
     more,

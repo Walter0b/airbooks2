@@ -312,7 +312,6 @@ const detailInputs: DetailComponentInputs[] = [
 
 export const travelItemsTableOptions: TableOptionsType = {
     pageLabel: 'travel Items',
-    action,
     sort,
     show,
     detailInputs,

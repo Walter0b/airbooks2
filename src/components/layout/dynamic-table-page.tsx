@@ -22,7 +22,7 @@ export default function GenericTablePage({
     const savedState = useSelector((state: RootState) => state.tableStates[pageName])
     const page = useSingleState(savedState?.page || 1)
     const pageSize = useSingleState(savedState?.pageSize || 10)
-    const [sort, setSort] = useState<string>(savedState?.sort || '')
+    const [sort, setSort] = useState(savedState?.sort || '')
     const [filter, setFilter] = useState(savedState?.filter || (param?.filter === 'all' ? '' : param?.filter))
     const [search, setSearch] = useState(savedState?.search || '')
     const [mounted, setMounted] = useState(false)

@@ -114,7 +114,7 @@ export const api = createApi({
 
 export const {
     useFetchTravelersQuery,
-    useFetchTravelItemsQuery,
+    useFetchTravelItemQuery,
     useFetchCustomersQuery,
     useFetchAgencyProfileQuery,
     useFetchUsersQuery,
@@ -124,7 +124,6 @@ export const {
     useFetchBusinessRulesQuery,
     useFetchPreferencesQuery,
     useFetchIntegrationQuery,
-    useFetchTravelItemQuery,
     useFetchEstimatesQuery,
     useFetchInvoiceQuery,
     useFetchCreditNotesQuery,
