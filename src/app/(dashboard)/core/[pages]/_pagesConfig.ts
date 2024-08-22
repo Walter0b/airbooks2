@@ -4,9 +4,9 @@ import {
     useFetchCustomersQuery
 } from '@/states/reducer/apiSlice'
 import { PageConfigType } from '@/utils/types/page-type/table.type'
-import {travelerCLFieldsToDisplay, travelersColumns} from '@/static/page/core/travelers/table'
-import {customerCLFiledsToDisplay, customerColumns} from '@/static/page/core/customers/table'
-import {TravelerItemsColums, travelItemsClToDisplay} from "@/static/page/core/travelerItems/table";
+import {travelerCLLayout, travelersColumns} from '@/static/page/core/travelers/table'
+import {customerCLLayout, customerColumns} from '@/static/page/core/customers/table'
+import {TravelerItemsColums, travelItemsCLLayout} from "@/static/page/core/travelerItems/table";
 
 import { customerTableOptions } from '@/static/page/core/customers/dropdown'
 import { travelItemsTableOptions} from '@/static/page/core/travelerItems/dropdown'
@@ -18,20 +18,20 @@ export const pagesConfig: PageConfigType = {
         fetchQuery: useFetchTravelersQuery,
         columns: travelersColumns,
         tableOptions: tableOptions,
-        compactListFieldsToDisplay: travelerCLFieldsToDisplay
+        compactListLayout: travelerCLLayout
     },
 
     'travel-items': {
         fetchQuery: useFetchTravelItemQuery,
         columns: TravelerItemsColums,
         tableOptions: travelItemsTableOptions,
-        compactListFieldsToDisplay: travelItemsClToDisplay
+        compactListLayout: travelItemsCLLayout
     },
 
     customer: {
         fetchQuery: useFetchCustomersQuery,
         columns: customerColumns,
         tableOptions: customerTableOptions,
-        compactListFieldsToDisplay: customerCLFiledsToDisplay
+        compactListLayout: customerCLLayout
     },
 }

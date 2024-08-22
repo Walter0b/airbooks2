@@ -8,8 +8,9 @@ export const travelersColumns = [
     { key: 'postal_code', label: 'Postal Code' },
 ]
 
-export const travelerCLFieldsToDisplay: fieldsToDisplayType = {
-    justify_content: 'justify-end',
+export const travelerCLLayout: fieldsToDisplayType = {
+    headerContent_Position: 'justify-end',
+    rightTab_Options: ['Snapshot', 'Bookings'],
     leftGroup: [
         {
             fieldsName: ['display_name'],

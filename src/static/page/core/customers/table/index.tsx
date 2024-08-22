@@ -9,17 +9,14 @@ export const customerColumns = [
     { key: 'state', label: 'State' },
 ]
 
-export const customerCLFiledsToDisplay: fieldsToDisplayType = {
-    justify_content: 'justify-end',
+export const customerCLLayout: fieldsToDisplayType = {
+    headerContent_Position: 'justify-end',
+    rightTab_Options: ['Snapshot', 'Statement'],
     leftGroup: [
         {
             fieldsName: ['customer_name'],
             class: ['text-black']
-        },
-        {
-            fieldsName: ['street', 'city'],
-            class: ['pr-1 text-gray-500', 'text-cyan-550 pl-1 font-semibold']
-        },
+        }
     ],
     rightGroup: [
         {

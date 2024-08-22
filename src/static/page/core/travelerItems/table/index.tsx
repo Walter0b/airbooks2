@@ -12,8 +12,8 @@ export const TravelerItemsColums = [
     { key: 'invoice', label: 'Invoice#' }
 ]
 
-export const travelItemsClToDisplay: fieldsToDisplayType = {
-    justify_content: 'justify-start',
+export const travelItemsCLLayout: fieldsToDisplayType = {
+    headerContent_Position: 'justify-start',
     leftGroup: [
         {
             fieldsName: ['traveler_name'],

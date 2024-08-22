@@ -18,14 +18,14 @@ export default function DynamicPage({
 
     if (!pageConfig) return <p>Page {params.pages} found</p>
 
-    const { fetchQuery, columns, tableOptions, compactListFieldsToDisplay } = pageConfig
+    const { fetchQuery, columns, tableOptions, compactListLayout } = pageConfig
 
     return (
         <GenericCompactPage
             fetchQuery={fetchQuery}
             columns={columns}
             tableOptions={tableOptions}
-            compactListFieldsToDisplay={compactListFieldsToDisplay}
+            compactListLayout={compactListLayout}
         />
     )
 }

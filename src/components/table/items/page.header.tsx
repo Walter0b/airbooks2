@@ -14,7 +14,7 @@ export default function TableFilterOptions({
         <div
             className={cn(
                 'flex h-16 items-center rounded-sm border-b border-gray-300 sm:justify-between ',
-                className ?? '  max-sm:gap-9 sm:justify-between md:h-20'
+                className ?? '  max-sm:gap-9 sm:justify-between md:h-15'
             )}
         >
             <div

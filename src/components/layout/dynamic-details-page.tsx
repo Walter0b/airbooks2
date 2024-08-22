@@ -10,7 +10,7 @@ export default function GenericCompactPage({
     fetchQuery,
     columns,
     tableOptions,
-    compactListFieldsToDisplay
+    compactListLayout
 }: Readonly<GenericTablePageType>) {
     console.log('🚀 ~ tableOptions:', tableOptions)
     const page = useSingleState(1)
@@ -26,19 +26,19 @@ export default function GenericCompactPage({
         return (
             <div className="flex h-screen">
                 <div
-                    className=" h-full w-1/3 overflow-hidden border-r border-gray-300"
+                    className=" h-full w-2/4 overflow-hidden border-r border-gray-300"
                     data-slot="body"
                 >
                     <Header data-slot="header" dropdownOptions={tableOptions} />
                     <CompactList
                         data-slot="compactList"
                         tableData={tableData}
-                        fieldsToDisplay={compactListFieldsToDisplay}
+                        layoutParameters={compactListLayout}
                     />
                 </div>
                 <CompactListDetails
                     dropdownOptions={tableOptions}
-                    justify_content={compactListFieldsToDisplay?.justify_content}
+                    layoutParameters={compactListLayout}
                 />
             </div>
         )

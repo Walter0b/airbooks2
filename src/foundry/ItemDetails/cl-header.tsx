@@ -20,7 +20,7 @@ export default function CompactListHeader({
     }, []);
 
     return (
-        <div className="flex h-full w-full items-end">
+        <div className="flex h-full w-full items-center">
             <div className="flex h-8 w-full justify-between pr-5">
                 <div className={`flex ml-3 w-full ${justify_content}`}>
                     {inputs.map((inputsGroup: DetailComponentInputs[], index: number) => {

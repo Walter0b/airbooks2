@@ -6,8 +6,8 @@ import {black} from "next/dist/lib/picocolors";
 
 export default function CompactList({
     tableData,
-    fieldsToDisplay
-}: Readonly<{ tableData?: ResponseDataType, fieldsToDisplay?: fieldsToDisplayType }>) {
+    layoutParameters
+}: Readonly<{ tableData?: ResponseDataType, layoutParameters?: fieldsToDisplayType }>) {
 
     const page = useSingleState(1)
     const pageSize = useSingleState(10)
@@ -28,7 +28,7 @@ export default function CompactList({
                         onClick={() => handleClick(item.id)}
                         key={item.id}
                         className={cn(
-                            'flex w-full border-b p-2 hover:!bg-gray-100',
+                            'flex w-full border-b p-2 hover:!bg-gray-100 border-b border-gray-200',
                             currentID === item.id && 'bg-gray-100'
                         )}
                     >
@@ -46,7 +46,7 @@ export default function CompactList({
                         >
                             <div className="justify-start text-left">
                                 {
-                                    fieldsToDisplay?.leftGroup?.map((fields) => {
+                                    layoutParameters?.leftGroup?.map((fields) => {
                                         return (
                                             fields.fieldsName.length === 1 ?
                                             <div key={fields.fieldsName[0]} className={fields.class[0]}>
@@ -68,7 +68,7 @@ export default function CompactList({
                             </div>
                             <div className="justify-end text-right">
                                 {
-                                    fieldsToDisplay?.rightGroup?.map((fields) => {
+                                    layoutParameters?.rightGroup?.map((fields) => {
                                         return (
                                             fields.fieldsName.length === 1 ?
                                                 <div key={fields.fieldsName[0]} className={fields.class[0]}>
