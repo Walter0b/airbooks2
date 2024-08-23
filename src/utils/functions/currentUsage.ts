@@ -1,6 +1,6 @@
-import {DetailComponentInputs} from "@/utils/types/page-type/table.type";
+import {CompactListMainButtons} from "@/utils/types/page-type/table.type";
 
-function groupElementsByGroup(detailComponentInputs: DetailComponentInputs[] | any[]): DetailComponentInputs[][] {
+function groupElementsByGroup(detailComponentInputs: CompactListMainButtons[] | any[]): CompactListMainButtons[][] {
     return detailComponentInputs.reduce((acc, detailComponentInput) => {
         const { group } = detailComponentInput
         if (!acc[group]) acc[group] = []

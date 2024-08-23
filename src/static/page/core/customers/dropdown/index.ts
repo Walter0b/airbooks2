@@ -1,9 +1,10 @@
-import {DetailComponentInputs, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
+import {CompactListMainButtons, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
 import {PenIcon} from "@assets/svg/pen";
 import {PDFIcon} from "@assets/svg/pdf";
 import {PrintIcon} from "@assets/svg/print";
 import {MailIcon} from "@assets/svg/mail";
-import {NewTabIcon} from "@assets/svg/new_window";
+import {TemplateSelectionIcon} from "@assets/svg/templateSelection";
+import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
 
 const show = {
     title: 'Customers',
@@ -122,47 +123,73 @@ const more = [
     },
 ]
 
-const detailInputs: DetailComponentInputs[] = [
+const transactions = [
     {
-        id: 'edit_button',
-        type: InputType.Button,
-        icon: PenIcon,
-        attrs: {
-            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
-        },
+        label: 'Travel Item',
+        url: '#',
         group: 1
     },
     {
-        id: 'newTravelItem_button',
-        type: InputType.Button,
-        value: 'New Travel Item',
-        attrs: {
-            className: 'border-grey-450 bg-red-650 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
-        },
-        group: 2
+        label: 'Invoice',
+        url: '#',
+        group: 1
     },
     {
-        id: 'dropdown',
+        label: 'Credit Note',
+        url: '#',
+        group: 1
+    },
+    {
+        label: 'Payment',
+        url: '#',
+        group: 1
+    }
+]
+
+const actionTabs: CompactListButtonLayout[] = [
+    {
+        name: 'Snapshot',
+        api_name: '',
+        isEditable: true,
+        isExportableToPDF: false,
+        isPrintable: false,
+        canSendEmail: true,
+        selectTemplate: false
+    },
+    {
+        name: 'Bookings',
+        api_name: 'bookings',
+        isEditable: true,
+        isExportableToPDF: false,
+        isPrintable: false,
+        canSendEmail: true,
+        selectTemplate: false
+    },
+]
+
+const mainButtons : CompactListMainButtons[] = [
+    {
+        id: 'new_transaction',
         type: InputType.Dropdown,
-        value: 'More',
+        value: 'New Transaction',
         attrs: {
             hasDropdownIcon: true,
-            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md ',
-            arrowClassName: 'ml-2',
-            dropdownClassName: 'mr-12 mt-1 right-0 w-44',
-            dropdownText: 'text-center py-2',
-            dropdownTitles: 'right-0 mt-2 mr-11 font-medium',
-            dropdownOptions: more
-        },
-        group: 3
+            className:'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+            arrowClassName:'ml-2',
+            dropdownClassName:'mr-12 mt-1 right-0 w-44',
+            dropdownText:'text-center py-2',
+            dropdownTitles:'right-0 mt-2 mr-11 font-medium',
+            dropdownOptions: transactions
+        }
     }
 ]
 
 export const customerTableOptions: TableOptionsType = {
     pageLabel: 'travelers',
     options,
-    detailInputs,
     sort,
     show,
     more,
+    mainButtons,
+    actionButtons: actionTabs
 }

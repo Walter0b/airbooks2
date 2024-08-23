@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { useSingleStateType } from '../structure'
+import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
 
 // Interface for Sidebar item
 export interface SidebarItemType {
@@ -96,25 +97,22 @@ export interface TableOptionsType {
     refresh?:  () => void
     show?: ShowTableOptionsType
     action?: DropdownItemType[]
-    detailInputs: DetailComponentInputs[]
+    mainButtons?: CompactListMainButtons[]
+    actionButtons: CompactListButtonLayout[]
 }
 
-export interface DetailComponentInputs {
+export interface CompactListMainButtons {
     id: string
     type: InputType
     value?: string
-    icon?: React.FC<{ className: string }>
     attrs: {
         [key: string]: string | boolean | DropdownItemType[]
     }
-    group: number
 }
 
 export enum InputType {
     Button = 'button',
-    Dropdown = 'dropdown',
-    Text = 'text',
-    TextArea = 'textArea'
+    Dropdown = 'dropdown'
 }
 
 export interface TableDataType {

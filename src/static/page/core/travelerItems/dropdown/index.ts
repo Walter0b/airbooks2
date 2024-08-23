@@ -1,9 +1,5 @@
-import {DetailComponentInputs, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
-import {MailIcon} from "@/assets/svg/mail";
-import {PrintIcon} from "@/assets/svg/print";
-import {NewTabIcon} from "@/assets/svg/new_window";
-import {PDFIcon} from "@/assets/svg/pdf";
-import {PenIcon} from "@/assets/svg/pen";
+import {CompactListMainButtons, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
+import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
 
 const show = {
     title: 'Travel Items',
@@ -151,6 +147,7 @@ const sort = [
         url: '#',
     }
 ]
+
 const more = [
     {
         label: 'Email Traveler',
@@ -229,91 +226,84 @@ const more = [
     }
 ]
 
-const detailInputs: DetailComponentInputs[] = [
+const transactions = [
     {
-        id: 'edit_button',
-        type: InputType.Button,
-        icon: PenIcon,
-        attrs: {
-            className: 'border-grey-450 ml-4 flex h-full items-center justify-center rounded-l border-[0.8px] bg-gray-100 p-2 hover:shadow-md',
-        },
+        label: 'Travel Item',
+        url: '#',
         group: 1
     },
     {
-        id: 'pdf_button',
-        type: InputType.Button,
-        icon: PDFIcon,
-        attrs: {
-            className: 'border-grey-450 flex  h-full items-center justify-center gap-[1px] border-[0.8px] bg-gray-100 px-2 hover:shadow-md',
-        },
+        label: 'Invoice',
+        url: '#',
         group: 1
     },
     {
-        id: 'print_button',
-        type: InputType.Button,
-        icon: PrintIcon,
-        attrs: {
-            className: 'border-grey-450 flex  h-full items-center justify-center gap-[1px] border-[0.8px] bg-gray-100 px-2 hover:shadow-md',
-        },
+        label: 'Credit Note',
+        url: '#',
         group: 1
     },
     {
-        id: 'mail_button',
-        type: InputType.Button,
-        icon: MailIcon,
-        attrs: {
-            className: 'border-grey-450 flex h-full items-center justify-center rounded-r border-[0.8px] bg-gray-100 p-2 hover:shadow-md',
-        },
+        label: 'Payment',
+        url: '#',
         group: 1
+    }
+]
+
+const actionTabs: CompactListButtonLayout[] = [
+    {
+        isEditable: true,
+        isExportableToPDF: false,
+        isPrintable: false,
+        canSendEmail: true,
+        selectTemplate: false
     },
     {
-        id: 'newTab_button',
-        type: InputType.Button,
-        icon: NewTabIcon,
-        attrs: {
-            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
-        },
-        group: 2
+        isEditable: true,
+        isExportableToPDF: false,
+        isPrintable: false,
+        canSendEmail: true,
+        selectTemplate: false
     },
+]
+
+const mainButtons : CompactListMainButtons[] = [
     {
-        id: 'issueInvoice_button',
+        id: 'issue_invoice',
         type: InputType.Button,
         value: 'Issue Invoice',
         attrs: {
-            className: 'border-grey-450 bg-red-650 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
-        },
-        group: 3
+            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2'
+        }
     },
     {
-        id: 'IssueSalesR_button',
+        id: 'issue_sales_receipt',
         type: InputType.Button,
         value: 'Issue Sales Receipt',
         attrs: {
-            className: 'border-grey-450 bg-red-650 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md',
-        },
-        group: 4
+            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2'
+        }
     },
-    {
-        id: 'dropdown',
-        type: InputType.Dropdown,
-        value: 'More',
-        attrs: {
-            hasDropdownIcon: true,
-            className:'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-neutral-100 px-3 hover:shadow-md ',
-            arrowClassName:'ml-2',
-            dropdownClassName:'mr-12 mt-1 right-0 w-44',
-            dropdownText:'text-center py-2',
-            dropdownTitles:'right-0 mt-2 mr-11 font-medium',
-            dropdownOptions: more
-        },
-        group: 5
-    }
+    // {
+    //     id: 'new_transaction',
+    //     type: InputType.Dropdown,
+    //     value: 'New Transaction',
+    //     attrs: {
+    //         hasDropdownIcon: true,
+    //         className:'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+    //         arrowClassName:'ml-2',
+    //         dropdownClassName:'mr-12 mt-1 right-0 w-44',
+    //         dropdownText:'text-center py-2',
+    //         dropdownTitles:'right-0 mt-2 mr-11 font-medium',
+    //         dropdownOptions: transactions
+    //     }
+    // }
 ]
 
 export const travelItemsTableOptions: TableOptionsType = {
     pageLabel: 'travel Items',
     sort,
     show,
-    detailInputs,
     more,
+    mainButtons,
+    actionButtons: actionTabs,
 }

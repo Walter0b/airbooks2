@@ -44,19 +44,19 @@ export default function CompactListDetails({ dropdownOptions, layoutParameters }
                 data-slot="compactListBody"
                 className="w-full border-b border-gray-200"
             >
-                { layoutParameters?.rightTab_Options?.length &&
+                { (dropdownOptions.actionButtons?.length && dropdownOptions.actionButtons?.length > 1) &&
                     <div className='mt-12 w-full'>
                         <button
                             onClick={() => updateURL('')}
                             className={`border-cyan-550 px-10 text-black hover:border-b-3`}
                         >
-                            { layoutParameters?.rightTab_Options[0] }
+                            { dropdownOptions.actionButtons[0].name }
                         </button>
                         <button
                             onClick={() => updateURL('SecondTab')}
                             className={`text-cyan-550 border-cyan-550 px-10 text-black hover:border-b-3`}
                         >
-                            { layoutParameters?.rightTab_Options[1] }
+                            { dropdownOptions.actionButtons[1].name }
                         </button>
                     </div>
                 }
