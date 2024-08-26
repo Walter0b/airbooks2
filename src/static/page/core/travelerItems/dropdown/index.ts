@@ -251,19 +251,14 @@ const transactions = [
 
 const actionTabs: CompactListButtonLayout[] = [
     {
+        name: 'Snapshot',
+        api_name: '',
         isEditable: true,
-        isExportableToPDF: false,
-        isPrintable: false,
+        isExportableToPDF: true,
+        isPrintable: true,
         canSendEmail: true,
-        selectTemplate: false
-    },
-    {
-        isEditable: true,
-        isExportableToPDF: false,
-        isPrintable: false,
-        canSendEmail: true,
-        selectTemplate: false
-    },
+        selectTemplate: true
+    }
 ]
 
 const mainButtons : CompactListMainButtons[] = [
@@ -282,21 +277,7 @@ const mainButtons : CompactListMainButtons[] = [
         attrs: {
             className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2'
         }
-    },
-    // {
-    //     id: 'new_transaction',
-    //     type: InputType.Dropdown,
-    //     value: 'New Transaction',
-    //     attrs: {
-    //         hasDropdownIcon: true,
-    //         className:'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
-    //         arrowClassName:'ml-2',
-    //         dropdownClassName:'mr-12 mt-1 right-0 w-44',
-    //         dropdownText:'text-center py-2',
-    //         dropdownTitles:'right-0 mt-2 mr-11 font-medium',
-    //         dropdownOptions: transactions
-    //     }
-    // }
+    }
 ]
 
 export const travelItemsTableOptions: TableOptionsType = {

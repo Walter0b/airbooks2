@@ -153,17 +153,17 @@ const actionTabs: CompactListButtonLayout[] = [
         isEditable: true,
         isExportableToPDF: false,
         isPrintable: false,
-        canSendEmail: true,
+        canSendEmail: false,
         selectTemplate: false
     },
     {
-        name: 'Bookings',
-        api_name: 'bookings',
+        name: 'Statement',
+        api_name: 'statement',
         isEditable: true,
-        isExportableToPDF: false,
-        isPrintable: false,
+        isExportableToPDF: true,
+        isPrintable: true,
         canSendEmail: true,
-        selectTemplate: false
+        selectTemplate: true
     },
 ]
 

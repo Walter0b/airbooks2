@@ -5,28 +5,38 @@ import CloseButton from "@/components/buttons/close-Button";
 import ButtonLayout from "@/foundry/actionButtonLayout/actionButtonLayout";
 import Buttons from "@/components/buttons/buttons";
 import {useParams, useRouter} from "next/navigation";
+import {useEffect, useState} from "react";
+import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
 
 export default function CompactListHeader({
     dropdownOptions,
     justify_content,
+    contentToDisplay,
     handleOpenModal
 }: Readonly<{
     dropdownOptions: TableOptionsType,
     justify_content?: string,
+    contentToDisplay?: string,
     handleOpenModal: () => void
 }>) {
+    const [activeActionButtons, setActiveActionButtons] = useState<CompactListButtonLayout>()
+
     const params = useParams();
     const route = useRouter();
+
+    useEffect(() => {
+        setActiveActionButtons(dropdownOptions.actionButtons.find(value => value.api_name === contentToDisplay))
+    }, [contentToDisplay])
 
     return (
         <div className="flex h-full w-full items-center">
             <div className="flex h-8 w-full justify-between pr-5">
-                <div className={`flex flex-row justify-between ${justify_content}`}>
-                    <ButtonLayout isEditable={true}
-                                  isPrintable={true}
-                                  isExportableToPDF={true}
-                                  canSendEmail={true}
-                                  selectTemplate={true}
+                <div className={`flex flex-row w-full mr-4 justify-between ${justify_content}`}>
+                    <ButtonLayout isEditable={activeActionButtons?.isEditable}
+                                  isPrintable={activeActionButtons?.isPrintable}
+                                  isExportableToPDF={activeActionButtons?.isExportableToPDF}
+                                  canSendEmail={activeActionButtons?.canSendEmail}
+                                  selectTemplate={activeActionButtons?.selectTemplate}
                     />
                     <div className='flex flex-row'>
                         { dropdownOptions.mainButtons?.map( (button) => {
