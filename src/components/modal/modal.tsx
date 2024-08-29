@@ -86,7 +86,7 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
                 >
                     <div
                         id="body"
-                        className="flex-grow overflow-y-auto py-4 px-6"
+                        className="flex-grow overflow-y-auto py-4 px-6 h-10/12"
                     >
                         <DynamicForm
                             items={formData}
@@ -95,7 +95,7 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
                     </div>
                     <div
                         id="footer"
-                        className=" bottom-0 flex h-16 w-full flex-none items-center justify-start gap-3 border-t bg-white px-8"
+                        className="bottom-0 flex h-2/12 w-full flex-none items-center justify-start gap-3 border-t border-gray-300 bg-white px-8"
                     >
                         <button
                             type="submit"

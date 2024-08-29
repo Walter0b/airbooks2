@@ -1,5 +1,5 @@
 import { commonValidations } from '@/static/modal/validation'
-import { IndividualFormDataProp } from '@/utils/types/structure'
+import {FormFieldType, IndividualFormDataProp} from '@/utils/types/structure'
 
 export const TravelersInputFields: IndividualFormDataProp[] = [
     {
@@ -194,29 +194,86 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
         ],
     },
     {
-        label: 'Booking',
+        label: 'Preferences',
         tabs: [
+            // {
+            //     label: '',
+            //     fields: [
+            //         {
+            //             id: 'smoking',
+            //             label: 'Smoking',
+            //             type: 'checkbox',
+            //             span: 'sm:col-span-6',
+            //         }
+            //     ],
+            // },
             {
-                label: 'Traveler Name',
+                label: 'Flights',
                 fields: [
                     {
-                        id: 'title',
-                        label: 'Title',
+                        id: 'seating',
+                        label: 'Seating',
                         type: 'lookup',
-                        span: 'sm:col-span-1',
-                    },
-                    {
-                        id: 'first_name',
-                        label: 'First Name',
-                        type: 'text',
                         span: 'sm:col-span-3',
                     },
                     {
-                        id: 'lastName',
-                        label: 'Last Name',
-                        type: 'text',
-                        span: 'sm:col-span-2',
+                        id: 'meal_request',
+                        label: 'Meal Request',
+                        type: 'lookup',
+                        span: 'sm:col-span-3',
                     },
+                    {
+                        id: 'special_request',
+                        label: 'Special Request',
+                        type: 'text',
+                        span: 'sm:col-span-6'
+                    },
+                    {
+                        id: 'preferred_airline',
+                        label: 'Preferred Airline',
+                        type: 'lookup',
+                        span: 'sm:col-span-3'
+                    },
+                    {
+                        id: 'frequent_flyer',
+                        label: 'Frequent Flyer#',
+                        type: 'text',
+                        span: 'sm:col-span-2'
+                    },
+                    {
+                        id: 'delete',
+                        label: 'X',
+                        type: 'button',
+                        span: 'sm:col-span-1'
+                    },
+                    {
+                        id: 'airTax',
+                        label: 'Air Tax',
+                        type: 'table',
+                        span: 'sm:col-span-3',
+                        tableClass: '',
+                        tableLayout: [
+                            {
+                                trClass: '',
+                                tds: [{
+                                        tdClass: '',
+                                        content: {
+                                            id: 'td1',
+                                            type: 'text',
+                                            span: ''
+                                        }
+                                    }, {
+                                        tdClass: '',
+                                        content: {
+                                            id: 'td2',
+                                            type: 'text',
+                                            span: ''
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                    }
                 ],
             },
         ],

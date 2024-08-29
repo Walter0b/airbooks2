@@ -11,7 +11,7 @@ export default function DynamicForm({
         <>
             {items.map((item, index) => (
                 <React.Fragment key={index}>
-                    <div className="flex content-center text-black ">
+                    <div className="flex content-center text-black">
                         <div
                             className={cn(
                                 'mt-9 w-1/6',

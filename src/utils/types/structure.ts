@@ -16,7 +16,10 @@ export interface FormFieldType {
     id: string
     span: string
     label?: string
-    type: 'text' | 'input' | 'tel' | 'date' | 'email' | 'space' | 'lookup' | 'textarea' | 'checkbox' | 'number' | 'select'
+    type: 'text' | 'input' | 'tel' | 'date' | 'email' | 'space' | 'lookup' | 'textarea' | 'checkbox' | 'number' | 'select' | 'button' | 'table'
+    action?: string
+    tableClass?: string
+    tableLayout?: TableLayoutType[]
     end?: boolean
     readOnly?: boolean
     autoComplete?: string
@@ -24,6 +27,16 @@ export interface FormFieldType {
     required?: boolean
     validations?: (value: string, Fields?: FormFieldType[]) => any
     options?: DropdownItemType[]
+}
+
+export interface TableLayoutType {
+    trClass: string
+    tds: TdLayout[]
+}
+
+interface TdLayout {
+    tdClass: string
+    content: FormFieldType
 }
 
 // Type for a group of fields in the dynamic form

@@ -11,6 +11,7 @@ import {useContext} from "react";
 import {useDispatch} from "react-redux";
 import {openModalWithData} from "@/states/reducer/modalSlice";
 import {ModalContext} from "@/states/context/ModalContext";
+import useCurrentPageData from "@/utils/functions/getCurrentPageData";
 
 export default function ButtonLayout({ isEditable, isExportableToPDF, isPrintable, canSendEmail, selectTemplate } : CompactListButtonLayout) {
 
@@ -18,14 +19,15 @@ export default function ButtonLayout({ isEditable, isExportableToPDF, isPrintabl
 
     const { pages, id } = params;
 
+    const data = useCurrentPageData()!;
+
     const { setPageLabel } = useContext(ModalContext)
 
     const dispatch = useDispatch()
 
     const edit = () => {
-        console.log(`An operation on item: ${id[0]} is in progress`)
-        // setPageLabel?.(pages[0])
-        // dispatch(openModalWithData({ data: data }))
+        setPageLabel?.(pages as string)
+        dispatch(openModalWithData({ data: data }))
     }
 
     const saveAsPDF = () => {
