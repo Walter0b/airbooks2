@@ -1,4 +1,4 @@
-import {fieldsToDisplayType} from "@/utils/types/page-type/table.type";
+import { fieldsToDisplayType } from '@/utils/types/page-type/table.type'
 
 export const customerColumns = [
     { key: 'customer_name', label: 'Customer Name' },
@@ -15,15 +15,15 @@ export const customerCLLayout: fieldsToDisplayType = {
     leftGroup: [
         {
             fieldsName: ['customer_name'],
-            class: ['text-black']
-        }
+            class: ['text-black'],
+        },
     ],
     rightGroup: [
         {
             fieldsName: ['id_country'],
-            class: ['text-black']
+            class: ['text-black'],
         },
-    ]
+    ],
 }
 
 interface FlightInfo {

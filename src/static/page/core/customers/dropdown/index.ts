@@ -1,10 +1,14 @@
-import {CompactListMainButtons, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
-import {PenIcon} from "@assets/svg/pen";
-import {PDFIcon} from "@assets/svg/pdf";
-import {PrintIcon} from "@assets/svg/print";
-import {MailIcon} from "@assets/svg/mail";
-import {TemplateSelectionIcon} from "@assets/svg/templateSelection";
-import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
+import {
+    CompactListMainButtons,
+    InputType,
+    TableOptionsType,
+} from '@/utils/types/page-type/table.type'
+import { PenIcon } from '@assets/svg/pen'
+import { PDFIcon } from '@assets/svg/pdf'
+import { PrintIcon } from '@assets/svg/print'
+import { MailIcon } from '@assets/svg/mail'
+import { TemplateSelectionIcon } from '@assets/svg/templateSelection'
+import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 const show = {
     title: 'Customers',
@@ -127,23 +131,23 @@ const transactions = [
     {
         label: 'Travel Item',
         url: '#',
-        group: 1
+        group: 1,
     },
     {
         label: 'Invoice',
         url: '#',
-        group: 1
+        group: 1,
     },
     {
         label: 'Credit Note',
         url: '#',
-        group: 1
+        group: 1,
     },
     {
         label: 'Payment',
         url: '#',
-        group: 1
-    }
+        group: 1,
+    },
 ]
 
 const actionTabs: CompactListButtonLayout[] = [
@@ -154,7 +158,7 @@ const actionTabs: CompactListButtonLayout[] = [
         isExportableToPDF: false,
         isPrintable: false,
         canSendEmail: false,
-        selectTemplate: false
+        selectTemplate: false,
     },
     {
         name: 'Statement',
@@ -163,25 +167,26 @@ const actionTabs: CompactListButtonLayout[] = [
         isExportableToPDF: true,
         isPrintable: true,
         canSendEmail: true,
-        selectTemplate: true
+        selectTemplate: true,
     },
 ]
 
-const mainButtons : CompactListMainButtons[] = [
+const mainButtons: CompactListMainButtons[] = [
     {
         id: 'new_transaction',
         type: InputType.Dropdown,
         value: 'New Transaction',
         attrs: {
             hasDropdownIcon: true,
-            className:'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
-            arrowClassName:'ml-2',
-            dropdownClassName:'mr-12 mt-1 right-0 w-44',
-            dropdownText:'text-center py-2',
-            dropdownTitles:'right-0 mt-2 mr-11 font-medium',
-            dropdownOptions: transactions
-        }
-    }
+            className:
+                'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+            arrowClassName: 'ml-2',
+            dropdownClassName: 'mr-12 mt-1 right-0 w-44',
+            dropdownText: 'text-center py-2',
+            dropdownTitles: 'right-0 mt-2 mr-11 font-medium',
+            dropdownOptions: transactions,
+        },
+    },
 ]
 
 export const customerTableOptions: TableOptionsType = {
@@ -191,5 +196,5 @@ export const customerTableOptions: TableOptionsType = {
     show,
     more,
     mainButtons,
-    actionButtons: actionTabs
+    actionButtons: actionTabs,
 }

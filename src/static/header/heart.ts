@@ -39,5 +39,4 @@ export const settingsOption = [
         group: 2,
         url: '#',
     },
-
 ]

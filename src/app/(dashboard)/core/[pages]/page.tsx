@@ -26,6 +26,7 @@ export default function DynamicPage({
             fetchQuery={fetchQuery}
             columns={columns}
             tableOptions={tableOptions}
-            pageName={params.pages} />
+            pageName={params.pages}
+        />
     )
 }

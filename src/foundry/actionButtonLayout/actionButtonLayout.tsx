@@ -1,108 +1,79 @@
 'use client'
 
-import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
-import {PenIcon} from "@assets/svg/pen";
-import {PrintIcon} from "@assets/svg/print";
-import {PDFIcon} from "@assets/svg/pdf";
-import {MailIcon} from "@assets/svg/mail";
-import {TemplateSelectionIcon} from "@assets/svg/templateSelection";
-import {useParams, useRouter} from "next/navigation";
-import {useContext} from "react";
-import {useDispatch} from "react-redux";
-import {openModalWithData} from "@/states/reducer/modalSlice";
-import {ModalContext} from "@/states/context/ModalContext";
+import { CompactListButtonLayout } from "@/utils/types/page-type/button.type";
+
+import { useParams } from "next/navigation";
+import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { openModalWithData } from "@/states/reducer/modalSlice";
+import { ModalContext } from "@/states/context/ModalContext";
 import useCurrentPageData from "@/utils/functions/getCurrentPageData";
+import { MailIcon } from "@/assets/svg/mail";
+import { PDFIcon } from "@/assets/svg/pdf";
+import { PenIcon } from "@/assets/svg/pen";
+import { PrintIcon } from "@/assets/svg/print";
+import { TemplateSelectionIcon } from "@/assets/svg/templateSelection";
+import { cn } from "@/utils/functions/classNames";
 
-export default function ButtonLayout({ isEditable, isExportableToPDF, isPrintable, canSendEmail, selectTemplate } : CompactListButtonLayout) {
+export default function ButtonLayout({ isEditable, isExportableToPDF, isPrintable, canSendEmail, selectTemplate }: CompactListButtonLayout) {
 
-    const params = useParams();
-
-    const { pages, id } = params;
-
+    const { pages } = useParams();
     const data = useCurrentPageData()!;
+    const { setPageLabel } = useContext(ModalContext);
+    const dispatch = useDispatch();
 
-    const { setPageLabel } = useContext(ModalContext)
+    const handleAction = (actionType: string) => {
+        setPageLabel?.(pages as string);
+        dispatch(openModalWithData({ data }));
+        
 
-    const dispatch = useDispatch()
 
-    const edit = () => {
-        setPageLabel?.(pages as string)
-        dispatch(openModalWithData({ data: data }))
+        // switch (actionType) {
+        //     case 'edit':
+        //         console.log('Edit action triggered!');
+        //         break;
+        //     case 'saveAsPDF':
+        //         console.log('Saved as PDF!');
+        //         break;
+        //     case 'print':
+        //         console.log('Printed!');
+        //         break;
+        //     case 'sendEmail':
+        //         console.log('Email sent!');
+        //         break;
+        //     case 'templateSelection':
+        //         console.log('Select a template!');
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
 
-    const saveAsPDF = () => {
-        console.log(`Saved as PDF !`)
-    }
-
-    const print = () => {
-        console.log(`Printed !`)
-    }
-
-    const sendEmail = () => {
-        console.log(`Email sent`)
-        // setPageLabel?.(pages[0])
-        // dispatch(openModalWithData({ data: data }))
-    }
-
-    const templateSelection = () => {
-        console.log(`Select a template !`)
-        // setPageLabel?.(pages[0])
-        // dispatch(openModalWithData({ data: data }))
-    }
+    const buttonConfig = [
+        { condition: isEditable, onClick: () => handleAction('edit'), icon: PenIcon, label: 'edit' },
+        { condition: isExportableToPDF, onClick: () => handleAction('saveAsPDF'), icon: PDFIcon, label: 'exportToPDF' },
+        { condition: isPrintable, onClick: () => handleAction('print'), icon: PrintIcon, label: 'print' },
+        { condition: canSendEmail, onClick: () => handleAction('sendEmail'), icon: MailIcon, label: 'email' },
+        { condition: selectTemplate, onClick: () => handleAction('templateSelection'), icon: TemplateSelectionIcon, label: 'select_template' },
+    ];
 
     return (
-        <div>
-            <div className={`flex flex-row ml-3 w-full`}>
-                <div className={`flex flex-row mx-2`}>
-                    { isEditable &&
-                        <button aria-label='edit'
-                                onClick={edit}
-                                className="border-grey-450 flex h-full items-center justify-center hover:shadow-md first:rounded-l last:rounded-r border-[0.8px] bg-gray-100 p-[0.7em]"
-                        >
-                            <PenIcon className="w-3 fill-gray-700" />
-                        </button> }
-                    { isExportableToPDF && <button aria-label='exportToPDF'
-                                onClick={saveAsPDF}
-                                className="border-grey-450 flex h-full items-center justify-center hover:shadow-md first:rounded-l last:rounded-r border-[0.8px] bg-gray-100 p-[0.7em]"
-                        >
-                            <PDFIcon
-                                data-slot="title"
-                                className="w-3 fill-gray-700"
-                            />
-                        </button> }
-                    { isPrintable && <button aria-label='print'
-                                onClick={print}
-                                className="border-grey-450 flex h-full items-center justify-center hover:shadow-md first:rounded-l last:rounded-r border-[0.8px] bg-gray-100 p-[0.7em]"
-                        >
-                            <PrintIcon
-                                data-slot="title"
-                                className="w-3 fill-gray-700"
-                            />
-                        </button> }
-                    { canSendEmail && <button aria-label='email'
-                                onClick={sendEmail}
-                                className="border-grey-450 flex h-full items-center justify-center hover:shadow-md first:rounded-l last:rounded-r border-[0.8px] bg-gray-100 p-[0.7em]"
-                        >
-                            <MailIcon
-                                data-slot="title"
-                                className="w-3 fill-gray-700"
-                            />
-                        </button> }
-                </div>
-                { selectTemplate && <div>
-                    <div className="mr-2">
-                        <button aria-label='select_template'
-                                onClick={templateSelection}
-                                className="border-grey-450 flex h-full items-center justify-center hover:shadow-md rounded border-[0.8px] bg-gray-100 p-[0.7em]"
-                        >
-                            <TemplateSelectionIcon
-                                data-slot="title"
-                                className="w-3 fill-gray-700"
-                            />
-                        </button>
-                    </div>
-                </div> }
-            </div>
+        <div className="flex flex-row ml-3 w-full">
+            {buttonConfig.map(({ condition, onClick, icon: Icon, label }, index) =>
+                condition && (
+                    <button
+                        key={label}
+                        aria-label={label}
+                        onClick={onClick}
+                        className={cn('border-grey-450 flex h-full items-center justify-center hover:shadow-md border-[0.8px] bg-gray-100 p-[0.7em]',
+                            index === 0 && 'rounded-l',
+                            index === buttonConfig.length - 1 && 'rounded-r'
+                        )}
+                    >
+                        <Icon className="w-3 fill-gray-700" />
+                    </button>
+                )
+            )}
         </div>
-    )
+    );
 }

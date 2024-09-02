@@ -28,10 +28,12 @@ export default auth((req) => {
 
         return NextResponse.next()
     } catch (error) {
-        console.error('Error in authentication middleware:', error);
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+        console.error('Error in authentication middleware:', error)
+        return NextResponse.json(
+            { error: 'Internal Server Error' },
+            { status: 500 }
+        )
     }
-
 })
 
 export const config = {

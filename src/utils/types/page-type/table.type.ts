@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { useSingleStateType } from '../structure'
-import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
+import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 // Interface for Sidebar item
 export interface SidebarItemType {
@@ -28,10 +28,10 @@ interface SubItemType {
 
 // Interface for table column
 export interface TableColumnType {
-    key: string;
-    label: string;
-    sortable?: boolean | undefined;
-    sortDirection?: 'asc' | 'desc' | undefined;
+    key: string
+    label: string
+    sortable?: boolean | undefined
+    sortDirection?: 'asc' | 'desc' | undefined
 }
 
 // Interface for checkbox
@@ -94,7 +94,7 @@ export interface TableOptionsType {
     options?: DropdownItemType[]
     more?: DropdownItemType[]
     sort?: DropdownItemType[]
-    refresh?:  () => void
+    refresh?: () => void
     show?: ShowTableOptionsType
     action?: DropdownItemType[]
     mainButtons?: CompactListMainButtons[]
@@ -112,7 +112,7 @@ export interface CompactListMainButtons {
 
 export enum InputType {
     Button = 'button',
-    Dropdown = 'dropdown'
+    Dropdown = 'dropdown',
 }
 
 export interface TableDataType {
@@ -146,7 +146,6 @@ export interface TableItemType extends CheckboxType {
 
 export interface fieldsToDisplayType {
     headerContent_Position: string
-    rightTab_Options?: string[]
     leftGroup: Record<string, string[]>[]
     rightGroup: Record<string, string[]>[]
 }
@@ -164,7 +163,7 @@ export interface GenericTablePageType {
 
 export interface MiniSidebarType {
     [x: string]: any
-    title: string,
+    title: string
     sideBarItem: SubItemType[]
 }
 export interface PageConfigType {
@@ -189,7 +188,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps { }
+export interface NavLinksType extends BaseNavComponentProps {}
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps { }
+export interface ButtonsType extends BaseNavComponentProps {}

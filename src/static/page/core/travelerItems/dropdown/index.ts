@@ -1,5 +1,9 @@
-import {CompactListMainButtons, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
-import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
+import {
+    CompactListMainButtons,
+    InputType,
+    TableOptionsType,
+} from '@/utils/types/page-type/table.type'
+import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 const show = {
     title: 'Travel Items',
@@ -57,7 +61,7 @@ const show = {
             label: 'Unused Tickets',
             url: '#',
             hasMergeTitle: true,
-        }
+        },
     ],
 }
 
@@ -116,7 +120,7 @@ const options = [
         label: 'TMC Reporting',
         group: 6,
         url: '#',
-    }
+    },
 ]
 const sort = [
     {
@@ -145,7 +149,7 @@ const sort = [
     {
         label: 'Invoice#',
         url: '#',
-    }
+    },
 ]
 
 const more = [
@@ -223,30 +227,30 @@ const more = [
         label: 'Transaction Logs',
         url: '#',
         group: 6,
-    }
+    },
 ]
 
 const transactions = [
     {
         label: 'Travel Item',
         url: '#',
-        group: 1
+        group: 1,
     },
     {
         label: 'Invoice',
         url: '#',
-        group: 1
+        group: 1,
     },
     {
         label: 'Credit Note',
         url: '#',
-        group: 1
+        group: 1,
     },
     {
         label: 'Payment',
         url: '#',
-        group: 1
-    }
+        group: 1,
+    },
 ]
 
 const actionTabs: CompactListButtonLayout[] = [
@@ -257,27 +261,29 @@ const actionTabs: CompactListButtonLayout[] = [
         isExportableToPDF: true,
         isPrintable: true,
         canSendEmail: true,
-        selectTemplate: true
-    }
+        selectTemplate: true,
+    },
 ]
 
-const mainButtons : CompactListMainButtons[] = [
+const mainButtons: CompactListMainButtons[] = [
     {
         id: 'issue_invoice',
         type: InputType.Button,
         value: 'Issue Invoice',
         attrs: {
-            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2'
-        }
+            className:
+                'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+        },
     },
     {
         id: 'issue_sales_receipt',
         type: InputType.Button,
         value: 'Issue Sales Receipt',
         attrs: {
-            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2'
-        }
-    }
+            className:
+                'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+        },
+    },
 ]
 
 export const travelItemsTableOptions: TableOptionsType = {

@@ -1,8 +1,12 @@
-import {CompactListMainButtons, InputType, TableOptionsType} from '@/utils/types/page-type/table.type'
-import {MailIcon} from "@/assets/svg/mail";
-import {PrintIcon} from "@/assets/svg/print";
-import {PenIcon} from "@/assets/svg/pen";
-import {CompactListButtonLayout} from "@/utils/types/page-type/button.type";
+import {
+    CompactListMainButtons,
+    InputType,
+    TableOptionsType,
+} from '@/utils/types/page-type/table.type'
+import { MailIcon } from '@/assets/svg/mail'
+import { PrintIcon } from '@/assets/svg/print'
+import { PenIcon } from '@/assets/svg/pen'
+import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 const show = {
     title: 'Travelers',
@@ -109,7 +113,7 @@ const actionTabs: CompactListButtonLayout[] = [
         isExportableToPDF: true,
         isPrintable: true,
         canSendEmail: true,
-        selectTemplate: true
+        selectTemplate: true,
     },
     {
         name: 'Bookings',
@@ -118,19 +122,20 @@ const actionTabs: CompactListButtonLayout[] = [
         isExportableToPDF: false,
         isPrintable: false,
         canSendEmail: false,
-        selectTemplate: false
+        selectTemplate: false,
     },
 ]
 
-const mainButtons : CompactListMainButtons[] = [
+const mainButtons: CompactListMainButtons[] = [
     {
         id: 'new_travel_item',
         type: InputType.Button,
         value: 'New Travel Item',
         attrs: {
-            className: 'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2'
-        }
-    }
+            className:
+                'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+        },
+    },
 ]
 
 export const tableOptions: TableOptionsType = {

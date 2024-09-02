@@ -16,7 +16,20 @@ export interface FormFieldType {
     id: string
     span: string
     label?: string
-    type: 'text' | 'input' | 'tel' | 'date' | 'email' | 'space' | 'lookup' | 'textarea' | 'checkbox' | 'number' | 'select' | 'button' | 'table'
+    type:
+        | 'text'
+        | 'input'
+        | 'tel'
+        | 'date'
+        | 'email'
+        | 'space'
+        | 'lookup'
+        | 'textarea'
+        | 'checkbox'
+        | 'number'
+        | 'select'
+        | 'button'
+        | 'table'
     action?: string
     tableClass?: string
     tableLayout?: TableLayoutType[]

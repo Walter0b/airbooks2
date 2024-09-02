@@ -1,20 +1,20 @@
 import NextAuth, { Session, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { JWT } from 'next-auth/jwt'
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid'
 const REFRESH_TOKEN_ERROR = 'RefreshAccessTokenError'
 
 interface ExtendedUser extends User {
-    accessToken: string;
-    refreshToken: string;
-    expiresAt: number;
+    accessToken: string
+    refreshToken: string
+    expiresAt: number
 }
 
 interface ExtendedJWT extends JWT {
-    accessToken: string;
-    refreshToken: string;
-    expiresAt: number;
-    error?: string;
+    accessToken: string
+    refreshToken: string
+    expiresAt: number
+    error?: string
 }
 
 export const authOptions = {
@@ -29,14 +29,19 @@ export const authOptions = {
                 if (!credentials?.email || !credentials?.password) return null
 
                 try {
-                    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(credentials),
-                    })
+                    const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
+                        {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(credentials),
+                        }
+                    )
 
                     if (!res.ok) {
-                        console.error(`Login failed: ${res.status} ${res.statusText}`)
+                        console.error(
+                            `Login failed: ${res.status} ${res.statusText}`
+                        )
                         return null
                     }
 
@@ -70,8 +75,11 @@ export const authOptions = {
 
             return refreshAccessToken(extendedToken)
         },
-        
-        async session({ session, token }: {
+
+        async session({
+            session,
+            token,
+        }: {
             session: Session
             token: JWT
         }): Promise<Session> {
@@ -83,13 +91,13 @@ export const authOptions = {
                     accessToken: extendedToken.accessToken,
                     refreshToken: extendedToken.refreshToken,
                     expiresAt: extendedToken.expiresAt,
-                };
+                }
 
                 if (extendedToken.error === REFRESH_TOKEN_ERROR) {
-                    session.error = REFRESH_TOKEN_ERROR;
+                    session.error = REFRESH_TOKEN_ERROR
                 }
             }
-            return session;
+            return session
         },
     },
     pages: {
@@ -98,7 +106,7 @@ export const authOptions = {
     session: {
         strategy: 'jwt' as const,
         maxAge: 30 * 24 * 60 * 60, // 30 days
-        updateAge: 24 * 60 * 60,   // 24 hours
+        updateAge: 24 * 60 * 60, // 24 hours
         generateSessionToken: () => nanoid(),
         cookieName: 'next-auth.session-token',
         cookieOptions: {
@@ -113,17 +121,20 @@ export const authOptions = {
 
 async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token.accessToken}`,
-            },
-            body: JSON.stringify({
-                refresh_token: token.refreshToken,
-                mode: 'json',
-            }),
-        })
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+                body: JSON.stringify({
+                    refresh_token: token.refreshToken,
+                    mode: 'json',
+                }),
+            }
+        )
 
         if (!response.ok) {
             if (response.status === 401) {
@@ -131,9 +142,9 @@ async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
                 return {
                     ...token,
                     error: 'RefreshTokenExpiredError',
-                };
+                }
             }
-            throw new Error('Failed to refresh token');
+            throw new Error('Failed to refresh token')
         }
 
         const data = await response.json()

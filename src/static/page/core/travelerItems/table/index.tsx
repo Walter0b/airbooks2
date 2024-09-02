@@ -1,4 +1,4 @@
-import {fieldsToDisplayType} from "@/utils/types/page-type/table.type";
+import { fieldsToDisplayType } from '@/utils/types/page-type/table.type'
 
 export const TravelerItemsColums = [
     { key: 'date', label: 'Date' },
@@ -9,7 +9,7 @@ export const TravelerItemsColums = [
     { key: 'status', label: 'Status' },
     { key: 'fcy', label: 'FCY' },
     { key: 'fare', label: 'Fare' },
-    { key: 'invoice', label: 'Invoice#' }
+    { key: 'invoice', label: 'Invoice#' },
 ]
 
 export const travelItemsCLLayout: fieldsToDisplayType = {
@@ -17,13 +17,13 @@ export const travelItemsCLLayout: fieldsToDisplayType = {
     leftGroup: [
         {
             fieldsName: ['traveler_name'],
-            class: ['text-black']
-        }
+            class: ['text-black'],
+        },
     ],
     rightGroup: [
         {
             fieldsName: ['status'],
-            class: ['text-black']
-        }
-    ]
+            class: ['text-black'],
+        },
+    ],
 }

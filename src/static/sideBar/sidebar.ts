@@ -9,7 +9,6 @@ import { UserIcon } from '@/assets/svg/user'
 import { UsersIcon } from '@/assets/svg/users'
 import { SidebarItemType } from '@/utils/types/page-type/table.type'
 
-
 export const coreNavigation: SidebarItemType[] = [
     {
         label: 'Dashboard',
@@ -241,7 +240,6 @@ export const reportNavigation: SidebarItemType[] = [
     },
 ]
 export const settingsNavigation: SidebarItemType[] = [
-
     {
         label: 'Agency Profile',
         href: 'agency_profile',
@@ -278,5 +276,4 @@ export const settingsNavigation: SidebarItemType[] = [
         label: 'Integrations',
         href: 'integrations',
     },
-
 ]

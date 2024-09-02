@@ -1,5 +1,5 @@
 import { commonValidations } from '@/static/modal/validation'
-import {FormFieldType, IndividualFormDataProp} from '@/utils/types/structure'
+import { FormFieldType, IndividualFormDataProp } from '@/utils/types/structure'
 
 export const TravelersInputFields: IndividualFormDataProp[] = [
     {
@@ -226,25 +226,25 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                         id: 'special_request',
                         label: 'Special Request',
                         type: 'text',
-                        span: 'sm:col-span-6'
+                        span: 'sm:col-span-6',
                     },
                     {
                         id: 'preferred_airline',
                         label: 'Preferred Airline',
                         type: 'lookup',
-                        span: 'sm:col-span-3'
+                        span: 'sm:col-span-3',
                     },
                     {
                         id: 'frequent_flyer',
                         label: 'Frequent Flyer#',
                         type: 'text',
-                        span: 'sm:col-span-2'
+                        span: 'sm:col-span-2',
                     },
                     {
                         id: 'delete',
                         label: 'X',
                         type: 'button',
-                        span: 'sm:col-span-1'
+                        span: 'sm:col-span-1',
                     },
                     {
                         id: 'airTax',
@@ -255,25 +255,27 @@ export const TravelersInputFields: IndividualFormDataProp[] = [
                         tableLayout: [
                             {
                                 trClass: '',
-                                tds: [{
+                                tds: [
+                                    {
                                         tdClass: '',
                                         content: {
                                             id: 'td1',
                                             type: 'text',
-                                            span: ''
-                                        }
-                                    }, {
+                                            span: '',
+                                        },
+                                    },
+                                    {
                                         tdClass: '',
                                         content: {
                                             id: 'td2',
                                             type: 'text',
-                                            span: ''
-                                        }
-                                    }
-                                ]
-                            }
+                                            span: '',
+                                        },
+                                    },
+                                ],
+                            },
                         ],
-                    }
+                    },
                 ],
             },
         ],

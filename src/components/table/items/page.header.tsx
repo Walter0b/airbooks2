@@ -22,8 +22,11 @@ export default function TableFilterOptions({
                 aria-label="table left menu option"
                 className="ml-4"
             >
-                {dropdownOptions.show ? <ShowButton dropdownOptions={dropdownOptions.show} /> :
-                    <div className='mt-1 items-start justify-between hover:text-cyan-550 gap-x-1.5 bg-white px-3 py-2 font-semibold text-gray-500 text-lg group/button flex w-full'>{dropdownOptions.pageLabel}</div>}
+                {dropdownOptions.show
+                    ? <ShowButton dropdownOptions={dropdownOptions.show} />
+                    :
+                    <div className='mt-1 items-start justify-between hover:text-cyan-550 gap-x-1.5 bg-white px-3 py-2 font-semibold text-gray-500 text-lg group/button flex w-full'>{dropdownOptions.pageLabel}
+                    </div>}
             </div>
             <TableOptions showTableOptions={dropdownOptions} />
         </div>
