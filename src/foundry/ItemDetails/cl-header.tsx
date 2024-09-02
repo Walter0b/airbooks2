@@ -10,19 +10,17 @@ import { CompactListButtonLayout } from "@/utils/types/page-type/button.type";
 
 export default function CompactListHeader({
     dropdownOptions,
-    justify_content,
+    justifyContent,
     contentToDisplay,
     handleOpenModal
 }: Readonly<{
     dropdownOptions: TableOptionsType,
-    justify_content?: string,
+    justifyContent?: string,
     contentToDisplay?: string,
     handleOpenModal: () => void
 }>) {
     const [activeActionButtons, setActiveActionButtons] = useState<CompactListButtonLayout>()
 
-    const params = useParams();
-    const route = useRouter();
 
     useEffect(() => {
         setActiveActionButtons(dropdownOptions.actionButtons.find(value => value.api_name === contentToDisplay))
@@ -31,7 +29,7 @@ export default function CompactListHeader({
     return (
         <div className="flex h-full w-full items-center">
             <div className="flex h-8 w-full justify-between pr-5">
-                <div className={`flex flex-row w-full mr-4 justify-between ${justify_content}`}>
+                <div className={`flex flex-row w-full mr-4 justify-between ${justifyContent}`}>
                     <ButtonLayout
                         isEditable={activeActionButtons?.isEditable}
                         isPrintable={activeActionButtons?.isPrintable}

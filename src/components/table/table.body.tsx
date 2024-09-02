@@ -24,7 +24,7 @@ const TableBody: React.FC<TableBodyType> = ({
         id: number | string
     ) => {
         if (!(event.target instanceof HTMLInputElement)) {
-            router.push(`${pathname}/${id}`)
+            router.push(`${pathname}/details/${id}`)
         }
     }
 

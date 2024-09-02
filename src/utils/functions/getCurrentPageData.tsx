@@ -4,7 +4,7 @@ import { CatchData, TableDataType } from '../types/page-type/table.type'
 
 const useCurrentPageData = (): TableDataType | null => {
     const { id } = useParams()
-    console.log('🚀 ~ useCurrentPageData ~ id:', id)
+    // console.log('🚀 ~ useCurrentPageData ~ id:', id)
     const NumberId = parseInt(id as string, 10)
 
     const travelersData = useSelector(

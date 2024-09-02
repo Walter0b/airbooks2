@@ -1,36 +1,50 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
-    ReactNode,
     ReactElement,
+    ReactNode,
     cloneElement,
     isValidElement,
+    useMemo,
 } from 'react'
 
 interface GetCmpByAttrProps {
     children: ReactNode
     attr?: string
-    value: any
+    value?: string
     props?: Record<string, any>
+    debug?: boolean
 }
 
-export function getCmpByAttr({
+export const getCmpByAttr = ({
     children,
     attr = 'data-slot',
-    value,
-    props,
-}: GetCmpByAttrProps): ReactNode {
-    const cmps = React.Children.toArray(children)
+    value = '',
+    props = {},
+    debug = false,
+}: GetCmpByAttrProps): ReactNode | null => {
+    return useMemo(() => {
+        const componentsArray: ReactNode[] = React.Children.toArray(children)
 
-    const cmp = cmps.find(
-        (cmp): cmp is ReactElement =>
-            isValidElement(cmp) && cmp.props[attr] === value
-    )
+        const matchedComponent = componentsArray.find(
+            (cmp): cmp is ReactElement =>
+                isValidElement(cmp) && cmp.props[attr] === value
+        )
 
-    if (cmp) {
-        // console.log(`Found component with attr ${attr} and value ${value}`)
-        return cloneElement(cmp, props)
-    }
+        if (matchedComponent) {
+            if (debug) {
+                console.log(
+                    'Found component with matching props:',
+                    matchedComponent
+                )
+            }
 
-    // console.warn(`No component found with attr ${attr} and value ${value}`)
-    return null
+            return cloneElement(matchedComponent, props)
+        }
+
+        if (debug) {
+            console.warn(
+                `No component found with attr ${attr} and value ${value}`
+            )
+        }
+        return null
+    }, [children, attr, value, props, debug])
 }
