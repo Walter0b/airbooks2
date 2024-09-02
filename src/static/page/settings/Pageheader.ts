@@ -1,7 +1,7 @@
 import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
 const show = {
-    title: 'Agency Profile'
+    title: 'Agency Profile',
 }
 
 const action = [

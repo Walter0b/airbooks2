@@ -18,6 +18,7 @@ export default function Pages({ children, className = 'flex h-full' }: { childre
             {
                 <div className={`w-full min-w-96 flex-1 overflow-hidden`}>
                     {Header}
+                    
                     {Body}
                 </div>
             }

@@ -38,13 +38,13 @@ const TableHeader: React.FC<TableHeaderType> = ({
                         onClick={() => column.sortable && handleSort(column.key)}
                     >
                         <span className={
-                            cn(column.sortable && 'text-red-500','flex items-center')}>
+                            cn(column.sortable && 'text-red-500', 'flex items-center')}>
                             {column.label}
                             {column.sortable && (
                                 <span className="ml-2 flex flex-col">
                                     <ArrowIcon className={cn(
                                         "w-2 rotate-180",
-                                        column.sortDirection === 'desc' ? 'fill-gray-400': 'fill-black'  
+                                        column.sortDirection === 'desc' ? 'fill-gray-400' : 'fill-black'
                                     )} />
                                     <ArrowIcon className={cn(
                                         "w-2 -mt-2",

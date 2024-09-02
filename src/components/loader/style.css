@@ -28,7 +28,6 @@
 
 /* Animations */
 @keyframes ringA {
-
     from,
     4% {
         stroke-dasharray: 0 660;
@@ -76,7 +75,6 @@
 }
 
 @keyframes ringB {
-
     from,
     12% {
         stroke-dasharray: 0 220;
@@ -170,7 +168,6 @@
 }
 
 @keyframes ringD {
-
     from,
     8% {
         stroke-dasharray: 0 440;

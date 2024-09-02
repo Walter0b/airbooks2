@@ -18,8 +18,8 @@ export default function ItemDetailsBody({
     // console.log("🚀 ~ pageName:", pageName)
 
     return (
-        <div className="flex-grow h-full w-10/12 border ">
-            <div className="max mb-10 flex h-14 w-full items-center justify-between space-x-4 rounded-sm">
+        <div className="flex-grow h-full w-10/12">
+            <div className="max flex h-10 w-full items-center justify-between space-x-4 rounded-sm md:h-16">
                 {CompactListHeader}
             </div>
             {CompactListBody}

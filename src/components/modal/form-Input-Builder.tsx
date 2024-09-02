@@ -8,6 +8,8 @@ import { FieldComponents, FormFieldType } from '@/utils/types/structure'
 const fieldsComponents: any = new Proxy(
     {
         input,
+        button,
+        table,
         select,
         textarea,
         lookup,
@@ -40,6 +42,33 @@ function input(field: FormFieldType, FieldsValue: any) {
                 'input-shadow focus:shadow-outline block h-full w-full rounded-sm border border-gray-300 py-2 px-4 text-left text-sm text-gray-900 hover:border-blue-400 focus:border-blue-400'
             )}
         />
+    )
+}
+
+function button(field: FormFieldType, FieldsValue: any) {
+    return (
+        <button
+            id={field.id}
+            onClick={() => action(FieldsValue[field.id]?.action, FieldsValue[field.id]?.id)}
+        >
+            {FieldsValue[field.id]?.value}
+        </button>
+    )
+}
+
+function table(field: FormFieldType, FieldsValue: any) {
+    return (
+        <table className={FieldsValue[field.id]?.tableClass}>
+            {FieldsValue[field.id]?.tableLayout?.map((tr) => {
+                return (
+                    <tr className={tr.trClass}>
+                        {tr.tds.map((td) => <td className={td.tdClass}>
+
+                        </td>)}
+                    </tr>
+                )
+            })}
+        </table>
     )
 }
 
@@ -95,4 +124,19 @@ function lookup(field: FormFieldType, FieldsValue: any) {
             options={field.options}
         />
     )
+}
+
+const action = (actionType: string, fieldId: string) => {
+    switch (actionType) {
+        case 'delete':
+            console.log('deleted')
+            break
+        case 'add':
+
+            console.log('added')
+            break
+        default:
+            console.log('do nothing')
+
+    }
 }

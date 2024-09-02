@@ -28,7 +28,10 @@ export default function GenericSettingsPage({
     if (tableData) {
         return (
             <Pages>
-                <TableFilterOptions data-slot="header" dropdownOptions={tableOptions} />
+                <TableFilterOptions
+                    data-slot="header"
+                    dropdownOptions={tableOptions}
+                />
                 <div data-slot="body">
                     <Table
                         data-slot="table"
@@ -37,7 +40,6 @@ export default function GenericSettingsPage({
                         hasCheckbox={true}
                     >
                         <TableHeader data-slot="TableHeader" />
-
                     </Table>
                 </div>
             </Pages>

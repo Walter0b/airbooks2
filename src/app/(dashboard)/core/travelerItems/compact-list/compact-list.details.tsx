@@ -1,12 +1,12 @@
 'use client'
 import ItemDetailsBody from '@/components/compactlist/itemdetails'
-import NavLink from 'next-navlink'
-import { ModalContext } from '@/states/context/ModalContext'
+import NavLink from '@/components/util/navlink'
+import { ModalContext } from '@/hooks/context/ModalContext'
 import { openModalWithData } from '@/states/reducer/modalSlice'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import TravelerCompactListHeader from './traveler-cl-btn'
-import { tableOptions } from '../dropdown'
+import { travelItemsTableOptions } from '../dropdown'
 import useCurrentPageData from '@/utils/functions/getCurrentPageData'
 
 export default function TravelersItemDetails({
@@ -20,7 +20,7 @@ export default function TravelersItemDetails({
 
     const dispatch = useDispatch()
     const handleOpenModal = () => {
-        setPageLabel?.('travelers')
+        setPageLabel?.('travel-items')
 
         dispatch(openModalWithData({ data: data }))
     }
@@ -29,7 +29,7 @@ export default function TravelersItemDetails({
         <ItemDetailsBody data-slot="itemDetails">
             <TravelerCompactListHeader
                 data-slot="compactListHeader"
-                dropdownOptions={tableOptions}
+                dropdownOptions={travelItemsTableOptions}
                 handleOpenModal={handleOpenModal}
             />
             <div

@@ -1,9 +1,7 @@
-
 interface EndpointConfig {
-    name: string;
-    endpoint: string;
+    name: string
+    endpoint: string
 }
-
 
 export const endpointConfig: EndpointConfig[] = [
     { name: 'Travelers', endpoint: 'traveler' },

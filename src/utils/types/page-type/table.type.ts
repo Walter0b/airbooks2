@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
-import { FormDataProps, useSingleStateType } from '../structure'
+import { useSingleStateType } from '../structure'
+import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 // Interface for Sidebar item
 export interface SidebarItemType {
@@ -27,10 +28,10 @@ interface SubItemType {
 
 // Interface for table column
 export interface TableColumnType {
-    key: string;
-    label: string;
-    sortable?: boolean | undefined;
-    sortDirection?: 'asc' | 'desc' | undefined;
+    key: string
+    label: string
+    sortable?: boolean | undefined
+    sortDirection?: 'asc' | 'desc' | undefined
 }
 
 // Interface for checkbox
@@ -93,20 +94,30 @@ export interface TableOptionsType {
     options?: DropdownItemType[]
     more?: DropdownItemType[]
     sort?: DropdownItemType[]
-    refresh?:  () => void
+    refresh?: () => void
     show?: ShowTableOptionsType
+    action?: DropdownItemType[]
+    mainButtons?: CompactListMainButtons[]
+    actionButtons: CompactListButtonLayout[]
 }
+
+export interface CompactListMainButtons {
+    id: string
+    type: InputType
+    value?: string
+    attrs: {
+        [key: string]: string | boolean | DropdownItemType[]
+    }
+}
+
+export enum InputType {
+    Button = 'button',
+    Dropdown = 'dropdown',
+}
+
 export interface TableDataType {
     id: number
     [key: string]: string | number
-}
-
-export interface ReduxModalType {
-    modalId: string
-    isOpen: boolean
-    data: ResponseDataType
-    inputFields: FormDataProps
-    validation: any
 }
 
 export interface CatchData {
@@ -133,6 +144,12 @@ export interface TableItemType extends CheckboxType {
     onCheckboxChange?: (value: string) => void
 }
 
+export interface fieldsToDisplayType {
+    headerContent_Position: string
+    leftGroup: Record<string, string[]>[]
+    rightGroup: Record<string, string[]>[]
+}
+
 export interface GenericTablePageType {
     fetchQuery: any
     columns: TableColumnType[]
@@ -141,11 +158,12 @@ export interface GenericTablePageType {
     // headerSlot: ReactNode,
     // bodySlot: ReactNode,
     tableOptions: TableOptionsType
+    compactListLayout?: fieldsToDisplayType
 }
 
 export interface MiniSidebarType {
     [x: string]: any
-    title: string,
+    title: string
     sideBarItem: SubItemType[]
 }
 export interface PageConfigType {
@@ -170,7 +188,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps { }
+export interface NavLinksType extends BaseNavComponentProps {}
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps { }
+export interface ButtonsType extends BaseNavComponentProps {}

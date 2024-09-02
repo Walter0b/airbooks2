@@ -1,4 +1,12 @@
-import { TableOptionsType } from '@/utils/types/page-type/table.type'
+import {
+    CompactListMainButtons,
+    InputType,
+    TableOptionsType,
+} from '@/utils/types/page-type/table.type'
+import { MailIcon } from '@/assets/svg/mail'
+import { PrintIcon } from '@/assets/svg/print'
+import { PenIcon } from '@/assets/svg/pen'
+import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 const show = {
     title: 'Travelers',
@@ -96,10 +104,46 @@ const more = [
         group: 3,
     },
 ]
+
+const actionTabs: CompactListButtonLayout[] = [
+    {
+        name: 'Snapshot',
+        api_name: '',
+        isEditable: true,
+        isExportableToPDF: true,
+        isPrintable: true,
+        canSendEmail: true,
+        selectTemplate: true,
+    },
+    {
+        name: 'Bookings',
+        api_name: 'bookings',
+        isEditable: true,
+        isExportableToPDF: false,
+        isPrintable: false,
+        canSendEmail: false,
+        selectTemplate: false,
+    },
+]
+
+const mainButtons: CompactListMainButtons[] = [
+    {
+        id: 'new_travel_item',
+        type: InputType.Button,
+        value: 'New Travel Item',
+        attrs: {
+            className:
+                'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+        },
+    },
+]
+
 export const tableOptions: TableOptionsType = {
     pageLabel: 'travelers',
     options,
     sort,
     show,
     more,
+    mainButtons,
+    actionButtons: actionTabs,
 }

@@ -1,4 +1,4 @@
-import { MiniSidebarType } from "@/utils/types/page-type/table.type"
+import { MiniSidebarType } from '@/utils/types/page-type/table.type'
 
 export const UserColumns = [
     { key: 'name', label: 'Name' },
@@ -21,12 +21,9 @@ export const UserSettingsSidebar: MiniSidebarType = {
 
 import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
-
 export const UserTableOptions: TableOptionsType = {
     pageLabel: 'User Roles',
-
 }
-
 
 export const productionColumns = [
     { key: 'name', label: 'Name' },
