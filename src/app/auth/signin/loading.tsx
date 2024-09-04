@@ -3,7 +3,7 @@ import React from 'react'
 
 function Loader() {
     return (
-        <div className='size-screen bg-white'><GlobalLoader /></div>
+        <div className='size-screen bg-white absolute'><GlobalLoader /></div>
     )
 }
 
