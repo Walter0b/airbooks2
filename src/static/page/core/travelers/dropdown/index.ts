@@ -133,7 +133,7 @@ const mainButtons: CompactListMainButtons[] = [
         value: 'New Travel Item',
         attrs: {
             className:
-                'border-grey-450 flex h-full items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
+                'border-grey-450 flex h-full w-32 items-center rounded border-[0.8px] bg-red-500 px-3 hover:shadow-md mr-2',
         },
     },
 ]

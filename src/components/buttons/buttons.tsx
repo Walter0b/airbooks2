@@ -49,7 +49,7 @@ const Buttons: React.FC<ButtonInterface> = memo(({
         <div className="relative h-full flex-row text-left" ref={dropdownRef}>
             <div className="flex h-full w-full items-center">
                 <button
-                    className={cn(className, 'group/button flex w-full')}
+                    className={cn(className, 'group/button flex')}
                     onClick={handleButtonClick}
                 >
                     {Title}

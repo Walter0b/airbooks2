@@ -5,10 +5,13 @@ import CloseButton from "@/components/buttons/close-Button";
 import ButtonLayout from "@/foundry/actionButtonLayout/actionButtonLayout";
 import Buttons from "@/components/buttons/buttons";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { CompactListButtonLayout } from "@/utils/types/page-type/button.type";
 
-export default function CompactListHeader({
+
+
+
+export const CompactListHeader = memo(function CompactListHeader({
     dropdownOptions,
     justifyContent,
     contentToDisplay,
@@ -65,4 +68,6 @@ export default function CompactListHeader({
             </div>
         </div>
     )
-}
+})
+
+export default CompactListHeader

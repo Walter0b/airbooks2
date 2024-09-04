@@ -12,7 +12,7 @@ export default function GenericCompactPage({
     tableOptions,
     compactListLayout
 }: Readonly<GenericTablePageType>) {
-    console.log('🚀 ~ tableOptions:', tableOptions)
+    //    console.log('🚀 ~ tableOptions:', tableOptions)
     const page = useSingleState(1)
     const pageSize = useSingleState(10)
 
@@ -22,7 +22,7 @@ export default function GenericCompactPage({
     })
 
     if (tableData) {
-        console.log(`columns => ${JSON.stringify(columns)}`)
+        //    console.log(`columns => ${JSON.stringify(columns)}`)
         return (
             <div className="flex h-screen">
                 <div

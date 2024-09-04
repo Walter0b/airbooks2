@@ -11,7 +11,7 @@ const TableHeader: React.FC<TableHeaderType> = ({
     hasCheckbox,
     onSortChange,
 }) => {
-    console.log("🚀 ~ columns:", columns)
+    // console.log("🚀 ~ columns:", columns)
     const handleSort = (key: string) => {
         if (onSortChange) {
             onSortChange(key);

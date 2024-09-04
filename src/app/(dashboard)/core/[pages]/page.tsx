@@ -1,4 +1,4 @@
-// app/[...slug].js
+
 'use client'
 
 import GenericTablePage from '@/components/layout/dynamic-table-page'
@@ -11,8 +11,8 @@ export default function DynamicPage({
     params: { pages: string }
     searchParams: { [key: string]: string | string[] | undefined }
 }>) {
-    console.log('🚀 ~ searchParams:', searchParams)
-    console.log('🚀 ~ DynamicPage ~ params.slug:', params.pages)
+    // console.log('🚀 ~ searchParams:', searchParams)
+    // console.log('🚀 ~ DynamicPage ~ params.slug:', params.pages)
 
     const pageConfig = pagesConfig[params.pages]
 

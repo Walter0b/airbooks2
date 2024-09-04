@@ -1,4 +1,4 @@
-// // app/[...pages].js
+// 
 // 'use client'
 
 // import GenericCompactPage from '@/components/layout/dynamic-details-page'
@@ -11,8 +11,8 @@
 //     params: { pages: string }
 //     searchParams: { [key: string]: string | string[] | undefined }
 // }>) {
-//     console.log('🚀 ~ searchParams:', searchParams)
-//     console.log('🚀 ~ DynamicPage ~ params.pages:', params)
+// //    console.log('🚀 ~ searchParams:', searchParams)
+// //    console.log('🚀 ~ DynamicPage ~ params.pages:', params)
 
 //     const pageConfig = pagesConfig[params.pages]
 
@@ -29,7 +29,7 @@
 //     )
 // }
 
-// app/[...pages].js
+
 'use client'
 
 import GenericSettingsPage from '@/components/layout/dynamic-settings-page'
@@ -43,8 +43,8 @@ export default function DynamicPage({
   params: { pages: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }>) {
-  console.log('🚀 ~ searchParams:', searchParams)
-  console.log('🚀 ~ DynamicPage ~ params.pages:', params)
+  // console.log('🚀 ~ searchParams:', searchParams)
+  // console.log('🚀 ~ DynamicPage ~ params.pages:', params)
 
   const pageConfig = pagesConfig[params.pages]
 

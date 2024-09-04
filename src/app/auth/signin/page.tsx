@@ -20,7 +20,7 @@ const Page: React.FC = () => {
 
     const searchParams = useSearchParams()
     const callbackUrl = searchParams ? searchParams.get('callbackUrl') : null
-    console.log("🚀 ~ callbackUrl:", callbackUrl)
+    //    console.log("🚀 ~ callbackUrl:", callbackUrl)
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -49,7 +49,7 @@ const Page: React.FC = () => {
 
     return (
         <div className="background flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
-            {forwarding && <GlobalLoader />}
+            {forwarding &&  <div className='h-screen w-screen absolute'><GlobalLoader /></div>}
             <div className="flex flex-col rounded-lg shadow-md lg:flex-row">
                 {/* Logo and copyright section */}
                 <div className="border-b bg-slate-100 py-7 px-10 lg:w-72 lg:border-r">

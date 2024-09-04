@@ -15,7 +15,7 @@ export default function GenericSettingsPage({
     param,
     tableOptions,
 }: Readonly<GenericTablePageType>) {
-    console.log('🚀 ~ tableOptions:', tableOptions)
+    //    console.log('🚀 ~ tableOptions:', tableOptions)
     const page = useSingleState(1)
     const pageSize = useSingleState(10)
 

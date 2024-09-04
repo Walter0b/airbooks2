@@ -25,24 +25,24 @@ export default function ButtonLayout({ isEditable, isExportableToPDF, isPrintabl
     const handleAction = (actionType: string) => {
         setPageLabel?.(pages as string);
         dispatch(openModalWithData({ data }));
-        
+
 
 
         // switch (actionType) {
         //     case 'edit':
-        //         console.log('Edit action triggered!');
+        //     //    console.log('Edit action triggered!');
         //         break;
         //     case 'saveAsPDF':
-        //         console.log('Saved as PDF!');
+        //     //    console.log('Saved as PDF!');
         //         break;
         //     case 'print':
-        //         console.log('Printed!');
+        //     //    console.log('Printed!');
         //         break;
         //     case 'sendEmail':
-        //         console.log('Email sent!');
+        //     //    console.log('Email sent!');
         //         break;
         //     case 'templateSelection':
-        //         console.log('Select a template!');
+        //     //    console.log('Select a template!');
         //         break;
         //     default:
         //         break;

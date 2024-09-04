@@ -25,7 +25,7 @@ const fieldsComponents: any = new Proxy(
 export default fieldsComponents
 
 function input(field: FormFieldType, FieldsValue: any) {
-    console.log('🚀 ~ input ~ FieldsValue:', FieldsValue)
+    //    console.log('🚀 ~ input ~ FieldsValue:', FieldsValue)
     return (
         <input
             readOnly={field.readOnly}
@@ -104,10 +104,7 @@ function space(field: FormFieldType) {
     return <div key={field.id} className={cn(field.span, 'invisible')}></div>
 }
 function lookup(field: FormFieldType, FieldsValue: any) {
-    console.log(
-        '🚀 ~ lookup ~ FieldsValue:',
-        field?.options?.map((item) => FieldsValue[item.id!]?.value)
-    )
+  
 
     return (
         <Lookup
@@ -129,14 +126,14 @@ function lookup(field: FormFieldType, FieldsValue: any) {
 const action = (actionType: string, fieldId: string) => {
     switch (actionType) {
         case 'delete':
-            console.log('deleted')
+            //    console.log('deleted')
             break
         case 'add':
 
-            console.log('added')
+            //    console.log('added')
             break
         default:
-            console.log('do nothing')
+        //    console.log('do nothing')
 
     }
 }

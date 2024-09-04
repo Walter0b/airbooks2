@@ -9,7 +9,7 @@ export default function settingsLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    console.log('🚀 ~ children:', children)
+    ////    console.log(' 🚀 ~ children:', children)
     return (
         <>
             <SideBar navigation={settingsNavigation} />
