@@ -20,7 +20,7 @@ export default function GenericTablePage({
     tableOptions,
     pageName,
 }: Readonly<GenericTablePageType & { pageName: string }>) {
-    // console.log('🚀 ~ columns:', columns)
+    console.log('🚀 ~ columns:', columns)
     const dispatch = useDispatch()
     const savedState = useSelector(
         (state: RootState) => state.tableStates[pageName]
@@ -62,7 +62,7 @@ export default function GenericTablePage({
                         page: page.value,
                         pageSize: pageSize.value,
                         sort,
-                        filter,
+                        // filter,
                         search,
                     },
                 })
@@ -80,10 +80,21 @@ export default function GenericTablePage({
     ])
 
     const handleSortChange = useCallback((key: string) => {
-        setSort((prevSort) => {
-            if (prevSort === key) return `-${key}`
-            if (prevSort === `-${key}`) return ''
-            return key
+        setSort((prevSort: string[]) => {
+            // Check if the key is already in the array
+            const isKeyPresent = prevSort.includes(key)
+            const isDescPresent = prevSort.includes(`-${key}`)
+
+            if (isKeyPresent) {
+                // If key is in the array, change it to descending by adding '-'
+                return prevSort.map(sortKey => (sortKey === key ? `-${key}` : sortKey))
+            } else if (isDescPresent) {
+                // If key is already in descending order, remove it
+                return prevSort.filter(sortKey => sortKey !== `-${key}`)
+            } else {
+                // If key is not in the array, add it in ascending order
+                return [...prevSort, key]
+            }
         })
     }, [])
 
@@ -92,24 +103,23 @@ export default function GenericTablePage({
             columns.map((col: TableColumnType) => ({
                 ...col,
                 sortDirection:
-                    sort === col.key
+                    sort[0] === col.key
                         ? 'asc'
-                        : sort === `-${col.key}`
-                          ? 'desc'
-                          : undefined,
+                        : sort[0] === `-${col.key}`
+                            ? 'desc'
+                            : undefined,
             })),
         [columns, sort]
     )
-    // console.log('🚀 ~ columnsWithSort ~ columnsWithSort:', columnsWithSort)
 
     return (
         <Pages>
             <TableFilterOptions
                 data-slot="header"
                 dropdownOptions={tableOptions}
-                handleRefresh={handleRefresh}
-                onFilterChange={setFilter}
-                onSearchChange={setSearch}
+            // handleRefresh={handleRefresh}
+            // onFilterChange={setFilter}
+            // onSearchChange={setSearch}
             />
             <div data-slot="body">
                 <Table

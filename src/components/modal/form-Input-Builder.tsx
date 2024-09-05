@@ -59,10 +59,10 @@ function button(field: FormFieldType, FieldsValue: any) {
 function table(field: FormFieldType, FieldsValue: any) {
     return (
         <table className={FieldsValue[field.id]?.tableClass}>
-            {FieldsValue[field.id]?.tableLayout?.map((tr) => {
+            {FieldsValue[field.id]?.tableLayout?.map((tr: { trClass: string | undefined; tds: any[] }) => {
                 return (
                     <tr className={tr.trClass}>
-                        {tr.tds.map((td) => <td className={td.tdClass}>
+                        {tr.tds.map((td: { tdClass: string | undefined }) => <td className={td.tdClass}>
 
                         </td>)}
                     </tr>
@@ -96,7 +96,6 @@ function select(field: FormFieldType) {
             dropdownText="!text-xs font-normal text-start"
             dropdownOptions={field.options}
         >
-            <div data-slot="title"></div>
         </Buttons>
     )
 }
