@@ -3,7 +3,9 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { JWT } from 'next-auth/jwt';
 import { nanoid } from 'nanoid';
 import { handleError } from './utils/functions/log';
+
 const REFRESH_TOKEN_ERROR = 'RefreshAccessTokenError';
+const REFRESH_TOKEN_EXPIRED = 'Unauthorized';
 
 interface ExtendedUser extends User {
     accessToken: string;
@@ -60,7 +62,6 @@ export const authOptions = {
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials): Promise<ExtendedUser | null> {
-                // Type casting to ensure email and password are strings
                 const email = credentials?.email as string;
                 const password = credentials?.password as string;
 
@@ -68,7 +69,6 @@ export const authOptions = {
                 if (!email || !password) return null;
 
                 try {
-                    // Call the debounced fetch (could debounce the actual input logic elsewhere)
                     const user = await debouncedFetch({ email, password });
                     return user;
                 } catch (error) {
@@ -86,22 +86,29 @@ export const authOptions = {
 
             const extendedToken = token as ExtendedJWT;
 
-            if (Date.now() < extendedToken.expiresAt) {
+            // Check if the access token has expired
+            if (Date.now() + 5000 < extendedToken.expiresAt) { // Adding a 5-second buffer
                 return extendedToken;
             }
 
-            return refreshAccessToken(extendedToken);
-        },
+            // Try refreshing the access token if expired
+            const refreshedToken = await refreshAccessToken(extendedToken);
 
-        async session({
-            session,
-            token,
-        }: {
-            session: Session;
-            token: JWT;
-        }): Promise<Session> {
+            if (refreshedToken.error) {
+                console.error('Failed to refresh access token:', refreshedToken.error);
+            }
+
+            return refreshedToken;
+        },
+        async session({ session, token }: { session: Session; token: JWT }): Promise<Session> {
             const extendedToken = token as ExtendedJWT;
+
             if (extendedToken) {
+                if (extendedToken.error === REFRESH_TOKEN_EXPIRED) {
+                    console.log("🚀 ~ Session cleared due to refresh token expiration");
+                    return null as any;
+                }
+
                 session.user = {
                     ...session.user,
                     email: extendedToken.email!,
@@ -115,13 +122,14 @@ export const authOptions = {
                 }
             }
             return session;
-        },
+        }
+
     },
     pages: {
         signIn: '/auth/signin',
         signOut: '/auth/signout',
         error: '/auth/error',
-        redirect: '/',
+        redirect: '/core/travelers',
     },
     session: {
         strategy: 'jwt' as const,
@@ -147,7 +155,7 @@ async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token.accessToken}`,
+                    Authorization: `Bearer ${token.refreshToken}`,
                 },
                 body: JSON.stringify({
                     refresh_token: token.refreshToken,
@@ -158,9 +166,11 @@ async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
 
         if (!response.ok) {
             if (response.status === 401) {
+                console.log("🚀 ~ Refresh token expired, status 401");
+
                 return {
                     ...token,
-                    error: 'RefreshTokenExpiredError',
+                    error: REFRESH_TOKEN_EXPIRED,
                 };
             }
             throw new Error('Failed to refresh token');

@@ -11,49 +11,83 @@ import {
     ResponseDataType,
     TableDataType,
 } from '@/utils/types/page-type/table.type'
-import { getSession } from 'next-auth/react'
+
 import { endpointConfig } from './apiSlice.endpoint'
 
 const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
 
+import { getSession, signOut } from 'next-auth/react';
+
+
 const baseQuery = fetchBaseQuery({
     baseUrl: `${apiUrl}/items`,
-    prepareHeaders: async (headers) => {
-        const session = await getSession()
-        const token = session?.user.accessToken
-        const expiresAt = session?.user.expiresAt
+    prepareHeaders: async (headers, { getState }) => {
+        const session = await getSession();
+        let token = session?.user.accessToken;
+        const expiresAt = session?.user.expiresAt;
 
-        if (token && expiresAt && new Date().getTime() < expiresAt) {
-            headers.set('Authorization', `Bearer ${token}`)
+        // Check if the token has expired
+        if (token && expiresAt && new Date().getTime() >= expiresAt) {
+            // Attempt to refresh the token
+            const refreshResponse = await fetch(`${apiUrl}/auth/refresh`, {
+                method: 'POST',
+                credentials: 'include',
+            });
+
+            if (refreshResponse.ok) {
+                const refreshedData = await refreshResponse.json();
+                token = refreshedData.accessToken;
+
+                // Optionally update the session (depends on your session strategy)
+                await fetch('/api/auth/session?update=true', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        accessToken: refreshedData.accessToken,
+                        refreshToken: refreshedData.refreshToken,
+                        expiresAt: Date.now() + refreshedData.expiresIn,
+                    }),
+                });
+            } else {
+                // If refresh token fails, remove the session and redirect to login with callbackUrl
+                const currentUrl = window.location.href;
+                await signOut({
+                    callbackUrl: `/auth/signin?callbackUrl=${encodeURIComponent(currentUrl)}`,
+                });
+                return headers; // Stop the request after the redirection
+            }
         }
 
-        headers.set('Content-Type', 'application/json')
-        return headers
+        if (token) {
+            headers.set('Authorization', `Bearer ${token}`);
+        }
+
+        headers.set('Content-Type', 'application/json');
+        return headers;
     },
     paramsSerializer: (params: Record<string, any>) => {
-        const queryParams = new URLSearchParams()
+        const queryParams = new URLSearchParams();
 
         Object.entries(params).forEach(([key, value]) => {
             if (value !== undefined) {
                 if (key === 'sort' && Array.isArray(value)) {
                     value.forEach((sortItem) => {
-                        queryParams.append('sort[]', sortItem)
-                    })
+                        queryParams.append('sort[]', sortItem);
+                    });
                 } else {
-                    queryParams.append(key, String(value))
+                    queryParams.append(key, String(value));
                 }
             }
-        })
+        });
 
-        queryParams.append('meta', '*')
-        return queryParams.toString()
+        queryParams.append('meta', '*');
+        return queryParams.toString();
     },
-})
+});
 
-interface EndpointConfig {
-    name: string
-    endpoint: string
-}
+// interface EndpointConfig {
+//     name: string
+//     endpoint: string
+// }
 
 interface QueryParams {
     page: number

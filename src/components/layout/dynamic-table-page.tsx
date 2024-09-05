@@ -20,7 +20,7 @@ export default function GenericTablePage({
     tableOptions,
     pageName,
 }: Readonly<GenericTablePageType & { pageName: string }>) {
-    console.log('🚀 ~ columns:', columns)
+    // console.log('🚀 ~ columns:', columns)
     const dispatch = useDispatch()
     const savedState = useSelector(
         (state: RootState) => state.tableStates[pageName]

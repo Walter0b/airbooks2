@@ -1,15 +1,15 @@
 'use client'
 import React, { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import logo from '@/assets/image/neema/logo/airbooks-logo.png'
 import { signIn } from 'next-auth/react'
-import { useRouter, useSearchParams } from 'next/navigation'
 import { DEFAULT_REDIRECT } from '@/lib/routes'
-import { Alert, AlertDescription } from '@/components/ui/alert'
 import GlobalLoader from '@/components/loader/global-loader'
-import { Spinner } from '@/assets/svg/spinner'
 import { cn } from '@/utils/functions/classNames'
-// import { Loader2 } from 'lucide-react'
+import { Spinner } from '@/assets/svg/spinner'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+
 const Page: React.FC = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -20,7 +20,6 @@ const Page: React.FC = () => {
 
     const searchParams = useSearchParams()
     const callbackUrl = searchParams ? searchParams.get('callbackUrl') : null
-    //    console.log("🚀 ~ callbackUrl:", callbackUrl)
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -38,7 +37,7 @@ const Page: React.FC = () => {
                 setError('Invalid email or password')
             } else {
                 setForwarding(true)
-                router.push(callbackUrl || DEFAULT_REDIRECT)
+                await router.push(callbackUrl || DEFAULT_REDIRECT)
             }
         } catch (err) {
             setError('An unexpected error occurred. Please try again.')
@@ -49,7 +48,11 @@ const Page: React.FC = () => {
 
     return (
         <div className="background flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
-            {forwarding &&  <div className='h-screen w-screen absolute'><GlobalLoader /></div>}
+            {forwarding && (
+                <div className="h-screen w-screen absolute z-30">
+                    <GlobalLoader />
+                </div>
+            )}
             <div className="flex flex-col rounded-lg shadow-md lg:flex-row">
                 {/* Logo and copyright section */}
                 <div className="border-b bg-slate-100 py-7 px-10 lg:w-72 lg:border-r">
