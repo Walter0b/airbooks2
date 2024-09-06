@@ -34,10 +34,12 @@ const Page: React.FC = () => {
             })
 
             if (result?.error) {
+               
                 setError('Invalid email or password')
             } else {
+                console.log("🚀 ~ handleSubmit ~ result:", result)
                 setForwarding(true)
-                await router.push(callbackUrl || DEFAULT_REDIRECT)
+                router.push(callbackUrl || DEFAULT_REDIRECT)
             }
         } catch (err) {
             setError('An unexpected error occurred. Please try again.')
