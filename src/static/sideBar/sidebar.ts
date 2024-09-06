@@ -12,7 +12,7 @@ import { SidebarItemType } from '@/utils/types/page-type/table.type'
 export const coreNavigation: SidebarItemType[] = [
     {
         label: 'Dashboard',
-        href: '/core/dashboard',
+        href: '/core',
         group: 1,
         icon: TachometerIcon,
         isButton: false,

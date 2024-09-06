@@ -1,4 +1,4 @@
-// components/layout/GenericTablePage.js
+layout / GenericTablePage.js
 'use client'
 
 import TableFilterOptions from '@/components/table/items/page.header'
