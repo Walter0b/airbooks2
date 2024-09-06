@@ -20,7 +20,7 @@ const Tabs: React.FC<TabsProps> = ({ formData, setFormData }) => {
                 {formData.map((tab: IndividualFormDataProp, index: number) => (
                     <button
                         key={index}
-                        onClick={() => handleTabClick(tab.label, tab.tabs)}
+                        onClick={() => handleTabClick(tab.label!, tab.tabs)}
                         className={cn(
                             'borderButtonStyles',
                             currentPage === tab.label && 'actives'

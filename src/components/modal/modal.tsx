@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { closeModal } from '@/states/reducer/modalSlice'
 import { ModalContext } from '@/states/context/ModalContext'
 import { RootState } from '@/states/store'
-import DynamicForm from './modal.form'
+import DynamicForm from './modal.Form'
 
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
 
