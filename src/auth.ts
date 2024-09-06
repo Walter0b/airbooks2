@@ -20,17 +20,8 @@ interface ExtendedJWT extends JWT {
     error?: string;
 }
 
-// Utility to debounce the input
-function debounce<T extends (...args: any[]) => any>(func: T, delay: number) {
-    let timeoutId: NodeJS.Timeout;
-    return (...args: Parameters<T>) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func(...args), delay);
-    };
-}
-
-// Debounced input can be used before invoking the authorize function
-const debouncedFetch = async (credentials: { email: string; password: string }): Promise<ExtendedUser | null> => {
+// Function to fetch user from the API
+const fetchUser = async (credentials: { email: string; password: string }): Promise<ExtendedUser | null> => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,16 +34,18 @@ const debouncedFetch = async (credentials: { email: string; password: string }):
     }
 
     const { data } = await res.json();
+    console.log("🚀 ~ fetchUser ~ data:", data)
 
     return {
         id: data.access_token,
         email: credentials.email.toString(),
         accessToken: data.access_token,
         refreshToken: data.refresh_token,
-        expiresAt: Date.now() + data.expires,
+        expiresAt: Date.now() + data.expires * 1000,
     };
 };
 
+// Authentication options configuration
 export const authOptions = {
     providers: [
         CredentialsProvider({
@@ -65,11 +58,10 @@ export const authOptions = {
                 const email = credentials?.email as string;
                 const password = credentials?.password as string;
 
-                // Check if email and password are provided
                 if (!email || !password) return null;
 
                 try {
-                    const user = await debouncedFetch({ email, password });
+                    const user = await fetchUser({ email, password });
                     return user;
                 } catch (error) {
                     handleError(error, 'authorize function');
@@ -87,43 +79,39 @@ export const authOptions = {
             const extendedToken = token as ExtendedJWT;
 
             // Check if the access token has expired
-            if (Date.now() + 5000 < extendedToken.expiresAt) { // Adding a 5-second buffer
+            if (Date.now() + 5000 < extendedToken.expiresAt) {
                 return extendedToken;
             }
 
-            // Try refreshing the access token if expired
-            const refreshedToken = await refreshAccessToken(extendedToken);
-
-            if (refreshedToken.error) {
-                console.error('Failed to refresh access token:', refreshedToken.error);
+            try {
+                return await refreshAccessToken(extendedToken);
+            } catch (error) {
+                console.error('Error refreshing access token:', error);
+                return { ...extendedToken, error: REFRESH_TOKEN_ERROR };
             }
-
-            return refreshedToken;
         },
         async session({ session, token }: { session: Session; token: JWT }): Promise<Session> {
             const extendedToken = token as ExtendedJWT;
 
-            if (extendedToken) {
-                if (extendedToken.error === REFRESH_TOKEN_EXPIRED) {
-                    console.log("🚀 ~ Session cleared due to refresh token expiration");
-                    return null as any;
-                }
-
-                session.user = {
-                    ...session.user,
-                    email: extendedToken.email!,
-                    accessToken: extendedToken.accessToken,
-                    refreshToken: extendedToken.refreshToken,
-                    expiresAt: extendedToken.expiresAt,
-                };
-
-                if (extendedToken.error === REFRESH_TOKEN_ERROR) {
-                    session.error = REFRESH_TOKEN_ERROR;
-                }
+            if (extendedToken.error === REFRESH_TOKEN_EXPIRED) {
+                console.log('Session cleared due to refresh token expiration');
+                return null as any;
             }
-            return session;
-        }
 
+            session.user = {
+                ...session.user,
+                email: extendedToken.email!,
+                accessToken: extendedToken.accessToken,
+                refreshToken: extendedToken.refreshToken,
+                expiresAt: extendedToken.expiresAt,
+            };
+
+            if (extendedToken.error === REFRESH_TOKEN_ERROR) {
+                session.error = REFRESH_TOKEN_ERROR;
+            }
+
+            return session;
+        },
     },
     pages: {
         signIn: '/auth/signin',
@@ -134,7 +122,7 @@ export const authOptions = {
     session: {
         strategy: 'jwt' as const,
         maxAge: 30 * 24 * 60 * 60, // 30 days
-        updateAge: 24 * 60 * 60, // 24 hours
+        updateAge: 24 * 60 * 60,   // 24 hours
         generateSessionToken: () => nanoid(),
         cookieName: 'next-auth.session-token',
         cookieOptions: {
@@ -147,6 +135,7 @@ export const authOptions = {
     secret: process.env.NEXTAUTH_SECRET,
 };
 
+// Refresh access token logic
 async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
     try {
         const response = await fetch(
@@ -157,21 +146,13 @@ async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token.refreshToken}`,
                 },
-                body: JSON.stringify({
-                    refresh_token: token.refreshToken,
-                    mode: 'json',
-                }),
+                body: JSON.stringify({ refresh_token: token.refreshToken }),
             }
         );
 
         if (!response.ok) {
             if (response.status === 401) {
-                console.log("🚀 ~ Refresh token expired, status 401");
-
-                return {
-                    ...token,
-                    error: REFRESH_TOKEN_EXPIRED,
-                };
+                return { ...token, error: REFRESH_TOKEN_EXPIRED };
             }
             throw new Error('Failed to refresh token');
         }
@@ -182,14 +163,11 @@ async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
             ...token,
             accessToken: data.data.access_token,
             refreshToken: data.data.refresh_token,
-            expiresAt: Date.now() + data.data.expires,
+            expiresAt: Date.now() + data.data.expires * 1000,
         };
     } catch (error) {
         handleError(error, 'refreshing access token');
-        return {
-            ...token,
-            error: REFRESH_TOKEN_ERROR,
-        };
+        return { ...token, error: REFRESH_TOKEN_ERROR };
     }
 }
 
