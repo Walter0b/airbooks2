@@ -11,13 +11,10 @@ import {
     ResponseDataType,
     TableDataType,
 } from '@/utils/types/page-type/table.type'
-
 import { endpointConfig } from './apiSlice.endpoint'
-
-const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
-
 import { getSession, signOut } from 'next-auth/react';
 
+const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 const baseQuery = fetchBaseQuery({
     baseUrl: `${apiUrl}/items`,
@@ -84,10 +81,60 @@ const baseQuery = fetchBaseQuery({
     },
 });
 
-// interface EndpointConfig {
-//     name: string
-//     endpoint: string
-// }
+
+const baseQueryWithReauth: BaseQueryFn<
+    string | FetchArgs,
+    unknown,
+    FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+    let result = await baseQuery(args, api, extraOptions);
+
+    if (result.error && 'data' in result.error) {
+        const errorData = result.error.data as any;
+        if (errorData?.errors?.[0]?.extensions?.code === 'TOKEN_EXPIRED') {
+            // Token has expired, attempt to refresh
+            const refreshResult = await fetch(`${apiUrl}/auth/refresh`, {
+                method: 'POST',
+                credentials: 'include',
+            });
+
+            if (refreshResult.ok) {
+                const refreshedData = await refreshResult.json();
+                
+                // Update the session with the new token
+                await fetch('/api/auth/session?update=true', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        accessToken: refreshedData.accessToken,
+                        refreshToken: refreshedData.refreshToken,
+                        expiresAt: Date.now() + refreshedData.expiresIn,
+                    }),
+                });
+
+                // Retry the original query with new access token
+                const retryArgs = typeof args === 'string' 
+                    ? { url: args, headers: { Authorization: `Bearer ${refreshedData.accessToken}` } }
+                    : {
+                        ...args,
+                        headers: {
+                            ...args.headers,
+                            Authorization: `Bearer ${refreshedData.accessToken}`,
+                        },
+                    };
+
+                result = await baseQuery(retryArgs, api, extraOptions);
+            } else {
+                // If refresh fails, sign out the user
+                const currentUrl = window.location.href;
+                await signOut({
+                    callbackUrl: `/auth/signin?callbackUrl=${encodeURIComponent(currentUrl)}`,
+                });
+            }
+        }
+    }
+
+    return result;
+};
 
 interface QueryParams {
     page: number
@@ -155,7 +202,7 @@ const generateEndpoints = (
 
 export const api = createApi({
     reducerPath: 'api',
-    baseQuery,
+    baseQuery: baseQueryWithReauth,
     tagTypes: endpointConfig.map(({ name }) => name),
     endpoints: generateEndpoints,
 })
@@ -190,11 +237,4 @@ export const {
     useCreatePreferenceMutation,
     useCreateIntegrationMutation,
     useCreateTravelItemMutation,
-    useCreateEstimateMutation,
-    useCreateInvoiceMutation,
-    useCreateCreditNoteMutation,
-    useCreatePaymentMutation,
-    useCreateBillMutation,
-    useCreateExpenseMutation,
-    useCreateManualJournalMutation,
 } = api
