@@ -1,4 +1,4 @@
-// 
+//
 // 'use client'
 
 // import GenericCompactPage from '@/components/layout/dynamic-details-page'

@@ -87,10 +87,12 @@ export default function GenericTablePage({
 
             if (isKeyPresent) {
                 // If key is in the array, change it to descending by adding '-'
-                return prevSort.map(sortKey => (sortKey === key ? `-${key}` : sortKey))
+                return prevSort.map((sortKey) =>
+                    sortKey === key ? `-${key}` : sortKey
+                )
             } else if (isDescPresent) {
                 // If key is already in descending order, remove it
-                return prevSort.filter(sortKey => sortKey !== `-${key}`)
+                return prevSort.filter((sortKey) => sortKey !== `-${key}`)
             } else {
                 // If key is not in the array, add it in ascending order
                 return [...prevSort, key]
@@ -106,8 +108,8 @@ export default function GenericTablePage({
                     sort[0] === col.key
                         ? 'asc'
                         : sort[0] === `-${col.key}`
-                            ? 'desc'
-                            : undefined,
+                          ? 'desc'
+                          : undefined,
             })),
         [columns, sort]
     )
@@ -117,9 +119,9 @@ export default function GenericTablePage({
             <TableFilterOptions
                 data-slot="header"
                 dropdownOptions={tableOptions}
-            // handleRefresh={handleRefresh}
-            // onFilterChange={setFilter}
-            // onSearchChange={setSearch}
+                // handleRefresh={handleRefresh}
+                // onFilterChange={setFilter}
+                // onSearchChange={setSearch}
             />
             <div data-slot="body">
                 <Table

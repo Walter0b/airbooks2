@@ -1,4 +1,3 @@
-
 'use client'
 
 import GenericTablePage from '@/components/layout/dynamic-table-page'

@@ -12,16 +12,16 @@ import {
     TableDataType,
 } from '@/utils/types/page-type/table.type'
 import { endpointConfig } from './apiSlice.endpoint'
-import { getSession, signOut } from 'next-auth/react';
+import { getSession, signOut } from 'next-auth/react'
 
 const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 const baseQuery = fetchBaseQuery({
     baseUrl: `${apiUrl}/items`,
     prepareHeaders: async (headers, { getState }) => {
-        const session = await getSession();
-        let token = session?.user.accessToken;
-        const expiresAt = session?.user.expiresAt;
+        const session = await getSession()
+        let token = session?.user.accessToken
+        const expiresAt = session?.user.expiresAt
 
         // Check if the token has expired
         if (token && expiresAt && new Date().getTime() >= expiresAt) {
@@ -29,11 +29,11 @@ const baseQuery = fetchBaseQuery({
             const refreshResponse = await fetch(`${apiUrl}/auth/refresh`, {
                 method: 'POST',
                 credentials: 'include',
-            });
+            })
 
             if (refreshResponse.ok) {
-                const refreshedData = await refreshResponse.json();
-                token = refreshedData.accessToken;
+                const refreshedData = await refreshResponse.json()
+                token = refreshedData.accessToken
 
                 // Optionally update the session (depends on your session strategy)
                 await fetch('/api/auth/session?update=true', {
@@ -43,64 +43,63 @@ const baseQuery = fetchBaseQuery({
                         refreshToken: refreshedData.refreshToken,
                         expiresAt: Date.now() + refreshedData.expiresIn,
                     }),
-                });
+                })
             } else {
                 // If refresh token fails, remove the session and redirect to login with callbackUrl
-                const currentUrl = window.location.href;
+                const currentUrl = window.location.href
                 await signOut({
                     callbackUrl: `/auth/signin?callbackUrl=${encodeURIComponent(currentUrl)}`,
-                });
-                return headers; // Stop the request after the redirection
+                })
+                return headers // Stop the request after the redirection
             }
         }
 
         if (token) {
-            headers.set('Authorization', `Bearer ${token}`);
+            headers.set('Authorization', `Bearer ${token}`)
         }
 
-        headers.set('Content-Type', 'application/json');
-        return headers;
+        headers.set('Content-Type', 'application/json')
+        return headers
     },
     paramsSerializer: (params: Record<string, any>) => {
-        const queryParams = new URLSearchParams();
+        const queryParams = new URLSearchParams()
 
         Object.entries(params).forEach(([key, value]) => {
             if (value !== undefined) {
                 if (key === 'sort' && Array.isArray(value)) {
                     value.forEach((sortItem) => {
-                        queryParams.append('sort[]', sortItem);
-                    });
+                        queryParams.append('sort[]', sortItem)
+                    })
                 } else {
-                    queryParams.append(key, String(value));
+                    queryParams.append(key, String(value))
                 }
             }
-        });
+        })
 
-        queryParams.append('meta', '*');
-        return queryParams.toString();
+        queryParams.append('meta', '*')
+        return queryParams.toString()
     },
-});
-
+})
 
 const baseQueryWithReauth: BaseQueryFn<
     string | FetchArgs,
     unknown,
     FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-    let result = await baseQuery(args, api, extraOptions);
+    let result = await baseQuery(args, api, extraOptions)
 
     if (result.error && 'data' in result.error) {
-        const errorData = result.error.data as any;
+        const errorData = result.error.data as any
         if (errorData?.errors?.[0]?.extensions?.code === 'TOKEN_EXPIRED') {
             // Token has expired, attempt to refresh
             const refreshResult = await fetch(`${apiUrl}/auth/refresh`, {
                 method: 'POST',
                 credentials: 'include',
-            });
+            })
 
             if (refreshResult.ok) {
-                const refreshedData = await refreshResult.json();
-                
+                const refreshedData = await refreshResult.json()
+
                 // Update the session with the new token
                 await fetch('/api/auth/session?update=true', {
                     method: 'POST',
@@ -109,32 +108,38 @@ const baseQueryWithReauth: BaseQueryFn<
                         refreshToken: refreshedData.refreshToken,
                         expiresAt: Date.now() + refreshedData.expiresIn,
                     }),
-                });
+                })
 
                 // Retry the original query with new access token
-                const retryArgs = typeof args === 'string' 
-                    ? { url: args, headers: { Authorization: `Bearer ${refreshedData.accessToken}` } }
-                    : {
-                        ...args,
-                        headers: {
-                            ...args.headers,
-                            Authorization: `Bearer ${refreshedData.accessToken}`,
-                        },
-                    };
+                const retryArgs =
+                    typeof args === 'string'
+                        ? {
+                              url: args,
+                              headers: {
+                                  Authorization: `Bearer ${refreshedData.accessToken}`,
+                              },
+                          }
+                        : {
+                              ...args,
+                              headers: {
+                                  ...args.headers,
+                                  Authorization: `Bearer ${refreshedData.accessToken}`,
+                              },
+                          }
 
-                result = await baseQuery(retryArgs, api, extraOptions);
+                result = await baseQuery(retryArgs, api, extraOptions)
             } else {
                 // If refresh fails, sign out the user
-                const currentUrl = window.location.href;
+                const currentUrl = window.location.href
                 await signOut({
                     callbackUrl: `/auth/signin?callbackUrl=${encodeURIComponent(currentUrl)}`,
-                });
+                })
             }
         }
     }
 
-    return result;
-};
+    return result
+}
 
 interface QueryParams {
     page: number
