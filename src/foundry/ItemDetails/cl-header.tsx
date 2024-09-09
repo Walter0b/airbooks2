@@ -26,7 +26,7 @@ export const CompactListHeader = memo(function CompactListHeader({
 
 
     useEffect(() => {
-        setActiveActionButtons(dropdownOptions.actionButtons.find(value => value.api_name === contentToDisplay))
+        setActiveActionButtons(dropdownOptions?.actionButtons?.find(value => value.api_name === contentToDisplay))
     }, [contentToDisplay])
 
     return (

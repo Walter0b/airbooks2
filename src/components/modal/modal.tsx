@@ -2,13 +2,13 @@ import { useState, useEffect, useRef, useContext } from 'react'
 
 import { FormTabType } from '@/utils/types/structure'
 import CloseButton from '@/components/buttons/close-Button'
-import Tabs from './modal.tabs'
+import Tabs from './modal-tabs'
 import { useFormState } from '@/hooks/useFormState'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal } from '@/states/reducer/modalSlice'
 import { ModalContext } from '@/states/context/ModalContext'
 import { RootState } from '@/states/store'
-import DynamicForm from './modal.Form'
+import DynamicForm from './modal-form'
 
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
 

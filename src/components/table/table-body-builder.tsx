@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ClockIcon } from '@/assets/svg/clock'
 import Buttons from '@/components/buttons/buttons'
-import { Lookup } from '@/components/buttons/buttons.lookups'
+import { Lookup } from '@/components/buttons/buttons-lookups'
 import { cn } from '@/utils/functions/classNames'
 
 import { FieldComponents, FormFieldType } from '@/utils/types/structure'

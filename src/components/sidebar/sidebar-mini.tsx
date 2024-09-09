@@ -1,11 +1,11 @@
 
 import React from 'react'
 import NavLink from 'next-navlink'
-import { NavLinks } from './sidebar.item.nav'
+import { NavLinks } from './sidebar-item-nav'
 import { CircleIcon } from '@/assets/svg/circle'
 import { cn } from '@/utils/functions/classNames'
 import SideBar from './sidebar'
-import SideBarItems from './sidebar.item'
+import SideBarItems from './sidebar-item'
 import { MiniSidebarType } from '@/utils/types/page-type/table.type'
 
 

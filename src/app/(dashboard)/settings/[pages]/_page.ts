@@ -4,15 +4,16 @@ import {
     useFetchUsersQuery,
 } from '@/states/reducer/apiSlice'
 import { PageConfigType } from '@/utils/types/page-type/table.type'
-import { customerTableOptions } from '../../../../static/page/core/customers/dropdown'
-import { travelerTableOptions } from '../../../../static/page/core/travelerItems/dropdown'
-import { travelersColumns } from '../../../../static/page/core/travelers/table'
+
 import {
     productionColumns,
     UserColumns,
     UserSettingsSidebar,
     UserTableOptions,
 } from '../user/user'
+import { travelersColumns } from '@/static/page/core/travelers/table'
+import { travelerTableOptions } from '@/static/travelers/table/dropdown'
+import { customerTableOptions } from '@/static/page/core/customers/dropdown'
 
 export const pagesConfig: PageConfigType = {
     agency_profile: {

@@ -1,5 +1,5 @@
 'use client'
-import DisplayModal from '@/components/modal/modal.display'
+import DisplayModal from '@/components/modal/modal-display'
 import React from 'react'
 
 export default function settingsLayout({

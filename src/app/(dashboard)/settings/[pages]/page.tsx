@@ -34,7 +34,7 @@
 
 import GenericSettingsPage from '@/components/layout/dynamic-settings-page'
 import { pagesConfig } from './_page'
-import MiniSidebar from '@/components/sidebar/sidebar.mini'
+import MiniSidebar from '@/components/sidebar/sidebar-mini'
 
 export default function DynamicPage({
   params,

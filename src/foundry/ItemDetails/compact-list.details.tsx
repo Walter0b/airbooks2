@@ -46,28 +46,33 @@ export default function CompactListDetails({ dropdownOptions, layoutParameters }
                 data-slot="compactListBody"
                 className="w-full border-b border-gray-200"
             >
-                {(dropdownOptions.actionButtons?.length && dropdownOptions.actionButtons?.length > 1) &&
+                {(dropdownOptions.actionButtons?.length && dropdownOptions.actionButtons.length > 1) &&
                     <div className='mt-12 w-full'>
-                        <button
-                            onClick={() => {
-                                setDetailsToDisplay(dropdownOptions.actionButtons[0].api_name);
-                                setSelected(!selected)
-                            }}
-                            className={selected ? 'border-b-3 text-cyan-550 px-10' : 'border-cyan-550 px-10 text-black hover:text-cyan-550 hover:border-b-3'}
-                        >
-                            {dropdownOptions.actionButtons[0].name}
-                        </button>
-                        <button
-                            onClick={() => {
-                                setDetailsToDisplay(dropdownOptions.actionButtons[1].api_name);
-                                setSelected(!selected)
-                            }}
-                            className={!selected ? 'border-b-3 text-cyan-550 px-10' : 'border-cyan-550 px-10 text-black hover:text-cyan-550 hover:border-b-3'}
-                        >
-                            {dropdownOptions.actionButtons[1].name}
-                        </button>
+                        {dropdownOptions.actionButtons?.[0] && 'api_name' in dropdownOptions.actionButtons[0] &&
+                            <button
+                                onClick={() => {
+                                    setDetailsToDisplay(dropdownOptions.actionButtons?.[0]?.api_name);
+                                    setSelected(!selected)
+                                }}
+                                className={selected ? 'border-b-3 text-cyan-550 px-10' : 'border-cyan-550 px-10 text-black hover:text-cyan-550 hover:border-b-3'}
+                            >
+                                {dropdownOptions.actionButtons[0]?.name}
+                            </button>
+                        }
+                        {dropdownOptions.actionButtons?.[1] && 'api_name' in dropdownOptions.actionButtons[1] &&
+                            <button
+                                onClick={() => {
+                                    setDetailsToDisplay(dropdownOptions.actionButtons?.[1]?.api_name);
+                                    setSelected(!selected)
+                                }}
+                                className={!selected ? 'border-b-3 text-cyan-550 px-10' : 'border-cyan-550 px-10 text-black hover:text-cyan-550 hover:border-b-3'}
+                            >
+                                {dropdownOptions.actionButtons[1]?.name}
+                            </button>
+                        }
                     </div>
                 }
+
                 <div className="h-full w-full">
                     <CompactListData data='Test' />
                 </div>

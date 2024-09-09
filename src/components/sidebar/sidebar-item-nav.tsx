@@ -39,7 +39,7 @@ export const NavLinks = ({
         >
             {(isActive) => (
 
-                <div className={cn(item.icon && ' gap-x-2 ', "flex w-fulltext-[13px] font-medium leading-6")}>
+                <div className={cn(item.icon && ' gap-x-2 ', "flex w-full text-[13px] font-medium leading-6")}>
                     {item.icon ? (
                         <div
                             className={cn(

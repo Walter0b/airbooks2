@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Buttons from '@/components/buttons/buttons'
-import { Lookup } from '@/components/buttons/buttons.lookups'
+import { Lookup } from '@/components/buttons/buttons-lookups'
 import { cn } from '@/utils/functions/classNames'
 
 import { FieldComponents, FormFieldType } from '@/utils/types/structure'
@@ -103,7 +103,7 @@ function space(field: FormFieldType) {
     return <div key={field.id} className={cn(field.span, 'invisible')}></div>
 }
 function lookup(field: FormFieldType, FieldsValue: any) {
-  
+
 
     return (
         <Lookup

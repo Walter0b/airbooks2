@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import TableFilterOptions from '@/components/table/items/page.header'
+import TableFilterOptions from '@/components/table/items/page-header'
 import Pages from '@/components/layout/pages'
 import Pagination from '@/components/table/pagination'
 import Table from '@/components/table/table'
-import TableHeader from '@/components/table/table.header'
+import TableHeader from '@/components/table/table-header'
 import {
     GenericTablePageType,
     TableColumnType,
@@ -108,8 +108,8 @@ export default function GenericTablePage({
                     sort[0] === col.key
                         ? 'asc'
                         : sort[0] === `-${col.key}`
-                          ? 'desc'
-                          : undefined,
+                            ? 'desc'
+                            : undefined,
             })),
         [columns, sort]
     )
@@ -119,9 +119,9 @@ export default function GenericTablePage({
             <TableFilterOptions
                 data-slot="header"
                 dropdownOptions={tableOptions}
-                // handleRefresh={handleRefresh}
-                // onFilterChange={setFilter}
-                // onSearchChange={setSearch}
+            // handleRefresh={handleRefresh}
+            // onFilterChange={setFilter}
+            // onSearchChange={setSearch}
             />
             <div data-slot="body">
                 <Table

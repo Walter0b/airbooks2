@@ -3,10 +3,10 @@ import { NotificationsIcon } from '@/assets/svg/notificaitons'
 import { HelpIcon } from '@/assets/svg/help'
 import { SettingsIcon } from '@/assets/svg/settings'
 import { UserIcon } from '@/assets/svg/user'
-import LanguageOption from './header.languageOption'
+import LanguageOption from './header-languageOption'
 import Image from 'next/image'
 import Buttons from '../buttons/buttons'
-import HeaderOptions from './header.Items.Profil'
+import HeaderOptions from './header-Items-Profil'
 import { settingsOption } from '@/static/header/heart'
 export default function HeaderItems() {
     return (

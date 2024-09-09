@@ -25,26 +25,38 @@ const fetchUser = async (credentials: {
     email: string
     password: string
 }): Promise<ExtendedUser | null> => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-    })
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(credentials),
+        })
+        // console.log("🚀 ~ res:", res)
+        if (!res.ok) {
 
-    if (!res.ok) {
-        console.error(`Login failed: ${res.status} ${res.statusText}`)
+            console.error(`Login failed: ${res.status} ${res.statusText}`)
+            if (res.status === 401) {
+                throw new Error('Invalid credentials')
+            }
+            throw new Error('Login failed')
+        }
+
+        const { data } = await res.json()
+
+        if (!data || !data.access_token || !data.refresh_token || !data.expires) {
+            throw new Error('Invalid response from server')
+        }
+
+        return {
+            id: data.access_token,
+            email: credentials.email.toString(),
+            accessToken: data.access_token,
+            refreshToken: data.refresh_token,
+            expiresAt: Date.now() + data.expires * 1000,
+        }
+    } catch (error) {
+        console.error('Error in fetchUser:', error)
         return null
-    }
-
-    const { data } = await res.json()
-    console.log('🚀 ~ fetchUser ~ data:', data)
-
-    return {
-        id: data.access_token,
-        email: credentials.email.toString(),
-        accessToken: data.access_token,
-        refreshToken: data.refresh_token,
-        expiresAt: Date.now() + data.expires * 1000,
     }
 }
 
@@ -124,9 +136,6 @@ export const authOptions = {
     },
     pages: {
         signIn: '/auth/signin',
-        signOut: '/auth/signout',
-        error: '/auth/error',
-        redirect: '/core/travelers',
     },
     session: {
         strategy: 'jwt' as const,
@@ -145,7 +154,7 @@ export const authOptions = {
 }
 
 // Refresh access token logic
-async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
+export async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
     try {
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`,

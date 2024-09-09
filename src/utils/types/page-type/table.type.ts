@@ -98,7 +98,7 @@ export interface TableOptionsType {
     show?: ShowTableOptionsType
     action?: DropdownItemType[]
     mainButtons?: CompactListMainButtons[]
-    actionButtons: CompactListButtonLayout[]
+    actionButtons?: CompactListButtonLayout[]
 }
 
 export interface CompactListMainButtons {
@@ -139,7 +139,7 @@ export interface TableItemType extends CheckboxType {
     tableData?: ResponseDataType
     isFetching: boolean
     columns: TableColumnType[]
-    children: ReactNode
+    children?: ReactNode
     onClickHandler?: (value: string) => void
     onCheckboxChange?: (value: string) => void
 }

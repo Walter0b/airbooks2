@@ -3,20 +3,18 @@
 
 import GenericCompactPage from '@/components/layout/dynamic-details-page'
 import { pagesConfig } from '../_pagesConfig'
-import Header from '@/components/table/items/page.header'
+import Header from '@/components/table/items/page-header'
 import CompactList from '@/foundry/ItemDetails/compact-list'
 import CompactListDetails from '@/foundry/ItemDetails/compact-list.details'
 import useSingleState from '@/hooks/useSingleState'
 import PageLoader from '@/components/loader/page-loader'
 
-export default function DynamicPage({
+export default function DynamicDetailsPage({
     params,
     children,
-    searchParams,
 }: Readonly<{
     children: React.ReactElement
     params: { pages: string }
-    searchParams: { [key: string]: string | string[] | undefined }
 }>) {
 
     const pageConfig = pagesConfig[params.pages]

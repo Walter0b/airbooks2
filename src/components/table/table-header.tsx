@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkboxes from './table.checkbox';
+import Checkboxes from './table-checkbox';
 import { TableHeaderType, TableColumnType } from '@/utils/types/page-type/table.type';
 import { ArrowIcon } from '@/assets/svg/arrow';
 import { cn } from '@/utils/functions/classNames';

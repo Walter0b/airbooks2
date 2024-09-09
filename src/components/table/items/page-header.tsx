@@ -1,5 +1,5 @@
 import ShowButton from '@/components/table/items/show-button'
-import TableOptions from '@/components/table/items/table.option'
+import TableOptions from '@/components/table/items/table-option'
 import { cn } from '@/utils/functions/classNames'
 import { TableOptionsType } from '@/utils/types/page-type/table.type'
 

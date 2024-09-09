@@ -10,7 +10,7 @@ const DateRangePicker = () => {
         <div className="flex justify-end space-x-4">
             <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => setStartDate(date!)}
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
@@ -18,7 +18,7 @@ const DateRangePicker = () => {
             />
             <DatePicker
                 selected={endDate}
-                onChange={(date) => setEndDate(date)}
+                onChange={(date) => setEndDate(date!)}
                 selectsEnd
                 startDate={startDate}
                 endDate={endDate}

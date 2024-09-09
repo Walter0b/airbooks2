@@ -3,7 +3,7 @@ import { ArrowIcon } from '@/assets/svg/arrow'
 import { ButtonInterface } from '@/utils/types/structure'
 import { cn } from '@/utils/functions/classNames'
 import useOutsideClick from '@/hooks/useOutsideClick'
-import { Dropdown } from './buttons.dropdown'
+import { Dropdown } from './buttons-dropdown'
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 
 const Buttons: React.FC<ButtonInterface> = memo(({

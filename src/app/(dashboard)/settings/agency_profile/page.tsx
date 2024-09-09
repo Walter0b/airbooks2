@@ -1,11 +1,11 @@
 'use client'
 import Pages from '@/components/layout/pages'
 import React, { useState } from 'react'
-import TableFilterOptions from '@/components/table/items/page.header'
+import TableFilterOptions from '@/components/table/items/page-header'
 import { AgencyProfilePageOptions } from '@/static/page/settings/Pageheader'
 import logoUrl from '@assets/image/neema/logo/enda-icon.png'
 import Image from 'next/image'
-import DynamicForm from '@/components/modal/modal.form'
+import DynamicForm from '@/components/modal/modal-form'
 import { useFormState } from '@/hooks/useFormState'
 import { AgencyProfileInputFields } from '../agency_profile.input'
 

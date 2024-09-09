@@ -55,9 +55,9 @@ export default function CompactList({
                 handleOpenModal={handleOpenModal}
             />
             <div data-slot="compactListBody" className="w-full border-b border-gray-200">
-                {tableOptions.actionButtons?.length > 1 && (
+                {tableOptions?.actionButtons?.length! > 1 && (
                     <div className="mt-12 w-full flex">
-                        {tableOptions.actionButtons.map((button, index) => (
+                        {tableOptions?.actionButtons?.map((button, index) => (
                             <button
                                 key={index}
                                 onClick={() => setActiveButton(button.api_name)}

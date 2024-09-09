@@ -1,6 +1,6 @@
 'use client'
-import DisplayModal from '@/components/modal/modal.display'
-import MiniSidebar from '@/components/sidebar/sidebar.mini'
+import DisplayModal from '@/components/modal/modal-display'
+import MiniSidebar from '@/components/sidebar/sidebar-mini'
 
 import { settingsNavigation } from '@/static/sideBar/sidebar'
 import React from 'react'

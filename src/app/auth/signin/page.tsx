@@ -21,32 +21,54 @@ const Page: React.FC = () => {
     const searchParams = useSearchParams()
     const callbackUrl = searchParams ? searchParams.get('callbackUrl') : null
 
+    const getErrorMessage = (error: string) => {
+        switch (error) {
+            case 'CredentialsSignin':
+                return 'Invalid email or password';
+            case 'OAuthAccountNotLinked':
+                return 'Account is linked to another provider. Try signing in with that provider.';
+            case 'Verification':
+                return 'Verification failed. Please try again.';
+            case 'AccessDenied':
+                return 'Access denied. You do not have permission to access this resource.';
+            case 'Configuration':
+                return 'There is a configuration issue. Please contact support.';
+            default:
+                return 'An unexpected error occurred. Please try again.';
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setError('')
-        setIsLoading(true)
+        e.preventDefault();
+        if (isLoading) return; // Prevent submission if already loading
+
+        setError(''); // Clear any previous errors
+        setIsLoading(true);
 
         try {
+            // Disable automatic redirection by setting `redirect: false`
             const result = await signIn('credentials', {
                 email,
                 password,
-                redirect: false,
-            })
+                redirect: false,  // Prevent redirection to default error page
+            });
 
             if (result?.error) {
-               
-                setError('Invalid email or password')
-            } else {
-                console.log("🚀 ~ handleSubmit ~ result:", result)
-                setForwarding(true)
-                router.push(callbackUrl || DEFAULT_REDIRECT)
+                // Handle and display error on the login page
+                setError(getErrorMessage(result.error));  // Use the function to display a friendly error message
+            } else if (result?.ok) {
+                // If login is successful, redirect user to the callback URL or default page
+                setForwarding(true);
+                router.push(callbackUrl || DEFAULT_REDIRECT);
             }
         } catch (err) {
-            setError('An unexpected error occurred. Please try again.')
+            setError('An unexpected error occurred. Please try again.');  // Catch any unexpected errors
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);  // Stop loading spinner
         }
-    }
+    };
+
+
 
     return (
         <div className="background flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
@@ -145,7 +167,10 @@ const Page: React.FC = () => {
                         <div className="flex flex-col items-center justify-between lg:flex-row lg:gap-3">
                             <button
                                 type="submit"
-                                className={cn(isLoading ? 'cursor-pointer pointer-events-none' : 'hover:bg-blue-700 ', "focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white focus:outline-none disabled:bg-blue-300")}
+                                className={cn(
+                                    isLoading ? 'cursor-not-allowed' : 'hover:bg-blue-700',
+                                    "focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white focus:outline-none disabled:bg-blue-300"
+                                )}
                                 disabled={isLoading}
                             >
                                 {isLoading ? (

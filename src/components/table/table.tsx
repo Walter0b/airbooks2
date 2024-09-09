@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { TableItemType } from '@/utils/types/page-type/table.type'
-import TableBody from './table.body'
+import TableBody from './table-body'
 import TableLoader, { TableBodyLoader } from '../loader/table-loader'
 
 export default function Table({
