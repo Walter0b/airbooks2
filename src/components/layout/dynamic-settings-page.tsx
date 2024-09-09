@@ -36,7 +36,9 @@ export default function GenericSettingsPage({
                         data-slot="table"
                         tableData={tableData}
                         columns={columns}
-                        hasCheckbox={true} isFetching={false}                    >
+                        hasCheckbox={true}
+                        isFetching={false}
+                    >
                         <TableHeader data-slot="TableHeader" />
                     </Table>
                 </div>

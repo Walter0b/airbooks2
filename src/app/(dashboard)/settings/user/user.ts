@@ -21,7 +21,7 @@ export const UserSettingsSidebar: MiniSidebarType = {
 
 import { TableOptionsType } from '@/utils/types/page-type/table.type'
 
-export const UserTableOptions: Omit<TableOptionsType, "actionButtons"> = {
+export const UserTableOptions: Omit<TableOptionsType, 'actionButtons'> = {
     pageLabel: 'User Roles',
 }
 

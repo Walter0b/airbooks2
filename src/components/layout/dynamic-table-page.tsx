@@ -108,8 +108,8 @@ export default function GenericTablePage({
                     sort[0] === col.key
                         ? 'asc'
                         : sort[0] === `-${col.key}`
-                            ? 'desc'
-                            : undefined,
+                          ? 'desc'
+                          : undefined,
             })),
         [columns, sort]
     )
@@ -119,9 +119,9 @@ export default function GenericTablePage({
             <TableFilterOptions
                 data-slot="header"
                 dropdownOptions={tableOptions}
-            // handleRefresh={handleRefresh}
-            // onFilterChange={setFilter}
-            // onSearchChange={setSearch}
+                // handleRefresh={handleRefresh}
+                // onFilterChange={setFilter}
+                // onSearchChange={setSearch}
             />
             <div data-slot="body">
                 <Table

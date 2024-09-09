@@ -26,14 +26,16 @@ const fetchUser = async (credentials: {
     password: string
 }): Promise<ExtendedUser | null> => {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(credentials),
-        })
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(credentials),
+            }
+        )
         // console.log("🚀 ~ res:", res)
         if (!res.ok) {
-
             console.error(`Login failed: ${res.status} ${res.statusText}`)
             if (res.status === 401) {
                 throw new Error('Invalid credentials')
@@ -43,7 +45,12 @@ const fetchUser = async (credentials: {
 
         const { data } = await res.json()
 
-        if (!data || !data.access_token || !data.refresh_token || !data.expires) {
+        if (
+            !data ||
+            !data.access_token ||
+            !data.refresh_token ||
+            !data.expires
+        ) {
             throw new Error('Invalid response from server')
         }
 
@@ -154,7 +161,9 @@ export const authOptions = {
 }
 
 // Refresh access token logic
-export async function refreshAccessToken(token: ExtendedJWT): Promise<ExtendedJWT> {
+export async function refreshAccessToken(
+    token: ExtendedJWT
+): Promise<ExtendedJWT> {
     try {
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`,

@@ -1,39 +1,39 @@
-'use client';
+'use client'
 
-import React, { useEffect, useMemo, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { ApexOptions } from 'apexcharts';
+import React, { useEffect, useMemo, useState } from 'react'
+import dynamic from 'next/dynamic'
+import { ApexOptions } from 'apexcharts'
 
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 interface AreaChartProps {
-    categories: string[];
-    seriesData: { name: string; data: number[] }[];
+    categories: string[]
+    seriesData: { name: string; data: number[] }[]
 }
 
 const AreaChart: React.FC<AreaChartProps> = ({ categories, seriesData }) => {
-    const [isZoomEnabled, setIsZoomEnabled] = useState(false);
+    const [isZoomEnabled, setIsZoomEnabled] = useState(false)
 
     // Enable zoom only when the Ctrl key is pressed
     const handleKeyDown = (event: KeyboardEvent) => {
         if (event.ctrlKey || event.metaKey) {
-            setIsZoomEnabled(true);
+            setIsZoomEnabled(true)
         }
-    };
+    }
 
     const handleKeyUp = () => {
-        setIsZoomEnabled(false);
-    };
+        setIsZoomEnabled(false)
+    }
 
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-        window.addEventListener('keyup', handleKeyUp);
+        window.addEventListener('keydown', handleKeyDown)
+        window.addEventListener('keyup', handleKeyUp)
 
         return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-            window.removeEventListener('keyup', handleKeyUp);
-        };
-    }, []);
+            window.removeEventListener('keydown', handleKeyDown)
+            window.removeEventListener('keyup', handleKeyUp)
+        }
+    }, [])
 
     const chartOptions: ApexOptions = useMemo(
         () => ({
@@ -63,13 +63,18 @@ const AreaChart: React.FC<AreaChartProps> = ({ categories, seriesData }) => {
             },
         }),
         [categories, isZoomEnabled]
-    );
+    )
 
-    const series = useMemo(() => seriesData, [seriesData]);
+    const series = useMemo(() => seriesData, [seriesData])
 
-    return <Chart options={chartOptions} series={series} type="area" height={350} />;
-};
+    return (
+        <Chart
+            options={chartOptions}
+            series={series}
+            type="area"
+            height={350}
+        />
+    )
+}
 
-export default AreaChart;
-
-
+export default AreaChart

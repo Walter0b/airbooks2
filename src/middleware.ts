@@ -13,15 +13,13 @@ const TOKEN_EXPIRY_THRESHOLD = 5 * 60 * 1000 // 5 minutes
 
 export async function middleware(req: NextRequest) {
     try {
-
         const token = await getToken({
             req,
             secret: process.env.NEXTAUTH_SECRET!,
-            salt: process.env.NEXTAUTH_SALT!
+            salt: process.env.NEXTAUTH_SALT!,
         })
         // console.log("🚀 ~ middleware ~ token:", token)
         const isPublicRoute = AUTH_CONFIG.publicRoutes.includes(
-
             req.nextUrl.pathname
         )
         const isLoginPage = req.nextUrl.pathname === AUTH_CONFIG.loginPage

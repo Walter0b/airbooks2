@@ -1,39 +1,39 @@
-'use client';
+'use client'
 
-import React, { useMemo, useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import { ApexOptions } from 'apexcharts';
+import React, { useMemo, useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
+import { ApexOptions } from 'apexcharts'
 
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 interface ChartProps {
-    categories: string[];
-    seriesData: { name: string; data: number[] }[];
+    categories: string[]
+    seriesData: { name: string; data: number[] }[]
 }
 
 const LineChart: React.FC<ChartProps> = ({ categories, seriesData }) => {
-    const [isZoomEnabled, setIsZoomEnabled] = useState(false);
+    const [isZoomEnabled, setIsZoomEnabled] = useState(false)
 
     // Enable zoom only when the Ctrl key is pressed
     const handleKeyDown = (event: KeyboardEvent) => {
         if (event.ctrlKey || event.metaKey) {
-            setIsZoomEnabled(true);
+            setIsZoomEnabled(true)
         }
-    };
+    }
 
     const handleKeyUp = () => {
-        setIsZoomEnabled(false);
-    };
+        setIsZoomEnabled(false)
+    }
 
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-        window.addEventListener('keyup', handleKeyUp);
+        window.addEventListener('keydown', handleKeyDown)
+        window.addEventListener('keyup', handleKeyUp)
 
         return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-            window.removeEventListener('keyup', handleKeyUp);
-        };
-    }, []);
+            window.removeEventListener('keydown', handleKeyDown)
+            window.removeEventListener('keyup', handleKeyUp)
+        }
+    }, [])
 
     const chartOptions: ApexOptions = useMemo(
         () => ({
@@ -41,7 +41,7 @@ const LineChart: React.FC<ChartProps> = ({ categories, seriesData }) => {
                 type: 'line',
                 height: 350,
                 zoom: {
-                    enabled: isZoomEnabled, 
+                    enabled: isZoomEnabled,
                 },
             },
             xaxis: {
@@ -59,11 +59,18 @@ const LineChart: React.FC<ChartProps> = ({ categories, seriesData }) => {
             },
         }),
         [categories, isZoomEnabled]
-    );
+    )
 
-    const series = useMemo(() => seriesData, [seriesData]);
+    const series = useMemo(() => seriesData, [seriesData])
 
-    return <Chart options={chartOptions} series={series} type="line" height={350} />;
-};
+    return (
+        <Chart
+            options={chartOptions}
+            series={series}
+            type="line"
+            height={350}
+        />
+    )
+}
 
-export default LineChart;
+export default LineChart
