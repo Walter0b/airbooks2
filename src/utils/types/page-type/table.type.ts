@@ -85,7 +85,7 @@ export interface DropdownItemType {
 // Interface for show table options
 export interface ShowTableOptionsType {
     title: string
-    items: DropdownItemType[]
+    items?: DropdownItemType[]
 }
 
 // Interface for table options
@@ -145,6 +145,7 @@ export interface TableItemType extends CheckboxType {
 }
 
 export interface fieldsToDisplayType {
+    rightTab_Options?: string[]
     headerContent_Position: string
     leftGroup: Record<string, string[]>[]
     rightGroup: Record<string, string[]>[]

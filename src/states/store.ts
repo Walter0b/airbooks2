@@ -1,21 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query/react'
+import { configureStore, Reducer } from '@reduxjs/toolkit'
 import { api } from './reducer/apiSlice'
 import modalReducer from './reducer/modalSlice'
-import tableStatesReducer from './reducer/tableStatesSlice' // Import the new reducer
+import tableStatesReducer from './reducer/tableStatesSlice'
+
+// Explicitly declare the type of your reducer object
+const rootReducer = {
+    [api.reducerPath]: api.reducer as Reducer, // Cast api.reducer to Reducer
+    modal: modalReducer as Reducer,
+    tableStates: tableStatesReducer as Reducer,
+}
 
 export const store = configureStore({
-    reducer: {
-        [api.reducerPath]: api.reducer,
-        modal: modalReducer,
-        tableStates: tableStatesReducer, // Add the new reducer
-    },
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(api.middleware),
 })
 
-setupListeners(store.dispatch)
-
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

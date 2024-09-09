@@ -51,6 +51,5 @@ const sort = [
 
 export const AgencyProfilePageOptions: TableOptionsType = {
     pageLabel: 'agency_profile',
-
     show,
 }

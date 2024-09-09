@@ -4,10 +4,10 @@ import { openModalWithData } from '@/states/reducer/modalSlice'
 import useCurrentPageData from '@/utils/functions/getCurrentPageData'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
-import TravelerCompactListHeader from '../../travelers/compact-list/traveler-cl-btn'
 import NavLink from 'next-navlink'
 import { cn } from '@/utils/functions/classNames'
 import { tableOptions } from '../../travelers/dropdown'
+import CompactListHeader from '@/foundry/ItemDetails/cl-header'
 
 export default function TravelersItemDetails() {
     const data = useCurrentPageData()!
@@ -24,7 +24,7 @@ export default function TravelersItemDetails() {
 
     return (
         <ItemDetailsBody data-slot="itemDetails">
-            <TravelerCompactListHeader
+            <CompactListHeader
                 data-slot="compactListHeader"
                 dropdownOptions={tableOptions}
                 handleOpenModal={handleOpenModal}

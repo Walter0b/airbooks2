@@ -8,7 +8,7 @@ export const travelersColumns = [
     { key: 'postal_code', label: 'Postal Code' },
 ]
 
-export const travelerCLLayout: x = {
+export const travelerCLLayout: fieldsToDisplayType = {
     headerContent_Position: 'justify-end',
     // TODO: check if deletable
     leftGroup: [
