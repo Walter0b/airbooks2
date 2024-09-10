@@ -120,6 +120,7 @@ export const authOptions = {
             session: Session
             token: JWT
         }): Promise<Session> {
+            console.log("🚀 ~ token:", token)
             const extendedToken = token as ExtendedJWT
 
             if (extendedToken.error === REFRESH_TOKEN_EXPIRED) {
