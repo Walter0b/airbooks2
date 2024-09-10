@@ -1,33 +1,33 @@
 import ItemDetailsBody from '@/components/compactlist/itemdetails'
-import { ModalContext } from '@/states/context/ModalContext'
-import { openModalWithData } from '@/states/reducer/modalSlice'
-import useCurrentPageData from '@/utils/functions/getCurrentPageData'
-import { useContext } from 'react'
-import { useDispatch } from 'react-redux'
+// import { ModalContext } from '@/states/context/ModalContext'
+// import { openModalWithData } from '@/states/reducer/modalSlice'
+// import useCurrentPageData from '@/utils/functions/getCurrentPageData'
+// import { useContext } from 'react'
+// import { useDispatch } from 'react-redux'
 import NavLink from 'next-navlink'
 import { cn } from '@/utils/functions/classNames'
 import { tableOptions } from '../../travelers/dropdown'
 import CompactListHeader from '@/foundry/ItemDetails/cl-header'
 
 export default function TravelersItemDetails() {
-    const data = useCurrentPageData()!
-    // console.log("🚀 ~ TravelersItemDetails ~ data:", data)
+    // const data = useCurrentPageData()!
+    // // console.log("🚀 ~ TravelersItemDetails ~ data:", data)
 
-    const { setPageLabel } = useContext(ModalContext)
+    // const { setPageLabel } = useContext(ModalContext)
 
-    const dispatch = useDispatch()
-    const handleOpenModal = () => {
-        setPageLabel?.('travelers')
-        // console.log("🚀 ~ action.payload.data:", data)
-        dispatch(openModalWithData({ data: data }))
-    }
+    // const dispatch = useDispatch()
+    // const handleOpenModal = () => {
+    //     setPageLabel?.('travelers')
+    //     // console.log("🚀 ~ action.payload.data:", data)
+    //     dispatch(openModalWithData({ data: data }))
+    // }
 
     return (
         <ItemDetailsBody data-slot="itemDetails">
             <CompactListHeader
                 data-slot="compactListHeader"
                 dropdownOptions={tableOptions}
-                handleOpenModal={handleOpenModal}
+                // handleOpenModal={handleOpenModal}
             />
             <div data-slot="compactListBody" className="mt-12 w-full">
                 <NavLink

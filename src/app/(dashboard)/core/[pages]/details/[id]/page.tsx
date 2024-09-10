@@ -10,7 +10,7 @@ import CompactListData from "@/foundry/compactListData";
 import CompactListHeader from "@/foundry/ItemDetails/cl-header";
 // import { ModalContext } from "@/states/context/ModalContext";
 // import { openModalWithData } from "@/states/reducer/modalSlice";
-import useSingleState from "@/hooks/useSingleState";
+// import useSingleState from "@/hooks/useSingleState";
 
 export default function CompactList({ params }: Readonly<{ params: { pages: string }; }>) {
 
