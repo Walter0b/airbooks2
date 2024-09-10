@@ -161,6 +161,8 @@ export const authOptions = {
         },
     },
     secret: process.env.NEXTAUTH_SECRET,
+    trustHost: true,
+    debug: process.env.NODE_ENV === 'development'
 }
 
 // Refresh access token logic
