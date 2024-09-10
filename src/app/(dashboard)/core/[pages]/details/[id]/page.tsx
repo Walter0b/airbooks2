@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useContext } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "next/navigation";
+import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { useParams } from "next/navigation";
 
 import { pagesConfig } from "../../_pagesConfig";
 import ItemDetailsBody from "@/components/compactlist/itemdetails";
@@ -19,8 +19,8 @@ export default function CompactList({ params }: Readonly<{ params: { pages: stri
     // const dispatch = useDispatch();
     // const { setPageLabel } = useContext(ModalContext);
     const [activeButton, setActiveButton] = useState<string | undefined>(undefined);
-    const page = useSingleState(1);
-    const pageSize = useSingleState(10);
+    // const page = useSingleState(1);
+    // const pageSize = useSingleState(10);
 
     // Check if the pageConfig is valid
     const pageConfig = pagesConfig[params.pages];
@@ -28,7 +28,7 @@ export default function CompactList({ params }: Readonly<{ params: { pages: stri
         return <p>Page {params.pages} not found</p>;
     }
 
-    const { fetchQuery, tableOptions, compactListLayout } = pageConfig;
+    const {  tableOptions, compactListLayout } = pageConfig;
 
     // const { data: tableData } = fetchQuery({
     //     page: page.value,
