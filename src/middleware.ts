@@ -16,9 +16,10 @@ export async function middleware(req: NextRequest) {
         const token = await getToken({
             req,
             secret: process.env.NEXTAUTH_SECRET!,
-            salt: process.env.NEXTAUTH_SALT!,
+            salt: 'authjs.session-token',
         })
-        // console.log("🚀 ~ middleware ~ token:", token)
+            console.log("🚀 ~ middleware ~ process.env.NEXTAUTH_SAL:", process.env.NEXTAUTH_SALT)
+        console.log("🚀 ~ middleware ~ token:", token)
         const isPublicRoute = AUTH_CONFIG.publicRoutes.includes(
             req.nextUrl.pathname
         )

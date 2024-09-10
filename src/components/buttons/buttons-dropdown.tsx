@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import { DropdownItemType } from '@/utils/types/page-type/table.type'
 import { cn } from '@/utils/functions/classNames'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 interface DropdownProps {
@@ -9,7 +8,7 @@ interface DropdownProps {
     className?: string
     titles?: string
     text?: string
-    closeDropdown:()=> void
+    closeDropdown: () => void
     setSelectedOption?: (title: string) => void
 }
 
@@ -23,15 +22,19 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({
     const dropdownClassName = `${text} block px-4 py-1 w-full text-sm text-gray-700 hover:bg-cyan-550 hover:text-white last:mb-2`
 
 
-    const handleItemClick = useCallback((item: DropdownItemType) => (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault()
-        if (item?.onClick) {
-            item.onClick()
-        }
+    const handleItemClick = useCallback(
+        (item: DropdownItemType) => (event: React.MouseEvent<HTMLButtonElement>) => {
+            event.preventDefault();
+            if (item?.onClick) {
+                item.onClick();
+            }
 
-        item?.hasMergeTitle && setSelectedOption?.(item.label!)
-        closeDropdown()
-    }, [setSelectedOption])
+            item?.hasMergeTitle && setSelectedOption?.(item.label!);
+            closeDropdown();
+        },
+        [setSelectedOption, closeDropdown] 
+    );
+
 
     return (
         <div className={cn(className, 'absolute z-10 origin-top-right border border-gray-300 bg-white shadow-lg')}>

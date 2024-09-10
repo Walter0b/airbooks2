@@ -1,16 +1,11 @@
 import {fieldsToDisplayType, ResponseDataType} from "@/utils/types/page-type/table.type";
-import useSingleState from "@/hooks/useSingleState";
 import {useParams, useRouter} from "next/navigation";
 import {cn} from "@/utils/functions/classNames";
-import {black} from "next/dist/lib/picocolors";
 
 export default function CompactList({
     tableData,
     layoutParameters
 }: Readonly<{ tableData?: ResponseDataType, layoutParameters?: fieldsToDisplayType }>) {
-
-    const page = useSingleState(1)
-    const pageSize = useSingleState(10)
 
     const navigate = useRouter()
     const handleClick = (location: number) => {
@@ -23,7 +18,7 @@ export default function CompactList({
         <div>
             <ul className="hidScrollbar flex-1 overflow-auto"
                 style={{ maxHeight: 'calc(100vh - 220px)' }}>
-                {tableData?.data?.map((item, index) => (
+                {tableData?.data?.map((item) => (
                     <button
                         onClick={() => handleClick(item.id)}
                         key={item.id}

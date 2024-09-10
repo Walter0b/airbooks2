@@ -43,7 +43,7 @@ const Buttons: React.FC<ButtonInterface> = memo(({
         } else if (onClick) {
             onClick()
         }
-    }, [dropdownOptions, handleToggleDropdown, onClick])
+    }, [dropdownOptions,DropdownOption, handleToggleDropdown, onClick])
 
     return (
         <div className="relative h-full flex-row text-left" ref={dropdownRef}>

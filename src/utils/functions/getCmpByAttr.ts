@@ -10,6 +10,7 @@ interface GetCmpByAttrProps {
     children: ReactNode
     attr?: string
     value?: string
+     /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
     props?: Record<string, any>
     debug?: boolean
 }
@@ -21,6 +22,7 @@ export const getCmpByAttr = ({
     props = {},
     debug = false,
 }: GetCmpByAttrProps): ReactNode | null => {
+        /* eslint-disable-next-line "react-hooks/rules-of-hooks" */
     return useMemo(() => {
         const componentsArray: ReactNode[] = React.Children.toArray(children)
 

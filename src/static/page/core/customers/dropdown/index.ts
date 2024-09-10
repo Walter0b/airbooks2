@@ -3,11 +3,11 @@ import {
     InputType,
     TableOptionsType,
 } from '@/utils/types/page-type/table.type'
-import { PenIcon } from '@assets/svg/pen'
-import { PDFIcon } from '@assets/svg/pdf'
-import { PrintIcon } from '@assets/svg/print'
-import { MailIcon } from '@assets/svg/mail'
-import { TemplateSelectionIcon } from '@assets/svg/templateSelection'
+// import { PenIcon } from '@assets/svg/pen'
+// import { PDFIcon } from '@assets/svg/pdf'
+// import { PrintIcon } from '@assets/svg/print'
+// import { MailIcon } from '@assets/svg/mail'
+// import { TemplateSelectionIcon } from '@assets/svg/templateSelection'
 import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 const show = {

@@ -1,6 +1,4 @@
-'use client'
-
-// import "./globals.css";
+"use client"
 import Header from '@/components/header/header'
 import { ModalProvider } from '@/states/context/ModalContext'
 import { store } from '@/states/store'
@@ -9,9 +7,9 @@ import { Provider } from 'react-redux'
 
 export default function RootLayout({
     children,
-}: Readonly<{
+}: {
     children: React.ReactNode
-}>) {
+}) {
     return (
         <div className="flex h-screen w-screen  bg-white" id="layout">
             <div className="flex h-full w-full flex-1 flex-col overflow-hidden">
@@ -33,5 +31,5 @@ export default function RootLayout({
                 </div>
             </div>
         </div>
-    )
+    );
 }

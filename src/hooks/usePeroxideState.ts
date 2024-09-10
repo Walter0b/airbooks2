@@ -5,7 +5,7 @@
 //  */
 'use client'
 import { useState } from 'react'
-
+ /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
 function usePeroxideState(initialValue: any, customSetterFn?: any) {
     const [state, setState] = useState(initialValue)
 

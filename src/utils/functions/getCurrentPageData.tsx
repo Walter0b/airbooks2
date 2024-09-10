@@ -16,9 +16,8 @@ const useCurrentPageData = (): TableDataType | null => {
         data: { data: [] },
     }
     const { data } = requestData
-
-    const specificData =
-        data.data.find((developer: any) => developer.id === NumberId) || null
+    /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
+    const specificData = data.data.find((developer: any) => developer.id === NumberId) || null
 
     return specificData
 }

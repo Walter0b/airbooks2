@@ -1,49 +1,49 @@
-
-
 'use client';
 
-import { useState, useContext } from "react";
-import { useDispatch } from "react-redux";
-import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { useParams } from "next/navigation";
 
 import { pagesConfig } from "../../_pagesConfig";
 import ItemDetailsBody from "@/components/compactlist/itemdetails";
 import CompactListData from "@/foundry/compactListData";
 import CompactListHeader from "@/foundry/ItemDetails/cl-header";
-import { ModalContext } from "@/states/context/ModalContext";
-import { openModalWithData } from "@/states/reducer/modalSlice";
-import useSingleState from "@/hooks/useSingleState";
+// import { ModalContext } from "@/states/context/ModalContext";
+// import { openModalWithData } from "@/states/reducer/modalSlice";
+// import useSingleState from "@/hooks/useSingleState";
 
-export default function CompactList({
-    params,
-    searchParams,
-}: Readonly<{
-    params: { pages: string };
-    searchParams: { [key: string]: string | string[] | undefined };
-}>) {
+export default function CompactList({ params }: Readonly<{ params: { pages: string }; }>) {
 
+    // Move all hooks to the top level
+    // const { route } = useParams<{ route: string }>();
+    // const dispatch = useDispatch();
+    // const { setPageLabel } = useContext(ModalContext);
+    const [activeButton, setActiveButton] = useState<string | undefined>(undefined);
+    // const page = useSingleState(1);
+    // const pageSize = useSingleState(10);
+
+    // Check if the pageConfig is valid
     const pageConfig = pagesConfig[params.pages];
-    if (!pageConfig) return <p>Page {params.pages} not found</p>;
+    if (!pageConfig) {
+        return <p>Page {params.pages} not found</p>;
+    }
 
-    const { fetchQuery, columns, tableOptions, compactListLayout } = pageConfig;
+    const {  tableOptions, compactListLayout } = pageConfig;
 
-    const page = useSingleState(1);
-    const pageSize = useSingleState(10);
+    // const { data: tableData } = fetchQuery({
+    //     page: page.value,
+    //     pageSize: pageSize.value,
+    // });
 
-    const { data: tableData } = fetchQuery({
-        page: page.value,
-        pageSize: pageSize.value,
-    });
+    // Set the initial active button only after the tableOptions are available
+    if (!activeButton && tableOptions?.actionButtons?.length) {
+        setActiveButton(tableOptions.actionButtons[0]?.api_name);
+    }
 
-    const [activeButton, setActiveButton] = useState<string | undefined>(tableOptions?.actionButtons?.[0]?.api_name);
-    const { setPageLabel } = useContext(ModalContext);
-    const dispatch = useDispatch();
-    const { route } = useParams<{ route: string }>();
-
-    const handleOpenModal = () => {
-        setPageLabel?.(route);
-        dispatch(openModalWithData({ data: tableData }));
-    };
+    // const handleOpenModal = () => {
+    //     setPageLabel?.(route);
+    //     dispatch(openModalWithData({ data: tableData }));
+    // };
 
     return (
         <ItemDetailsBody>
@@ -52,10 +52,10 @@ export default function CompactList({
                 dropdownOptions={tableOptions}
                 justifyContent={compactListLayout?.headerContent_Position}
                 contentToDisplay={activeButton}
-                handleOpenModal={handleOpenModal}
+                // handleOpenModal={handleOpenModal}
             />
             <div data-slot="compactListBody" className="w-full border-b border-gray-200">
-                {tableOptions?.actionButtons?.length! > 1 && (
+                {tableOptions?.actionButtons?.length && tableOptions?.actionButtons?.length > 1 && (
                     <div className="mt-12 w-full flex">
                         {tableOptions?.actionButtons?.map((button, index) => (
                             <button
@@ -72,7 +72,7 @@ export default function CompactList({
                     </div>
                 )}
                 <div className="h-full w-full">
-                    <CompactListData data={tableData} />
+                    <CompactListData />
                 </div>
             </div>
         </ItemDetailsBody>

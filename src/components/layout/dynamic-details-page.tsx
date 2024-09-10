@@ -8,7 +8,6 @@ import CompactListDetails from "@/foundry/ItemDetails/compact-list.details";
 
 export default function GenericCompactPage({
     fetchQuery,
-    columns,
     tableOptions,
     compactListLayout
 }: Readonly<GenericTablePageType>) {

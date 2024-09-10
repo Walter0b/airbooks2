@@ -1,7 +1,9 @@
 'use client'
-import { Test_report_json } from '@/static/test/test_report';
-import React, { useEffect } from 'react';
-import { Stimulsoft } from 'stimulsoft-reports-js/Scripts/stimulsoft.viewer';
+// import { Test_report_json } from '@/static/test/test_report';
+import React
+// , { useEffect } 
+from 'react';
+// import { Stimulsoft } from 'stimulsoft-reports-js/Scripts/stimulsoft.viewer';
 
 
 const Page: React.FC = () => {

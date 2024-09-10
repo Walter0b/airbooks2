@@ -93,6 +93,7 @@ export const authOptions = {
         }),
     ],
     callbacks: {
+        /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
         async jwt({ token, user }: { token: JWT; user?: any }) {
             if (user) {
                 return { ...token, ...user } as ExtendedJWT
@@ -119,10 +120,12 @@ export const authOptions = {
             session: Session
             token: JWT
         }): Promise<Session> {
+            console.log("🚀 ~ token:", token)
             const extendedToken = token as ExtendedJWT
 
             if (extendedToken.error === REFRESH_TOKEN_EXPIRED) {
                 console.log('Session cleared due to refresh token expiration')
+                /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
                 return null as any
             }
 
