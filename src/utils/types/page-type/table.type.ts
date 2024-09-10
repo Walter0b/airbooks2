@@ -152,6 +152,7 @@ export interface fieldsToDisplayType {
 }
 
 export interface GenericTablePageType {
+    /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
     fetchQuery: any
     columns: TableColumnType[]
     SideBar?: MiniSidebarType
@@ -163,6 +164,7 @@ export interface GenericTablePageType {
 }
 
 export interface MiniSidebarType {
+        /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
     [x: string]: any
     title: string
     sideBarItem: SubItemType[]

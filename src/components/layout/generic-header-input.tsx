@@ -49,11 +49,11 @@ export default function GenericInput({ children, type, action, ...props }: { chi
 
     }
 
-    function sendEmail(id: string) {
+    // function sendEmail(id: string) {
 
-    }
+    // }
 
-    function showAsPDF(id: string) {
+    // function showAsPDF(id: string) {
 
-    }
+    // }
 }

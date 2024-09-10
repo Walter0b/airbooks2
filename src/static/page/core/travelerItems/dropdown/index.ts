@@ -64,64 +64,6 @@ const show = {
         },
     ],
 }
-
-const options = [
-    {
-        label: 'Issue Invoice',
-        group: 1,
-        url: '#',
-    },
-    {
-        label: 'Issue Sales Receipt',
-        group: 1,
-        url: '#',
-    },
-    {
-        label: 'Email Traveler',
-        group: 2,
-        url: '#',
-    },
-    {
-        label: 'Email Customer',
-        group: 2,
-        url: '#',
-    },
-    {
-        label: 'Forward',
-        group: 3,
-        url: '#',
-    },
-    {
-        label: 'Delete',
-        group: 3,
-        url: '#',
-    },
-    {
-        label: 'Download Sample Import File',
-        group: 4,
-        url: '#',
-    },
-    {
-        label: 'Export Travel Items',
-        group: 4,
-        url: '#',
-    },
-    {
-        label: 'Import Travel Items',
-        group: 4,
-        url: '#',
-    },
-    {
-        label: 'Custom Export',
-        group: 5,
-        url: '#',
-    },
-    {
-        label: 'TMC Reporting',
-        group: 6,
-        url: '#',
-    },
-]
 const sort = [
     {
         label: 'SORT BY',
@@ -230,28 +172,7 @@ const more = [
     },
 ]
 
-const transactions = [
-    {
-        label: 'Travel Item',
-        url: '#',
-        group: 1,
-    },
-    {
-        label: 'Invoice',
-        url: '#',
-        group: 1,
-    },
-    {
-        label: 'Credit Note',
-        url: '#',
-        group: 1,
-    },
-    {
-        label: 'Payment',
-        url: '#',
-        group: 1,
-    },
-]
+
 
 const actionTabs: CompactListButtonLayout[] = [
     {

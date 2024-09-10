@@ -1,10 +1,8 @@
-
-
 'use client';
 
 import { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 import { pagesConfig } from "../../_pagesConfig";
 import ItemDetailsBody from "@/components/compactlist/itemdetails";
@@ -14,31 +12,33 @@ import { ModalContext } from "@/states/context/ModalContext";
 import { openModalWithData } from "@/states/reducer/modalSlice";
 import useSingleState from "@/hooks/useSingleState";
 
-export default function CompactList({
-    params,
-    searchParams,
-}: Readonly<{
-    params: { pages: string };
-    searchParams: { [key: string]: string | string[] | undefined };
-}>) {
+export default function CompactList({ params }: Readonly<{ params: { pages: string }; }>) {
 
-    const pageConfig = pagesConfig[params.pages];
-    if (!pageConfig) return <p>Page {params.pages} not found</p>;
-
-    const { fetchQuery, columns, tableOptions, compactListLayout } = pageConfig;
-
+    // Move all hooks to the top level
+    const { route } = useParams<{ route: string }>();
+    const dispatch = useDispatch();
+    const { setPageLabel } = useContext(ModalContext);
+    const [activeButton, setActiveButton] = useState<string | undefined>(undefined);
     const page = useSingleState(1);
     const pageSize = useSingleState(10);
+
+    // Check if the pageConfig is valid
+    const pageConfig = pagesConfig[params.pages];
+    if (!pageConfig) {
+        return <p>Page {params.pages} not found</p>;
+    }
+
+    const { fetchQuery, tableOptions, compactListLayout } = pageConfig;
 
     const { data: tableData } = fetchQuery({
         page: page.value,
         pageSize: pageSize.value,
     });
 
-    const [activeButton, setActiveButton] = useState<string | undefined>(tableOptions?.actionButtons?.[0]?.api_name);
-    const { setPageLabel } = useContext(ModalContext);
-    const dispatch = useDispatch();
-    const { route } = useParams<{ route: string }>();
+    // Set the initial active button only after the tableOptions are available
+    if (!activeButton && tableOptions?.actionButtons?.length) {
+        setActiveButton(tableOptions.actionButtons[0]?.api_name);
+    }
 
     const handleOpenModal = () => {
         setPageLabel?.(route);

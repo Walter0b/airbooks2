@@ -21,6 +21,7 @@ export const getCmpByAttr = ({
     props = {},
     debug = false,
 }: GetCmpByAttrProps): ReactNode | null => {
+        /* eslint-disable-next-line "react-hooks/rules-of-hooks" */
     return useMemo(() => {
         const componentsArray: ReactNode[] = React.Children.toArray(children)
 

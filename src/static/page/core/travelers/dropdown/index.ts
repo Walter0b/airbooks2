@@ -3,9 +3,6 @@ import {
     InputType,
     TableOptionsType,
 } from '@/utils/types/page-type/table.type'
-import { MailIcon } from '@/assets/svg/mail'
-import { PrintIcon } from '@/assets/svg/print'
-import { PenIcon } from '@/assets/svg/pen'
 import { CompactListButtonLayout } from '@/utils/types/page-type/button.type'
 
 const show = {

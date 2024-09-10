@@ -1,11 +1,9 @@
 
 'use client'
 
-import GenericCompactPage from '@/components/layout/dynamic-details-page'
 import { pagesConfig } from '../_pagesConfig'
 import Header from '@/components/table/items/page-header'
 import CompactList from '@/foundry/ItemDetails/compact-list'
-import CompactListDetails from '@/foundry/ItemDetails/compact-list.details'
 import useSingleState from '@/hooks/useSingleState'
 import PageLoader from '@/components/loader/page-loader'
 
@@ -21,7 +19,7 @@ export default function DynamicDetailsPage({
 
     if (!pageConfig) return <p>Page {params.pages} found</p>
 
-    const { fetchQuery, columns, tableOptions, compactListLayout } = pageConfig
+    const { fetchQuery, tableOptions, compactListLayout } = pageConfig
 
     const page = useSingleState(1)
     const pageSize = useSingleState(10)
