@@ -3,7 +3,7 @@
 import React
 // , { useEffect } 
 from 'react';
-import { Stimulsoft } from 'stimulsoft-reports-js/Scripts/stimulsoft.viewer';
+// import { Stimulsoft } from 'stimulsoft-reports-js/Scripts/stimulsoft.viewer';
 
 
 const Page: React.FC = () => {

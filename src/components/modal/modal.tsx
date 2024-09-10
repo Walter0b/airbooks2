@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useContext } from 'react'
-
+/* eslint-disable "@typescript-eslint/no-explicit-any" */
+import React, { useCallback, useState, useEffect, useRef, useContext } from 'react'
 import { FormTabType } from '@/utils/types/structure'
 import CloseButton from '@/components/buttons/close-Button'
 import Tabs from './modal-tabs'
@@ -11,7 +11,6 @@ import { RootState } from '@/states/store'
 import DynamicForm from './modal-form'
 
 const Modal = ({ title }: Readonly<{ title?: string }>) => {
-
     const { data } = useSelector((state: RootState) => state.modal)
     const { InputFields } = useContext(ModalContext)
     const defaultForm = InputFields![0].tabs
@@ -36,9 +35,10 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
 
     const { FieldsValue } = useFormState(idObject, validationObject)
 
-    function handleOnclick() {
+    // Use useCallback to memoize the handleOnclick function
+    const handleOnclick = useCallback(() => {
         dispatch(closeModal())
-    }
+    }, [dispatch])
 
     const handleSubmit = (event: any) => {
         event.preventDefault()
@@ -61,7 +61,7 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside)
         }
-    }, [])
+    }, [handleOnclick]) // Include handleOnclick in the dependency array
 
     return (
         <div className="fixed inset-0 z-50 flex h-full items-center justify-center bg-black/10 backdrop-opacity-35 backdrop-saturate-100">
@@ -79,7 +79,6 @@ const Modal = ({ title }: Readonly<{ title?: string }>) => {
                     </div>
                     <Tabs formData={InputFields!} setFormData={setFormData} />
                 </div>
-                {/* <div id="error" className='bg-sky-100 mt-6 p-2 '><ul></ul></div> */}
                 <form
                     onSubmit={handleSubmit}
                     className="flex h-full flex-col overflow-hidden rounded-sm bg-white"

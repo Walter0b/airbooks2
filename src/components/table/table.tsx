@@ -1,9 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
 import { TableItemType } from '@/utils/types/page-type/table.type'
 import TableBody from './table-body'
-import TableLoader, { TableBodyLoader } from '../loader/table-loader'
+import { TableBodyLoader } from '../loader/table-loader'
 
 export default function Table({
     children,
@@ -20,6 +20,7 @@ export default function Table({
     const handleCheckboxAllChange = () => {
         const allChecked = !isCheckedAll
         setIsCheckedAll(allChecked)
+           /* eslint-disable "@typescript-eslint/no-explicit-any" */
         const updatedCheckedItems: any = tableData?.data.reduce(
             (updatedCheckedItems, _, index) => ({
                 ...updatedCheckedItems,

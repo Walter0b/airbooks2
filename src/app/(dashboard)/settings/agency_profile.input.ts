@@ -1,5 +1,5 @@
 import { commonValidations } from '@/static/modal/validation'
-import { FormTabType, IndividualFormDataProp } from '@/utils/types/structure'
+import { FormTabType } from '@/utils/types/structure'
 
 export const AgencyProfileInputFields: FormTabType[] = [
     {

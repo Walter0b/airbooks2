@@ -1,3 +1,4 @@
+  /* eslint-disable "@typescript-eslint/no-explicit-any" */
 import {
     createApi,
     fetchBaseQuery,
@@ -18,7 +19,7 @@ const apiUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 const baseQuery = fetchBaseQuery({
     baseUrl: `${apiUrl}/items`,
-    prepareHeaders: async (headers, { getState }) => {
+    prepareHeaders: async (headers) => {
         const session = await getSession()
         let token = session?.user.accessToken
         const expiresAt = session?.user.expiresAt
@@ -89,6 +90,7 @@ const baseQueryWithReauth: BaseQueryFn<
     let result = await baseQuery(args, api, extraOptions)
 
     if (result.error && 'data' in result.error) {
+         /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
         const errorData = result.error.data as any
         if (errorData?.errors?.[0]?.extensions?.code === 'TOKEN_EXPIRED') {
             // Token has expired, attempt to refresh
@@ -154,7 +156,7 @@ type CustomBaseQuery = BaseQueryFn<
     string | FetchArgs,
     unknown,
     FetchBaseQueryError,
-    {},
+    Record<string, any>,
     FetchBaseQueryMeta
 >
 

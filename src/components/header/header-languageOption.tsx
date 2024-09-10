@@ -1,6 +1,5 @@
 'use client'
 import Buttons from '@/components/buttons/buttons'
-import { LanguageOptions } from '@/static/page/header'
 import { cn } from '@/utils/functions/classNames'
 import { useState } from 'react'
 

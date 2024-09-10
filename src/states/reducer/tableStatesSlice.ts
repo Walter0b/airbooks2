@@ -4,6 +4,7 @@ export interface TableState {
     page: number
     pageSize: number
     sort: string[]
+     /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
     filter?: Record<string, any>
     search?: string
 }

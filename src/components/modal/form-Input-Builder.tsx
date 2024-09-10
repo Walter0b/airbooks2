@@ -49,7 +49,7 @@ function button(field: FormFieldType, FieldsValue: any) {
     return (
         <button
             id={field.id}
-            onClick={() => action(FieldsValue[field.id]?.action, FieldsValue[field.id]?.id)}
+            onClick={() => action(FieldsValue[field.id]?.action)}
         >
             {FieldsValue[field.id]?.value}
         </button>
@@ -122,7 +122,7 @@ function lookup(field: FormFieldType, FieldsValue: any) {
     )
 }
 
-const action = (actionType: string, fieldId: string) => {
+const action = (actionType: string) => {
     switch (actionType) {
         case 'delete':
             //    console.log('deleted')

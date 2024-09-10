@@ -10,6 +10,7 @@ interface GetCmpByAttrProps {
     children: ReactNode
     attr?: string
     value?: string
+     /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
     props?: Record<string, any>
     debug?: boolean
 }

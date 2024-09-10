@@ -27,26 +27,25 @@ export default function ButtonLayout({ isEditable, isExportableToPDF, isPrintabl
         dispatch(openModalWithData({ data }));
 
 
-
-        // switch (actionType) {
-        //     case 'edit':
-        //     //    console.log('Edit action triggered!');
-        //         break;
-        //     case 'saveAsPDF':
-        //     //    console.log('Saved as PDF!');
-        //         break;
-        //     case 'print':
-        //     //    console.log('Printed!');
-        //         break;
-        //     case 'sendEmail':
-        //     //    console.log('Email sent!');
-        //         break;
-        //     case 'templateSelection':
-        //     //    console.log('Select a template!');
-        //         break;
-        //     default:
-        //         break;
-        // }
+        switch (actionType) {
+            case 'edit':
+            //    console.log('Edit action triggered!');
+                break;
+            case 'saveAsPDF':
+            //    console.log('Saved as PDF!');
+                break;
+            case 'print':
+            //    console.log('Printed!');
+                break;
+            case 'sendEmail':
+            //    console.log('Email sent!');
+                break;
+            case 'templateSelection':
+            //    console.log('Select a template!');
+                break;
+            default:
+                break;
+        }
     }
 
     const buttonConfig = [

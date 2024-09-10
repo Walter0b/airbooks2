@@ -38,10 +38,10 @@ import MiniSidebar from '@/components/sidebar/sidebar-mini'
 
 export default function DynamicPage({
   params,
-  searchParams,
+  // searchParams,
 }: Readonly<{
   params: { pages: string }
-  searchParams: { [key: string]: string | string[] | undefined }
+  // searchParams: { [key: string]: string | string[] | undefined }
 }>) {
   // console.log('🚀 ~ searchParams:', searchParams)
   // console.log('🚀 ~ DynamicPage ~ params.pages:', params)

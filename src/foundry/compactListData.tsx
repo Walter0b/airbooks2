@@ -1,3 +1,3 @@
-export default function CompactListData({ data }: { data: any }) {
+export default function CompactListData() {
     return <></>
 }

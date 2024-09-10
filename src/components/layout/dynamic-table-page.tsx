@@ -28,10 +28,10 @@ export default function GenericTablePage({
     const page = useSingleState(savedState?.page || 1)
     const pageSize = useSingleState(savedState?.pageSize || 10)
     const [sort, setSort] = useState(savedState?.sort || '')
-    const [filter, setFilter] = useState(
+    const [filter] = useState(
         savedState?.filter || (param?.filter === 'all' ? '' : param?.filter)
     )
-    const [search, setSearch] = useState(savedState?.search || '')
+    const [search] = useState(savedState?.search || '')
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -40,7 +40,6 @@ export default function GenericTablePage({
     const {
         data: tableData,
         isFetching,
-        refetch,
     } = fetchQuery({
         page: page.value,
         pageSize: pageSize.value,
@@ -48,10 +47,6 @@ export default function GenericTablePage({
         filter,
         search,
     })
-
-    const handleRefresh = () => {
-        refetch()
-    }
 
     useEffect(() => {
         if (mounted) {

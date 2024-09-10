@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import Buttons from "@/components/buttons/buttons";
 import { useParams } from "next/navigation";
 
-export default function GenericInput({ children, type, action, ...props }: { children?: any, type: InputType, action?: string, props?: any }): ReactNode {
+export default function GenericInput({ children, type, action, ...props }: { children?: ReactNode, type: InputType, action?: string, props?: object }): ReactNode {
 
     const params = useParams<{ id: string }>()
 
@@ -42,10 +42,12 @@ export default function GenericInput({ children, type, action, ...props }: { chi
     }
 
     function printDocument(id: string) {
+    console.log("🚀 ~ printDocument ~ id:", id)
 
     }
 
     function openNewWindow(id: string) {
+    console.log("🚀 ~ openNewWindow ~ id:", id)
 
     }
 

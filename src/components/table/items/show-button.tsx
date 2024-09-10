@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import {
-    DropdownItemType,
+    // DropdownItemType,
     ShowTableOptionsType,
 } from '@/utils/types/page-type/table.type'
 import Buttons from '@/components/buttons/buttons'

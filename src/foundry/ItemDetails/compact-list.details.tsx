@@ -1,16 +1,14 @@
 'use client'
 
-import useCurrentPageData from "@/utils/functions/getCurrentPageData";
-import { useContext, useState } from "react";
-import { ModalContext } from "@/states/context/ModalContext";
-import { useDispatch } from "react-redux";
-import { useParams, useRouter } from "next/navigation";
-import { openModalWithData } from "@/states/reducer/modalSlice";
+// import useCurrentPageData from "@/utils/functions/getCurrentPageData";
+import {  useState } from "react";
+// import { ModalContext } from "@/states/context/ModalContext";
+// import { useDispatch } from "react-redux";
+// import { useParams } from "next/navigation";
+// import { openModalWithData } from "@/states/reducer/modalSlice";
 import ItemDetailsBody from "@/components/compactlist/itemdetails";
-import NavLink from "next-navlink";
 import { fieldsToDisplayType, TableOptionsType } from "@/utils/types/page-type/table.type";
 import CompactListHeader from "@/foundry/ItemDetails/cl-header";
-import PageLoader from "@/components/loader/page-loader";
 import CompactListData from "@/foundry/compactListData";
 
 export default function CompactListDetails({ dropdownOptions, layoutParameters }: { dropdownOptions: TableOptionsType, layoutParameters?: fieldsToDisplayType }) {
@@ -18,20 +16,19 @@ export default function CompactListDetails({ dropdownOptions, layoutParameters }
     const [detailsToDisplay, setDetailsToDisplay] = useState<string | undefined>('')
     const [selected, setSelected] = useState<boolean>(true);
 
-    const data = useCurrentPageData()!
+    // const data = useCurrentPageData()!
 
-    const { setPageLabel } = useContext(ModalContext)
+    // const { setPageLabel } = useContext(ModalContext)
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    const { route, id } = useParams<{ route: string, id: string }>();
+    // const { route } = useParams<{ route: string, id: string }>();
 
-    const router = useRouter();
 
-    const handleOpenModal = () => {
-        setPageLabel?.(route)
-        dispatch(openModalWithData({ data: data }))
-    }
+    // const handleOpenModal = () => {
+    //     setPageLabel?.(route)
+    //     dispatch(openModalWithData({ data: data }))
+    // }
 
     return (
         <ItemDetailsBody data-slot="itemDetails">
@@ -40,7 +37,7 @@ export default function CompactListDetails({ dropdownOptions, layoutParameters }
                 dropdownOptions={dropdownOptions}
                 justifyContent={layoutParameters?.headerContent_Position}
                 contentToDisplay={detailsToDisplay}
-                handleOpenModal={handleOpenModal}
+                // handleOpenModal={handleOpenModal}
             />
             <div
                 data-slot="compactListBody"
@@ -74,7 +71,7 @@ export default function CompactListDetails({ dropdownOptions, layoutParameters }
                 }
 
                 <div className="h-full w-full">
-                    <CompactListData data='Test' />
+                    <CompactListData  />
                 </div>
             </div>
         </ItemDetailsBody>

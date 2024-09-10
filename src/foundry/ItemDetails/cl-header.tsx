@@ -4,7 +4,6 @@ import { TableOptionsType } from "@/utils/types/page-type/table.type";
 import CloseButton from "@/components/buttons/close-Button";
 import ButtonLayout from "@/foundry/actionButtonLayout/actionButtonLayout";
 import Buttons from "@/components/buttons/buttons";
-import { useParams, useRouter } from "next/navigation";
 import { memo, useEffect, useState } from "react";
 import { CompactListButtonLayout } from "@/utils/types/page-type/button.type";
 
@@ -15,19 +14,19 @@ export const CompactListHeader = memo(function CompactListHeader({
     dropdownOptions,
     justifyContent,
     contentToDisplay,
-    handleOpenModal
+    // handleOpenModal
 }: Readonly<{
     dropdownOptions: TableOptionsType,
     justifyContent?: string,
     contentToDisplay?: string,
-    handleOpenModal: () => void
+    // handleOpenModal: () => void
 }>) {
     const [activeActionButtons, setActiveActionButtons] = useState<CompactListButtonLayout>()
 
 
     useEffect(() => {
         setActiveActionButtons(dropdownOptions?.actionButtons?.find(value => value.api_name === contentToDisplay))
-    }, [contentToDisplay])
+    }, [contentToDisplay,dropdownOptions?.actionButtons])
 
     return (
         <div className="flex h-full w-full items-center">

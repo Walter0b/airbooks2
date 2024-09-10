@@ -1,5 +1,4 @@
 import { getCmpByAttr } from '@/utils/functions/getCmpByAttr'
-import { PageProps } from '@/utils/types/page-type/page.type'
 import { ReactNode } from 'react'
 
 export default function Pages({ children, className = 'flex h-full' }: { children: ReactNode, className?: string }) {
