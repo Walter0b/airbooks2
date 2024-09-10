@@ -14,8 +14,10 @@ const Page: React.FC = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const [devError, setDevError] = useState<string | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(false)
     const [forwarding, setForwarding] = useState(false)
+    const [devPanelOpen, setDevPanelOpen] = useState(false)
     const router = useRouter()
 
     const searchParams = useSearchParams()
@@ -40,44 +42,39 @@ const Page: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (isLoading) return; // Prevent submission if already loading
+        if (isLoading) return;
 
-        setError(''); // Clear any previous errors
+        setError('');
         setIsLoading(true);
 
         try {
-            // Disable automatic redirection by setting `redirect: false`
             const result = await signIn('credentials', {
                 email,
                 password,
-                redirect: false,  // Prevent redirection to default error page
+                redirect: false,
             });
-
             if (result?.error) {
-                // Handle and display error on the login page
-                setError(getErrorMessage(result.error));  // Use the function to display a friendly error message
+                setDevError(JSON.stringify(result, null, 2))
+                setError(getErrorMessage(result.error));
             } else if (result?.ok) {
-                // If login is successful, redirect user to the callback URL or default page
                 setForwarding(true);
                 router.push(callbackUrl || DEFAULT_REDIRECT);
             }
         } catch (err) {
-            setError('An unexpected error occurred. Please try again.');  // Catch any unexpected errors
+            setError('An unexpected error occurred. Please try again.');
         } finally {
-            setIsLoading(false);  // Stop loading spinner
+            setIsLoading(false);
         }
     };
 
-
-
     return (
-        <div className="background flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
+        <div className="background flex h-screen w-screen flex-col items-center justify-center bg-gray-900 relative">
             {forwarding && (
                 <div className="h-screen w-screen absolute z-30">
                     <GlobalLoader />
                 </div>
             )}
-            <div className="flex flex-col rounded-lg shadow-md lg:flex-row">
+            <div className="flex flex-col rounded-lg shadow-md lg:flex-row relative">
                 {/* Logo and copyright section */}
                 <div className="border-b bg-slate-100 py-7 px-10 lg:w-72 lg:border-r">
                     <Image
@@ -92,13 +89,13 @@ const Page: React.FC = () => {
                 </div>
 
                 {/* Sign-in form section */}
-                <div className="border-b border-l bg-white py-7 px-10 lg:flex-1">
+                <div className="border-b border-l bg-white py-7 px-10 lg:flex-1 relative">
                     <h2 className="mb-2 text-base text-black">
                         <span className="text-2xl font-bold text-green-700">AirBooks</span> sign in
                     </h2>
 
                     {error && (
-                        <Alert variant="destructive" className="mb-4 cursor-not-allowed pointer-events-none">
+                        <Alert variant="destructive" className="mb-4">
                             <AlertDescription>{error}</AlertDescription>
                         </Alert>
                     )}
@@ -190,6 +187,34 @@ const Page: React.FC = () => {
                             </a>
                         </div>
                     </form>
+                </div>
+
+                {/* Developer error sticker pager */}
+                <div className={`absolute right-[-270px] top-0 h-full w-64 bg-gray-800 text-white transition-all duration-300 ${devPanelOpen ? 'right-0' : ''}`}>
+                    <button
+                        onClick={() => setDevPanelOpen(!devPanelOpen)}
+                        className="absolute -left-6 top-2 w-6 h-6 bg-gray-700 text-white rounded-full focus:outline-none"
+                    >
+                        {devPanelOpen ? '<' : '>'}
+                    </button>
+                    <div className="p-4 w-64 overflow-y-auto max-h-full">
+                        <h3 className="text-lg font-bold">Developer Logs</h3>
+                        <p className="text-sm">
+                            <div>
+                                {error ? error : "No errors detected"}
+                            </div>
+
+                            <br />
+                            {error &&
+                                <code className=" w-64 leading-loose  bg-gray-700  rounded-md 600">
+                                    <div>
+                                        {devError}
+                                    </div>
+                                </code>
+                            }
+
+                        </p>
+                    </div>
                 </div>
             </div>
 
