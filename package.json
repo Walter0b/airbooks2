@@ -45,7 +45,7 @@
         "prettier": "^3.3.3",
         "prettier-plugin-tailwindcss": "^0.5.14",
         "tailwindcss": "next",
-        "typescript": "^5.5.4"
+        "typescript": "^5.6.2"
     },
     "module": "index.ts",
     "type": "module"
