@@ -1,49 +1,57 @@
 'use client';
 
-import { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { useParams } from "next/navigation";
+import {
+    useState
+    // , useContext, useCallback
+} from 'react';
+// import { useDispatch } from 'react-redux';
+// import { useParams } from 'next/navigation';
 
-import { pagesConfig } from "../../_pagesConfig";
-import ItemDetailsBody from "@/components/compactlist/itemdetails";
-import CompactListData from "@/foundry/compactListData";
-import CompactListHeader from "@/foundry/ItemDetails/cl-header";
-// import { ModalContext } from "@/states/context/ModalContext";
-// import { openModalWithData } from "@/states/reducer/modalSlice";
-// import useSingleState from "@/hooks/useSingleState";
+import { pagesConfig } from '../../_pagesConfig';
+import ItemDetailsBody from '@/components/compactlist/itemdetails';
+import CompactListData from '@/foundry/compactListData';
+import CompactListHeader from '@/foundry/ItemDetails/cl-header';
+// import { ModalContext } from '@/states/context/ModalContext';
+// import { openModalWithData } from '@/states/reducer/modalSlice';
+// import useSingleState from '@/hooks/useSingleState';
 
-export default function CompactList({ params }: Readonly<{ params: { pages: string }; }>) {
+interface CompactListProps {
+    params: { pages: string };
+    searchParams: Record<string, string | string[] | undefined>;
+}
 
-    // Move all hooks to the top level
-    // const { route } = useParams<{ route: string }>();
-    // const dispatch = useDispatch();
-    // const { setPageLabel } = useContext(ModalContext);
-    const [activeButton, setActiveButton] = useState<string | undefined>(undefined);
-    // const page = useSingleState(1);
-    // const pageSize = useSingleState(10);
-
-    // Check if the pageConfig is valid
+export default function CompactList({ params }: CompactListProps) {
     const pageConfig = pagesConfig[params.pages];
+
+    // Define the state outside of the conditional check
+    const [activeButton, setActiveButton] = useState<string | undefined>(
+        pageConfig?.tableOptions?.actionButtons?.[0]?.api_name
+    );
+
     if (!pageConfig) {
         return <p>Page {params.pages} not found</p>;
     }
 
-    const {  tableOptions, compactListLayout } = pageConfig;
+    const {
+        // fetchQuery,
+        tableOptions, compactListLayout } = pageConfig;
+
+    // const page = useSingleState(1);
+    // const pageSize = useSingleState(10);
 
     // const { data: tableData } = fetchQuery({
     //     page: page.value,
     //     pageSize: pageSize.value,
     // });
 
-    // Set the initial active button only after the tableOptions are available
-    if (!activeButton && tableOptions?.actionButtons?.length) {
-        setActiveButton(tableOptions.actionButtons[0]?.api_name);
-    }
+    // const { setPageLabel } = useContext(ModalContext);
+    // const dispatch = useDispatch();
+    // const { route } = useParams<{ route: string }>();
 
-    // const handleOpenModal = () => {
+    // const handleOpenModal = useCallback(() => {
     //     setPageLabel?.(route);
     //     dispatch(openModalWithData({ data: tableData }));
-    // };
+    // }, [dispatch, route, setPageLabel, tableData]);
 
     return (
         <ItemDetailsBody>
@@ -52,19 +60,19 @@ export default function CompactList({ params }: Readonly<{ params: { pages: stri
                 dropdownOptions={tableOptions}
                 justifyContent={compactListLayout?.headerContent_Position}
                 contentToDisplay={activeButton}
-                // handleOpenModal={handleOpenModal}
+            // handleOpenModal={handleOpenModal}
             />
             <div data-slot="compactListBody" className="w-full border-b border-gray-200">
-                {tableOptions?.actionButtons?.length && tableOptions?.actionButtons?.length > 1 && (
+                {tableOptions?.actionButtons && tableOptions.actionButtons.length > 1 && (
                     <div className="mt-12 w-full flex">
-                        {tableOptions?.actionButtons?.map((button, index) => (
+                        {tableOptions.actionButtons.map((button) => (
                             <button
-                                key={index}
+                                key={button.api_name}
                                 onClick={() => setActiveButton(button.api_name)}
-                                className={activeButton === button.api_name
-                                    ? 'border-b-3 text-cyan-550 px-10'
-                                    : 'border-cyan-550 px-10 text-black hover:text-cyan-550 hover:border-b-3'
-                                }
+                                className={`px-10 ${activeButton === button.api_name
+                                    ? 'border-b-3 text-cyan-550'
+                                    : 'border-cyan-550 text-black hover:text-cyan-550 hover:border-b-3'
+                                    }`}
                             >
                                 {button.name}
                             </button>
