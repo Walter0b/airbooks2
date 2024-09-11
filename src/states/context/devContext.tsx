@@ -1,5 +1,4 @@
-// devContext.tsx
-import { createContext, useState, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 
 // Define the shape of the context data
 interface DevContextType {
@@ -30,11 +29,4 @@ export const DevProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   );
 };
 
-// Custom hook to use the dev context
-export const useDevContext = () => {
-  const context = useContext(DevContext);
-  if (!context) {
-    throw new Error('useDevContext must be used within a DevProvider');
-  }
-  return context;
-};
+export { DevContext };
