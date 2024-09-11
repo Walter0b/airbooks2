@@ -18,7 +18,7 @@ export async function middleware(req: NextRequest) {
             secret: process.env.NEXTAUTH_SECRET!,
             salt: 'authjs.session-token',
         })
-            console.log("🚀 ~ middleware ~ process.env.NEXTAUTH_SAL:", process.env.NEXTAUTH_SALT)
+        console.log("🚀 ~ middleware ~ process.env.NEXTAUTH_SAL:", process.env.NEXTAUTH_SALT)
         console.log("🚀 ~ middleware ~ token:", token)
         const isPublicRoute = AUTH_CONFIG.publicRoutes.includes(
             req.nextUrl.pathname
@@ -27,7 +27,7 @@ export async function middleware(req: NextRequest) {
         const baseUrl = `${req.nextUrl.protocol}//${req.nextUrl.host}`
 
         if (token) {
-            // console.log("🚀 ~ middleware ~ token:", token)
+            console.log("🚀 ~ middleware ~ token:", token)
             const expiresAt = token.expiresAt as number | undefined
 
             // Redirect to login if token has expired

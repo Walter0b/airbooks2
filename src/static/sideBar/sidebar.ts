@@ -16,6 +16,8 @@ export const coreNavigation: SidebarItemType[] = [
         group: 1,
         icon: TachometerIcon,
         isButton: false,
+        matchMode:'exact'
+
     },
     {
         label: 'Travelers',

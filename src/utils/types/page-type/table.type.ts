@@ -12,6 +12,7 @@ export interface SidebarItemType {
     options?: SubItemType[]
     icon?: React.FC<{ className: string }>
     className?: string
+    matchMode?: "includes" | "startsWith" | "exact" 
     isButton?: boolean
 }
 
@@ -164,7 +165,7 @@ export interface GenericTablePageType {
 }
 
 export interface MiniSidebarType {
-        /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
+    /* eslint-disable-next-line "@typescript-eslint/no-explicit-any" */
     [x: string]: any
     title: string
     sideBarItem: SubItemType[]
@@ -191,7 +192,7 @@ export interface PaginationPropsType {
 }
 
 // Interface for nav links
-export interface NavLinksType extends BaseNavComponentProps {}
+export interface NavLinksType extends BaseNavComponentProps { }
 
 // Interface for buttons
-export interface ButtonsType extends BaseNavComponentProps {}
+export interface ButtonsType extends BaseNavComponentProps { }

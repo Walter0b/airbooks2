@@ -9,15 +9,16 @@ import GlobalLoader from '@/components/loader/global-loader'
 import { cn } from '@/utils/functions/classNames'
 import { Spinner } from '@/assets/svg/spinner'
 import { Alert, AlertDescription } from '@/components/ui/alert'
+import DevLog from '@/components/devTools/devLog'
+import { useDevContext } from '@/states/context/devContext'
 
 const Page: React.FC = () => {
+    const { addDevLog } = useDevContext();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const [devError, setDevError] = useState<string | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(false)
     const [forwarding, setForwarding] = useState(false)
-    const [devPanelOpen, setDevPanelOpen] = useState(false)
     const router = useRouter()
 
     const searchParams = useSearchParams()
@@ -54,7 +55,7 @@ const Page: React.FC = () => {
                 redirect: false,
             });
             if (result?.error) {
-                setDevError(JSON.stringify(result, null, 2))
+                addDevLog('result :' + JSON.stringify(result))
                 setError(getErrorMessage(result.error));
             } else if (result?.ok) {
                 setForwarding(true);
@@ -190,32 +191,7 @@ const Page: React.FC = () => {
                 </div>
 
                 {/* Developer error sticker pager */}
-                <div className={`absolute right-[-270px] top-0 h-full w-64 bg-gray-800 text-white transition-all duration-300 ${devPanelOpen ? 'right-0' : ''}`}>
-                    <button
-                        onClick={() => setDevPanelOpen(!devPanelOpen)}
-                        className="absolute -left-6 top-2 w-6 h-6 bg-gray-700 text-white rounded-full focus:outline-none"
-                    >
-                        {devPanelOpen ? '<' : '>'}
-                    </button>
-                    <div className="p-4 w-64 overflow-y-auto max-h-full">
-                        <h3 className="text-lg font-bold">Developer Logs</h3>
-                        <p className="text-sm">
-                            <div>
-                                {error ? error : "No errors detected"}
-                            </div>
-
-                            <br />
-                            {error &&
-                                <code className=" w-64 leading-loose  bg-gray-700  rounded-md 600">
-                                    <div>
-                                        {devError}
-                                    </div>
-                                </code>
-                            }
-
-                        </p>
-                    </div>
-                </div>
+                <DevLog />
             </div>
 
             {/* Footer links */}
