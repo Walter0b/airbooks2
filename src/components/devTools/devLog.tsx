@@ -1,16 +1,16 @@
-import { useDevContext } from '@/states/context/devContext';
+import { useDevContext } from '@/states/context/useDevContext';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 const DevLog: React.FC = () => {
     const { devLogs, clearDevLogs } = useDevContext();
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({ x: 630, y: 0 });
     const [size, setSize] = useState({ width: 300, height: 200 });
     const [isDragging, setIsDragging] = useState(false);
     const [isResizing, setIsResizing] = useState(false);
 
     const logRef = useRef<HTMLDivElement>(null);
 
-    const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    const handleMouseDown = useCallback(() => {
         setIsDragging(true);
         if (logRef.current) logRef.current.style.cursor = 'grabbing';
     }, []);
@@ -55,39 +55,43 @@ const DevLog: React.FC = () => {
 
     return (
         <div
-            ref={logRef}
-            onMouseDown={handleMouseDown}
-            className="absolute right-[-300px] bg-yellow-300 text-black p-4 z-50 rounded-lg top-0 shadow-lg font-comic-sans cursor-grab"
-            style={{
-                width: `${size.width}px`,
-                height: `${size.height}px`,
-                transform: `translate(${position.x}px, ${position.y}px)`,
-            }}
-        >
-            <h3 className="text-lg font-bold">Developer Logs</h3>
-            <button onClick={clearDevLogs} className="mt-2 bg-red-500 px-3 py-1 rounded text-white hover:bg-red-600 transition-colors">
-                Clear Logs
-            </button>
-            <div className="mt-2 max-h-64 overflow-y-auto">
-                {devLogs.length ? (
-                    <ul className="list-disc pl-5">
-                        {devLogs.map((log, index) => (
-                            <li key={index} className="mt-1 text-sm">
-                                {log}
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No logs available</p>
-                )}
-            </div>
+    ref={logRef}
+    onMouseDown={handleMouseDown}
+    className="absolute bg-yellow-300 text-black p-4 z-50 rounded-lg top-0 shadow-lg font-comic-sans cursor-grab"
+    style={{
+        width: `${size.width}px`,
+        height: `${size.height}px`,
+        transform: `translate(${position.x}px, ${position.y}px)`,
+    }}
+>
+    <h3 className="text-lg font-bold">Developer Logs</h3>
+    <button
+        onClick={clearDevLogs}
+        className="mt-2 bg-red-500 px-3 py-1 rounded text-white hover:bg-red-600 transition-colors"
+    >
+        Clear Logs
+    </button>
+    <code className="mt-2 max-h-64 overflow-y-auto block text-xs break-words">
+        {devLogs.length ? (
+            <ul className="list-disc pl-5">
+                {devLogs.map((log, index) => (
+                    <li key={index} className="mt-1 leading-loose break-words">
+                        {log}
+                    </li>
+                ))}
+            </ul>
+        ) : (
+            <p>No logs available</p>
+        )}
+    </code>
 
-            {/* Resizing handle */}
-            <div
-                onMouseDown={handleResizeMouseDown}
-                className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-gray-500 cursor-nwse-resize"
-            />
-        </div>
+    {/* Resizing handle */}
+    <div
+        onMouseDown={handleResizeMouseDown}
+        className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-gray-500 cursor-nwse-resize"
+    />
+</div>
+
     );
 };
 

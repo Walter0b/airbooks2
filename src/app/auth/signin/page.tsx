@@ -10,7 +10,8 @@ import { cn } from '@/utils/functions/classNames'
 import { Spinner } from '@/assets/svg/spinner'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import DevLog from '@/components/devTools/devLog'
-import { useDevContext } from '@/states/context/devContext'
+import { useDevContext } from '@/states/context/useDevContext'
+
 
 const Page: React.FC = () => {
     const { addDevLog } = useDevContext();
@@ -55,7 +56,7 @@ const Page: React.FC = () => {
                 redirect: false,
             });
             if (result?.error) {
-                addDevLog('result :' + JSON.stringify(result))
+                addDevLog('result :' + JSON.stringify(result, null, 2))
                 setError(getErrorMessage(result.error));
             } else if (result?.ok) {
                 setForwarding(true);
