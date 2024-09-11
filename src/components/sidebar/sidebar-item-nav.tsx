@@ -31,7 +31,7 @@ export const NavLinks = ({
 }: Readonly<NavComponentProps>) => (
     <div className="flex w-full ">
         <NavLink
-            matchMode='exact'
+            matchMode={item.matchMode || 'includes'}
             to={item.href ?? ''}
             activeClassName=" bg-cyan-550 !fill-gray-100 text-white peer"
             inActiveClassName="text-zinc-550 hover:bg-white group-hover:bg-white group-hover:text-cyan-650 "

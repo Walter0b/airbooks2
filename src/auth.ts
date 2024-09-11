@@ -25,6 +25,8 @@ const fetchUser = async (credentials: {
     email: string
     password: string
 }): Promise<ExtendedUser | null> => {
+    console.log("🚀 ~ credentials:", credentials)
+    console.log("Fetching user:", process.env.NEXT_PUBLIC_BASE_URL)
     try {
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
@@ -34,7 +36,7 @@ const fetchUser = async (credentials: {
                 body: JSON.stringify(credentials),
             }
         )
-        // console.log("🚀 ~ res:", res)
+        console.log("🚀 ~ res:", res)
         if (!res.ok) {
             console.error(`Login failed: ${res.status} ${res.statusText}`)
             if (res.status === 401) {
